@@ -199,6 +199,96 @@ export const PHOTOS = {
       de: "Einfarbiger puderrosa Unisex-String, flach auf weißem Hintergrund",
     },
   },
+  stringCoeurs: {
+    file: "string-unisexe-saint-valentin-coeurs-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe rose clair à plat, petits cœurs rouges brodés et ceinture rouge",
+      nl: "Lichtroze unisex string plat gelegd, met geborduurde rode hartjes en rode band",
+      en: "Light pink unisex thong laid flat, with embroidered red hearts and a red waistband",
+      de: "Hellrosa Unisex-String flach gelegt, mit gestickten roten Herzen und rotem Bund",
+    },
+  },
+  stringPoetique: {
+    file: "string-unisexe-saint-valentin-rose-poetique-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe rose uni, posé à plat sur fond blanc",
+      nl: "Effen roze unisex string, plat gelegd op een witte achtergrond",
+      en: "Plain pink unisex thong laid flat on a white background",
+      de: "Einfarbiger rosa Unisex-String, flach auf weißem Hintergrund",
+    },
+  },
+  stringFleurs: {
+    file: "string-unisexe-printemps-fleurs-pastel-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe lilas à plat, imprimé de petites fleurs blanches",
+      nl: "Lila unisex string plat gelegd, met kleine witte bloemetjes",
+      en: "Lilac unisex thong laid flat, printed with small white flowers",
+      de: "Fliederfarbener Unisex-String flach gelegt, mit kleinen weißen Blüten",
+    },
+  },
+  stringMenthe: {
+    file: "string-unisexe-printemps-menthe-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe vert menthe uni, posé à plat sur fond blanc",
+      nl: "Effen muntgroene unisex string, plat gelegd op een witte achtergrond",
+      en: "Plain mint green unisex thong laid flat on a white background",
+      de: "Einfarbiger mintgrüner Unisex-String, flach auf weißem Hintergrund",
+    },
+  },
+  stringPeche: {
+    file: "string-unisexe-printemps-peche-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe couleur pêche uni, posé à plat sur fond blanc",
+      nl: "Effen perzikkleurige unisex string, plat gelegd op een witte achtergrond",
+      en: "Plain peach unisex thong laid flat on a white background",
+      de: "Einfarbiger pfirsichfarbener Unisex-String, flach auf weißem Hintergrund",
+    },
+  },
+  stringFier: {
+    file: "string-unisexe-pride-fier-en-noir-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe bleu nuit à plat, avec une fine bande arc-en-ciel sur la ceinture",
+      nl: "Nachtblauwe unisex string plat gelegd, met een smalle regenboogband op de tailleband",
+      en: "Midnight navy unisex thong laid flat, with a thin rainbow stripe on the waistband",
+      de: "Nachtblauer Unisex-String flach gelegt, mit schmalem Regenbogenstreifen am Bund",
+    },
+  },
+  stringVagues: {
+    file: "string-unisexe-ete-vagues-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe bleu océan à plat, imprimé de vagues bleu ciel",
+      nl: "Oceaanblauwe unisex string plat gelegd, met lichtblauwe golven",
+      en: "Ocean blue unisex thong laid flat, printed with light blue waves",
+      de: "Ozeanblauer Unisex-String flach gelegt, mit hellblauen Wellen",
+    },
+  },
+  stringFantomes: {
+    file: "string-unisexe-halloween-fantomes-plat", sizes: [[600, 600], [1024, 1024]],
+    alt: {
+      fr: "String unisexe prune foncé à plat, imprimé de petits fantômes blancs",
+      nl: "Donkerpaarse unisex string plat gelegd, met kleine witte spookjes",
+      en: "Dark plum unisex thong laid flat, printed with small white ghosts",
+      de: "Dunkelpflaumenfarbener Unisex-String flach gelegt, mit kleinen weißen Gespenstern",
+    },
+  },
+  offrirBo: {
+    file: "offrir-bo-coffret-cadeau", sizes: [[600, 745], [825, 1024]],
+    alt: {
+      fr: "Des mains offrent Bo dans sa boîte lilas à fenêtre, lors d'un dîner entre amis",
+      nl: "Handen geven Bo in zijn lila doos met venster, tijdens een etentje met vrienden",
+      en: "Hands offering Bo in his lilac window box at a dinner with friends",
+      de: "Hände überreichen Bo in seiner fliederfarbenen Fensterbox bei einem Essen mit Freunden",
+    },
+  },
+  pochetteCadeau: {
+    file: "ouverture-pochette-kraft-cadeau", sizes: [[600, 745], [825, 1024]],
+    alt: {
+      fr: "Des mains ouvrent la pochette kraft UNIS et découvrent un string à cœurs, entre amis",
+      nl: "Handen openen de kraftenvelop en ontdekken een string met hartjes, tussen vrienden",
+      en: "Hands opening the kraft mailer to find a heart-print thong, among friends",
+      de: "Hände öffnen den Kraftumschlag und entdecken einen Herz-String, unter Freunden",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
@@ -208,15 +298,18 @@ export const PLACEMENT = {
   boPage: "noelStudio",
   club: "halloweenDos",
   boCard: { noel: "noelStudio", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
-  boxCard: { noel: "noelAllonge", valentin: "saintValentin" },
-  article: { cadeau: "noel" },
+  boxCard: { noel: "offrirBo", valentin: "saintValentin" },
+  article: { cadeau: "pochetteCadeau" },
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
   itemCard: { "UNIS-NOEL27-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
     "UNIS-ETE27-HIBISCUS": "stringHibiscus", "UNIS-ETE27-HIBISCUS-DUO": "eteHibiscus", "UNIS-ESS": "essentiels6", "UNIS-ESS-LOT5": "essentielsLot",
-    "UNIS-PRINTEMPS27-FLEURS": "printempsStudio", "UNIS-PRINTEMPS27-FLEURS-DUO": "printempsStudio",
+    "UNIS-PRINTEMPS27-FLEURS": "stringFleurs", "UNIS-PRINTEMPS27-FLEURS-DUO": "printempsStudio",
     "UNIS-HALLOWEEN27-PHOSPHO": "stringPhospho", "UNIS-HALLOWEEN27-CITROUILLE": "stringCitrouille",
-    "UNIS-ROSE27-RUBAN": "stringRuban", "UNIS-ROSE27-POUDRE": "stringPoudre" },
+    "UNIS-ROSE27-RUBAN": "stringRuban", "UNIS-ROSE27-POUDRE": "stringPoudre",
+    "UNIS-VALENTIN27-COEURS": "stringCoeurs", "UNIS-VALENTIN27-POETIQUE": "stringPoetique",
+    "UNIS-PRINTEMPS27-MENTHE": "stringMenthe", "UNIS-PRINTEMPS27-PECHE": "stringPeche",
+    "UNIS-PRIDE27-FIER": "stringFier", "UNIS-ETE27-VAGUES": "stringVagues", "UNIS-HALLOWEEN27-FANTOMES": "stringFantomes" },
   cuts: "coupes",
 };
 
