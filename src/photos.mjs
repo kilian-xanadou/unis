@@ -55,6 +55,15 @@ export const PHOTOS = {
       de: "Bo hebt einen Pokal, mit rosa String und der Schleife des Pink October",
     },
   },
+  pochette: {
+    file: "pochette-kraft-unis", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Pochette kraft format boîte aux lettres avec un string emballé dans du papier rose",
+      nl: "Kraftenvelop in brievenbusformaat met een string in roze zijdepapier",
+      en: "Letterbox-size kraft mailer with a thong wrapped in pink tissue paper",
+      de: "Kraftumschlag im Briefkastenformat mit einem String in rosa Seidenpapier",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
@@ -66,6 +75,7 @@ export const PLACEMENT = {
   boCard: { noel: "noel", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
   boxCard: { noel: "noelAllonge", valentin: "saintValentin" },
   article: { cadeau: "noel" },
+  help: "pochette",
 };
 
 export const OG_IMAGE = { file: "og-unis.jpg", width: 1200, height: 630 };

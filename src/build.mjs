@@ -406,6 +406,7 @@ ${waitlist(l)}` }));
   add(l, "help", null, layout({ l, key: "help", title: t.helpPage.title, desc: t.helpPage.desc,
     ld: [crumbsLD([home, [t.nav.help, pathOf(l, "help")]]), faqLD(X[l].faqCats.flatMap(([, qs]) => qs))],
     body: (here) => `${pageHead(t.helpPage.h1, "", [home, [t.nav.help, pathOf(l, "help")]], here)}
+${PLACEMENT.help ? `<section class="band"><div class="wrap split"><div class="prose"><h2 class="h3">${t.prom[2][0]}</h2><p>${t.prom[2][1]}</p></div><div class="hero-art small photo">${photo(PLACEMENT.help, l)}</div></div></section>` : ""}
 <section class="band"><div class="wrap cols3">${[["shipTitle", "ship"], ["retTitle", "ret"], ["payTitle", "pay"]].map(([h, p]) => `<div class="prose"><h2 class="h3">${t.helpPage[h]}</h2><p>${t.helpPage[p]}</p></div>`).join("")}</div></section>
 ${faqCats(l, here)}` }));
 
