@@ -27,8 +27,8 @@ export default {
   // Ces deux valeurs sont publiques par conception : la sécurité vient des règles RLS de supabase/schema.sql.
   // Ne mets JAMAIS ici la clé "service_role" (secrète).
   // Laisser vide = mode démo (rien n'est enregistré).
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  supabaseUrl: "https://vuptnuiyuzmwioqaxazy.supabase.co",
+  supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1cHRudWl5dXptd2lvcWF4YXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4MjU0NzYsImV4cCI6MjExMDQwMTQ3Nn0.MUVsvuYi2pB3_KuQQezmHElnQrsdoQx6_4mWQqSizkQ",
 
   // Mesure (chargée seulement après accord dans le bandeau cookies). Vide = rien n'est chargé.
   ga4Id: "",        // ex. "G-XXXXXXXXXX"
