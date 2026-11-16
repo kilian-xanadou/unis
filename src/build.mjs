@@ -126,6 +126,7 @@ const grid = (ps, l) => `<div class="grid">${ps.map((p) => card(p, l)).join("")}
 
 // ---------- JSON-LD ----------
 // Pages qui ne doivent jamais être indexées, même après le lancement.
+const PREVIEWS = ["emails", "insta", "fiche-google"];
 const NOINDEX = new Set(["404", "account", "cookies", "terms", "privacy", "legal"]);
 const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "UNIS", alternateName: ["UNIS strings unisexes", "UNIS et Bo l'ours"], url: `${SITE}/`, logo: { "@type": "ImageObject", url: `${SITE}/assets/logo-512.png`, width: 512, height: 512 }, slogan: "Un fil. Tous les corps. Même les ours." };
 const shippingLD = {
@@ -591,7 +592,8 @@ copyFileSync(join(ROOT, "assets/bo.svg"), join(OUT, "assets/bo.svg"));
 // Visuels (photos WebP) : tout ce qui est dans assets/images/ est publié dans site/assets/images/
 if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
 for (const d of ["emailing", "logo"]) if (existsSync(join(ROOT, "assets", d))) cpSync(join(ROOT, "assets", d), join(OUT, "assets", d), { recursive: true, filter: (f) => !f.endsWith(".md") });
-if (existsSync(join(ROOT, "emails"))) cpSync(join(ROOT, "emails"), join(OUT, "emails"), { recursive: true });
+// Aperçus marketing (emails, publications Instagram, fiche Google) : publiés mais jamais indexés.
+for (const d of PREVIEWS) if (existsSync(join(ROOT, d))) cpSync(join(ROOT, d), join(OUT, d), { recursive: true, filter: (f) => !f.endsWith(".md") });
 if (existsSync(join(ROOT, "assets/images"))) cpSync(join(ROOT, "assets/images"), join(OUT, "assets/images"), { recursive: true, filter: (f) => !f.endsWith(".md") });
 
 // Racine : choix de la langue (redirige selon la langue du navigateur, FR par défaut)
@@ -610,7 +612,7 @@ ${LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(x + "/")}"
 `);
 
 // robots.txt + sitemap.xml (avec alternates hreflang)
-writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /emails/\n\nSitemap: ${SITE}/sitemap.xml\n`);
+writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n${PREVIEWS.map((d) => `Disallow: /${d}/\n`).join("")}\nSitemap: ${SITE}/sitemap.xml\n`);
 const today = CFG.launchDate;
 const sm = pages.filter((p) => !NOINDEX.has(p.key)).map((p) => {
   const loc = abs(pathOf(p.l, p.key, p.sid));

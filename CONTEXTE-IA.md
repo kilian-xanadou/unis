@@ -118,7 +118,7 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 | **Échange de taille** | Pas prévu aujourd'hui. Sans solution, le doute sur la taille freine l'achat cadeau (segments S1 et S2). |
 | **« Sexy » et Bo** | La personnalité est sexy, mais Bo est une peluche vendue dès 14 ans. Règle provisoire : le côté sexy vient de l'humour et des clins d'œil, jamais d'une pose explicite de Bo. |
 | **Âge de Bo** | La cible est 18+, mais Bo est étiqueté « 14 ans et plus ». Garder 14+ (norme jouets) ou passer à « Objet de collection pour adultes » ? |
-| **Nom UNIS et Google** | « UNIS » se confond avec « uni » (couleur unie) dans les recherches. À compenser par le SEO (mots-clés « string unisexe », « Bo l'ours ») et un nom de domaine distinctif. |
+| **Nom UNIS et Google** (nom définitif, reste à compenser) | « UNIS » se confond avec « uni » (couleur unie) dans les recherches. À compenser par le SEO (mots-clés « string unisexe », « Bo l'ours ») et un nom de domaine distinctif. |
 | **Langues** | « Europe » au lancement : confirmer FR, NL, EN, DE, ou ajouter d'autres langues (ES, IT…). |
 | **Octobre Rose** | Association choisie : Think Pink. Montant de travail : 1 € par article. Accord et montant à confirmer avec Think Pink. |
 

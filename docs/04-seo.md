@@ -3,7 +3,7 @@
 Audit complet : https://claude.ai/artifact/YTK1JpuuWAEAxng3t7m7v8 (rédigé avant le passage aux strings à 5 € et à Bo ; les règles restent valables).
 
 ## Problèmes à régler en priorité
-1. **Nom :** « UNIS » se confond avec « uni » (couleur unie) dans les recherches. Trancher le nom (ex. « UNIS Bear ») avant de construire.
+1. **Nom :** « UNIS » se confond avec « uni » (couleur unie) dans les recherches. Le nom UNIS est définitif (16 nov. 2026) : compenser par le SEO (« string unisexe », « Bo l'ours »), `alternateName` dans les données structurées et une fiche d'établissement Google.
 2. **Une URL par langue** (`/fr/`, `/nl/`, `/en/`, `/de/`) avec `hreflang` + `x-default` → `/en/`. Le prototype change la langue en JavaScript sur une seule URL : à ne pas reproduire.
 3. **Une page permanente par saison**, mise à jour 6 à 8 semaines avant son pic, jamais supprimée ni redirigée.
 

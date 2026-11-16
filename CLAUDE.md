@@ -10,7 +10,7 @@ UNIS est une marque e-commerce européenne (Belgique, SRL à créer) qui vend :
 
 **Site de démonstration en ligne depuis le 16 novembre 2026** (statique, sans paiement ni enregistrement, `noindex`). Le lancement commercial reste prévu en avril 2027.
 
-Le nom UNIS est provisoire. Ne le dépose nulle part et n'achète aucun domaine sans demander. `unis.eu` est un exemple.
+Le nom **UNIS est définitif** (décision de l'équipe, 16 novembre 2026). Ne le dépose nulle part et n'achète aucun domaine sans demander. `unis.eu` est un exemple.
 
 ## Où trouver quoi
 

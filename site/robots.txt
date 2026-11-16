@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /emails/
+Disallow: /insta/
+Disallow: /fiche-google/
 
 Sitemap: https://unis-demo.onrender.com/sitemap.xml

@@ -7,11 +7,11 @@ Rédigé le 16 novembre 2026. Aucun volume de recherche ni coût par clic n'est 
 | Élément | Pourquoi | Statut |
 | --- | --- | --- |
 | Paiement réel (Shopify ou Stripe) | On ne paie pas des clics vers un panier factice | À faire |
-| Bandeau cookies + Google Consent Mode v2 | Obligatoire dans l'UE pour mesurer les conversions | À faire |
+| Bandeau cookies + Google Consent Mode v2 | Obligatoire dans l'UE pour mesurer les conversions | Fait (site de démo) |
 | GA4 + conversion Google Ads (achat, inscription liste d'attente) | Sans mesure, impossible de piloter | À faire |
 | Pixel Meta + API Conversions | Idem pour Instagram et Facebook | À faire |
 | Google Merchant Center (flux produits) | Requis pour Shopping et Performance Max | À faire (flux natif Shopify) |
-| Nom de marque tranché (ex. « UNIS Bear ») | « UNIS » seul se confond avec « uni » | À décider |
+| Nom de marque | **UNIS, définitif** (16 nov. 2026). Il se confond avec « uni » : toujours l'associer à « string unisexe » ou « Bo l'ours » dans les annonces | Fait |
 
 ## 2. Règles des régies à respecter
 
@@ -26,9 +26,9 @@ Une campagne par **langue/pays** (FR : BE + FR + LU ; NL : BE + NL ; DE : DE + A
 
 | Campagne | Type | Mots-clés de départ (FR) | Page d'arrivée | Quand |
 | --- | --- | --- | --- | --- |
-| Marque | Search, exact | unis bear, unis string, bo ours unis | Accueil | Toute l'année |
+| Marque | Search, exact | unis string, unis string unisexe, bo ours unis | Accueil | Toute l'année |
 | Drop en cours | Search, expression | string de noël, cadeau secret santa drôle, string humour cadeau | Page de la saison (`/fr/saisons/noel/`) | De J-14 à la fin du drop |
-| Bo, cadeau | Search, expression | ours en peluche cadeau drôle, cadeau humour adulte | `/fr/bo/` | Pics : Noël, Saint-Valentin |
+| Bo, cadeau | Search, expression | ours de collection cadeau, cadeau humour adulte | `/fr/bo/` | Pics : Noël, Saint-Valentin |
 | Shopping / Performance Max | Flux Merchant Center | (automatique) | Fiches produit | Dès que le flux est validé |
 | Remarketing | Display / Demand Gen | Visiteurs 30 jours sans achat | Page de la saison | Toute l'année |
 

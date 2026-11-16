@@ -55,7 +55,7 @@ Saisonnalité estimée : Noël 35 % des ventes (novembre 15 %, décembre 20 %), 
 1. **Bo perçu comme un jouet pour enfants** → mention « collection, 14 ans et plus », tests EN 71 et CE quand même, aucun ciblage enfant.
 2. **Stock d'ours** (10 € pièce) → lots de 1 000, éditions limitées à 500, précommandes.
 3. **Commandes de strings seuls peu rentables** → livraison payante sous 30 €, lot de 5, Duo mis en avant.
-4. **Nom UNIS** introuvable sur Google (confondu avec « uni ») → recherche EUIPO classes 25 et 28, nom composé type « UNIS Bear ».
+4. **Nom UNIS** introuvable sur Google (confondu avec « uni ») → recherche EUIPO classes 25 et 28, nom UNIS gardé (décision du 16/11/2026), compensé par le SEO et la fiche Google.
 
 ## Feuille de route
 
