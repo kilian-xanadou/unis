@@ -235,7 +235,7 @@ const REASSURE_ICONS = [
   '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 2.6 14.6 0 17M12 3.5c-2.6 2.4-2.6 14.6 0 17" />', // Europe
 ];
 const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${[...X[l].reassure, VPC[l].europe].map((r, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${REASSURE_ICONS[i]}</svg>${r}</li>`).join("")}</ul>`;
-const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>${VPC[l].xmasBar} <b class="cd" data-countdown="2026-12-17T23:59:00+01:00" aria-live="off"></b></span></p>`;
+const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>${VPC[l].xmasBar} <b class="cd" data-countdown="2026-12-25T00:00:00+01:00" aria-live="off"></b></span></p>`;
 const shareBtn = (l, title, url) => `<p class="share-row"><button class="btn ghost share" type="button" data-share data-title="${esc(title)}" data-url="${url}">${VPC[l].share}</button></p>`;
 // Sous la photo d'accueil (et non par-dessus) : le string du drop posé à plat, avec son prix.
 const heroInset = (l) => { const p = seasonProducts(LIVE, l).find((x) => x.kind === "adult"), k = p && PLACEMENT.itemCard[p.sku]; return k ? `<p class="hero-strip">${photo(k, l, { sizes: "72px" })}<span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span></p>` : ""; };
