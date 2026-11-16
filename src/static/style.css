@@ -487,3 +487,8 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
   .grid>.card:hover .art{transform:rotate(0) scale(1.02)}
 }
 @media (max-width:700px){.bo-note{font-size:1.35rem}.hero-art.photo{padding:8px 8px 30px}.promise{padding:60px 0}}
+
+/* L'histoire de Bo : sections en zigzag */
+@media (min-width:861px){.story .split.rev>.prose{order:2}}
+.story .hero-art.photo{margin:16px auto 0;max-width:380px}
+.story:nth-of-type(odd) .hero-art.photo{transform:rotate(-2deg)}

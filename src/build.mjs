@@ -17,6 +17,7 @@ const SB_LIB = { src: "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4
 import { LANGS, DEFAULT_LANG, XDEFAULT, PATHS, SEASONS, BASE, ESS, SIZES, SIZE_TABLE, PRICES, SHIPPING } from "./data.mjs";
 import { thong, bear, logoMark, SHAPE } from "./art.mjs";
 import { V as VPC } from "./i18n-vpc.mjs";
+import { STORY } from "./i18n-story.mjs";
 // Pages produits et idées cadeaux (FR de référence ; NL, EN, DE à faire relire par une personne native).
 import PD_FR from "./i18n-pdp/fr.mjs";
 import PD_NL from "./i18n-pdp/nl.mjs";
@@ -58,6 +59,7 @@ function pathOf(l, key, sid) {
   if (key === "article") return `${l}/${X[l].slugs.journal}${X[l].articles[sid].slug}`;
   if (key === "account") return `${l}/${A[l].slug}`;
   if (key === "product") return `${l}/${PD[l].base}${PSLUG[sid][l]}/`;
+  if (key === "story") return `${l}/${STORY[l].slug}`;
   if (key === "gifts") return `${l}/${PD[l].gifts.hubPath}`;
   if (key === "gift") return `${l}/${PD[l].gifts.pages[sid].path}`;
   if (X[l].slugs[key]) return `${l}/${X[l].slugs[key]}`;
@@ -339,7 +341,7 @@ ${body2}
     <div><p class="foot-logo">${logoMark()}<span class="sr">UNIS</span></p><p>${t.signature}</p></div>
     <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "gifts"))}">${PD[l].gifts.nav}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
     <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li><li><a href="${here(pathOf(l, "account"))}">${a.navAccount}</a></li><li><button type="button" class="linkbtn" data-cookie-open>${a.cookie.manage}</button></li></ul></div>
-    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
+    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
   </div>
   <div class="trust">
     <div><p class="ft">${x.payTitle}</p>${payBadges()}<p class="small">${x.payNote}</p></div>
@@ -427,7 +429,7 @@ ${promise(l)}${waitlist(l)}${faqBlock(t.faq, t.faqTitle)}` }));
   add(l, "bo", null, layout({ l, key: "bo", title: t.bo.title, desc: t.bo.desc,
     ld: [crumbsLD([home, [t.boName, pathOf(l, "bo")]]), itemListLD(boPs, l)],
     body: (here) => `${pageHead(t.bo.h1, "", [home, [t.boName, pathOf(l, "bo")]], here)}
-<section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}${shareBtn(l, t.bo.title.split(" | ")[0], boUrl)}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul></div>
+<section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}<p><a href="${here(pathOf(l, "story"))}">${STORY[l].read}</a></p>${shareBtn(l, t.bo.title.split(" | ")[0], boUrl)}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul></div>
 <div class="hero-art small photo">${photo(PLACEMENT.boPage, l, { eager: true })}</div></div></section>
 <section class="shop band" aria-labelledby="hbuy"><div class="wrap"><h2 id="hbuy">${t.bo.shopTitle}</h2>${grid(boPs, l)}</div></section>
 ${waitlist(l)}` }));
@@ -561,6 +563,22 @@ ${faqCats(l, here)}` }));
   // ---- Pages ajoutées après les cours ----
   const x = X[l];
   const crumb = (k, name) => [home, [name, pathOf(l, k)]];
+
+  // L'histoire de Bo (SEO marque + « ours de collection »)
+  {
+    const st = STORY[l], url = abs(pathOf(l, "story"));
+    const linkTo = { bo: pathOf(l, "product", "UNIS-BO"), seasons: pathOf(l, "seasons"), gifts: pathOf(l, "gifts"), club: pathOf(l, "club"), box: pathOf(l, "gift", "coffrets") };
+    const pics = [PLACEMENT.boPage, "printempsStudio", "eteHibiscus", "halloweenDos", "saintValentin"];
+    add(l, "story", null, layout({ l, key: "story", title: st.title, desc: st.desc,
+      ld: [crumbsLD(crumb("story", st.nav)), { "@type": "Article", headline: st.h1, description: st.desc, inLanguage: l, mainEntityOfPage: url, datePublished: CFG.launchDate, image: `${SITE}/${photoUrl(PLACEMENT.boPage, 1200)}`, author: { "@id": `${SITE}/#org` }, publisher: { "@id": `${SITE}/#org` }, about: { "@type": "Thing", name: "Bo" } }, faqLD(st.faq)],
+      body: (here) => {
+        const fillLinks = (s) => s.replace(/\{(\w+)\}/g, (_, k) => `<a href="${here(linkTo[k])}">${st.links[k]}</a>`);
+        return `${pageHead(st.h1, st.intro, crumb("story", st.nav), here, "long")}
+${st.sections.map(([h, ps], i) => `<section class="band story"><div class="wrap split${i % 2 ? " rev" : ""}"><div class="prose"><h2>${h}</h2>${ps.map((p) => `<p>${fillLinks(p)}</p>`).join("")}${st.notes[i] ? `<p class="bo-note">${st.notes[i]}</p>` : ""}</div>${PHOTOS[pics[i]] ? `<figure class="hero-art photo small">${photo(pics[i], l)}</figure>` : ""}</div></section>`).join("")}
+<section class="band"><div class="wrap"><p class="ctas"><a class="btn primary" href="${here(linkTo.bo)}">${st.cta}</a><a class="btn ghost" href="${here(linkTo.seasons)}">${t.nav.seasons}</a></p></div></section>
+${faqBlock(st.faq, st.faqTitle)}`;
+      } }));
+  }
 
   // À propos / manifeste (Communication Web : Qui ? ; e-Commerce p.73-75)
   const va = VPC[l].about;
