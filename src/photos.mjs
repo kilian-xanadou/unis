@@ -154,6 +154,51 @@ export const PHOTOS = {
       de: "Zwei fliederfarbene Strings nebeneinander: Schnitt Flach links, Beutel rechts",
     },
   },
+  printempsStudio: {
+    file: "bo-ours-unis-printemps-studio", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo debout sur fond blanc, nœud lilas, bouquet de tulipes et string lilas fleuri",
+      nl: "Bo staat op een witte achtergrond, met lila strik, tulpen en lila bloemetjesstring",
+      en: "Bo standing on white with a lilac bow, a tulip bouquet and a lilac floral thong",
+      de: "Bo steht vor Weiß, mit Fliederschleife, Tulpenstrauß und fliederfarbenem Blumen-String",
+    },
+  },
+  stringPhospho: {
+    file: "string-unisexe-halloween-phosphorescent-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe vert fluo phosphorescent à plat, avec large ceinture douce",
+      nl: "Unisex string in fluogroen dat oplicht in het donker, plat gelegd",
+      en: "Neon green glow-in-the-dark unisex thong laid flat, with a wide soft waistband",
+      de: "Neongrüner, im Dunkeln leuchtender Unisex-String, flach gelegt",
+    },
+  },
+  stringCitrouille: {
+    file: "string-unisexe-halloween-citrouille-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe orange citrouille uni, posé à plat sur fond blanc",
+      nl: "Effen pompoenoranje unisex string, plat gelegd op een witte achtergrond",
+      en: "Plain pumpkin orange unisex thong laid flat on a white background",
+      de: "Einfarbiger kürbisoranger Unisex-String, flach auf weißem Hintergrund",
+    },
+  },
+  stringRuban: {
+    file: "string-unisexe-octobre-rose-ruban-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe rose clair à plat, imprimé de petits rubans roses d'Octobre Rose",
+      nl: "Lichtroze unisex string plat gelegd, met kleine roze lintjes van Roze Oktober",
+      en: "Light pink unisex thong laid flat, printed with small Pink October ribbons",
+      de: "Hellrosa Unisex-String flach gelegt, mit kleinen rosa Pink-October-Schleifen",
+    },
+  },
+  stringPoudre: {
+    file: "string-unisexe-rose-poudre-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe rose poudré uni, posé à plat sur fond blanc",
+      nl: "Effen poederroze unisex string, plat gelegd op een witte achtergrond",
+      en: "Plain powder pink unisex thong laid flat on a white background",
+      de: "Einfarbiger puderrosa Unisex-String, flach auf weißem Hintergrund",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
@@ -168,7 +213,10 @@ export const PLACEMENT = {
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
   itemCard: { "UNIS-NOEL27-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
-    "UNIS-ETE27-HIBISCUS": "stringHibiscus", "UNIS-ETE27-HIBISCUS-DUO": "eteHibiscus", "UNIS-ESS": "essentiels6", "UNIS-ESS-LOT5": "essentielsLot" },
+    "UNIS-ETE27-HIBISCUS": "stringHibiscus", "UNIS-ETE27-HIBISCUS-DUO": "eteHibiscus", "UNIS-ESS": "essentiels6", "UNIS-ESS-LOT5": "essentielsLot",
+    "UNIS-PRINTEMPS27-FLEURS": "printempsStudio", "UNIS-PRINTEMPS27-FLEURS-DUO": "printempsStudio",
+    "UNIS-HALLOWEEN27-PHOSPHO": "stringPhospho", "UNIS-HALLOWEEN27-CITROUILLE": "stringCitrouille",
+    "UNIS-ROSE27-RUBAN": "stringRuban", "UNIS-ROSE27-POUDRE": "stringPoudre" },
   cuts: "coupes",
 };
 
