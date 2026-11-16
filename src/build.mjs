@@ -232,7 +232,7 @@ const REASSURE_ICONS = [
   '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 2.6 14.6 0 17M12 3.5c-2.6 2.4-2.6 14.6 0 17" />', // Europe
 ];
 const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${[...X[l].reassure, VPC[l].europe].map((r, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${REASSURE_ICONS[i]}</svg>${r}</li>`).join("")}</ul>`;
-const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>${VPC[l].xmasBar}</span></p>`;
+const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>${VPC[l].xmasBar} <b class="cd" data-countdown="2026-12-17T23:59:00+01:00" aria-live="off"></b></span></p>`;
 const shareBtn = (l, title, url) => `<p class="share-row"><button class="btn ghost share" type="button" data-share data-title="${esc(title)}" data-url="${url}">${VPC[l].share}</button></p>`;
 // Sous la photo d'accueil (et non par-dessus) : le string du drop posé à plat, avec son prix.
 const heroInset = (l) => { const p = seasonProducts(LIVE, l).find((x) => x.kind === "adult"), k = p && PLACEMENT.itemCard[p.sku]; return k ? `<p class="hero-strip">${photo(k, l, { sizes: "72px" })}<span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span></p>` : ""; };
@@ -279,7 +279,7 @@ function layout({ l, key, sid, title, desc, body, ld = [], palette = BASE, noAlt
   // La 404 peut être servie à n'importe quelle profondeur : liens absolus depuis la racine du site.
   const here = key === "404" ? (p) => BASE_PATH + p : (p) => "../".repeat(depth) + p;
   const alts = noAlt ? "" : LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(pathOf(x, key, sid))}">`).join("\n") + `\n<link rel="alternate" hreflang="x-default" href="${abs(pathOf(XDEFAULT, key, sid))}">`;
-  const strings = { copied: VPC[l].copied, upsell: VPC[l].upsell, upLot: VPC[l].upLot, upDuo: VPC[l].upDuo, upOr: VPC[l].upOr, upLotUrl: productUrl(l, "UNIS-ESS-LOT5"), upDuoUrl: productUrl(l, pref(l, "duo").sku), cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: DB ? a.okContactSaved : x.contact.ok, lang: l, page: key,
+  const strings = { cd: VPC[l].cd, meteo: VPC[l].meteo, copied: VPC[l].copied, upsell: VPC[l].upsell, upLot: VPC[l].upLot, upDuo: VPC[l].upDuo, upOr: VPC[l].upOr, upLotUrl: productUrl(l, "UNIS-ESS-LOT5"), upDuoUrl: productUrl(l, pref(l, "duo").sku), cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: DB ? a.okContactSaved : x.contact.ok, lang: l, page: key,
     okWaitSaved: a.okWaitSaved, waitAlready: a.waitAlready, acc: a.account,
     db: DB ? { url: CFG.supabaseUrl, key: CFG.supabaseAnonKey, lib: SB_LIB } : null,
     consentVersion: CFG.consentVersion, ga4: CFG.ga4Id, pixel: CFG.metaPixelId,
@@ -408,6 +408,7 @@ for (const l of LANGS) {
     <p class="lead">${t.home.lead}</p>
     <div class="ctas"><a class="btn primary" href="${here(pathOf(l, "season", LIVE.id))}#produits">${VPC[l].ctaGift}</a><a class="btn ghost" href="${here(pathOf(l, "bo"))}">${t.home.ctaBo}</a></div>
     <p class="hero-trust">${LIVE.id === "noel" ? VPC[l].heroTrustXmas : VPC[l].heroTrust}</p>
+    <p class="bo-meteo" data-meteo hidden></p>
   </div>
   ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-side"><div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}</div>${heroInset(l)}</div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>

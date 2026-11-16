@@ -190,6 +190,35 @@
   }));
   // Liens du panier vers un produit : on ferme le panier avant de suivre le lien.
   document.addEventListener("click", (e) => { if (e.target.closest("#upsell a") && typeof close === "function") close(); });
+  // Compte à rebours jusqu'à la date limite de Noël, avec l'humeur de Bo (urgence réelle uniquement).
+  const fillK = fill;
+  document.querySelectorAll("[data-countdown]").forEach((el) => {
+    const end = new Date(el.dataset.countdown).getTime();
+    const tick = () => {
+      const ms = end - Date.now();
+      if (ms <= 0) { el.textContent = S.cd.over; return false; }
+      const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+      const mood = d > 14 ? S.cd.zen : d > 6 ? S.cd.count : d > 1 ? S.cd.panic : S.cd.last;
+      el.textContent = (d > 0 ? fillK(S.cd.left, { d, h }) : fillK(S.cd.hours, { h, m })) + " " + mood;
+      return true;
+    };
+    if (tick()) setInterval(tick, 60000);
+  });
+
+  // La météo de Bo : temps actuel à Bruxelles via Open-Meteo (gratuit, sans clé, sans cookie). Aucune donnée du visiteur n'est envoyée.
+  const met = document.querySelector("[data-meteo]");
+  if (met && S.meteo) {
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=50.85&longitude=4.35&current=temperature_2m,weather_code&timezone=Europe%2FBrussels")
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d) => {
+        const t = Math.round(d.current.temperature_2m), c = d.current.weather_code;
+        const k = [71, 73, 75, 77, 85, 86].includes(c) ? "snow" : (c >= 51 && c <= 67) || (c >= 80 && c <= 82) || c >= 95 ? "rain" : t <= 0 ? "freeze" : t < 10 ? "cold" : t < 20 ? "mild" : "warm";
+        met.innerHTML = `<b>${esc(S.meteo.label)}</b> ${esc(fillK(S.meteo[k], { t: t + " °C" }))}`;
+        met.hidden = false;
+      })
+      .catch(() => {});
+  }
+
   const CK = "unis_consent", SIX_MONTHS = 60 * 60 * 24 * 182;
   const readConsent = () => {
     const m = document.cookie.match(/(?:^|;\s*)unis_consent=([^;]+)/);

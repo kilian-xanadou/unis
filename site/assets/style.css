@@ -409,3 +409,8 @@ input[type=checkbox]{width:24px;height:24px;accent-color:var(--ink)}
 /* Menu à 7 entrées (Idées cadeaux) : pas de retour à la ligne, plus serré entre 961 et 1120 px */
 nav.main a{white-space:nowrap}
 @media (min-width:961px) and (max-width:1120px){nav.main{gap:0}nav.main a{padding:10px 6px;font-size:.92rem}.top .wrap{gap:12px}.logo .logo-mark{width:96px}}
+
+/* Compte à rebours et météo de Bo */
+.deadline .cd{display:inline-block;margin-left:4px;font-variant-numeric:tabular-nums}
+.bo-meteo{margin:10px 0 0;font-size:.92rem;background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:var(--r-small);padding:8px 12px;max-width:46ch}
+.bo-meteo b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}

@@ -53,7 +53,7 @@ fr: {
       ]],
       ["3. Destinataires et sous-traitants", [
         "- Supabase (base de données et authentification), serveurs situés dans l'Union européenne.",
-        "- Render (hébergement du site), qui traite l'adresse IP de connexion. Ces prestataires peuvent transférer des données hors de l'Union européenne ; ces transferts sont encadrés par le Data Privacy Framework UE–États-Unis ou par des clauses contractuelles types de la Commission européenne.",
+        "- Render (hébergement du site), qui traite l'adresse IP de connexion ; Open-Meteo (météo de Bo sur l'accueil), qui reçoit l'adresse IP sans cookie ni autre donnée. Ces prestataires peuvent transférer des données hors de l'Union européenne ; ces transferts sont encadrés par le Data Privacy Framework UE–États-Unis ou par des clauses contractuelles types de la Commission européenne.",
         "- Au lancement : prestataire de paiement, transporteur et outil d'emailing, liés par un contrat de sous-traitance (art. 28 RGPD).",
       ]],
       ["4. Durées de conservation", [
@@ -129,7 +129,7 @@ nl: {
       ]],
       ["3. Ontvangers en verwerkers", [
         "- Supabase (database en authenticatie), servers in de Europese Unie.",
-        "- Render (hosting van de site), dat het IP-adres van de verbinding verwerkt. Deze dienstverleners kunnen gegevens buiten de Europese Unie doorgeven; die doorgiften vallen onder het EU-VS Data Privacy Framework of onder standaardcontractbepalingen van de Europese Commissie.",
+        "- Render (hosting van de site), dat het IP-adres van de verbinding verwerkt; Open-Meteo (het weer van Bo op de homepage), dat het IP-adres ontvangt, zonder cookie of andere gegevens. Deze dienstverleners kunnen gegevens buiten de Europese Unie doorgeven; die doorgiften vallen onder het EU-VS Data Privacy Framework of onder standaardcontractbepalingen van de Europese Commissie.",
         "- Bij de lancering: betaaldienstverlener, vervoerder en e-mailingtool, gebonden door een verwerkersovereenkomst (art. 28 AVG).",
       ]],
       ["4. Bewaartermijnen", [
@@ -205,7 +205,7 @@ en: {
       ]],
       ["3. Recipients and processors", [
         "- Supabase (database and authentication), servers located in the European Union.",
-        "- Render (site hosting), which processes the connection IP address. These providers may transfer data outside the European Union; such transfers are covered by the EU–US Data Privacy Framework or by the European Commission's standard contractual clauses.",
+        "- Render (site hosting), which processes the connection IP address; Open-Meteo (Bo's weather on the home page), which receives the IP address, with no cookie or other data. These providers may transfer data outside the European Union; such transfers are covered by the EU–US Data Privacy Framework or by the European Commission's standard contractual clauses.",
         "- At launch: payment service provider, carrier and emailing tool, bound by a data processing agreement (art. 28 GDPR).",
       ]],
       ["4. Retention periods", [
@@ -281,7 +281,7 @@ de: {
       ]],
       ["3. Empfänger und Auftragsverarbeiter", [
         "- Supabase (Datenbank und Authentifizierung), Server in der Europäischen Union.",
-        "- Render (Hosting der Website), das die IP-Adresse der Verbindung verarbeitet. Diese Dienstleister können Daten außerhalb der Europäischen Union übermitteln; diese Übermittlungen sind durch das EU-US Data Privacy Framework oder durch Standardvertragsklauseln der Europäischen Kommission abgesichert.",
+        "- Render (Hosting der Website), das die IP-Adresse der Verbindung verarbeitet; Open-Meteo (Bos Wetter auf der Startseite), das die IP-Adresse ohne Cookie oder weitere Daten erhält. Diese Dienstleister können Daten außerhalb der Europäischen Union übermitteln; diese Übermittlungen sind durch das EU-US Data Privacy Framework oder durch Standardvertragsklauseln der Europäischen Kommission abgesichert.",
         "- Ab dem Start: Zahlungsdienstleister, Versanddienstleister und E-Mail-Tool, gebunden durch einen Auftragsverarbeitungsvertrag (Art. 28 DSGVO).",
       ]],
       ["4. Speicherdauer", [
