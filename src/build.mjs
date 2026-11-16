@@ -760,7 +760,7 @@ cpSync(join(ROOT, "src/static/fonts"), join(OUT, "assets/fonts"), { recursive: t
 if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
 for (const d of ["emailing", "logo", "qr"]) if (existsSync(join(ROOT, "assets", d))) cpSync(join(ROOT, "assets", d), join(OUT, "assets", d), { recursive: true, filter: (f) => !f.endsWith(".md") });
 // Aperçus marketing (emails, publications Instagram, fiche Google) : publiés mais jamais indexés.
-for (const d of PREVIEWS) if (existsSync(join(ROOT, d))) cpSync(join(ROOT, d), join(OUT, d), { recursive: true, filter: (f) => !f.endsWith(".md") });
+for (const d of PREVIEWS) if (existsSync(join(ROOT, d))) cpSync(join(ROOT, d), join(OUT, d), { recursive: true, filter: (f) => !/.(md|mjs)$/.test(f) });
 if (existsSync(join(ROOT, "assets/images"))) cpSync(join(ROOT, "assets/images"), join(OUT, "assets/images"), { recursive: true, filter: (f) => !f.endsWith(".md") });
 
 // Racine : choix de la langue (redirige selon la langue du navigateur, FR par défaut)
