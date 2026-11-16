@@ -56,7 +56,7 @@ fr: {
     ["Comment choisir ma taille ?", "Mesure ton tour de hanches à l'endroit le plus large, puis reporte-toi au guide des tailles, du XS (82–88 cm) au 4XL (128–136 cm)."],
     ["Livraison et retours ?", "Livraison dans toute l'UE en 2 à 4 jours ouvrables : 3,90 €, offerte dès 30 €. Retour sous 14 jours si le string n'a pas été porté et que l'étiquette d'hygiène est intacte."]],
   bo: {
-    title: "Bo, l'ours en peluche cadeau drôle | UNIS",
+    title: "Bo, l'ours en peluche de collection à 49 € | UNIS",
     desc: "Bo, l'ours en peluche de collection de 35 cm qui porte nos strings. 49 €, avec mini-string, boîte et certificat numéroté. Pour les 14 ans et plus.",
     h1: "Bo, l'ours en peluche qui porte nos strings",
     p: ["Bo est notre mannequin. Pas de photos retouchées, pas de corps idéal : chaque nouveau string est d'abord porté par un ours couleur miel de 35 cm, avec un nœud à la couleur de la saison.",
@@ -188,7 +188,7 @@ nl: {
     ["Hoe kies ik mijn maat?", "Meet je heupomtrek op het breedste punt en kijk in de matentabel, van XS (82–88 cm) tot 4XL (128–136 cm)."],
     ["Levering en retour?", "Levering in de hele EU in 2 tot 4 werkdagen: 3,90 €, gratis vanaf 30 €. Retour binnen 14 dagen als de string niet gedragen is en het hygiënelabel intact is."]],
   bo: {
-    title: "Bo, de grappige knuffelbeer als cadeau | UNIS",
+    title: "Bo, de verzamelknuffelbeer van 49 € | UNIS",
     desc: "Bo, de verzamelknuffel van 35 cm die onze strings draagt. 49 €, met mini-string, cadeaudoos en genummerd certificaat. Vanaf 14 jaar.",
     h1: "Bo, de knuffelbeer die onze strings draagt",
     p: ["Bo is ons model. Geen geretoucheerde foto's, geen ideaal lichaam: elke nieuwe string wordt eerst gedragen door een honingkleurige beer van 35 cm, met een strik in de kleur van het seizoen.",
@@ -320,7 +320,7 @@ en: {
     ["How do I choose my size?", "Measure your hips at the widest point, then check the size guide, from XS (82–88 cm) to 4XL (128–136 cm)."],
     ["Shipping and returns?", "EU-wide delivery in 2 to 4 working days: €3.90, free from €30. Returns within 14 days if the thong hasn't been worn and the hygiene seal is intact."]],
   bo: {
-    title: "Bo, the funny teddy bear gift | UNIS",
+    title: "Bo, the €49 collectible teddy bear | UNIS",
     desc: "Bo, the 35 cm collectible teddy bear who wears our thongs. €49, with a mini thong, gift box and numbered certificate. For ages 14 and up.",
     h1: "Bo, the teddy bear who wears our thongs",
     p: ["Bo is our model. No retouched photos, no ideal body: every new thong is first worn by a 35 cm honey-coloured bear, with a bow in the colour of the season.",
@@ -452,7 +452,7 @@ de: {
     ["Wie finde ich meine Größe?", "Miss deinen Hüftumfang an der breitesten Stelle und sieh in der Größentabelle nach, von XS (82–88 cm) bis 4XL (128–136 cm)."],
     ["Versand und Rückgabe?", "EU-weite Lieferung in 2 bis 4 Werktagen: 3,90 €, kostenlos ab 30 €. Rückgabe innerhalb von 14 Tagen, wenn der String nicht getragen wurde und das Hygienesiegel intakt ist."]],
   bo: {
-    title: "Bo, der lustige Teddybär als Geschenk | UNIS",
+    title: "Bo, der Sammler-Teddybär für 49 € | UNIS",
     desc: "Bo, der Sammler-Teddybär (35 cm), der unsere Strings trägt. 49 €, mit Mini-String, Geschenkbox und nummeriertem Zertifikat. Ab 14 Jahren.",
     h1: "Bo, der Teddybär, der unsere Strings trägt",
     p: ["Bo ist unser Model. Keine retuschierten Fotos, kein Idealkörper: Jeder neue String wird zuerst von einem honigfarbenen Bären (35 cm) getragen, mit einer Schleife in der Farbe der Saison.",

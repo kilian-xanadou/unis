@@ -293,7 +293,9 @@
 
   // Vidéos : lecture auto en muet, sauf si l'appareil demande de réduire les animations.
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.querySelectorAll("video[data-autoplay]").forEach((v) => { v.play().catch(() => {}); });
+    // Lecture seulement quand la vidéo est visible : rien n'est téléchargé tant qu'elle est hors écran.
+    const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.25 }) : null;
+    document.querySelectorAll("video[data-autoplay]").forEach((v) => { io ? io.observe(v) : v.play().catch(() => {}); });
   }
 
   render();

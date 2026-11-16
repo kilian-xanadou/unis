@@ -302,7 +302,7 @@ export const PLACEMENT = {
   article: { cadeau: "pochetteCadeau" },
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
-  itemCard: { "UNIS-NOEL27-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
+  itemCard: { "UNIS-NOEL26-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
     "UNIS-ETE27-HIBISCUS": "stringHibiscus", "UNIS-ETE27-HIBISCUS-DUO": "eteHibiscus", "UNIS-ESS": "essentiels6", "UNIS-ESS-LOT5": "essentielsLot",
     "UNIS-PRINTEMPS27-FLEURS": "stringFleurs", "UNIS-PRINTEMPS27-FLEURS-DUO": "printempsStudio",
     "UNIS-HALLOWEEN27-PHOSPHO": "stringPhospho", "UNIS-HALLOWEEN27-CITROUILLE": "stringCitrouille",

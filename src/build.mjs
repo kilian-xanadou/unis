@@ -73,7 +73,7 @@ for (const p of [BASE, ...SEASONS.map((s) => s.c)]) {
 
 // ---------- products ----------
 function seasonProducts(s, l) {
-  const it = s.items[0], m = it.n[l], sn = sName(s, l), yr = "27";
+  const it = s.items[0], m = it.n[l], sn = sName(s, l), yr = String(s === LIVE ? CFG.dropYear : s.next.slice(0, 4)).slice(2);
   const code = `${s.id.toUpperCase()}${yr}-${it.sku || "M1"}`;
   const list = [];
   if (s.box) list.push({ sku: `UNIS-BO-${s.id.toUpperCase()}${yr}`, kind: "bo", name: fill(T[l].boSpecialName, { s: sn }), desc: fill(T[l].boSpecialDesc, { m }), price: PRICES.bo, badge: T[l].collector, item: it, hat: s.id === "noel", bo: true });
@@ -123,7 +123,9 @@ function card(p, l, ctx) {
 const grid = (ps, l) => `<div class="grid">${ps.map((p) => card(p, l)).join("")}</div>`;
 
 // ---------- JSON-LD ----------
-const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "UNIS", url: `${SITE}/`, logo: `${SITE}/assets/favicon.svg`, slogan: "Un fil. Tous les corps. Même les ours." };
+// Pages qui ne doivent jamais être indexées, même après le lancement.
+const NOINDEX = new Set(["404", "account", "cookies", "terms", "privacy", "legal"]);
+const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "UNIS", alternateName: ["UNIS strings unisexes", "UNIS et Bo l'ours"], url: `${SITE}/`, logo: { "@type": "ImageObject", url: `${SITE}/assets/logo-512.png`, width: 512, height: 512 }, slogan: "Un fil. Tous les corps. Même les ours." };
 const shippingLD = {
   "@type": "OfferShippingDetails",
   shippingRate: { "@type": "MonetaryAmount", value: SHIPPING.fee, currency: "EUR" },
@@ -134,8 +136,8 @@ const freeShippingLD = { ...shippingLD, shippingRate: { "@type": "MonetaryAmount
 const returnLD = { "@type": "MerchantReturnPolicy", applicableCountry: ["BE", "FR", "NL", "LU", "DE", "AT"], returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow", merchantReturnDays: 14, returnMethod: "https://schema.org/ReturnByMail" };
 function productLD(p, l, url) {
   const offer = { "@type": "Offer", price: p.price.toFixed(2), priceCurrency: "EUR", url, availability: p.buyable ? (p.season && !p.bo ? "https://schema.org/LimitedAvailability" : "https://schema.org/InStock") : "https://schema.org/PreOrder", itemCondition: "https://schema.org/NewCondition", shippingDetails: [shippingLD, freeShippingLD], hasMerchantReturnPolicy: returnLD };
-  if (p.season && p.buyable) offer.priceValidUntil = CFG.dropPriceValidUntil;
-  return { "@type": "Product", name: p.name, sku: p.sku, description: p.desc, image: p.photo ? `${SITE}/${photoUrl(p.photo, 1200)}` : `${SITE}/assets/bo.svg`, brand: { "@type": "Brand", name: "UNIS" }, offers: offer };
+  if (p.season && p.buyable && p.sku !== "UNIS-BO") offer.priceValidUntil = CFG.dropPriceValidUntil;
+  return { "@type": "Product", name: p.name, sku: p.sku, description: p.desc, ...(p.photo ? { image: `${SITE}/${photoUrl(p.photo, 1200)}` } : p.bo ? { image: `${SITE}/assets/images/og-unis.jpg` } : {}), brand: { "@type": "Brand", name: "UNIS" }, offers: offer };
 }
 const crumbsLD = (items) => ({ "@type": "BreadcrumbList", itemListElement: items.map(([name, p], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(p) })) });
 const faqLD = (faq) => ({ "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
@@ -231,7 +233,7 @@ function layout({ l, key, sid, title, desc, body, ld = [], palette = BASE, noAlt
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 ${desc ? `<meta name="description" content="${esc(desc)}">` : ""}
-${CFG.indexable && key !== "404" ? "" : '<meta name="robots" content="noindex, follow">'}
+${CFG.indexable && !NOINDEX.has(key) ? "" : '<meta name="robots" content="noindex, follow">'}
 ${key === "404" ? "" : `<link rel="canonical" href="${abs(self)}">`}
 ${alts}
 <meta property="og:type" content="website">
@@ -394,7 +396,7 @@ ${waitlist(l)}` }));
 ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p><p class="note">${roseFill(ROSE[l].note, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${grid(ps, l)}</div></section>
-${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="metadata" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
+${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
 ${faqBlock(sfaq, t.faqTitle)}
 <section class="seasons band"><div class="wrap"><h2>${t.seasonsTitle}</h2>${seasonStrip(l, here, s.id)}</div></section>
@@ -578,7 +580,7 @@ ${waitlist(l)}` }));
 rmSync(OUT, { recursive: true, force: true });
 for (const p of pages) { const f = join(OUT, p.file); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, p.html); }
 mkdirSync(join(OUT, "assets"), { recursive: true });
-for (const f of ["style.css", "app.js", "favicon.svg"]) copyFileSync(join(ROOT, "src/static", f), join(OUT, "assets", f));
+for (const f of ["style.css", "app.js", "favicon.svg", "logo-512.png"]) copyFileSync(join(ROOT, "src/static", f), join(OUT, "assets", f));
 copyFileSync(join(ROOT, "assets/bo.svg"), join(OUT, "assets/bo.svg"));
 // Visuels (photos WebP) : tout ce qui est dans assets/images/ est publié dans site/assets/images/
 if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
@@ -602,7 +604,7 @@ ${LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(x + "/")}"
 // robots.txt + sitemap.xml (avec alternates hreflang)
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 const today = CFG.launchDate;
-const sm = pages.filter((p) => p.key !== "404").map((p) => {
+const sm = pages.filter((p) => !NOINDEX.has(p.key)).map((p) => {
   const loc = abs(pathOf(p.l, p.key, p.sid));
   const alts = LANGS.map((x) => `<xhtml:link rel="alternate" hreflang="${x}" href="${abs(pathOf(x, p.key, p.sid))}"/>`).join("") + `<xhtml:link rel="alternate" hreflang="x-default" href="${abs(pathOf(XDEFAULT, p.key, p.sid))}"/>`;
   return `<url><loc>${loc}</loc><lastmod>${today}</lastmod>${alts}</url>`;
