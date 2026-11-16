@@ -109,12 +109,57 @@ export const PHOTOS = {
       de: "Bo liegt mit einem String in den Farben der Trans-Flagge, daneben derselbe String",
     },
   },
+  eteHibiscus: {
+    file: "bo-ours-unis-ete-hibiscus", sizes: [[600, 750], [1122, 1402]],
+    alt: {
+      fr: "Bo avec une fleur d'hibiscus et des lunettes cœur, à côté du Duo hibiscus",
+      nl: "Bo met een hibiscusbloem en hartjesbril, naast de hibiscus-Duo",
+      en: "Bo with a hibiscus flower and heart sunglasses, next to the hibiscus Duo",
+      de: "Bo mit Hibiskusblüte und Herzbrille, neben dem Hibiskus-Duo",
+    },
+  },
+  stringHibiscus: {
+    file: "string-unisexe-ete-hibiscus-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe à plat, imprimé de grandes fleurs d'hibiscus roses",
+      nl: "Unisex string plat gelegd, met grote roze hibiscusbloemen",
+      en: "Unisex thong laid flat, printed with large pink hibiscus flowers",
+      de: "Unisex-String flach gelegt, mit großen rosa Hibiskusblüten",
+    },
+  },
+  essentiels6: {
+    file: "string-unisexe-essentiels-6-couleurs", sizes: [[600, 750], [1122, 1402]],
+    alt: {
+      fr: "Les six strings Essentiels empilés : encre, lilas, corail, sable, cacao et blanc",
+      nl: "De zes Essential strings gestapeld: inkt, lila, koraal, zand, cacao en wit",
+      en: "The six Essential thongs stacked: ink, lilac, coral, sand, cocoa and white",
+      de: "Die sechs Essential-Strings gestapelt: Tinte, Flieder, Koralle, Sand, Kakao und Weiß",
+    },
+  },
+  essentielsLot: {
+    file: "string-unisexe-essentiels-lot-de-5", sizes: [[600, 750], [1122, 1402]],
+    alt: {
+      fr: "Strings Essentiels unis en plusieurs couleurs, pour composer un lot de 5",
+      nl: "Effen Essential strings in verschillende kleuren, voor een pakket van 5",
+      en: "Plain Essential thongs in several colours, to build a 5-pack",
+      de: "Einfarbige Essential-Strings in mehreren Farben für ein 5er-Pack",
+    },
+  },
+  coupes: {
+    file: "string-unisexe-coupe-plat-poche", sizes: [[600, 338], [1200, 675]],
+    alt: {
+      fr: "Deux strings lilas côte à côte : coupe Plat à gauche, coupe Poche à droite",
+      nl: "Twee lila strings naast elkaar: snit Plat links, snit Buidel rechts",
+      en: "Two lilac thongs side by side: Flat cut on the left, Pouch cut on the right",
+      de: "Zwei fliederfarbene Strings nebeneinander: Schnitt Flach links, Beutel rechts",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
 export const PLACEMENT = {
   hero: { noel: "noelAllonge", halloween: "halloween" },
-  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRose", pride: "prideArcEnCiel", printemps: "printemps" },
+  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRose", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
   boPage: "noelStudio",
   club: "halloweenDos",
   boCard: { noel: "noelStudio", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
@@ -122,7 +167,9 @@ export const PLACEMENT = {
   article: { cadeau: "noel" },
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
-  itemCard: { "UNIS-NOEL27-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel" },
+  itemCard: { "UNIS-NOEL27-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
+    "UNIS-ETE27-HIBISCUS": "stringHibiscus", "UNIS-ETE27-HIBISCUS-DUO": "eteHibiscus", "UNIS-ESS": "essentiels6", "UNIS-ESS-LOT5": "essentielsLot" },
+  cuts: "coupes",
 };
 
 // Vidéos (MP4 H.264 sans son, lecture auto en muet et en boucle, sauf si l'appareil demande moins d'animations).

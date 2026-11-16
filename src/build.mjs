@@ -84,8 +84,8 @@ function seasonProducts(s, l) {
   return list.map((p) => ({ ...p, buyable: s === LIVE, color: it.base || s.c.accent, season: s, photo: photoFor(p), badge: s.capsule ? roseFill(ROSE[l].badge, l) : p.badge }));
 }
 const boProduct = (l) => ({ sku: "UNIS-BO", kind: "bo", name: T[l].boName, desc: T[l].boDesc, price: PRICES.bo, badge: T[l].collector, item: LIVE.items[0], bo: true, buyable: true, color: "#C98B4B", season: LIVE, photo: PLACEMENT.boCard[LIVE.id] || null });
-const essProduct = (l) => ({ sku: "UNIS-ESS", kind: "ess", name: T[l].essName, desc: T[l].essDesc, price: PRICES.adult, badge: T[l].ess, sized: true, buyable: true, color: ESS[0].c });
-const lotProduct = (l) => ({ sku: "UNIS-ESS-LOT5", kind: "lot", name: T[l].lotName, desc: T[l].lotDesc, price: PRICES.lot5, badge: T[l].ess, sized: true, sizeOnly: true, buyable: true, color: ESS[1].c });
+const essProduct = (l) => ({ sku: "UNIS-ESS", kind: "ess", name: T[l].essName, desc: T[l].essDesc, price: PRICES.adult, badge: T[l].ess, sized: true, buyable: true, color: ESS[0].c , photo: PLACEMENT.itemCard["UNIS-ESS"] });
+const lotProduct = (l) => ({ sku: "UNIS-ESS-LOT5", kind: "lot", name: T[l].lotName, desc: T[l].lotDesc, price: PRICES.lot5, badge: T[l].ess, sized: true, sizeOnly: true, buyable: true, color: ESS[1].c , photo: PLACEMENT.itemCard["UNIS-ESS-LOT5"] });
 
 function art(p, l) {
   if (p.photo) return photo(p.photo, l, { sizes: "(max-width: 600px) 100vw, 300px" });
@@ -156,7 +156,7 @@ function sizeTable(l) {
 function cuts(l) {
   const t = T[l];
   const svg = (k) => `<svg viewBox="0 0 200 160" aria-hidden="true" focusable="false"><path d="${SHAPE[k]}" fill="var(--soft)" stroke="var(--ink)" stroke-width="3"/></svg>`;
-  return `<div class="cut">${svg("flat")}<div><h3>${t.flat}</h3><p>${t.flatP}</p></div></div><div class="cut">${svg("pouch")}<div><h3>${t.pouch}</h3><p>${t.pouchP}</p></div></div><p>${t.cutsNote}</p>`;
+  return `${PLACEMENT.cuts ? `<figure class="cuts-photo">${photo(PLACEMENT.cuts, l, { sizes: "(max-width: 820px) 100vw, 560px" })}</figure>` : ""}<div class="cut">${svg("flat")}<div><h3>${t.flat}</h3><p>${t.flatP}</p></div></div><div class="cut">${svg("pouch")}<div><h3>${t.pouch}</h3><p>${t.pouchP}</p></div></div><p>${t.cutsNote}</p>`;
 }
 function faqBlock(faq, title, id = "faq") {
   return `<section class="faq band" id="${id}" aria-labelledby="h-${id}"><div class="wrap"><h2 id="h-${id}">${title}</h2>${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>`;

@@ -313,3 +313,5 @@ table.sizes th,table.sizes td{padding:10px;text-align:left;border-bottom:1px sol
 .donation{background:var(--paper);color:var(--paper-ink);border-left:6px solid var(--accent);border-radius:var(--r-small);padding:16px 20px;margin-top:16px;margin-bottom:8px}
 .donation p{margin:0}
 .season-video video{width:100%;height:auto;display:block;background:#000;aspect-ratio:16/9}
+.cuts-photo{margin:0 0 20px;border-radius:var(--r-big);overflow:hidden;background:#fff}
+.cuts-photo img{width:100%;height:auto;display:block}

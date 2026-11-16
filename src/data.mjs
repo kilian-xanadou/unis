@@ -44,6 +44,7 @@ export const SEASONS = [
     c: { bg: "#E3F4FF", ink: "#0C2D48", accent: "#FF6B2C", soft: "#8FD3FF", on: "#0C2D48" },
     name: { fr: "Été", nl: "Zomer", en: "Summer", de: "Sommer" },
     items: [
+      { n: { fr: "Hibiscus", nl: "Hibiscus", en: "Hibiscus", de: "Hibiskus" }, p: "flowers", base: "#FCE8DC", fg: "#E8336D", sku: "HIBISCUS" },
       { n: { fr: "Vagues", nl: "Golven", en: "Waves", de: "Wellen" }, p: "waves", base: "#1E88E5", fg: "#BDE6FF" },
       { n: { fr: "Orange sanguine", nl: "Bloedsinaasappel", en: "Blood orange", de: "Blutorange" }, p: "solid", base: "#FF6B2C" },
       { n: { fr: "Citron", nl: "Citroen", en: "Lemon", de: "Zitrone" }, p: "solid", base: "#FFE45C" },
