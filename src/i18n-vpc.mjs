@@ -4,6 +4,7 @@
 // link = clé de page (pathOf) ; sid = saison éventuelle ("live" = drop du moment).
 export const V = {
 fr: {
+  productsTitle: "Les produits",
   chip: "String", share: "Partager", copied: "Lien copié : colle-le où tu veux.",
   xmasBar: "Pour recevoir avant Noël, commande au plus tard le jeudi 17 décembre.",
   forTitle: "Un UNIS pour chaque occasion",
@@ -40,6 +41,7 @@ fr: {
   },
 },
 nl: {
+  productsTitle: "De producten",
   chip: "String", share: "Delen", copied: "Link gekopieerd: plak hem waar je wilt.",
   xmasBar: "Wil je het vóór Kerstmis ontvangen? Bestel uiterlijk donderdag 17 december.",
   forTitle: "Een UNIS voor elke gelegenheid",
@@ -76,6 +78,7 @@ nl: {
   },
 },
 en: {
+  productsTitle: "The products",
   chip: "Thong", share: "Share", copied: "Link copied: paste it wherever you like.",
   xmasBar: "To get it before Christmas, order by Thursday 17 December.",
   forTitle: "A UNIS for every occasion",
@@ -112,6 +115,7 @@ en: {
   },
 },
 de: {
+  productsTitle: "Die Produkte",
   chip: "String", share: "Teilen", copied: "Link kopiert: Füg ihn ein, wo du willst.",
   xmasBar: "Damit es vor Weihnachten ankommt: Bestell bis spätestens Donnerstag, 17. Dezember.",
   forTitle: "Ein UNIS für jeden Anlass",

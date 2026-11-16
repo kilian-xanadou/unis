@@ -209,7 +209,7 @@ table.sizes th,table.sizes td{padding:10px;text-align:left;border-bottom:1px sol
 .line .sw{width:20px;height:20px;border-radius:50%;box-shadow:0 0 0 1px #3E031B44}
 .line small{display:block;opacity:.75}
 .qty{display:flex;align-items:center;gap:8px;margin-top:6px}
-.qty button{width:36px;height:36px;border-radius:50%;border:1.5px solid #3E031B;background:none;line-height:1}
+.qty button{width:44px;height:44px;border-radius:50%;border:1.5px solid #3E031B;background:none;line-height:1}
 .empty{padding:28px 0}
 .drawer footer{padding:18px 22px;border-top:1px solid #3E031B22}
 .total{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem;margin-bottom:6px}
@@ -338,3 +338,8 @@ table.sizes th,table.sizes td{padding:10px;text-align:left;border-bottom:1px sol
   .reassure li{flex:none;white-space:nowrap;scroll-snap-align:start;font-size:.88rem;padding:8px 14px}
   .deadline{font-size:.92rem;padding:10px 14px}
 }
+
+/* Accessibilité : cibles tactiles (2.5.5) et cases à cocher plus grandes */
+nav.main a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.foot a{display:inline-flex;align-items:center;min-height:44px}
+input[type=checkbox]{width:24px;height:24px;accent-color:var(--ink)}

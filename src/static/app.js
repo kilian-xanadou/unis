@@ -67,8 +67,10 @@
 
   // Tiroir panier
   const drawer = $("#drawer"), scrim = $("#scrim"); let last;
-  const open = () => { last = document.activeElement; drawer.classList.add("on"); scrim.classList.add("on"); drawer.setAttribute("aria-hidden", "false"); drawer.inert = false; $("#closeCart").focus(); };
-  const close = () => { drawer.classList.remove("on"); scrim.classList.remove("on"); drawer.setAttribute("aria-hidden", "true"); drawer.inert = true; last && last.focus(); };
+  // Le reste de la page devient inerte quand le panier est ouvert : le focus clavier reste dans la fenêtre (WCAG 2.4.3).
+  const behind = () => document.querySelectorAll("body > :not(#drawer):not(.scrim):not(.toast):not(script)");
+  const open = () => { last = document.activeElement; drawer.classList.add("on"); scrim.classList.add("on"); drawer.setAttribute("aria-hidden", "false"); drawer.inert = false; behind().forEach((e) => (e.inert = true)); $("#closeCart").focus(); };
+  const close = () => { drawer.classList.remove("on"); scrim.classList.remove("on"); drawer.setAttribute("aria-hidden", "true"); drawer.inert = true; behind().forEach((e) => (e.inert = false)); last && last.focus(); };
   $("#openCart").onclick = open; $("#closeCart").onclick = close; scrim.onclick = close;
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && drawer.classList.contains("on")) close(); });
 
