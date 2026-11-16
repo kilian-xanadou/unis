@@ -74,7 +74,7 @@ Chaque page de drop garde sa propre ambiance. Le logo s'y adapte tout seul, avec
 | Été | `#E3F4FF` | `#0C2D48` | `#FF6B2C` | `#8FD3FF` |
 | Halloween | `#1C1726` | `#F3EEFF` | `#FF8A1F` | `#4A3A66` |
 | Octobre Rose | `#FFF0F5` | `#4A1030` | `#C2185B` | `#F8BBD0` |
-| Noël | `#EAF2EC` | `#12301F` | `#C8372D` | `#BFD9C6` |
+| Noël | `#FFE3EE` | `#3E031B` | `#C8372D` | `#FAB8D0` |
 
 Les palettes sont définies dans `src/data.mjs` (`BASE` pour la marque, `SEASONS[].c` pour les saisons).
 

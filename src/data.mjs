@@ -69,7 +69,7 @@ export const SEASONS = [
     ] },
   { id: "noel", next: "2027-11-01",
     slug: { fr: "noel", nl: "kerst", en: "christmas", de: "weihnachten" },
-    c: { bg: "#EAF2EC", ink: "#12301F", accent: "#C8372D", soft: "#BFD9C6", on: "#FFFFFF" },
+    c: { bg: "#FFE3EE", ink: "#3E031B", accent: "#C8372D", soft: "#FAB8D0", on: "#FFFFFF" },
     name: { fr: "Noël", nl: "Kerst", en: "Christmas", de: "Weihnachten" },
     bo: true, box: true,
     items: [
