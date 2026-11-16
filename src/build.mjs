@@ -16,6 +16,7 @@ const DB = Boolean(CFG.supabaseUrl && CFG.supabaseAnonKey);
 const SB_LIB = { src: "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js", integrity: "sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" };
 import { LANGS, DEFAULT_LANG, XDEFAULT, PATHS, SEASONS, BASE, ESS, SIZES, SIZE_TABLE, PRICES, SHIPPING } from "./data.mjs";
 import { thong, bear, logoMark, SHAPE } from "./art.mjs";
+import { V as VPC } from "./i18n-vpc.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "site");
@@ -180,8 +181,9 @@ const REASSURE_ICONS = [
   '<path d="M4 18 L4 6 M20 18 L20 6 M8 12h8" />', // tailles
   '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" /><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/>', // livraison
   '<path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4" />', // retour
+  '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 2.6 14.6 0 17M12 3.5c-2.6 2.4-2.6 14.6 0 17" />', // Europe
 ];
-const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${X[l].reassure.map((r, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${REASSURE_ICONS[i]}</svg>${r}</li>`).join("")}</ul>`;
+const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${[...X[l].reassure, VPC[l].europe].map((r, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${REASSURE_ICONS[i]}</svg>${r}</li>`).join("")}</ul>`;
 const PAY = ["Bancontact", "Visa", "Mastercard", "Apple Pay", "Google Pay", "iDEAL"];
 const payBadges = () => `<ul class="pay">${PAY.map((p) => `<li>${p}</li>`).join("")}</ul>`;
 
@@ -344,6 +346,7 @@ for (const l of LANGS) {
 <div class="wrap">${reassure(l)}</div>
 <section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}</div></section>
 <section class="shop band" aria-labelledby="hshop"><div class="wrap"><h2 id="hshop">${fill(t.home.shopTitle, { s: liveName })}</h2><p class="intro">${t.home.shopIntro}</p>${grid(homeProducts, l)}<p class="more"><a class="btn ghost" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.seeAll, { s: liveName })}</a></p></div></section>
+<section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
 <section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div></div></section>
 ${promise(l)}${waitlist(l)}${faqBlock(t.faq, t.faqTitle)}` }));
 
@@ -415,14 +418,15 @@ ${faqCats(l, here)}` }));
   const crumb = (k, name) => [home, [name, pathOf(l, k)]];
 
   // À propos / manifeste (Communication Web : Qui ? ; e-Commerce p.73-75)
-  add(l, "about", null, layout({ l, key: "about", title: x.about.title, desc: x.about.desc,
-    ld: [crumbsLD(crumb("about", x.nav.about)), { "@type": "AboutPage", name: x.about.title, url: abs(pathOf(l, "about")), about: { "@id": `${SITE}/#org` } }],
-    body: (here) => `${pageHead(x.about.h1, x.about.intro, crumb("about", x.nav.about), here)}
-<section class="band"><div class="wrap split"><div class="prose"><h2>${x.about.manifestoTitle}</h2>${x.about.manifesto.map((p) => `<p>${p}</p>`).join("")}</div>
+  const va = VPC[l].about;
+  add(l, "about", null, layout({ l, key: "about", title: va.title, desc: va.desc,
+    ld: [crumbsLD(crumb("about", x.nav.about)), { "@type": "AboutPage", name: va.title, url: abs(pathOf(l, "about")), about: { "@id": `${SITE}/#org` } }],
+    body: (here) => `${pageHead(x.about.h1, va.intro, crumb("about", x.nav.about), here)}
+<section class="band"><div class="wrap split"><div class="prose"><h2>${va.whyTitle}</h2>${va.why.map((p) => `<p>${p}</p>`).join("")}</div>
 <div class="hero-art small" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}</div></div></section>
-<section class="promise band" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">${x.about.valuesTitle}</h2><div class="cols cols4">${x.about.values.map(([h, p]) => `<div><h3>${h}</h3><p>${p}</p></div>`).join("")}</div></div></section>
-<section class="band"><div class="wrap two"><div class="prose"><h2>${x.about.teamTitle}</h2><p>${x.about.team}</p><h2 class="h3">${x.about.pitchTitle}</h2><p class="pitch">${t.home.h1c} ${t.seasonsText}</p></div>
-<div class="prose" id="regles"><h2>${x.about.rulesTitle}</h2><ul class="ticks">${x.about.rules.map((r) => `<li>${r}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></p></div></div></section>` }));
+<section class="promise band" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">${va.howTitle}</h2><div class="cols">${va.how.map(([h, p]) => `<div><h3>${h}</h3><p>${p}</p></div>`).join("")}</div></div></section>
+<section class="band"><div class="wrap two"><div class="prose"><h2>${x.about.teamTitle}</h2><p>${x.about.team}</p><h2 class="h3">${va.whatTitle}</h2><p>${va.what}</p><p class="pitch">${va.pitch}</p></div>
+<div class="prose" id="regles"><h2>${va.linesTitle}</h2><ul class="ticks">${va.lines.map((r) => `<li>${r}</li>`).join("")}</ul><h2 class="h3">${x.about.rulesTitle}</h2><ul class="ticks">${x.about.rules.map((r) => `<li>${r}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></p></div></div></section>` }));
 
   // Contact (e-Commerce p.77-84 ; Communication Web : réactivité)
   add(l, "contact", null, layout({ l, key: "contact", title: x.contact.title, desc: x.contact.desc,

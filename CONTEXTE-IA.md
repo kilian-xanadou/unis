@@ -13,17 +13,25 @@
 - **Origine :** une idée fun, née comme **projet étudiant** en e-business (Belgique). Le ton doit garder cette énergie : légère, maligne, faite par des gens qui s'amusent.
 - **Statut :** projet étudiant et site de démonstration. La société (UNIS SRL) **n'existe pas encore** : n'invente jamais de numéro d'entreprise, d'adresse, de chiffre de vente, d'avis client ou de partenariat.
 
-## 2. Décisions de l'équipe (à respecter)
+## 2. Pourquoi UNIS existe (Golden Circle)
+
+- **Pourquoi (WHY) :** mettre du fun là où il n'y en a jamais, dans un tiroir à sous-vêtements. « On est là pour rire. Et pour que tout le monde rie avec nous. »
+- **Comment (HOW) :** Bo fait le show (mannequin à la place d'un humain), unisexe pour de vrai, des drops et pas un catalogue, le fun à prix de blague (5 €), fabriqué en Europe, des dons prouvés.
+- **Quoi (WHAT) :** strings à 5 €, mini-string 3 €, Duo 7 €, lot de 5 20 €, Bo 49 €, coffret 55 €.
+- **Règle d'écriture :** commencer par le fun, prouver par Bo, l'unisexe et l'Europe, finir par le produit, le prix, le bouton « acheter » et un moyen de partager.
+- **5 clients prioritaires (S1 à S5)** : cadeau qui fait rire, couple complice, organisateur·rice de groupe, collectionneur·se de Bo, achat pour soi. Détails, pains, gains et messages : [docs/15-value-proposition-canvas.md](docs/15-value-proposition-canvas.md). Choisis un segment avant d'écrire.
+
+## 2 bis. Décisions de l'équipe (à respecter)
 
 | Sujet | Décision |
 | --- | --- |
 | **Nom de la marque** | **UNIS** (définitif). S'écrit toujours en majuscules. Jamais « Uniss », « Unis. » ni autre variante. |
 | **Cible prioritaire** | **Jeunes adultes, femmes et hommes, 18 ans et plus**, qui cherchent un **cadeau fun** (Secret Santa, anniversaire, Saint-Valentin, blague entre amis). |
 | **Personnalité** | **Drôle, confortable, sexy.** |
-| **Limite absolue** | **Les enfants.** Aucun enfant, aucun décor ou objet d'enfant, aucun ciblage de mineurs, aucune association entre Bo et l'enfance. |
+| **Lignes rouges** | **1. Les enfants.** Aucun enfant, aucun décor ou objet d'enfant, aucun ciblage de mineurs, aucune association entre Bo et l'enfance. **2. Le borderline.** Rien de vulgaire, d'explicite, d'humiliant ou de moqueur envers un groupe ou un corps. Si on hésite, c'est non. |
 | **Rôle de Bo** | **Mannequin, égérie et mascotte** : il porte chaque nouveau string à la place d'un modèle humain, il incarne la marque dans toutes les campagnes, il est le personnage que l'on reconnaît. |
 | **Marché** | **Europe** (Union européenne), au départ depuis la Belgique. |
-| **Engagements publics** | **Fabrication en Europe**, **coton** (certifié), **dons à des causes** (exemple : Octobre Rose). |
+| **Engagements publics** | **Fabrication en Europe : engagement ferme** (décidé le 16 novembre 2026 ; on peut l'affirmer, sans nommer de pays ni d'atelier tant qu'il n'est pas choisi), **coton** certifié OEKO-TEX, **dons prouvés** (exemple : Octobre Rose). |
 | **Action clé du visiteur** | **Acheter, puis partager** (réseaux sociaux, bouche-à-oreille, offrir). |
 
 ### Objectifs chiffrés
@@ -74,7 +82,7 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 | Coffret cadeau (Bo + Duo de la saison) | **55 €** |
 
 - **Composition :** 95 % coton, 5 % élasthanne, certifié OEKO-TEX Standard 100.
-- **Livraison :** 3,90 €, offerte dès 30 € d'achat. **Retour :** 14 jours, sauf string porté ou étiquette d'hygiène retirée.
+- **Livraison :** 3,90 €, offerte dès 30 € d'achat. **Retour :** 14 jours, sauf string porté ou étiquette d'hygiène retirée. **L'échange de taille gratuit n'est pas décidé** : ne pas l'annoncer.
 - **Drops saisonniers** (série limitée, jamais réédités) : Saint-Valentin (3 février), Printemps (17 mars), Pride (1er juin), Été (15 juin), Halloween (1er octobre), Noël (1er novembre).
 - **Capsule solidaire Octobre Rose** (1er octobre) : 1 € par article est reversé à **Think Pink**, l'association choisie par l'équipe. Tant que l'accord n'est pas signé, toujours préciser « partenariat en cours de discussion » et ne jamais présenter un don comme déjà effectué.
 
@@ -106,7 +114,8 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 
 | Point | Pourquoi c'est à trancher |
 | --- | --- |
-| **Fabrication en Europe** | Le business plan prévoit des devis en Turquie, au Portugal ou en Asie. L'engagement « Europe » exclut l'Asie (et la Turquie hors UE) et peut faire monter le coût d'un string au-delà de l'hypothèse de 1,40 €. |
+| **Atelier européen** | Fabrication en Europe décidée. Reste à choisir l'atelier (pas d'Asie, pas de Turquie) à un coût compatible avec le prix de 5 € (hypothèse : 1,40 € par string). |
+| **Échange de taille** | Pas prévu aujourd'hui. Sans solution, le doute sur la taille freine l'achat cadeau (segments S1 et S2). |
 | **« Sexy » et Bo** | La personnalité est sexy, mais Bo est une peluche vendue dès 14 ans. Règle provisoire : le côté sexy vient de l'humour et des clins d'œil, jamais d'une pose explicite de Bo. |
 | **Âge de Bo** | La cible est 18+, mais Bo est étiqueté « 14 ans et plus ». Garder 14+ (norme jouets) ou passer à « Objet de collection pour adultes » ? |
 | **Nom UNIS et Google** | « UNIS » se confond avec « uni » (couleur unie) dans les recherches. À compenser par le SEO (mots-clés « string unisexe », « Bo l'ours ») et un nom de domaine distinctif. |

@@ -73,7 +73,7 @@ export const SEASONS = [
     name: { fr: "Noël", nl: "Kerst", en: "Christmas", de: "Weihnachten" },
     bo: true, box: true,
     items: [
-      { n: { fr: "Rennes disco", nl: "Disco-rendieren", en: "Disco reindeer", de: "Disco-Rentiere" }, p: "trees", base: "#1F5C45", fg: "#D4A24C", sku: "RENNES" },
+      { n: { fr: "Rennes disco", nl: "Disco-rendieren", en: "Disco reindeer", de: "Disco-Rentiere" }, p: "trees", base: "#A8182A", fg: "#F6E7C8", sku: "RENNES" },
       { n: { fr: "Pull moche", nl: "Foute kersttrui", en: "Ugly sweater", de: "Hässlicher Pulli" }, p: "zigzag", base: "#C8372D", fg: "#FFFFFF", sku: "PULL" },
     ] },
 ];

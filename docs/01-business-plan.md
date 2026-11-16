@@ -33,7 +33,7 @@ Livraison 3,90 €, offerte dès 30 €.
 
 ## Coûts (hypothèses à confirmer par devis)
 
-Bo 10 € rendu en Belgique (lots de 1 000) ; string adulte 1,40 € ; mini-string 0,60 € (séries de 2 000 par motif, Turquie, Portugal ou Asie avec audit social) ; boîte de Bo 1,50 € ; pochette 0,30 €. Expédition : 6,50 € avec Bo, 3,60 € sans. Paiement : 2,5 % + 0,25 €.
+Bo 10 € rendu en Belgique (lots de 1 000) ; string adulte 1,40 € ; mini-string 0,60 € (séries de 2 000 par motif, fabrication dans l'Union européenne : engagement ferme du 16/11/2026, atelier à choisir ; coût de 1,40 € à confirmer par devis UE) ; boîte de Bo 1,50 € ; pochette 0,30 €. Expédition : 6,50 € avec Bo, 3,60 € sans. Paiement : 2,5 % + 0,25 €.
 
 ## Prévisions (k€ HT)
 

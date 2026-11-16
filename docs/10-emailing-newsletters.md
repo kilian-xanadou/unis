@@ -25,7 +25,7 @@ Complète [03-campagnes-emailing.md](03-campagnes-emailing.md). Sources de cours
 | Objet B | Secret Santa : Bo a une idée | Plat ou Poche ? On t'explique | Un string, tous les corps |
 | Pre-header | Et ils arrivent avant le 24 décembre. | Mètre ruban, 3 étapes, zéro prise de tête. | Le drop Saint-Valentin sort aujourd'hui. |
 | Article lié | [Idées cadeaux Secret Santa](../site/fr/journal/cadeau-secret-santa-drole/index.html) | [Bien choisir sa taille](../site/fr/journal/choisir-sa-taille-de-string/index.html) | [Unisexe : coupe plutôt que genre](../site/fr/journal/string-unisexe-coupe-pas-genre/index.html) |
-| Corps (résumé) | Bo présente 4 idées de cadeaux : Duo 7 €, mini-string 3 €, lot de 5, coffret. Rappel : commande avant le jeudi 17 décembre. | 3 étapes pour mesurer ses hanches, le tableau XS–4XL, l'échange de taille gratuit. | Le manifeste en 100 mots, puis le drop Cœurs brodés et Bo édition Cœur. |
+| Corps (résumé) | Bo présente 4 idées de cadeaux : Duo 7 €, mini-string 3 €, lot de 5, coffret. Rappel : commande avant le jeudi 17 décembre. | 3 étapes pour mesurer ses hanches, le tableau XS–4XL, le retour sous 14 jours si le string n'est pas porté. | Le manifeste en 100 mots, puis le drop Cœurs brodés et Bo édition Cœur. |
 | CTA | Voir les idées | Trouver ma taille | Découvrir le drop |
 | KPI | Ouverture, clic, achats | Clic vers le guide, taux de retour | Ventes du drop à J+1 |
 
@@ -36,7 +36,7 @@ Complète [03-campagnes-emailing.md](03-campagnes-emailing.md). Sources de cours
 | 1 | Inscription (double opt-in confirmé) | Immédiat | Bienvenue, Bo t'attendait | Qui est Bo, les 2 coupes, le prochain drop, le Club | Voir le drop du moment |
 | 2 | Panier abandonné | 1 h | Bo garde ton panier au chaud | Rappel des articles, livraison offerte dès 30 € | Reprendre mon panier |
 | 3 | Panier abandonné, toujours pas d'achat | 24 h | Il reste encore des [motif] | Stock réel du drop (jamais d'urgence inventée) | Finaliser ma commande |
-| 4 | Commande livrée | J+7 | Alors, ça te va ? | NPS en 1 clic + lien d'échange de taille gratuit | Donner mon avis |
+| 4 | Commande livrée | J+7 | Alors, ça te va ? | NPS en 1 clic + lien vers le guide des tailles et le Club de Bo | Donner mon avis |
 | 5 | Aucun achat depuis 6 mois | 6 mois | Bo a changé de tenue | Les drops manqués + le drop en cours, 1 tampon offert au Club | Revenir voir Bo |
 
 Relance d'anniversaire (moment clé, S6 p.47-56) en option : livraison offerte le mois de l'anniversaire.
