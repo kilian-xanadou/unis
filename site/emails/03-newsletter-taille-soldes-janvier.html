@@ -11,45 +11,54 @@
 <title>Ta taille, en 30 secondes</title>
 <!--[if mso]>
 <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
-<style>table,td,p,a,h1,h2{font-family:Arial,Helvetica,sans-serif !important;}</style>
+<style>
+  table,td,p,a,h1,h2{font-family:Arial,Helvetica,sans-serif !important;}
+  .bonote{font-family:'Comic Sans MS',cursive !important;}
+  .btn{border-right:6px solid #3E031B !important;border-bottom:6px solid #3E031B !important;}
+</style>
 <![endif]-->
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,700..800&amp;display=swap" rel="stylesheet">
 <style>
+  @font-face { font-family:'Caveat'; font-style:normal; font-weight:700; font-display:swap; src:url('../assets/fonts/caveat-latin-700-normal.woff2') format('woff2'), url('../src/static/fonts/caveat-latin-700-normal.woff2') format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+  @font-face { font-family:'Caveat'; font-style:normal; font-weight:700; font-display:swap; src:url('../assets/fonts/caveat-latin-ext-700-normal.woff2') format('woff2'), url('../src/static/fonts/caveat-latin-ext-700-normal.woff2') format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF; }
   :root { color-scheme: light dark; supported-color-schemes: light dark; }
   body { margin:0 !important; padding:0 !important; width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
   table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
   img { -ms-interpolation-mode:bicubic; }
   a[x-apple-data-detectors] { color:inherit !important; text-decoration:none !important; }
+  .bg, .card { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .01 0 0 0 0 .1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   @media only screen and (max-width:620px) {
     .container { width:100% !important; }
     .px { padding-left:20px !important; padding-right:20px !important; }
     .h1 { font-size:30px !important; }
+    .bonote { font-size:22px !important; }
   }
   @media (prefers-color-scheme: dark) {
     .bg { background-color:#1A0510 !important; }
-    .card { background-color:#2A0917 !important; }
-    .soft { background-color:#45122A !important; }
+    .card { background-color:#2A0917 !important; border-color:#FFE3EE !important; box-shadow:6px 6px 0 #D42A6E !important; }
+    .share { background-color:#45122A !important; border-color:#F6C3D7 !important; }
     .txt, .txt p, .txt td, .txt h1, .txt h2 { color:#FFE3EE !important; }
+    .hl { background-image:linear-gradient(176deg, rgba(122,31,72,0) 54%, #7A1F48 54%, #7A1F48 88%, rgba(122,31,72,0) 88%) !important; }
     .muted { color:#F6C3D7 !important; }
     .link { color:#FF9CC3 !important; }
-    .eyebrow { color:#FF9CC3 !important; border-color:#FF9CC3 !important; }
-    .num { background-color:#FFE3EE !important; color:#3E031B !important; }
-    .npsbtn { color:#FFE3EE !important; border-color:#FFE3EE !important; }
+    .bonote { color:#FF9CC3 !important; }
+    .npsbtn, .sbtn { background-color:#2A0917 !important; color:#FFE3EE !important; border-color:#FFE3EE !important; box-shadow:2px 2px 0 #FF9CC3 !important; }
+    .btn { border-color:#FFE3EE !important; box-shadow:4px 4px 0 #FFE3EE !important; }
     .btn, .btn a { background-color:#D42A6E !important; color:#FFFFFF !important; }
   }
   [data-ogsc] .txt, [data-ogsc] .txt td, [data-ogsc] .txt h1, [data-ogsc] .txt h2 { color:#FFE3EE !important; }
   [data-ogsb] .bg { background-color:#1A0510 !important; }
   [data-ogsb] .card { background-color:#2A0917 !important; }
-  [data-ogsb] .soft { background-color:#45122A !important; }
-  [data-ogsc] .link, [data-ogsc] .eyebrow { color:#FF9CC3 !important; }
+  [data-ogsb] .share { background-color:#45122A !important; }
+  [data-ogsc] .link, [data-ogsc] .bonote { color:#FF9CC3 !important; }
 </style>
 </head>
-<body class="bg" style="margin:0;padding:0;background-color:#FFE3EE;">
+<body class="bg" style="margin:0;padding:0;background-color:#FDD2E3;">
   <!-- 03 · Newsletter 2 + campagne de janvier · Envoi : mercredi 6 janvier 2027 · Segment : S5 · Pour soi · toute la liste FR (et les personnes qui ont reçu un string à Noël) · Objet B (test A/B) : Plat ou Poche ? On t'explique -->
   <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">Mètre ruban, 3 étapes, zéro prise de tête.&#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847; </div>
-  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="bg" bgcolor="#FFE3EE" style="background-color:#FFE3EE;">
+  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="bg" bgcolor="#FDD2E3" style="background-color:#FDD2E3;">
     <tr>
-      <td align="center" style="padding:24px 10px;">
+      <td align="center" style="padding:24px 10px 32px 10px;">
         <!--[if mso]><table role="presentation" width="600" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td><![endif]-->
         <table role="presentation" class="container" width="600" border="0" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;">
           <tr>
@@ -58,16 +67,16 @@
             </td>
           </tr>
         </table>
-        <table role="presentation" class="container card" width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:28px;overflow:hidden;">
+        <table role="presentation" class="container card" width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFE3EE" style="width:600px;max-width:600px;background-color:#FFE3EE;border:2.5px solid #3E031B;border-radius:12px;box-shadow:6px 6px 0 #3E031B;border-collapse:separate;overflow:hidden;">
           <tr>
-            <td align="center" bgcolor="#FDD2E3" style="padding:12px 0;background-color:#FDD2E3;">
+            <td align="center" bgcolor="#FDD2E3" style="padding:12px 0;background-color:#FDD2E3;border-bottom:2px dashed #3E031B;border-radius:10px 10px 0 0;">
               <a href="https://unis-demo.onrender.com/fr/?utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=logo" style="text-decoration:none;"><img src="../assets/logo/unis-logo-officiel.png" width="200" height="113" alt="UNIS" style="display:block;width:200px;height:auto;border:0;"></a>
             </td>
           </tr>
           <tr>
-            <td class="px" style="padding:32px 40px 0 40px;">
-              <table role="presentation" border="0" cellspacing="0" cellpadding="0"><tr><td class="eyebrow" style="padding:5px 12px;border:1.5px solid #D42A6E;border-radius:999px;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:13px;font-weight:700;line-height:1.2;color:#D42A6E;">Nouvelle année, nouveaux basiques</td></tr></table>
-              <h1 class="txt h1" style="margin:16px 0 16px 0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:36px;font-weight:800;font-stretch:condensed;line-height:1.1;color:#3E031B;">La bonne taille, en 3 étapes.</h1>
+            <td class="px" style="padding:30px 40px 0 40px;">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:separate;"><tr><td class="sticker" bgcolor="#FFE89A" style="padding:6px 14px;background-color:#FFE89A;border:2px solid #3E031B;border-radius:40% 55% 45% 60% / 55% 45% 60% 40%;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:14px;font-weight:700;line-height:1.2;color:#3E031B;">Nouvelle année, nouveaux basiques</td></tr></table>
+              <h1 class="txt h1" style="margin:18px 0 16px 0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:36px;font-weight:800;font-stretch:condensed;line-height:1.15;color:#3E031B;"><span class="hl" style="background-image:linear-gradient(176deg, rgba(250,184,208,0) 54%, #FAB8D0 54%, #FAB8D0 88%, rgba(250,184,208,0) 88%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 4px;">La bonne taille, en 3 étapes.</span></h1>
               <p class="txt" style="margin:0 0 16px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.55;color:#3E031B;">Salut [prénom],</p>
               <p class="txt" style="margin:0 0 16px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.55;color:#3E031B;">Tu as reçu un string UNIS à Noël&nbsp;? Ou tu hésites encore&nbsp;? Ici, pas de genre&nbsp;: une coupe et un tour de hanches. C'est tout.</p>
             </td>
@@ -76,55 +85,67 @@
             <td class="px" style="padding:0 40px 8px 40px;">
               <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td width="44" valign="top" style="padding:0 0 12px 0;">
-                    <table role="presentation" border="0" cellspacing="0" cellpadding="0"><tr><td class="num" align="center" width="32" height="32" bgcolor="#3E031B" style="width:32px;height:32px;border-radius:999px;background-color:#3E031B;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:16px;font-weight:800;color:#FFE3EE;">1</td></tr></table>
+                  <td width="46" valign="top" style="padding:0 0 12px 0;">
+                    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:separate;"><tr><td class="num" align="center" width="32" height="32" bgcolor="#FFE89A" style="width:32px;height:32px;border:2px solid #3E031B;border-radius:999px;background-color:#FFE89A;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:16px;font-weight:800;color:#3E031B;">1</td></tr></table>
                   </td>
-                  <td class="txt" valign="top" style="padding:4px 0 12px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.5;color:#3E031B;">Prends un mètre ruban.</td>
+                  <td class="txt" valign="top" style="padding:6px 0 12px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.5;color:#3E031B;">Prends un mètre ruban.</td>
                 </tr>
                 <tr>
-                  <td width="44" valign="top" style="padding:0 0 12px 0;">
-                    <table role="presentation" border="0" cellspacing="0" cellpadding="0"><tr><td class="num" align="center" width="32" height="32" bgcolor="#3E031B" style="width:32px;height:32px;border-radius:999px;background-color:#3E031B;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:16px;font-weight:800;color:#FFE3EE;">2</td></tr></table>
+                  <td width="46" valign="top" style="padding:0 0 12px 0;">
+                    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:separate;"><tr><td class="num" align="center" width="32" height="32" bgcolor="#FFE89A" style="width:32px;height:32px;border:2px solid #3E031B;border-radius:999px;background-color:#FFE89A;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:16px;font-weight:800;color:#3E031B;">2</td></tr></table>
                   </td>
-                  <td class="txt" valign="top" style="padding:4px 0 12px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.5;color:#3E031B;">Mesure ton tour de hanches, à l'endroit le plus large.</td>
+                  <td class="txt" valign="top" style="padding:6px 0 12px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.5;color:#3E031B;">Mesure ton tour de hanches, à l'endroit le plus large.</td>
                 </tr>
                 <tr>
-                  <td width="44" valign="top" style="padding:0 0 12px 0;">
-                    <table role="presentation" border="0" cellspacing="0" cellpadding="0"><tr><td class="num" align="center" width="32" height="32" bgcolor="#3E031B" style="width:32px;height:32px;border-radius:999px;background-color:#3E031B;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:16px;font-weight:800;color:#FFE3EE;">3</td></tr></table>
+                  <td width="46" valign="top" style="padding:0 0 12px 0;">
+                    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:separate;"><tr><td class="num" align="center" width="32" height="32" bgcolor="#FFE89A" style="width:32px;height:32px;border:2px solid #3E031B;border-radius:999px;background-color:#FFE89A;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:16px;font-weight:800;color:#3E031B;">3</td></tr></table>
                   </td>
-                  <td class="txt" valign="top" style="padding:4px 0 12px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.5;color:#3E031B;">Lis ta taille dans le tableau, du XS au 4XL. Entre deux tailles&nbsp;? Prends la plus grande.</td>
+                  <td class="txt" valign="top" style="padding:6px 0 12px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.5;color:#3E031B;">Lis ta taille dans le tableau, du XS au 4XL. Entre deux tailles&nbsp;? Prends la plus grande.</td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
             <td class="px" align="center" style="padding:8px 40px 32px 40px;">
-              <table role="presentation" border="0" cellspacing="0" cellpadding="0">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:separate;">
                 <tr>
-                  <td class="btn" align="center" bgcolor="#D42A6E" style="border-radius:999px;background-color:#D42A6E;">
-                    <a href="https://unis-demo.onrender.com/fr/guide-des-tailles/?utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=bouton-principal" style="display:inline-block;padding:16px 34px;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;font-weight:700;line-height:20px;color:#FFFFFF;text-decoration:none;border-radius:999px;">Trouver ma taille</a>
+                  <td class="btn" align="center" bgcolor="#D42A6E" style="border:2.5px solid #3E031B;border-radius:12px;background-color:#D42A6E;box-shadow:4px 4px 0 #3E031B;">
+                    <a href="https://unis-demo.onrender.com/fr/guide-des-tailles/?utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=bouton-principal" style="display:inline-block;padding:15px 32px;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;font-weight:700;line-height:20px;color:#FFFFFF;text-decoration:none;border-radius:10px;">Trouver ma taille</a>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td style="padding:0;"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" width="600" height="750" alt="Les strings UNIS Essentiels posés à plat dans leurs 6 couleurs." style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none;text-decoration:none;"></td>
+            <td class="px" align="center" style="padding:4px 40px 0 40px;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="polaroid" bgcolor="#FFFFFF" style="background-color:#FFFFFF;border:1px solid #E9C9D6;border-radius:3px;box-shadow:0 10px 24px rgba(62,3,27,0.12),0 2px 0 rgba(62,3,27,0.06);border-collapse:separate;">
+                <tr><td align="center" style="padding:0;font-size:0;line-height:0;"><table role="presentation" align="center" width="96" border="0" cellspacing="0" cellpadding="0" style="width:96px;"><tr><td class="tape" height="18" bgcolor="#F3E0A6" style="height:18px;background-color:#F3E0A6;border-left:2px dotted #D9C07A;border-right:2px dotted #D9C07A;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+                <tr><td align="center" style="padding:6px 14px 0 14px;"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" width="484" height="605" alt="Les strings UNIS Essentiels posés à plat dans leurs 6 couleurs." style="display:block;width:100%;max-width:484px;height:auto;border:0;outline:none;text-decoration:none;"></td></tr>
+                <tr><td style="height:38px;line-height:38px;font-size:0;">&nbsp;</td></tr>
+              </table>
+            </td>
           </tr>
-          <tr><td style="height:24px;line-height:24px;font-size:0;">&nbsp;</td></tr>
+          <tr>
+            <td class="px" align="right" style="padding:12px 40px 4px 40px;">
+              <p class="bonote" style="margin:0;font-family:'Caveat', 'Comic Sans MS', cursive;font-size:25px;font-weight:700;line-height:1.15;color:#D42A6E;text-align:right;">&#8593; Mon tour de hanches&nbsp;? Secret de fabrication. Disons «&nbsp;moelleux&nbsp;». <span style="white-space:nowrap;">— Bo</span></p>
+            </td>
+          </tr>
+          <tr><td style="height:20px;line-height:20px;font-size:0;">&nbsp;</td></tr>
           <tr>
             <td class="px" style="padding:8px 40px 8px 40px;">
-              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="soft" bgcolor="#FAB8D0" style="background-color:#FAB8D0;border-radius:10px;">
-                <tr><td style="padding:18px 22px 8px 22px;">
-                  <h2 class="txt" style="margin:0 0 4px 0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:20px;font-weight:800;line-height:1.25;color:#3E031B;">Soldes&nbsp;: −30&nbsp;% sur le drop Noël</h2>
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="postit" bgcolor="#FFE89A" style="background-color:#FFE89A;border-radius:2px;box-shadow:0 8px 16px rgba(62,3,27,0.10);border-collapse:separate;">
+                <tr><td align="center" style="padding:0;font-size:0;line-height:0;"><table role="presentation" align="center" width="80" border="0" cellspacing="0" cellpadding="0" style="width:80px;"><tr><td class="tape" height="16" bgcolor="#F9C6D9" style="height:16px;background-color:#F9C6D9;border-left:2px dotted #E79BB9;border-right:2px dotted #E79BB9;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+                <tr><td style="padding:12px 22px 10px 22px;">
+                  <h2 class="pi" style="margin:0 0 4px 0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:21px;font-weight:800;line-height:1.25;color:#3E031B;">Soldes&nbsp;: −30&nbsp;% sur le drop Noël</h2>
                   <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td class="txt" style="padding:10px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:16px;line-height:1.4;color:#3E031B;">String Noël, dans la limite des stocks <span style="text-decoration:line-through;">5&nbsp;€</span></td>
-                  <td class="txt" align="right" style="padding:10px 0 10px 12px;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:18px;font-weight:800;line-height:1.4;color:#3E031B;white-space:nowrap;">3,50&nbsp;€</td>
-                </tr>
-                <tr>
-                  <td class="txt" style="padding:10px 0;border-top:1px solid #F3A9C6;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:16px;line-height:1.4;color:#3E031B;">Lot de 5 Essentiels (prix habituel)</td>
-                  <td class="txt" align="right" style="padding:10px 0 10px 12px;border-top:1px solid #F3A9C6;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:18px;font-weight:800;line-height:1.4;color:#3E031B;white-space:nowrap;">20&nbsp;€</td>
-                </tr>
+                      <tr>
+                        <td class="pi" style="padding:10px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:16px;line-height:1.4;color:#3E031B;">String Noël, dans la limite des stocks <span style="text-decoration:line-through;">5&nbsp;€</span></td>
+                        <td class="pi" align="right" style="padding:10px 0 10px 12px;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:19px;font-weight:800;line-height:1.4;color:#3E031B;white-space:nowrap;">3,50&nbsp;€</td>
+                      </tr>
+                      <tr>
+                        <td class="pi" style="padding:10px 0;border-top:1.5px dashed #D9BE5C;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:16px;line-height:1.4;color:#3E031B;">Lot de 5 Essentiels (prix habituel)</td>
+                        <td class="pi" align="right" style="padding:10px 0 10px 12px;border-top:1.5px dashed #D9BE5C;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:19px;font-weight:800;line-height:1.4;color:#3E031B;white-space:nowrap;">20&nbsp;€</td>
+                      </tr>
                   </table>
                 </td></tr>
               </table>
@@ -137,9 +158,15 @@
             </td>
           </tr>
           <tr>
-            <td style="padding:0;"><img src="../assets/emailing/email-noel-string-fond-rouge.jpg" width="600" height="750" alt="Le string UNIS de Noël posé à plat sur un fond rouge." style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none;text-decoration:none;"></td>
+            <td class="px" align="center" style="padding:4px 40px 0 40px;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="polaroid" bgcolor="#FFFFFF" style="background-color:#FFFFFF;border:1px solid #E9C9D6;border-radius:3px;box-shadow:0 10px 24px rgba(62,3,27,0.12),0 2px 0 rgba(62,3,27,0.06);border-collapse:separate;">
+                <tr><td align="center" style="padding:0;font-size:0;line-height:0;"><table role="presentation" align="center" width="96" border="0" cellspacing="0" cellpadding="0" style="width:96px;"><tr><td class="tape" height="18" bgcolor="#F3E0A6" style="height:18px;background-color:#F3E0A6;border-left:2px dotted #D9C07A;border-right:2px dotted #D9C07A;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+                <tr><td align="center" style="padding:6px 14px 0 14px;"><img src="../assets/emailing/email-noel-string-fond-rouge.jpg" width="484" height="605" alt="Le string UNIS de Noël posé à plat sur un fond rouge." style="display:block;width:100%;max-width:484px;height:auto;border:0;outline:none;text-decoration:none;"></td></tr>
+                <tr><td style="height:38px;line-height:38px;font-size:0;">&nbsp;</td></tr>
+              </table>
+            </td>
           </tr>
-          <tr><td style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
+          <tr><td style="height:24px;line-height:24px;font-size:0;">&nbsp;</td></tr>
           <tr>
             <td class="px" style="padding:8px 40px 28px 40px;">
               <p class="txt" style="margin:0 0 16px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.55;color:#3E031B;margin:0;"><a class="link" href="https://unis-demo.onrender.com/fr/journal/choisir-sa-taille-de-string/?utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=lien-secondaire" style="color:#D42A6E;font-weight:700;text-decoration:underline;">Lire l'article&nbsp;: bien choisir sa taille →</a></p>
@@ -147,13 +174,13 @@
           </tr>
           <tr>
             <td class="px" style="padding:0 40px 32px 40px;">
-              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="soft" bgcolor="#FFE3EE" style="background-color:#FFE3EE;border-radius:10px;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="share" bgcolor="#FFFFFF" style="background-color:#FFFFFF;border:2px dashed #B98A9C;border-radius:4px;border-collapse:separate;">
                 <tr><td style="padding:18px 22px;">
-                  <h2 class="txt" style="margin:0 0 6px 0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:18px;font-weight:800;line-height:1.25;color:#3E031B;">Partage le fun</h2>
-                  <p class="txt" style="margin:0 0 16px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.55;color:#3E031B;font-size:16px;margin:0 0 10px 0;">Quelqu'un hésite sur sa taille&nbsp;? Envoie-lui le guide.</p>
+                  <h2 class="txt" style="margin:0 0 8px 0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:19px;font-weight:800;line-height:1.25;color:#3E031B;"><span class="hl" style="background-image:linear-gradient(176deg, rgba(250,184,208,0) 54%, #FAB8D0 54%, #FAB8D0 88%, rgba(250,184,208,0) 88%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 4px;">Partage le fun</span></h2>
+                  <p class="txt" style="margin:0 0 16px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.55;color:#3E031B;font-size:16px;margin:0 0 12px 0;">Quelqu'un hésite sur sa taille&nbsp;? Envoie-lui le guide.</p>
                   <table role="presentation" border="0" cellspacing="0" cellpadding="0"><tr>
-                    <td style="padding:0 8px 0 0;"><a class="link" href="https://wa.me/?text=Le%20guide%20des%20tailles%20UNIS%20%3A%20un%20m%C3%A8tre%20ruban%2C%203%20%C3%A9tapes.%20https%3A%2F%2Funis-demo.onrender.com%2Ffr%2Fguide-des-tailles%2F%3Futm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3D2027-01-newsletter-taille-soldes%26utm_content%3Dpartage" style="display:inline-block;padding:12px 18px;border:1.5px solid #3E031B;border-radius:999px;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:15px;font-weight:700;line-height:18px;color:#3E031B;text-decoration:none;">WhatsApp</a></td>
-                    <td style="padding:0 8px 0 0;"><a class="link" href="mailto:?subject=Regarde%20%C3%A7a%20%3A%20UNIS&amp;body=Le%20guide%20des%20tailles%20UNIS%20%3A%20un%20m%C3%A8tre%20ruban%2C%203%20%C3%A9tapes.%0A%0Ahttps%3A%2F%2Funis-demo.onrender.com%2Ffr%2Fguide-des-tailles%2F%3Futm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3D2027-01-newsletter-taille-soldes%26utm_content%3Dpartage" style="display:inline-block;padding:12px 18px;border:1.5px solid #3E031B;border-radius:999px;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:15px;font-weight:700;line-height:18px;color:#3E031B;text-decoration:none;">Par email</a></td>
+                    <td style="padding:0 12px 4px 0;"><a class="sbtn" href="https://wa.me/?text=Le%20guide%20des%20tailles%20UNIS%20%3A%20un%20m%C3%A8tre%20ruban%2C%203%20%C3%A9tapes.%20https%3A%2F%2Funis-demo.onrender.com%2Ffr%2Fguide-des-tailles%2F%3Futm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3D2027-01-newsletter-taille-soldes%26utm_content%3Dpartage" style="display:inline-block;padding:11px 18px;background-color:#FFFFFF;border:2.5px solid #3E031B;border-radius:10px;box-shadow:3px 3px 0 #3E031B;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:15px;font-weight:700;line-height:18px;color:#3E031B;text-decoration:none;">WhatsApp</a></td>
+                    <td style="padding:0 12px 4px 0;"><a class="sbtn" href="mailto:?subject=Regarde%20%C3%A7a%20%3A%20UNIS&amp;body=Le%20guide%20des%20tailles%20UNIS%20%3A%20un%20m%C3%A8tre%20ruban%2C%203%20%C3%A9tapes.%0A%0Ahttps%3A%2F%2Funis-demo.onrender.com%2Ffr%2Fguide-des-tailles%2F%3Futm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3D2027-01-newsletter-taille-soldes%26utm_content%3Dpartage" style="display:inline-block;padding:11px 18px;background-color:#FFFFFF;border:2.5px solid #3E031B;border-radius:10px;box-shadow:3px 3px 0 #3E031B;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:15px;font-weight:700;line-height:18px;color:#3E031B;text-decoration:none;">Par email</a></td>
                   </tr></table>
                   <p class="txt" style="margin:0 0 16px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:17px;line-height:1.55;color:#3E031B;font-size:14px;margin:10px 0 0 0;">Ou transfère simplement cet email.</p>
                 </td></tr>
@@ -161,12 +188,15 @@
             </td>
           </tr>
           <tr>
-            <td class="px" align="center" style="padding:0 40px 32px 40px;">
+            <td class="px" align="center" style="padding:0 40px 28px 40px;">
               <p class="txt" style="margin:0;font-family:'Bricolage Grotesque', Arial, Helvetica, sans-serif;font-size:20px;font-weight:800;line-height:1.3;color:#3E031B;">Un fil. Tous les corps. Même les ours.</p>
             </td>
           </tr>
           <tr>
-            <td align="center" bgcolor="#3E031B" style="padding:28px 40px;background-color:#3E031B;">
+            <td aria-hidden="true" style="height:8px;line-height:8px;font-size:0;background-image:linear-gradient(45deg, #3E031B 25%, rgba(62,3,27,0) 25%),linear-gradient(-45deg, #3E031B 25%, rgba(62,3,27,0) 25%);background-size:16px 16px;background-repeat:repeat-x;background-position:left bottom;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" bgcolor="#3E031B" style="padding:28px 40px;background-color:#3E031B;border-radius:0 0 10px 10px;">
               <p style="margin:0 0 10px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:13px;line-height:1.5;color:#FFE3EE;">Prix le plus bas des 30 derniers jours avant les soldes&nbsp;: 5&nbsp;€ pour le string Noël.</p>
               <p style="margin:0 0 10px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:13px;line-height:1.5;color:#FFE3EE;">Tu reçois cet email parce que tu t'es inscrit·e à la liste UNIS et que tu as confirmé ton inscription (double opt-in).</p>
               <p style="margin:0 0 10px 0;font-family:'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;font-size:13px;line-height:1.5;color:#FFE3EE;"><a href="https://unis-demo.onrender.com/fr/vie-privee/?action=desinscription&amp;utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=desinscription" style="color:#FFE3EE;text-decoration:underline;">Se désinscrire</a> · <a href="https://unis-demo.onrender.com/fr/compte/?onglet=preferences&amp;utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=preferences" style="color:#FFE3EE;text-decoration:underline;">Gérer mes préférences</a> · <a href="https://unis-demo.onrender.com/fr/vie-privee/?utm_source=email&amp;utm_medium=email&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=vie-privee" style="color:#FFE3EE;text-decoration:underline;">Vie privée</a></p>

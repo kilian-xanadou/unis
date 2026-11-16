@@ -60,6 +60,7 @@ function pathOf(l, key, sid) {
   if (key === "account") return `${l}/${A[l].slug}`;
   if (key === "product") return `${l}/${PD[l].base}${PSLUG[sid][l]}/`;
   if (key === "story") return `${l}/${STORY[l].slug}`;
+  if (key === "behind") return `${l}/${VPC[l].behind.slug}`;
   if (key === "gifts") return `${l}/${PD[l].gifts.hubPath}`;
   if (key === "gift") return `${l}/${PD[l].gifts.pages[sid].path}`;
   if (X[l].slugs[key]) return `${l}/${X[l].slugs[key]}`;
@@ -167,7 +168,7 @@ const grid = (ps, l) => `<div class="grid">${ps.map((p) => card(p, l)).join("")}
 // ---------- JSON-LD ----------
 // Pages qui ne doivent jamais être indexées, même après le lancement.
 const PREVIEWS = ["emails", "insta", "fiche-google"];
-const NOINDEX = new Set(["404", "account", "cookies", "terms", "privacy", "legal"]);
+const NOINDEX = new Set(["404", "behind", "account", "cookies", "terms", "privacy", "legal"]);
 const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "UNIS", alternateName: ["UNIS strings unisexes", "UNIS et Bo l'ours"], url: `${SITE}/`, logo: { "@type": "ImageObject", url: `${SITE}/assets/logo-512.png`, width: 512, height: 512 }, slogan: "Un fil. Tous les corps. Même les ours." };
 const shippingLD = {
   "@type": "OfferShippingDetails",
@@ -252,6 +253,8 @@ function packs(l, ps) {
     return `<article class="pack"><h3>${h}</h3><p>${d}</p><p class="pack-price">${eur(total, l)}${total >= SHIPPING.freeFrom ? ` · <b>${T[l].shipFree}</b>` : ""}</p><label for="pk${i}-${l}">${T[l].size}</label> <select id="pk${i}-${l}" data-size>${SIZES.map((s) => `<option${s === "M" ? " selected" : ""}>${s}</option>`).join("")}</select><button type="button" class="btn primary" data-pack="${esc(JSON.stringify(its))}" data-total="${total}">${v.packAdd}</button></article>`;
   }).join("")}</div></div></section>`;
 }
+// Rangée de liens « aller plus loin » : relie chaque page aux pages voisines logiques.
+const goRow = (here, links) => `<p class="go-row">${links.filter(Boolean).map(([p, label]) => `<a class="btn ghost go" href="${here(p)}">${label}</a>`).join("")}</p>`;
 const buyBar = (p, l) => p ? `<div class="buybar" id="buybar"><span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span><button type="button" class="btn primary" data-buybar="${p.sku}">${T[l].add}</button></div>` : "";
 const PAY = ["Bancontact", "Visa", "Mastercard", "Apple Pay", "Google Pay", "iDEAL"];
 const payBadges = () => `<ul class="pay">${PAY.map((p) => `<li>${p}</li>`).join("")}</ul>`;
@@ -341,7 +344,7 @@ ${body2}
     <div><p class="foot-logo">${logoMark()}<span class="sr">UNIS</span></p><p>${t.signature}</p></div>
     <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "gifts"))}">${PD[l].gifts.nav}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
     <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li><li><a href="${here(pathOf(l, "account"))}">${a.navAccount}</a></li><li><button type="button" class="linkbtn" data-cookie-open>${a.cookie.manage}</button></li></ul></div>
-    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
+    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "behind"))}">${VPC[l].behind.nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
   </div>
   <div class="trust">
     <div><p class="ft">${x.payTitle}</p>${payBadges()}<p class="small">${x.payNote}</p></div>
@@ -418,9 +421,9 @@ for (const l of LANGS) {
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
 <div class="wrap">${LIVE.id === "noel" ? xmasBar(l) : ""}${reassure(l)}</div>
 <section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><p class="bo-note right">${VPC[l].notes.forwho}</p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
-<section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}</div></section>
+<section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}${goRow(here, [[pathOf(l, "seasons"), VPC[l].go.allSeasons], [pathOf(l, "season", "rose"), VPC[l].go.rose], [pathOf(l, "story"), VPC[l].go.story]])}</div></section>
 <section class="shop band" aria-labelledby="hshop"><div class="wrap"><h2 id="hshop">${fill(t.home.shopTitle, { s: liveName })}</h2><p class="intro">${t.home.shopIntro}</p>${grid(homeProducts, l)}<p class="more"><a class="btn ghost" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.seeAll, { s: liveName })}</a></p></div></section>
-<section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div></div></section>
+<section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div>${goRow(here, [[pathOf(l, "article", "unisexe"), VPC[l].go.unisex], [pathOf(l, "size"), VPC[l].go.sizeGuide], [pathOf(l, "article", "taille"), VPC[l].go.sizeArt]])}</div></section>
 ${promise(l)}${waitlist(l)}${faqBlock(t.faq, t.faqTitle)}` }));
 
   // Bo
@@ -440,7 +443,7 @@ ${waitlist(l)}` }));
     ld: [crumbsLD([home, [t.nav.ess, pathOf(l, "ess")]]), itemListLD(essPs, l)],
     body: (here) => `${pageHead(t.essPage.h1, t.essPage.intro, [home, [t.nav.ess, pathOf(l, "ess")]], here)}
 <section class="shop band" aria-labelledby="hess"><div class="wrap"><h2 id="hess" class="sr">${VPC[l].productsTitle}</h2>${grid(essPs, l)}<p class="more"><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a></p></div></section>
-<section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div></div></section>` }));
+<section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div>${goRow(here, [[pathOf(l, "article", "unisexe"), VPC[l].go.unisex], [pathOf(l, "size"), VPC[l].go.sizeGuide], [pathOf(l, "article", "taille"), VPC[l].go.sizeArt]])}</div></section>` }));
 
   // Saisons (index)
   add(l, "seasons", null, layout({ l, key: "seasons", title: t.seasonsPage.title, desc: t.seasonsPage.desc,
@@ -460,7 +463,7 @@ ${waitlist(l)}` }));
     add(l, "season", s.id, layout({ l, key: "season", sid: s.id, title: st.title, desc: fill(t.seasonDesc, { p: st.phrase }), palette: BASE,
       ld: [crumbsLD(crumbs), ...(live ? [itemListLD(ps, l)] : ps.map((p) => productLD(p, l, url)))],
       body: (here) => `${pageHead(st.h1, st.intro, crumbs, here)}
-<div class="wrap">${live && s.id === "noel" ? xmasBar(l) : ""}${reassure(l)}${shareBtn(l, st.title.split(" | ")[0], url)}</div>
+<div class="wrap">${live && s.id === "noel" ? xmasBar(l) : ""}${reassure(l)}${shareBtn(l, st.title.split(" | ")[0], url)}${s.id === "noel" ? goRow(here, [live && ["#hpacks", VPC[l].go.packs], [pathOf(l, "gift", "secret-santa"), VPC[l].go.santaGift], [pathOf(l, "article", "cadeau"), VPC[l].go.santaArt]]) : s.id === "rose" ? goRow(here, [[pathOf(l, "about"), X[l].nav.about], [pathOf(l, "story"), VPC[l].go.story]]) : goRow(here, [[pathOf(l, "seasons"), VPC[l].go.allSeasons], [pathOf(l, "gifts"), PD[l].gifts.nav]])}</div>
 ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p><p class="note">${roseFill(ROSE[l].note, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${live ? `<p class="bo-note right">${VPC[l].notes.drop}</p>` : ""}${grid(ps, l)}</div></section>
@@ -550,12 +553,14 @@ ${waitlist(l)}` }));
   add(l, "size", null, layout({ l, key: "size", title: t.sizePage.title, desc: t.sizePage.desc,
     ld: [crumbsLD([home, [t.sizeCap.split(" (")[0], pathOf(l, "size")]])],
     body: (here) => `${pageHead(t.sizePage.h1, "", [home, [t.sizeCap.split(" (")[0], pathOf(l, "size")]], here)}
+<div class="wrap">${goRow(here, [[pathOf(l, "article", "taille"), VPC[l].go.sizeArt], [pathOf(l, "article", "unisexe"), VPC[l].go.unisex], [pathOf(l, "ess"), VPC[l].go.ess]])}</div>
 <section class="band"><div class="wrap two"><div><h2>${t.sizePage.howTitle}</h2><ol class="steps">${t.sizePage.how.map((x) => `<li>${x}</li>`).join("")}</ol>${sizeTable(l)}</div><div><h2>${t.cutsTitle}</h2>${cuts(l)}</div></div></section>` }));
 
   // Aide
   add(l, "help", null, layout({ l, key: "help", title: t.helpPage.title, desc: t.helpPage.desc,
     ld: [crumbsLD([home, [t.nav.help, pathOf(l, "help")]]), faqLD(X[l].faqCats.flatMap(([, qs]) => qs))],
     body: (here) => `${pageHead(t.helpPage.h1, "", [home, [t.nav.help, pathOf(l, "help")]], here)}
+<div class="wrap">${goRow(here, [[pathOf(l, "size"), VPC[l].go.sizeGuide], [pathOf(l, "article", "taille"), VPC[l].go.sizeArt], [pathOf(l, "gifts"), PD[l].gifts.nav], [pathOf(l, "contact"), VPC[l].go.contact]])}</div>
 ${PLACEMENT.help ? `<section class="band"><div class="wrap split"><div class="prose"><h2 class="h3">${t.prom[2][0]}</h2><p>${t.prom[2][1]}</p></div><div class="hero-art small photo">${photo(PLACEMENT.help, l)}</div></div></section>` : ""}
 <section class="band"><div class="wrap cols3">${[["shipTitle", "ship"], ["retTitle", "ret"], ["payTitle", "pay"]].map(([h, p]) => `<div class="prose"><h2 class="h3">${t.helpPage[h]}</h2><p>${t.helpPage[p]}</p></div>`).join("")}</div></section>
 ${faqCats(l, here)}` }));
@@ -563,6 +568,14 @@ ${faqCats(l, here)}` }));
   // ---- Pages ajoutées après les cours ----
   const x = X[l];
   const crumb = (k, name) => [home, [name, pathOf(l, k)]];
+
+  // Coulisses du projet : accès aux aperçus marketing (non indexée)
+  {
+    const bh = VPC[l].behind;
+    add(l, "behind", null, layout({ l, key: "behind", title: bh.title, desc: bh.desc,
+      body: (here) => `${pageHead(bh.h1, bh.intro, [home, [bh.nav, pathOf(l, "behind")]], here)}
+<section class="band"><div class="wrap"><ul class="forwho-list">${bh.items.map(([h, p, href]) => `<li><h3>${h}</h3><p>${p}</p><a href="${BASE_PATH}${href}" aria-label="${bh.open} : ${h}">${bh.open} →</a></li>`).join("")}</ul></div></section>` }));
+  }
 
   // L'histoire de Bo (SEO marque + « ours de collection »)
   {
@@ -588,7 +601,7 @@ ${faqBlock(st.faq, st.faqTitle)}`;
 <section class="band"><div class="wrap split"><div class="prose"><h2>${va.whyTitle}</h2>${va.why.map((p) => `<p>${p}</p>`).join("")}</div>
 <div class="hero-art small" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}</div></div></section>
 <section class="promise band" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">${va.howTitle}</h2><div class="cols">${va.how.map(([h, p]) => `<div><h3>${h}</h3><p>${p}</p></div>`).join("")}</div></div></section>
-<section class="band"><div class="wrap two"><div class="prose"><h2>${x.about.teamTitle}</h2><p>${x.about.team}</p><h2 class="h3">${va.whatTitle}</h2><p>${va.what}</p><p class="pitch">${va.pitch}</p></div>
+<section class="band"><div class="wrap two"><div class="prose"><h2>${x.about.teamTitle}</h2><p>${x.about.team}</p><h2 class="h3">${va.whatTitle}</h2><p>${va.what}</p><p class="pitch">${va.pitch}</p>${goRow(here, [[pathOf(l, "story"), VPC[l].go.story], [pathOf(l, "season", "rose"), VPC[l].go.rose], [pathOf(l, "behind"), VPC[l].behind.nav]])}</div>
 <div class="prose" id="regles"><h2>${va.linesTitle}</h2><ul class="ticks">${va.lines.map((r) => `<li>${r}</li>`).join("")}</ul><h2 class="h3">${x.about.rulesTitle}</h2><ul class="ticks">${x.about.rules.map((r) => `<li>${r}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></p></div></div></section>` }));
 
   // Contact (e-Commerce p.77-84 ; Communication Web : réactivité)
@@ -745,7 +758,7 @@ copyFileSync(join(ROOT, "assets/bo.svg"), join(OUT, "assets/bo.svg"));
 // Visuels (photos WebP) : tout ce qui est dans assets/images/ est publié dans site/assets/images/
 cpSync(join(ROOT, "src/static/fonts"), join(OUT, "assets/fonts"), { recursive: true });
 if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
-for (const d of ["emailing", "logo"]) if (existsSync(join(ROOT, "assets", d))) cpSync(join(ROOT, "assets", d), join(OUT, "assets", d), { recursive: true, filter: (f) => !f.endsWith(".md") });
+for (const d of ["emailing", "logo", "qr"]) if (existsSync(join(ROOT, "assets", d))) cpSync(join(ROOT, "assets", d), join(OUT, "assets", d), { recursive: true, filter: (f) => !f.endsWith(".md") });
 // Aperçus marketing (emails, publications Instagram, fiche Google) : publiés mais jamais indexés.
 for (const d of PREVIEWS) if (existsSync(join(ROOT, d))) cpSync(join(ROOT, d), join(OUT, d), { recursive: true, filter: (f) => !f.endsWith(".md") });
 if (existsSync(join(ROOT, "assets/images"))) cpSync(join(ROOT, "assets/images"), join(OUT, "assets/images"), { recursive: true, filter: (f) => !f.endsWith(".md") });
