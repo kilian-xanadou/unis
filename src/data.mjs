@@ -57,6 +57,15 @@ export const SEASONS = [
       { n: { fr: "Phosphorescent", nl: "Fluo in het donker", en: "Glow in the dark", de: "Leuchtet im Dunkeln" }, p: "solid", base: "#B8FF5C" },
       { n: { fr: "Citrouille", nl: "Pompoen", en: "Pumpkin", de: "Kürbis" }, p: "solid", base: "#FF8A1F" },
     ] },
+  // Capsule caritative (pas un drop du calendrier) : 1 € par article reversé (voir config.pinkDonation).
+  { id: "rose", next: "2027-10-01", capsule: true,
+    slug: { fr: "octobre-rose", nl: "roze-oktober", en: "pink-october", de: "pink-october" },
+    c: { bg: "#FFF0F5", ink: "#4A1030", accent: "#C2185B", soft: "#F8BBD0", on: "#FFFFFF" },
+    name: { fr: "Octobre Rose", nl: "Roze Oktober", en: "Pink October", de: "Pink October" },
+    items: [
+      { n: { fr: "Ruban rose", nl: "Roze lintje", en: "Pink ribbon", de: "Rosa Schleife" }, p: "ribbon", base: "#F8BBD0", fg: "#C2185B", sku: "RUBAN" },
+      { n: { fr: "Rose poudré", nl: "Poederroze", en: "Powder pink", de: "Puderrosa" }, p: "solid", base: "#F48FB1", sku: "POUDRE" },
+    ] },
   { id: "noel", next: "2027-11-01",
     slug: { fr: "noel", nl: "kerst", en: "christmas", de: "weihnachten" },
     c: { bg: "#EAF2EC", ink: "#12301F", accent: "#C8372D", soft: "#BFD9C6", on: "#FFFFFF" },

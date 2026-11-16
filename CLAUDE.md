@@ -4,7 +4,7 @@ UNIS est une marque e-commerce européenne (Belgique, SRL à créer) qui vend :
 
 - **Bo, l'ours UNIS** : un ours en peluche de collection de 35 cm, à 49 €. Il sert de mannequin à la marque et porte chaque nouveau string.
 - **Des strings unisexes bon marché** : le string adulte à 5 € (coupe Plat ou Poche, du XS au 4XL), le mini-string pour Bo à 3 €, le Duo assorti (adulte + Bo, même motif) à 7 €, et le lot de 5 strings adultes à 20 €.
-- **Six drops saisonniers par an**, en série limitée et jamais réédités : Saint-Valentin (3 février), Printemps (17 mars), Pride (1er juin), Été (15 juin), Halloween (1er octobre) et Noël (1er novembre).
+- **Six drops saisonniers par an**, en série limitée et jamais réédités : Saint-Valentin (3 février), Printemps (17 mars), Pride (1er juin), Été (15 juin), Halloween (1er octobre) et Noël (1er novembre). En plus : la **capsule Octobre Rose** (1er octobre, page `/fr/saisons/octobre-rose/`), avec 1 € reversé par article à une association belge de lutte contre le cancer du sein (`pinkCharity` et `pinkDonation` dans `src/config.mjs` ; ne jamais nommer une association sans accord signé).
 
 **Site de démonstration en ligne depuis le 16 novembre 2026** (statique, sans paiement ni enregistrement, `noindex`). Le lancement commercial reste prévu en avril 2027.
 
@@ -35,6 +35,8 @@ Le nom UNIS est provisoire. Ne le dépose nulle part et n'achète aucun domaine 
 | `render.yaml` | Déploiement gratuit sur Render (site statique `unis-demo`) |
 | `assets/images/` | Photos du site (WebP < 150 Ko, voir le README du dossier) |
 | `prototype/index.html` | Prototype du site en une page (FR, NL, EN, DE, panier JS). C'est la référence de design et de contenu, pas le code de production |
+| `assets/images/`, `src/photos.mjs` | Photos du site (WebP) et leur placement ; Alt en 4 langues |
+| `assets/emailing/` | Visuels JPG 600 px pour les emails |
 | `assets/bo.svg` | Illustration de Bo (provisoire, en attendant les photos) |
 | `data/products.csv` | Produits au format d'import Shopify (drop Noël + Essentiels + Bo) |
 | `.claude/skills/unis-lancer-collection/` | Skill pour préparer le kit de chaque nouveau drop |

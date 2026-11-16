@@ -21,6 +21,7 @@ function inner(item, cut = "flat") {
     case "ghosts": pat(34, 34, `<path d="M10 26 V14 a7 7 0 0 1 14 0 V26 l-3.5-3 -3.5 3 -3.5-3Z" fill="${f}"/><circle cx="14.5" cy="15" r="1.3" fill="${b}"/><circle cx="19.5" cy="15" r="1.3" fill="${b}"/>`); break;
     case "trees": pat(30, 32, `<path d="M15 4 L24 24 H6Z" fill="${f}"/><rect x="13.5" y="24" width="3" height="4" fill="${f}"/>`); break;
     case "zigzag": pat(24, 20, `<path d="M0 12 L6 6 L12 12 L18 6 L24 12" fill="none" stroke="${f}" stroke-width="3"/><circle cx="12" cy="17" r="1.6" fill="${f}"/>`); break;
+    case "ribbon": pat(30, 34, `<path d="M15 6 C9 6 9 14 15 18 C21 14 21 6 15 6Z M15 18 L9 30 M15 18 L21 30" fill="none" stroke="${f}" stroke-width="3" stroke-linecap="round"/>`); break;
     case "rainbow": def = `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">${stripes(RAINBOW)}</linearGradient>`; fill = `url(#${id})`; break;
     case "trans": def = `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">${stripes(TRANS)}</linearGradient>`; fill = `url(#${id})`; break;
     case "rainbowband": def = `<linearGradient id="${id}b">${RAINBOW.map((c, i) => `<stop offset="${i / 5}" stop-color="${c}"/>`).join("")}</linearGradient>`; break;

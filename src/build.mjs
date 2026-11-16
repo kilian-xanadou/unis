@@ -8,6 +8,8 @@ import { T } from "./i18n.mjs";
 import { X } from "./i18n-extra.mjs";
 import { A } from "./i18n-account.mjs";
 import { L } from "./legal.mjs";
+import { PHOTOS, PLACEMENT, OG_IMAGE } from "./photos.mjs";
+import { ROSE } from "./i18n-rose.mjs";
 
 // Base Supabase branchée ? Sinon le site reste en mode démo (rien n'est enregistré).
 const DB = Boolean(CFG.supabaseUrl && CFG.supabaseAnonKey);
@@ -23,6 +25,18 @@ const BASE_PATH = new URL(SITE + "/").pathname;
 const ver = (f) => createHash("sha256").update(readFileSync(join(ROOT, "src/static", f))).digest("hex").slice(0, 10);
 const V = { css: ver("style.css"), js: ver("app.js") }; // "/" sur Render, "/unis/" sur GitHub Pages
 const LIVE = SEASONS.find((s) => s.id === CFG.currentSeason);
+
+// Capsule Octobre Rose : textes injectés dans les saisons, avec le montant et l'association.
+const roseFill = (s, l) => s.split("{x}").join(new Intl.NumberFormat(T[l].locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(CFG.pinkDonation)).split("{c}").join(CFG.pinkCharity || ROSE[l].charityDefault);
+for (const l of Object.keys(T)) { const r = ROSE[l]; T[l].season.rose = { title: r.title, phrase: r.phrase, h1: r.h1, intro: roseFill(r.intro, l) }; }
+
+// Photos : <img> responsive, chemin absolu depuis la racine du site.
+const photoUrl = (k, w) => { const p = PHOTOS[k]; const s = p.sizes.find((x) => x[0] === w) || p.sizes[p.sizes.length - 1]; return `assets/images/${p.file}-${s[0] === 600 ? 600 : 1200}.webp`; };
+function photo(k, l, { sizes = "(max-width: 860px) 100vw, 50vw", eager = false, cls = "" } = {}) {
+  const p = PHOTOS[k]; if (!p) return "";
+  const [small, big] = p.sizes;
+  return `<img${cls ? ` class="${cls}"` : ""} src="${BASE_PATH}assets/images/${p.file}-600.webp" srcset="${BASE_PATH}assets/images/${p.file}-600.webp ${small[0]}w, ${BASE_PATH}assets/images/${p.file}-1200.webp ${big[0]}w" sizes="${sizes}" width="${big[0]}" height="${big[1]}" alt="${esc(p.alt[l])}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+}
 const warnings = [];
 
 // ---------- helpers ----------
@@ -66,13 +80,15 @@ function seasonProducts(s, l) {
   for (const x of s.items) list.push({ sku: `UNIS-${s.id.toUpperCase()}${yr}-${x.sku || x.p.toUpperCase()}`, kind: "adult", name: fill(T[l].adultName, { m: x.n[l] }), desc: T[l].adultDesc, price: PRICES.adult, badge: T[l].limited, item: x, sized: true });
   list.push({ sku: `UNIS-${code}-MINI`, kind: "mini", name: fill(T[l].miniName, { m }), desc: T[l].miniDesc, price: PRICES.mini, badge: T[l].limited, item: it });
   if (s.box) list.push({ sku: `UNIS-BOX-${s.id.toUpperCase()}${yr}`, kind: "bo", name: fill(T[l].boxName, { s: sn }), desc: fill(T[l].boxDesc, { s: sn }), price: PRICES.box, badge: T[l].collector, item: it, hat: s.id === "noel", bo: true });
-  return list.map((p) => ({ ...p, buyable: s === LIVE, color: it.base || s.c.accent, season: s }));
+  const photoFor = (p) => p.bo ? (p.sku.startsWith("UNIS-BOX") ? PLACEMENT.boxCard[s.id] : PLACEMENT.boCard[s.id]) : null;
+  return list.map((p) => ({ ...p, buyable: s === LIVE, color: it.base || s.c.accent, season: s, photo: photoFor(p), badge: s.capsule ? roseFill(ROSE[l].badge, l) : p.badge }));
 }
-const boProduct = (l) => ({ sku: "UNIS-BO", kind: "bo", name: T[l].boName, desc: T[l].boDesc, price: PRICES.bo, badge: T[l].collector, item: LIVE.items[0], bo: true, buyable: true, color: "#C98B4B", season: LIVE });
+const boProduct = (l) => ({ sku: "UNIS-BO", kind: "bo", name: T[l].boName, desc: T[l].boDesc, price: PRICES.bo, badge: T[l].collector, item: LIVE.items[0], bo: true, buyable: true, color: "#C98B4B", season: LIVE, photo: PLACEMENT.boCard[LIVE.id] || null });
 const essProduct = (l) => ({ sku: "UNIS-ESS", kind: "ess", name: T[l].essName, desc: T[l].essDesc, price: PRICES.adult, badge: T[l].ess, sized: true, buyable: true, color: ESS[0].c });
 const lotProduct = (l) => ({ sku: "UNIS-ESS-LOT5", kind: "lot", name: T[l].lotName, desc: T[l].lotDesc, price: PRICES.lot5, badge: T[l].ess, sized: true, sizeOnly: true, buyable: true, color: ESS[1].c });
 
-function art(p) {
+function art(p, l) {
+  if (p.photo) return photo(p.photo, l, { sizes: "(max-width: 600px) 100vw, 300px" });
   if (p.kind === "bo") return bear(p.item, p.season.c.accent, p.hat);
   if (p.kind === "ess" || p.kind === "lot") {
     const many = p.kind === "lot" ? ESS.slice(0, 5) : [ESS[0]];
@@ -96,7 +112,7 @@ function card(p, l, ctx) {
     : `<a class="add" href="#liste">${t.notify}</a>`;
   const mention = p.bo ? `<p class="mention">${t.boMention}</p>` : (p.kind !== "bo" ? `<p class="compo">${t.composition}</p>` : "");
   return `<article class="card" data-cut="flat">
-  <div class="art" style="background:${bg}">${art(p)}<span class="badge">${esc(p.badge)}</span></div>
+  <div class="art${p.photo ? " has-photo" : ""}" style="background:${bg}">${art(p, l)}<span class="badge">${esc(p.badge)}</span></div>
   <div class="meta"><h3>${esc(p.name)}</h3><span class="price">${eur(p.price, l)}</span></div>
   <p class="desc">${esc(p.desc)}</p>${mention}
   ${opts.length ? `<div class="opts">${opts.join("")}</div>` : ""}
@@ -118,14 +134,14 @@ const returnLD = { "@type": "MerchantReturnPolicy", applicableCountry: ["BE", "F
 function productLD(p, l, url) {
   const offer = { "@type": "Offer", price: p.price.toFixed(2), priceCurrency: "EUR", url, availability: p.buyable ? (p.season && !p.bo ? "https://schema.org/LimitedAvailability" : "https://schema.org/InStock") : "https://schema.org/PreOrder", itemCondition: "https://schema.org/NewCondition", shippingDetails: [shippingLD, freeShippingLD], hasMerchantReturnPolicy: returnLD };
   if (p.season && p.buyable) offer.priceValidUntil = CFG.dropPriceValidUntil;
-  return { "@type": "Product", name: p.name, sku: p.sku, description: p.desc, image: `${SITE}/assets/bo.svg`, brand: { "@type": "Brand", name: "UNIS" }, offers: offer };
+  return { "@type": "Product", name: p.name, sku: p.sku, description: p.desc, image: p.photo ? `${SITE}/${photoUrl(p.photo, 1200)}` : `${SITE}/assets/bo.svg`, brand: { "@type": "Brand", name: "UNIS" }, offers: offer };
 }
 const crumbsLD = (items) => ({ "@type": "BreadcrumbList", itemListElement: items.map(([name, p], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(p) })) });
 const faqLD = (faq) => ({ "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
 
 // ---------- shared blocks ----------
 function seasonStrip(l, here, current) {
-  return `<ol class="strip">${SEASONS.map((s) => {
+  return `<ol class="strip">${SEASONS.filter((s) => !s.capsule).map((s) => {
     const isLive = s === LIVE;
     return `<li><a class="season${s.id === current ? " on" : ""}" href="${here(pathOf(l, "season", s.id))}"${s.id === current ? ' aria-current="page"' : ""}>
       <span class="when">${isLive ? `<b class="now">${T[l].live}</b>` : fdate(s.next, l)}</span>
@@ -220,6 +236,11 @@ ${alts}
 ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
 <meta property="og:url" content="${abs(self)}">
 <meta property="og:locale" content="${t.ogLocale}">
+<meta property="og:image" content="${SITE}/assets/images/${OG_IMAGE.file}">
+<meta property="og:image:width" content="${OG_IMAGE.width}">
+<meta property="og:image:height" content="${OG_IMAGE.height}">
+<meta property="og:image:alt" content="${esc(PHOTOS.noelAllonge.alt[l])}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="${palette.accent}">
 <link rel="icon" href="${here("assets/favicon.svg")}" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -318,7 +339,7 @@ for (const l of LANGS) {
     <p class="lead">${t.home.lead}</p>
     <div class="ctas"><a class="btn primary" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.ctaDrop, { s: liveName })}</a><a class="btn ghost" href="${here(pathOf(l, "bo"))}">${t.home.ctaBo}</a></div>
   </div>
-  <div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>
+  ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
 <div class="wrap">${reassure(l)}</div>
 <section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}</div></section>
@@ -333,7 +354,7 @@ ${promise(l)}${waitlist(l)}${faqBlock(t.faq, t.faqTitle)}` }));
     ld: [crumbsLD([home, [t.boName, pathOf(l, "bo")]]), ...boPs.map((p) => productLD(p, l, boUrl))],
     body: (here) => `${pageHead(t.bo.h1, "", [home, [t.boName, pathOf(l, "bo")]], here)}
 <section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul><h2 class="h3">${t.bo.safetyTitle}</h2><p>${t.bo.safety}</p><p class="mention">${t.boMention}</p></div>
-<div class="hero-art small" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}</div></div></section>
+<div class="hero-art small photo">${photo(PLACEMENT.boPage, l, { eager: true })}</div></div></section>
 <section class="shop band" aria-labelledby="hbuy"><div class="wrap"><h2 id="hbuy">${t.bo.shopTitle}</h2>${grid(boPs, l)}</div></section>
 ${waitlist(l)}` }));
 
@@ -365,6 +386,8 @@ ${waitlist(l)}` }));
       ld: [crumbsLD(crumbs), ...ps.map((p) => productLD(p, l, url))],
       body: (here) => `${pageHead(st.h1, st.intro, crumbs, here)}
 <div class="wrap">${reassure(l)}</div>
+${PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
+${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" aria-label="${esc(sn)}"><div class="wrap">${grid(ps, l)}</div></section>
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
@@ -426,7 +449,7 @@ ${faqCats(l, here)}` }));
     body: (here) => `${pageHead(x.club.h1, x.club.intro, crumb("club", x.nav.club), here)}
 <section class="band"><div class="wrap"><h2>${x.club.stepsTitle}</h2><ol class="stamps">${x.club.steps.map(([h, p], i) => `<li><span class="stamp" aria-hidden="true">${[1, 3, 6][i]}</span><h3>${h}</h3><p>${p}</p></li>`).join("")}</ol></div></section>
 <section class="band"><div class="wrap split"><div class="prose"><h2>${x.club.perksTitle}</h2><ul class="ticks">${x.club.perks.map((p) => `<li>${p}</li>`).join("")}</ul><p class="note">${x.club.note}</p></div>
-<div class="hero-art small" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}</div></div></section>
+<div class="hero-art small photo">${photo(PLACEMENT.club, l)}</div></div></section>
 ${waitlist(l)}` }));
 
   // Journal + articles (content marketing : 1 newsletter = 1 article)
@@ -441,9 +464,9 @@ ${waitlist(l)}` }));
     const crumbs = [home, [x.nav.journal, pathOf(l, "journal")], [a.h1, pathOf(l, "article", id)]];
     const links = { taille: [["size", t.sizeLink], ["ess", t.nav.ess]], cadeau: [["season:" + LIVE.id, fill(t.home.ctaDrop, { s: sName(LIVE, l) })], ["bo", t.boName]], unisexe: [["about", x.nav.about], ["size", t.sizeLink]] }[id] || [];
     add(l, "article", id, layout({ l, key: "article", sid: id, title: a.title, desc: a.desc,
-      ld: [crumbsLD(crumbs), { "@type": "BlogPosting", headline: a.h1, description: a.desc, datePublished: a.date, inLanguage: l, mainEntityOfPage: abs(pathOf(l, "article", id)), image: `${SITE}/assets/bo.svg`, author: { "@id": `${SITE}/#org` }, publisher: { "@id": `${SITE}/#org` } }],
+      ld: [crumbsLD(crumbs), { "@type": "BlogPosting", headline: a.h1, description: a.desc, datePublished: a.date, inLanguage: l, mainEntityOfPage: abs(pathOf(l, "article", id)), image: PLACEMENT.article[id] ? `${SITE}/${photoUrl(PLACEMENT.article[id], 1200)}` : `${SITE}/assets/bo.svg`, author: { "@id": `${SITE}/#org` }, publisher: { "@id": `${SITE}/#org` } }],
       body: (here) => `${pageHead(a.h1, a.lead, crumbs, here)}
-<section class="band"><div class="wrap prose article"><p class="note">${fill(x.journal.published, { d: fdate(a.date, l) })}</p>${a.body.map(([h, p]) => `<h2 class="h3">${h}</h2><p>${p}</p>`).join("")}
+<section class="band"><div class="wrap prose article">${PLACEMENT.article[id] ? `<figure class="article-photo">${photo(PLACEMENT.article[id], l, { sizes: "(max-width: 760px) 100vw, 760px", eager: true })}</figure>` : ""}<p class="note">${fill(x.journal.published, { d: fdate(a.date, l) })}</p>${a.body.map(([h, p]) => `<h2 class="h3">${h}</h2><p>${p}</p>`).join("")}
 <h2 class="h3">${x.journal.related}</h2><p class="ctas">${links.map(([k, label]) => `<a class="btn ghost" href="${here(k.startsWith("season:") ? pathOf(l, "season", k.slice(7)) : pathOf(l, k))}">${label}</a>`).join("")}</p>
 <p><a href="${here(pathOf(l, "journal"))}">← ${x.journal.back}</a></p></div></section>
 ${waitlist(l)}` }));

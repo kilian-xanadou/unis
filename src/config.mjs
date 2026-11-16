@@ -34,6 +34,11 @@ export default {
   ga4Id: "",        // ex. "G-XXXXXXXXXX"
   metaPixelId: "",  // ex. "123456789012345"
 
+  // Octobre Rose : association bénéficiaire (laisser vide tant qu'aucun accord n'est signé :
+  // le site affiche alors une mention générique) et montant reversé par article, en euros.
+  pinkCharity: "",
+  pinkDonation: 1,
+
   // Version de la politique cookies : la changer redemande le consentement à tout le monde.
   consentVersion: "2026-11-16",
 };

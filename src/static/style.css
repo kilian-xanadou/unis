@@ -299,3 +299,16 @@ table.sizes th,table.sizes td{padding:10px;text-align:left;border-bottom:1px sol
 .plain li{margin-bottom:4px}
 .withdraw{margin-top:32px;padding:20px 24px;border:2px dashed color-mix(in srgb,var(--ink) 35%,transparent);border-radius:var(--r-big)}
 .withdraw ol li{padding:6px 0;border-bottom:1px dotted color-mix(in srgb,var(--ink) 30%,transparent)}
+
+/* ---- Photos ---- */
+.hero-art.photo{border-radius:var(--r-big);aspect-ratio:auto;background:#fff;overflow:hidden;display:block}
+.hero-art.photo img{width:100%;height:auto;display:block;transform:none;filter:none}
+.hero-art.small.photo{max-width:420px}
+.card .art.has-photo{background:#fff!important}
+.card .art.has-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.season-photo{margin:0 auto 8px;border-radius:var(--r-big);overflow:hidden;background:#fff}
+.season-photo img{width:100%;height:auto;max-height:520px;object-fit:contain;display:block;margin:0 auto}
+.article-photo{margin:0 0 20px;border-radius:var(--r-big);overflow:hidden}
+.article-photo img{width:100%;height:auto;display:block}
+.donation{background:var(--paper);color:var(--paper-ink);border-left:6px solid var(--accent);border-radius:var(--r-small);padding:16px 20px;margin-top:16px;margin-bottom:8px}
+.donation p{margin:0}
