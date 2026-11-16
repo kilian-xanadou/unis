@@ -104,7 +104,7 @@ function art(p, l) {
 
 function card(p, l, ctx) {
   const t = T[l], id = p.sku.toLowerCase();
-  const bg = p.kind === "ess" || p.kind === "lot" ? "#F1EEF8" : (p.season?.c.soft || "#F1EEF8");
+  const bg = "var(--soft)"; // fond des cartes : couleur de la marque, sur toutes les pages
   const opts = [];
   if (p.kind === "ess") opts.push(`<div class="swatches" role="group" aria-label="${t.color}">${ESS.map((e, i) => `<button type="button" style="--sw:${e.c}" aria-pressed="${i === 0}" data-col="${e.k}" data-hex="${e.c}" aria-label="${e.n[l]}"></button>`).join("")}</div>`);
   if (p.sized && !p.sizeOnly) opts.push(`<div class="seg" role="group" aria-label="${t.cut}"><button type="button" data-cut="flat" aria-pressed="true">${t.flat}</button><button type="button" data-cut="pouch" aria-pressed="false">${t.pouch}</button></div>`);
@@ -383,7 +383,7 @@ ${waitlist(l)}` }));
   add(l, "seasons", null, layout({ l, key: "seasons", title: t.seasonsPage.title, desc: t.seasonsPage.desc,
     ld: [crumbsLD([home, [t.nav.seasons, pathOf(l, "seasons")]])],
     body: (here) => `${pageHead(t.seasonsPage.h1, t.seasonsPage.intro, [home, [t.nav.seasons, pathOf(l, "seasons")]], here)}
-<section class="band"><div class="wrap"><div class="season-cards">${SEASONS.map((s) => `<a class="scard" href="${here(pathOf(l, "season", s.id))}" style="--sbg:${s.c.bg};--sink:${s.c.ink};--sacc:${s.c.accent}">
+<section class="band"><div class="wrap"><div class="season-cards">${SEASONS.map((s) => `<a class="scard" href="${here(pathOf(l, "season", s.id))}" style="--sbg:var(--soft);--sink:var(--ink);--sacc:${s.c.accent}">
   <div class="sart">${thong(s.items[0])}</div><div><span class="tag">${s === LIVE ? t.live : fill(t.dropDate, { d: fdate(s.next, l) })}</span><h2 class="h3">${sName(s, l)}</h2><p>${esc(T[l].season[s.id].h1)}</p></div></a>`).join("")}</div></div></section>
 ${waitlist(l)}` }));
 
@@ -394,7 +394,7 @@ ${waitlist(l)}` }));
     const url = abs(pathOf(l, "season", s.id));
     const sfaq = [...t.seasonFaq.map(([q, a]) => [fill(q, { s: sn }), a]), live && s.id === "noel" ? t.faqXmas : [fill(t.faqWhen[0], { s: sn }), fill(t.faqWhen[1], { d: fdate(s.next, l) })]];
     const crumbs = [home, [t.nav.seasons, pathOf(l, "seasons")], [sn, pathOf(l, "season", s.id)]];
-    add(l, "season", s.id, layout({ l, key: "season", sid: s.id, title: st.title, desc: fill(t.seasonDesc, { p: st.phrase }), palette: s.c,
+    add(l, "season", s.id, layout({ l, key: "season", sid: s.id, title: st.title, desc: fill(t.seasonDesc, { p: st.phrase }), palette: BASE,
       ld: [crumbsLD(crumbs), ...ps.map((p) => productLD(p, l, url))],
       body: (here) => `${pageHead(st.h1, st.intro, crumbs, here)}
 <div class="wrap">${live && s.id === "noel" ? xmasBar(l) : ""}${reassure(l)}${shareBtn(l, st.title.split(" | ")[0], url)}</div>
@@ -590,6 +590,8 @@ for (const f of ["style.css", "app.js", "favicon.svg", "logo-512.png"]) copyFile
 copyFileSync(join(ROOT, "assets/bo.svg"), join(OUT, "assets/bo.svg"));
 // Visuels (photos WebP) : tout ce qui est dans assets/images/ est publié dans site/assets/images/
 if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
+for (const d of ["emailing", "logo"]) if (existsSync(join(ROOT, "assets", d))) cpSync(join(ROOT, "assets", d), join(OUT, "assets", d), { recursive: true, filter: (f) => !f.endsWith(".md") });
+if (existsSync(join(ROOT, "emails"))) cpSync(join(ROOT, "emails"), join(OUT, "emails"), { recursive: true });
 if (existsSync(join(ROOT, "assets/images"))) cpSync(join(ROOT, "assets/images"), join(OUT, "assets/images"), { recursive: true, filter: (f) => !f.endsWith(".md") });
 
 // Racine : choix de la langue (redirige selon la langue du navigateur, FR par défaut)
@@ -608,7 +610,7 @@ ${LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(x + "/")}"
 `);
 
 // robots.txt + sitemap.xml (avec alternates hreflang)
-writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /emails/\n\nSitemap: ${SITE}/sitemap.xml\n`);
 const today = CFG.launchDate;
 const sm = pages.filter((p) => !NOINDEX.has(p.key)).map((p) => {
   const loc = abs(pathOf(p.l, p.key, p.sid));

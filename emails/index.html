@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Emails UNIS · aperçu</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,700..800&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --paper:#FFFFFF; --muted:#6B2A44; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
+  h1, h2, h3 { font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:condensed; line-height:1.1; margin:0; }
+  .wrap { max-width:1240px; margin:0 auto; padding:32px 16px 64px; }
+  .top { display:flex; flex-wrap:wrap; gap:16px 32px; align-items:center; justify-content:space-between; }
+  .top img { width:160px; height:auto; border-radius:10px; }
+  h1 { font-size:clamp(32px, 6vw, 52px); }
+  .lead { max-width:65ch; }
+  .tools { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0; }
+  button { font:inherit; font-weight:700; min-height:44px; padding:0 20px; border-radius:999px; border:1.5px solid var(--ink); background:transparent; color:var(--ink); cursor:pointer; }
+  button[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#fff; }
+  button:focus-visible, a:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
+  table.sum { width:100%; border-collapse:collapse; margin:24px 0 8px; background:var(--paper); border-radius:10px; overflow:hidden; font-size:15px; }
+  .sum th, .sum td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--soft); vertical-align:top; }
+  .sum th { font-family:'Bricolage Grotesque', Arial, sans-serif; }
+  .tablewrap { overflow-x:auto; }
+  a { color:var(--accent); font-weight:700; }
+  h2.section { font-size:32px; margin:48px 0 8px; }
+  .mail { display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:24px; background:var(--paper); border-radius:28px; padding:24px; margin:24px 0; }
+  .meta h2 { font-size:26px; margin:6px 0 12px; }
+  .kicker { margin:0; font-size:14px; font-weight:700; color:var(--muted); }
+  .num { display:inline-block; min-width:32px; padding:2px 8px; border-radius:999px; background:var(--accent); color:#fff; text-align:center; margin-right:6px; }
+  dl { display:grid; grid-template-columns:max-content 1fr; gap:4px 12px; margin:0 0 12px; font-size:15px; }
+  dt { font-weight:700; } dd { margin:0; }
+  code { font-size:13px; word-break:break-all; }
+  .note { background:var(--bg); border-left:4px solid var(--accent); padding:8px 12px; border-radius:10px; font-size:14px; margin:8px 0; }
+  .note.merge { border-left-color:var(--ink); }
+  .frame { width:600px; transition:width .2s; }
+  iframe { width:100%; height:1100px; border:0; border-radius:16px; background:#FFE3EE; box-shadow:0 0 0 1px var(--soft); }
+  body.mobile .frame { width:375px; }
+  @media (max-width:1000px) { .mail { grid-template-columns:1fr; } .frame { width:100%; max-width:600px; } body.mobile .frame { max-width:375px; } }
+  @media (prefers-reduced-motion: reduce) { .frame { transition:none; } }
+  footer { margin-top:48px; font-size:14px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Les emails UNIS, d'un coup d'œil</h1>
+      <p class="lead">21 emails : 12 campagnes (16 envois, dont 3 fusionnés avec les 3 newsletters) et 5 relances automatiques. Chaque aperçu est affiché à 600 px, comme dans une messagerie. Le mode sombre suit le réglage de ton appareil.</p>
+      <div class="tools" role="group" aria-label="Largeur d'aperçu">
+        <button type="button" id="b600" aria-pressed="true">Bureau · 600 px</button>
+        <button type="button" id="b375" aria-pressed="false">Mobile · 375 px</button>
+      </div>
+    </div>
+    <img src="../assets/logo/unis-logo-officiel.png" width="160" height="90" alt="Logo UNIS">
+  </div>
+
+  <div class="tablewrap">
+  <table class="sum">
+    <thead><tr><th>#</th><th>Envoi</th><th>Objet</th><th>Pré-en-tête</th><th>Segment</th></tr></thead>
+    <tbody>
+      <tr><td><a href="#m01">01</a></td><td>mercredi 2 décembre 2026</td><td>4 cadeaux drôles à moins de 10 € <strong>(newsletter fusionnée)</strong></td><td>Et ils arrivent avant le 24 décembre si tu commandes d'ici le jeudi 17.</td><td>S1 · Le cadeau qui fait rire · toute la liste FR</td></tr>
+      <tr><td><a href="#m02">02</a></td><td>mercredi 16 décembre 2026</td><td>Noël : tu as jusqu'à demain</td><td>Commande avant le jeudi 17 décembre pour une livraison avant le 24.</td><td>S1 · Cadeau qui fait rire + S3 · Organisateur·rice de groupe</td></tr>
+      <tr><td><a href="#m03">03</a></td><td>mercredi 6 janvier 2027</td><td>Ta taille, en 30 secondes <strong>(newsletter fusionnée)</strong></td><td>Mètre ruban, 3 étapes, zéro prise de tête.</td><td>S5 · Pour soi · toute la liste FR (et les personnes qui ont reçu un string à Noël)</td></tr>
+      <tr><td><a href="#m04">04</a></td><td>mercredi 3 février 2027</td><td>Pourquoi on ne dit jamais « pour lui » <strong>(newsletter fusionnée)</strong></td><td>Le drop Saint-Valentin sort aujourd'hui.</td><td>S2 · Couple complice + S4 · Collectionneur·se (propriétaires de Bo en premier)</td></tr>
+      <tr><td><a href="#m05">05</a></td><td>mercredi 10 février 2027</td><td>Le cadeau qui fait rire, puis rougir</td><td>Duo assorti à 7 €, livraison offerte dès 30 €.</td><td>S2 · Couple complice</td></tr>
+      <tr><td><a href="#m06">06</a></td><td>mardi 16 mars 2027</td><td>Le Printemps ouvre 24 h avant pour toi</td><td>Accès réservé à la liste d'attente. Ouverture publique demain.</td><td>S4 · Collectionneur·se (liste d'attente et Club de Bo) + S5 · Pour soi</td></tr>
+      <tr><td><a href="#m07">07</a></td><td>jeudi 1er avril 2027</td><td>Ceci n'est pas un poisson d'avril</td><td>Un code −15 % se cache quelque part sur le site.</td><td>S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire</td></tr>
+      <tr><td><a href="#m08">08</a></td><td>mercredi 12 mai 2027</td><td>Pride arrive. Bo a déjà sa tenue.</td><td>Précommande ouverte, envoi à partir du drop du 1er juin.</td><td>S5 · Pour soi, confort et valeurs</td></tr>
+      <tr><td><a href="#m09">09</a></td><td>mardi 1er juin 2027</td><td>Le drop Pride est là</td><td>Et l'Été arrive le 15 juin. Bo prépare sa valise.</td><td>S5 · Pour soi + S3 · Organisateur·rice de groupe</td></tr>
+      <tr><td><a href="#m10">10</a></td><td>jeudi 1er juillet 2027</td><td>Soldes : le string Été à 4 €</td><td>−20 % sur le drop Été. Prix le plus bas des 30 derniers jours : 5 €.</td><td>S3 · Organisateur·rice de groupe</td></tr>
+      <tr><td><a href="#m11">11</a></td><td>mercredi 18 août 2027</td><td>Choisis le prochain motif de Bo</td><td>Plusieurs motifs, un seul sera fabriqué. Tu as le dernier mot.</td><td>S4 · Collectionneur·se de Bo + toute la liste FR</td></tr>
+      <tr><td><a href="#m12">12</a></td><td>mercredi 8 septembre 2027</td><td>Rentrée : 5 strings pour 17 €</td><td>Le lot de 5 Essentiels passe à 17 € au lieu de 20 €.</td><td>S5 · Pour soi + S3 · Organisateur·rice de groupe</td></tr>
+      <tr><td><a href="#m13">13</a></td><td>vendredi 1er octobre 2027</td><td>Fais-toi peur (pour 5 €)</td><td>Drop Halloween : un modèle phosphorescent en série limitée.</td><td>S4 · Collectionneur·se de Bo + S5 · Pour soi (capsule Octobre Rose)</td></tr>
+      <tr><td><a href="#m14">14</a></td><td>mercredi 27 octobre 2027</td><td>Ta tenue d'Halloween est prête ?</td><td>Lot de 5 à 20 € : toute la bande dans le même délire.</td><td>S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire</td></tr>
+      <tr><td><a href="#m15">15</a></td><td>lundi 1er novembre 2027</td><td>Bo édition Noël est arrivé</td><td>Le drop Noël est ouvert. Ton Secret Santa n'a qu'à bien se tenir.</td><td>S1 · Cadeau qui fait rire + S4 · Collectionneur·se de Bo</td></tr>
+      <tr><td><a href="#m16">16</a></td><td>vendredi 26 novembre 2027</td><td>Pas de −70 %. Juste 5 €.</td><td>Nos prix ne gonflent pas la veille pour mieux dégonfler.</td><td>S5 · Pour soi + S1 · Cadeau qui fait rire</td></tr>
+      <tr><td><a href="#m17">17</a></td><td>Inscription confirmée (double opt-in) · immédiat</td><td>Bienvenue, Bo t'attendait</td><td>Qui est Bo, quelle coupe choisir, et ce qui arrive bientôt.</td><td>Nouvelles personnes inscrites, tous segments</td></tr>
+      <tr><td><a href="#m18">18</a></td><td>Panier abandonné · 1 h</td><td>Bo garde ton panier au chaud</td><td>Tes articles t'attendent. Livraison offerte dès 30 €.</td><td>Personnes avec un panier non validé (souvent S1)</td></tr>
+      <tr><td><a href="#m19">19</a></td><td>Panier toujours abandonné · 24 h</td><td>Il reste encore des Rennes disco</td><td>Série limitée : le stock réel est affiché sur chaque article.</td><td>Personnes avec un panier non validé, sans achat après le 1er rappel</td></tr>
+      <tr><td><a href="#m20">20</a></td><td>Commande livrée · J+7</td><td>Alors, ça te va ?</td><td>Une note de 0 à 10, et c'est tout.</td><td>Clients livrés depuis 7 jours, tous segments</td></tr>
+      <tr><td><a href="#m21">21</a></td><td>Aucun achat depuis 6 mois</td><td>Bo a changé de tenue</td><td>Les drops que tu as manqués, et 1 tampon offert au Club.</td><td>Clients inactifs depuis 6 mois</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note merge">Fusions : la newsletter 1 (2 déc. 2026) avec la campagne de décembre, la newsletter 2 (6 janv. 2027) avec la campagne de janvier, la newsletter 3 (3 févr. 2027) avec la campagne de février. Les envois de décembre sont datés de 2026 pour coller à la date limite de Noël (jeudi 17 décembre 2026) ; les autres campagnes suivent les dates 2027 du doc 03.</p>
+
+  <h2 class="section">Campagnes et newsletters</h2>
+
+    <article class="mail" id="m01">
+      <header class="meta">
+        <p class="kicker"><span class="num">01</span> Newsletter 1 + campagne de décembre (envoi 1)</p>
+        <h2>4 cadeaux drôles à moins de 10 €</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Secret Santa : Bo a une idée</dd>
+          <dt>Pré-en-tête</dt><dd>Et ils arrivent avant le 24 décembre si tu commandes d'ici le jeudi 17.</dd>
+          <dt>Envoi</dt><dd>mercredi 2 décembre 2026</dd>
+          <dt>Segment</dt><dd>S1 · Le cadeau qui fait rire · toute la liste FR</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2026-12-newsletter-secret-santa</code></dd>
+        </dl>
+        <p class="note merge">Fusion : la newsletter 1 (« 4 cadeaux drôles à moins de 10 € », 2 déc.) et la campagne de décembre « Calendrier de l'Avent » sont un seul envoi.</p>
+        <p class="note">Le doc liste le coffret (55 €) parmi les « 4 cadeaux à moins de 10 € » : remplacé par le string à 5 €.</p>
+        <p><a class="open" href="01-newsletter-secret-santa-calendrier-avent.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="01-newsletter-secret-santa-calendrier-avent.html" title="Aperçu : 4 cadeaux drôles à moins de 10 €" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m02">
+      <header class="meta">
+        <p class="kicker"><span class="num">02</span> Campagne de décembre (envoi 2)</p>
+        <h2>Noël : tu as jusqu'à demain</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Bo ferme l'atelier jeudi soir</dd>
+          <dt>Pré-en-tête</dt><dd>Commande avant le jeudi 17 décembre pour une livraison avant le 24.</dd>
+          <dt>Envoi</dt><dd>mercredi 16 décembre 2026</dd>
+          <dt>Segment</dt><dd>S1 · Cadeau qui fait rire + S3 · Organisateur·rice de groupe</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2026-12-derniere-livraison-noel</code></dd>
+        </dl>
+        
+        <p class="note">Le doc place la dernière livraison au jeudi 16 décembre (calendrier 2027) ; ici, date limite 2026 : jeudi 17 décembre.</p>
+        <p><a class="open" href="02-campagne-decembre-derniere-livraison.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="02-campagne-decembre-derniere-livraison.html" title="Aperçu : Noël : tu as jusqu'à demain" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m03">
+      <header class="meta">
+        <p class="kicker"><span class="num">03</span> Newsletter 2 + campagne de janvier</p>
+        <h2>Ta taille, en 30 secondes</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Plat ou Poche ? On t'explique</dd>
+          <dt>Pré-en-tête</dt><dd>Mètre ruban, 3 étapes, zéro prise de tête.</dd>
+          <dt>Envoi</dt><dd>mercredi 6 janvier 2027</dd>
+          <dt>Segment</dt><dd>S5 · Pour soi · toute la liste FR (et les personnes qui ont reçu un string à Noël)</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-01-newsletter-taille-soldes</code></dd>
+        </dl>
+        <p class="note merge">Fusion : la newsletter 2 (« Ta taille, en 30 secondes », 6 janv.) et la campagne de janvier « Nouvelle année, nouveaux basiques » partent le même jour.</p>
+        
+        <p><a class="open" href="03-newsletter-taille-soldes-janvier.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="03-newsletter-taille-soldes-janvier.html" title="Aperçu : Ta taille, en 30 secondes" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m04">
+      <header class="meta">
+        <p class="kicker"><span class="num">04</span> Newsletter 3 + campagne de février (envoi 1)</p>
+        <h2>Pourquoi on ne dit jamais « pour lui »</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Un string, tous les corps</dd>
+          <dt>Pré-en-tête</dt><dd>Le drop Saint-Valentin sort aujourd'hui.</dd>
+          <dt>Envoi</dt><dd>mercredi 3 février 2027</dd>
+          <dt>Segment</dt><dd>S2 · Couple complice + S4 · Collectionneur·se (propriétaires de Bo en premier)</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-02-drop-saint-valentin</code></dd>
+        </dl>
+        <p class="note merge">Fusion : la newsletter 3 (« Pourquoi on ne dit jamais “pour lui” », 3 févr.) annonce le drop Saint-Valentin, comme la campagne de février.</p>
+        
+        <p><a class="open" href="04-newsletter-unisexe-drop-saint-valentin.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="04-newsletter-unisexe-drop-saint-valentin.html" title="Aperçu : Pourquoi on ne dit jamais « pour lui »" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m05">
+      <header class="meta">
+        <p class="kicker"><span class="num">05</span> Campagne de février (envoi 2)</p>
+        <h2>Le cadeau qui fait rire, puis rougir</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Saint-Valentin : Bo a la solution</dd>
+          <dt>Pré-en-tête</dt><dd>Duo assorti à 7 €, livraison offerte dès 30 €.</dd>
+          <dt>Envoi</dt><dd>mercredi 10 février 2027</dd>
+          <dt>Segment</dt><dd>S2 · Couple complice</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-02-saint-valentin-rappel</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="05-campagne-saint-valentin-rappel.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="05-campagne-saint-valentin-rappel.html" title="Aperçu : Le cadeau qui fait rire, puis rougir" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m06">
+      <header class="meta">
+        <p class="kicker"><span class="num">06</span> Campagne de mars</p>
+        <h2>Le Printemps ouvre 24 h avant pour toi</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Bo a fleuri. Tu passes en premier ?</dd>
+          <dt>Pré-en-tête</dt><dd>Accès réservé à la liste d'attente. Ouverture publique demain.</dd>
+          <dt>Envoi</dt><dd>mardi 16 mars 2027</dd>
+          <dt>Segment</dt><dd>S4 · Collectionneur·se (liste d'attente et Club de Bo) + S5 · Pour soi</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-03-drop-printemps</code></dd>
+        </dl>
+        
+        <p class="note">Envoi avancé au mardi 16 mars : le doc prévoit le 17 mars, jour d'ouverture du drop, ce qui rend impossible l'« accès 24 h avant ».</p>
+        <p><a class="open" href="06-campagne-printemps-acces-avant.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="06-campagne-printemps-acces-avant.html" title="Aperçu : Le Printemps ouvre 24 h avant pour toi" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m07">
+      <header class="meta">
+        <p class="kicker"><span class="num">07</span> Campagne d'avril</p>
+        <h2>Ceci n'est pas un poisson d'avril</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Bo a caché un code. Bonne chance.</dd>
+          <dt>Pré-en-tête</dt><dd>Un code −15 % se cache quelque part sur le site.</dd>
+          <dt>Envoi</dt><dd>jeudi 1er avril 2027</dd>
+          <dt>Segment</dt><dd>S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-04-code-cache</code></dd>
+        </dl>
+        
+        <p class="note">« Chasse aux œufs » remplacée par « chasse au code » (pas de référence à l'enfance).</p>
+        <p><a class="open" href="07-campagne-poisson-avril-code-cache.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="07-campagne-poisson-avril-code-cache.html" title="Aperçu : Ceci n'est pas un poisson d'avril" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m08">
+      <header class="meta">
+        <p class="kicker"><span class="num">08</span> Campagne de mai</p>
+        <h2>Pride arrive. Bo a déjà sa tenue.</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Précommande Pride : tu passes devant</dd>
+          <dt>Pré-en-tête</dt><dd>Précommande ouverte, envoi à partir du drop du 1er juin.</dd>
+          <dt>Envoi</dt><dd>mercredi 12 mai 2027</dd>
+          <dt>Segment</dt><dd>S5 · Pour soi, confort et valeurs</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-05-pride-precommande</code></dd>
+        </dl>
+        
+        <p class="note">« 10 % reversés » du doc remplacés par « partenariat en cours de discussion », sans montant.</p>
+        <p><a class="open" href="08-campagne-pride-precommande.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="08-campagne-pride-precommande.html" title="Aperçu : Pride arrive. Bo a déjà sa tenue." loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m09">
+      <header class="meta">
+        <p class="kicker"><span class="num">09</span> Campagne de juin</p>
+        <h2>Le drop Pride est là</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Duo Pride à 7 €, fierté assortie</dd>
+          <dt>Pré-en-tête</dt><dd>Et l'Été arrive le 15 juin. Bo prépare sa valise.</dd>
+          <dt>Envoi</dt><dd>mardi 1er juin 2027</dd>
+          <dt>Segment</dt><dd>S5 · Pour soi + S3 · Organisateur·rice de groupe</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-06-drop-pride</code></dd>
+        </dl>
+        
+        <p class="note">Le doc annonce « Drop Pride + Été » le 1er juin ; CONTEXTE-IA fixe l'Été au 15 juin : l'email annonce donc l'Été pour le 15.</p>
+        <p><a class="open" href="09-campagne-drop-pride-ete.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="09-campagne-drop-pride-ete.html" title="Aperçu : Le drop Pride est là" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m10">
+      <header class="meta">
+        <p class="kicker"><span class="num">10</span> Campagne de juillet</p>
+        <h2>Soldes : le string Été à 4 €</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Toute la bande en UNIS cet été</dd>
+          <dt>Pré-en-tête</dt><dd>−20 % sur le drop Été. Prix le plus bas des 30 derniers jours : 5 €.</dd>
+          <dt>Envoi</dt><dd>jeudi 1er juillet 2027</dd>
+          <dt>Segment</dt><dd>S3 · Organisateur·rice de groupe</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-07-soldes-ete</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="10-campagne-soldes-ete-bande.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="10-campagne-soldes-ete-bande.html" title="Aperçu : Soldes : le string Été à 4 €" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m11">
+      <header class="meta">
+        <p class="kicker"><span class="num">11</span> Campagne d'août</p>
+        <h2>Choisis le prochain motif de Bo</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Ton vote décide du drop Saint-Valentin</dd>
+          <dt>Pré-en-tête</dt><dd>Plusieurs motifs, un seul sera fabriqué. Tu as le dernier mot.</dd>
+          <dt>Envoi</dt><dd>mercredi 18 août 2027</dd>
+          <dt>Segment</dt><dd>S4 · Collectionneur·se de Bo + toute la liste FR</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-08-vote-saint-valentin</code></dd>
+        </dl>
+        
+        <p class="note">Pas encore de page de vote sur le site : le bouton mène au Club de Bo.</p>
+        <p><a class="open" href="11-campagne-vote-drop-saint-valentin.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="11-campagne-vote-drop-saint-valentin.html" title="Aperçu : Choisis le prochain motif de Bo" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m12">
+      <header class="meta">
+        <p class="kicker"><span class="num">12</span> Campagne de septembre</p>
+        <h2>Rentrée : 5 strings pour 17 €</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Retour aux Essentiels (et au confort)</dd>
+          <dt>Pré-en-tête</dt><dd>Le lot de 5 Essentiels passe à 17 € au lieu de 20 €.</dd>
+          <dt>Envoi</dt><dd>mercredi 8 septembre 2027</dd>
+          <dt>Segment</dt><dd>S5 · Pour soi + S3 · Organisateur·rice de groupe</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-09-rentree-essentiels</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="12-campagne-rentree-essentiels.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="12-campagne-rentree-essentiels.html" title="Aperçu : Rentrée : 5 strings pour 17 €" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m13">
+      <header class="meta">
+        <p class="kicker"><span class="num">13</span> Campagne d'octobre (envoi 1)</p>
+        <h2>Fais-toi peur (pour 5 €)</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Ce string brille dans le noir</dd>
+          <dt>Pré-en-tête</dt><dd>Drop Halloween : un modèle phosphorescent en série limitée.</dd>
+          <dt>Envoi</dt><dd>vendredi 1er octobre 2027</dd>
+          <dt>Segment</dt><dd>S4 · Collectionneur·se de Bo + S5 · Pour soi (capsule Octobre Rose)</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-10-drop-halloween</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="13-campagne-drop-halloween-octobre-rose.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="13-campagne-drop-halloween-octobre-rose.html" title="Aperçu : Fais-toi peur (pour 5 €)" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m14">
+      <header class="meta">
+        <p class="kicker"><span class="num">14</span> Campagne d'octobre (envoi 2)</p>
+        <h2>Ta tenue d'Halloween est prête ?</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Dimanche, c'est Halloween</dd>
+          <dt>Pré-en-tête</dt><dd>Lot de 5 à 20 € : toute la bande dans le même délire.</dd>
+          <dt>Envoi</dt><dd>mercredi 27 octobre 2027</dd>
+          <dt>Segment</dt><dd>S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-10-halloween-bande</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="14-campagne-halloween-tenue-bande.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="14-campagne-halloween-tenue-bande.html" title="Aperçu : Ta tenue d'Halloween est prête ?" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m15">
+      <header class="meta">
+        <p class="kicker"><span class="num">15</span> Campagne de novembre (envoi 1)</p>
+        <h2>Bo édition Noël est arrivé</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Le Secret Santa peut commencer</dd>
+          <dt>Pré-en-tête</dt><dd>Le drop Noël est ouvert. Ton Secret Santa n'a qu'à bien se tenir.</dd>
+          <dt>Envoi</dt><dd>lundi 1er novembre 2027</dd>
+          <dt>Segment</dt><dd>S1 · Cadeau qui fait rire + S4 · Collectionneur·se de Bo</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-11-drop-noel</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="15-campagne-drop-noel.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="15-campagne-drop-noel.html" title="Aperçu : Bo édition Noël est arrivé" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m16">
+      <header class="meta">
+        <p class="kicker"><span class="num">16</span> Campagne de novembre (envoi 2)</p>
+        <h2>Pas de −70 %. Juste 5 €.</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Black Friday ? Bo fait la sieste.</dd>
+          <dt>Pré-en-tête</dt><dd>Nos prix ne gonflent pas la veille pour mieux dégonfler.</dd>
+          <dt>Envoi</dt><dd>vendredi 26 novembre 2027</dd>
+          <dt>Segment</dt><dd>S5 · Pour soi + S1 · Cadeau qui fait rire</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=2027-11-black-friday-raisonne</code></dd>
+        </dl>
+        
+        <p class="note">« Mini-string offert » non repris (Bo inclut déjà un mini-string, mécanique à préciser). Don sans bénéficiaire nommé.</p>
+        <p><a class="open" href="16-campagne-black-friday-raisonne.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="16-campagne-black-friday-raisonne.html" title="Aperçu : Pas de −70 %. Juste 5 €." loading="lazy"></iframe></div>
+    </article>
+
+  <h2 class="section">Relances automatiques</h2>
+  <p>Les éléments entre crochets ([prénom], contenu du panier, drops manqués) sont remplis par l'outil d'emailing. Le lien de désinscription sera remplacé par celui de l'outil (Klaviyo ou Brevo).</p>
+
+    <article class="mail" id="m17">
+      <header class="meta">
+        <p class="kicker"><span class="num">17</span> Relance automatique 1 · Bienvenue</p>
+        <h2>Bienvenue, Bo t'attendait</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Ça y est, tu fais partie de la bande</dd>
+          <dt>Pré-en-tête</dt><dd>Qui est Bo, quelle coupe choisir, et ce qui arrive bientôt.</dd>
+          <dt>Déclencheur</dt><dd>Inscription confirmée (double opt-in) · immédiat</dd>
+          <dt>Segment</dt><dd>Nouvelles personnes inscrites, tous segments</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=auto-bienvenue</code></dd>
+        </dl>
+        
+        <p class="note">Le doc 03 prévoit 3 emails de bienvenue et −10 % ; le doc 10 un seul email sans réduction : version doc 10 retenue.</p>
+        <p><a class="open" href="17-relance-1-bienvenue.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="17-relance-1-bienvenue.html" title="Aperçu : Bienvenue, Bo t'attendait" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m18">
+      <header class="meta">
+        <p class="kicker"><span class="num">18</span> Relance automatique 2 · Panier abandonné</p>
+        <h2>Bo garde ton panier au chaud</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Tu as oublié quelque chose ?</dd>
+          <dt>Pré-en-tête</dt><dd>Tes articles t'attendent. Livraison offerte dès 30 €.</dd>
+          <dt>Déclencheur</dt><dd>Panier abandonné · 1 h</dd>
+          <dt>Segment</dt><dd>Personnes avec un panier non validé (souvent S1)</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=auto-panier-1h</code></dd>
+        </dl>
+        
+        <p class="note">Pas d'URL de panier sur le site de démo : le bouton mène à la page du drop.</p>
+        <p><a class="open" href="18-relance-2-panier-1h.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="18-relance-2-panier-1h.html" title="Aperçu : Bo garde ton panier au chaud" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m19">
+      <header class="meta">
+        <p class="kicker"><span class="num">19</span> Relance automatique 3 · Panier abandonné (2e rappel)</p>
+        <h2>Il reste encore des Rennes disco</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Ton panier est toujours là</dd>
+          <dt>Pré-en-tête</dt><dd>Série limitée : le stock réel est affiché sur chaque article.</dd>
+          <dt>Déclencheur</dt><dd>Panier toujours abandonné · 24 h</dd>
+          <dt>Segment</dt><dd>Personnes avec un panier non validé, sans achat après le 1er rappel</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=auto-panier-24h</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="19-relance-3-panier-24h.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="19-relance-3-panier-24h.html" title="Aperçu : Il reste encore des Rennes disco" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m20">
+      <header class="meta">
+        <p class="kicker"><span class="num">20</span> Relance automatique 4 · Après livraison</p>
+        <h2>Alors, ça te va ?</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Bo veut savoir (en 1 clic)</dd>
+          <dt>Pré-en-tête</dt><dd>Une note de 0 à 10, et c'est tout.</dd>
+          <dt>Déclencheur</dt><dd>Commande livrée · J+7</dd>
+          <dt>Segment</dt><dd>Clients livrés depuis 7 jours, tous segments</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=auto-avis-j7</code></dd>
+        </dl>
+        
+        <p class="note">Le doc 03 prévoit J+5 (entretien) et J+21 (avis) ; le doc 10, J+7 : version doc 10 retenue.</p>
+        <p><a class="open" href="20-relance-4-avis-j7.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="20-relance-4-avis-j7.html" title="Aperçu : Alors, ça te va ?" loading="lazy"></iframe></div>
+    </article>
+
+    <article class="mail" id="m21">
+      <header class="meta">
+        <p class="kicker"><span class="num">21</span> Relance automatique 5 · Réactivation</p>
+        <h2>Bo a changé de tenue</h2>
+        <dl>
+          <dt>Objet B</dt><dd>Ça fait un bail, [prénom]</dd>
+          <dt>Pré-en-tête</dt><dd>Les drops que tu as manqués, et 1 tampon offert au Club.</dd>
+          <dt>Déclencheur</dt><dd>Aucun achat depuis 6 mois</dd>
+          <dt>Segment</dt><dd>Clients inactifs depuis 6 mois</dd>
+          <dt>UTM</dt><dd><code>utm_campaign=auto-reactivation-6-mois</code></dd>
+        </dl>
+        
+        
+        <p><a class="open" href="21-relance-5-reactivation-6-mois.html">Ouvrir l'email seul</a></p>
+      </header>
+      <div class="frame"><iframe src="21-relance-5-reactivation-6-mois.html" title="Aperçu : Bo a changé de tenue" loading="lazy"></iframe></div>
+    </article>
+
+  <footer>UNIS SRL (en constitution), Bruxelles · Emails de démonstration, aucun envoi réel · Un fil. Tous les corps. Même les ours.</footer>
+</div>
+<script>
+  (function () {
+    var b6 = document.getElementById('b600'), b3 = document.getElementById('b375');
+    function set(m) { document.body.classList.toggle('mobile', m); b6.setAttribute('aria-pressed', String(!m)); b3.setAttribute('aria-pressed', String(m)); }
+    b6.addEventListener('click', function () { set(false); });
+    b3.addEventListener('click', function () { set(true); });
+  })();
+</script>
+</body>
+</html>
