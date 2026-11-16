@@ -18,6 +18,7 @@ import { LANGS, DEFAULT_LANG, XDEFAULT, PATHS, SEASONS, BASE, ESS, SIZES, SIZE_T
 import { thong, bear, logoMark, SHAPE } from "./art.mjs";
 import { V as VPC } from "./i18n-vpc.mjs";
 import { STORY } from "./i18n-story.mjs";
+import { QUIZ } from "./i18n-quiz.mjs";
 // Pages produits et idées cadeaux (FR de référence ; NL, EN, DE à faire relire par une personne native).
 import PD_FR from "./i18n-pdp/fr.mjs";
 import PD_NL from "./i18n-pdp/nl.mjs";
@@ -60,6 +61,7 @@ function pathOf(l, key, sid) {
   if (key === "account") return `${l}/${A[l].slug}`;
   if (key === "product") return `${l}/${PD[l].base}${PSLUG[sid][l]}/`;
   if (key === "story") return `${l}/${STORY[l].slug}`;
+  if (key === "quiz") return `${l}/${QUIZ[l].slug}`;
   if (key === "behind") return `${l}/${VPC[l].behind.slug}`;
   if (key === "gifts") return `${l}/${PD[l].gifts.hubPath}`;
   if (key === "gift") return `${l}/${PD[l].gifts.pages[sid].path}`;
@@ -344,7 +346,7 @@ ${body2}
     <div><p class="foot-logo">${logoMark()}<span class="sr">UNIS</span></p><p>${t.signature}</p></div>
     <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "gifts"))}">${PD[l].gifts.nav}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
     <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li><li><a href="${here(pathOf(l, "account"))}">${a.navAccount}</a></li><li><button type="button" class="linkbtn" data-cookie-open>${a.cookie.manage}</button></li></ul></div>
-    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "behind"))}">${VPC[l].behind.nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
+    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "quiz"))}">${QUIZ[l].nav}</a></li><li><a href="${here(pathOf(l, "behind"))}">${VPC[l].behind.nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
   </div>
   <div class="trust">
     <div><p class="ft">${x.payTitle}</p>${payBadges()}<p class="small">${x.payNote}</p></div>
@@ -420,7 +422,7 @@ for (const l of LANGS) {
   ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-side"><p class="bo-note right">${VPC[l].notes.hero}</p><div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}</div>${heroInset(l)}</div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
 <div class="wrap">${LIVE.id === "noel" ? xmasBar(l) : ""}${reassure(l)}</div>
-<section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><p class="bo-note right">${VPC[l].notes.forwho}</p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
+<section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><p class="bo-note right">${VPC[l].notes.forwho}</p><p class="go-row"><a class="btn primary go" href="${here(pathOf(l, "quiz"))}">${QUIZ[l].cta}</a></p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
 <section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}${goRow(here, [[pathOf(l, "seasons"), VPC[l].go.allSeasons], [pathOf(l, "season", "rose"), VPC[l].go.rose], [pathOf(l, "story"), VPC[l].go.story]])}</div></section>
 <section class="shop band" aria-labelledby="hshop"><div class="wrap"><h2 id="hshop">${fill(t.home.shopTitle, { s: liveName })}</h2><p class="intro">${t.home.shopIntro}</p>${grid(homeProducts, l)}<p class="more"><a class="btn ghost" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.seeAll, { s: liveName })}</a></p></div></section>
 <section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div>${goRow(here, [[pathOf(l, "article", "unisexe"), VPC[l].go.unisex], [pathOf(l, "size"), VPC[l].go.sizeGuide], [pathOf(l, "article", "taille"), VPC[l].go.sizeArt]])}</div></section>
@@ -529,6 +531,7 @@ ${buyBar(p, l)}` }));
   add(l, "gifts", null, layout({ l, key: "gifts", title: gd.hub.title, desc: gd.hub.desc,
     ld: [crumbsLD(hubCrumbs), { "@type": "CollectionPage", name: gd.hub.h1, url: abs(pathOf(l, "gifts")), hasPart: GIFTS.map((g) => ({ "@type": "Article", headline: gd.pages[g].h1, url: abs(pathOf(l, "gift", g)) })) }],
     body: (here) => `${pageHead(gd.hub.h1, gd.hub.intro, hubCrumbs, here)}
+<div class="wrap"><p class="go-row"><a class="btn primary go" href="${here(pathOf(l, "quiz"))}">${QUIZ[l].cta}</a></p></div>
 <section class="band"><div class="wrap"><h2>${gd.hub.occasionsTitle}</h2><div class="posts">${GIFTS.map((g) => `<article class="post"><h3><a href="${here(pathOf(l, "gift", g))}">${esc(gd.pages[g].h1)}</a></h3><p>${esc(gx(gd.pages[g].card))}</p><a class="add" href="${here(pathOf(l, "gift", g))}" aria-hidden="true" tabindex="-1">${gd.hub.read}</a></article>`).join("")}</div></div></section>
 <section class="band"><div class="wrap"><h2>${gd.hub.budgetTitle}</h2><ul class="ticks budget">${gd.hub.budget.map(([k, label]) => `<li><a href="${here(refPath(k))}">${esc(label)}</a></li>`).join("")}</ul></div></section>
 ${waitlist(l)}` }));
@@ -575,6 +578,42 @@ ${faqCats(l, here)}` }));
     add(l, "behind", null, layout({ l, key: "behind", title: bh.title, desc: bh.desc,
       body: (here) => `${pageHead(bh.h1, bh.intro, [home, [bh.nav, pathOf(l, "behind")]], here)}
 <section class="band"><div class="wrap"><ul class="forwho-list">${bh.items.map(([h, p, href]) => `<li><h3>${h}</h3><p>${p}</p><a href="${BASE_PATH}${href}" aria-label="${bh.open} : ${h}">${bh.open} →</a></li>`).join("")}</ul></div></section>` }));
+  }
+
+  // Quiz « Quel UNIS pour qui ? » : Bo recommande un produit existant (logique dans app.js)
+  {
+    const qz = QUIZ[l], ps = seasonProducts(LIVE, l), by = (k) => ps.find((p) => p.kind === k);
+    const img = (p) => { const k = p && (p.photo || p.ldPhoto); return k ? BASE_PATH + photoUrl(k, 600) : BASE_PATH + "assets/images/og-unis.jpg"; };
+    const prod = (p) => p && { name: p.name, price: eur(p.price, l), url: BASE_PATH + pathOf(l, "product", p.sku), img: img(p) };
+    const box = ps.find((p) => p.sku.startsWith("UNIS-BOX"));
+    const packUrl = BASE_PATH + pathOf(l, "season", LIVE.id) + "#hpacks";
+    const results = { mini: prod(by("mini")), adult: prod(by("adult")), duo: prod(by("duo")), ess: prod(essProduct(l)), lot: prod(lotProduct(l)), bo: prod(boProduct(l)), box: prod(box),
+      kitSanta: { name: VPC[l].pack1, price: eur(by("duo").price * 3, l), url: packUrl, img: img(by("duo")) },
+      kitGang: { name: VPC[l].pack2, price: eur(PRICES.lot5 + by("adult").price * 2, l), url: packUrl, img: img(lotProduct(l)) } };
+    for (const k of Object.keys(results)) if (results[k]) results[k].why = qz.why[k.startsWith("kit") ? "kit" : k];
+    add(l, "quiz", null, layout({ l, key: "quiz", title: qz.title, desc: qz.desc,
+      ld: [crumbsLD([home, [qz.nav, pathOf(l, "quiz")]]), { "@type": "WebPage", name: qz.title, description: qz.desc, url: abs(pathOf(l, "quiz")) }],
+      body: (here) => `${pageHead(qz.h1, qz.intro, [home, [qz.nav, pathOf(l, "quiz")]], here)}
+<section class="band quiz-wrap"><div class="wrap">
+<form class="quiz" id="quiz" data-results="${esc(JSON.stringify(results))}" data-step="${esc(qz.step)}" novalidate>
+  <p class="quiz-progress" aria-live="polite"><span class="quiz-count"></span><span class="quiz-bar"><i></i></span></p>
+  ${qz.q.map(([q, opts], i) => `<fieldset class="quiz-q" data-q="${i}">
+    <legend class="h3">${q}</legend>
+    <div class="quiz-opts">${opts.map(([v, label]) => `<label class="quiz-opt"><input type="radio" name="q${i}" value="${v}" required><span>${label}</span></label>`).join("")}</div>
+  </fieldset>`).join("")}
+  <p class="quiz-nav"><button type="button" class="btn ghost" data-quiz-back>${qz.back}</button><button type="submit" class="btn primary" data-quiz-next>${qz.next}</button></p>
+</form>
+<section class="quiz-result" id="quiz-result" hidden aria-live="polite" tabindex="-1" data-alt-label="${esc(qz.alt)} ">
+  <h2>${qz.resultTitle}</h2><p class="bo-note">${qz.note}</p>
+  <div class="quiz-pick"></div>
+  <p class="quiz-alt"></p>
+  ${LIVE.id === "noel" ? `<p class="hero-trust">${qz.tip}</p>` : ""}
+  <p class="go-row"><button type="button" class="btn ghost go" data-quiz-restart>${qz.restart}</button><button type="button" class="btn ghost go" data-share data-title="${esc(qz.title.split(" | ")[0])}" data-url="${abs(pathOf(l, "quiz"))}">${qz.share}</button><a class="btn ghost go" href="${here(pathOf(l, "gifts"))}">${PD[l].gifts.nav}</a></p>
+  <p><b>${qz.waitHint}</b></p>
+</section>
+</div></section>
+${waitlist(l)}`,
+    }));
   }
 
   // L'histoire de Bo (SEO marque + « ours de collection »)

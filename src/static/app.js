@@ -219,6 +219,52 @@
       .catch(() => {});
   }
 
+  // Quiz « Quel UNIS pour qui ? » : une question à la fois, puis Bo recommande un produit existant.
+  const quiz = document.getElementById("quiz");
+  if (quiz) {
+    const qs = [...quiz.querySelectorAll(".quiz-q")], res = JSON.parse(quiz.dataset.results), out = document.getElementById("quiz-result");
+    const back = $("[data-quiz-back]", quiz), count = $(".quiz-count", quiz), bar = $(".quiz-bar i", quiz);
+    let i = 0;
+    const show = () => {
+      qs.forEach((q, k) => (q.hidden = k !== i));
+      back.hidden = i === 0;
+      count.textContent = fill(quiz.dataset.step, { n: i + 1, t: qs.length });
+      bar.style.width = ((i + 1) / qs.length) * 100 + "%";
+      const first = $("input:checked", qs[i]) || $("input", qs[i]); if (document.activeElement && quiz.contains(document.activeElement)) first.focus();
+    };
+    const val = (k) => ($(`input[name=q${k}]:checked`, quiz) || {}).value;
+    const pick = () => {
+      const [who, budget, size, , style, reaction] = [0, 1, 2, 3, 4, 5].map(val);
+      const big = budget === "more", mid = budget === "30", small = budget === "5";
+      let r;
+      if (who === "fan") r = big ? "bo" : mid ? "duo" : "mini";
+      else if (who === "gang") r = big ? "kitGang" : mid ? "lot" : "adult";
+      else if (who === "partner") r = big ? "box" : small ? (size === "no" ? "mini" : "adult") : "duo";
+      else if (who === "me") r = style === "plain" ? (mid || big ? "lot" : "ess") : small ? "adult" : "duo";
+      else r = size === "no" ? "mini" : small ? "adult" : budget === "10" ? "duo" : big ? "bo" : "kitSanta";
+      if (reaction === "keep" && big && r !== "box") r = "bo";
+      if (size === "no" && ["adult", "duo"].includes(r) && small) r = "mini";
+      const alt = { mini: "duo", adult: "duo", duo: big ? "box" : "adult", ess: "lot", lot: "kitGang", kitGang: "lot", kitSanta: "duo", bo: "box", box: "bo" }[r] || "mini";
+      return [res[r] ? r : "adult", res[alt] ? alt : "bo"];
+    };
+    const card = (p, big) => `<a class="quiz-card${big ? " big" : ""}" href="${p.url}"><img src="${p.img}" alt="" loading="lazy" width="300" height="300"><span><b>${esc(p.name)}</b> <span class="price">${esc(p.price)}</span>${big ? `<span class="why">${esc(p.why)}</span>` : ""}</span></a>`;
+    quiz.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!val(i)) { $("input", qs[i]).focus(); qs[i].classList.add("need"); return; }
+      qs[i].classList.remove("need");
+      if (i < qs.length - 1) { i++; show(); return; }
+      const [r, alt] = pick();
+      $(".quiz-pick", out).innerHTML = card(res[r], true);
+      $(".quiz-alt", out).innerHTML = `${esc(out.dataset.altLabel || "")}${card(res[alt], false)}`;
+      quiz.hidden = true; out.hidden = false; out.focus();
+      track("quiz_complete", { result: r });
+    });
+    quiz.addEventListener("change", (e) => { if (e.target.type === "radio") { qs[i].classList.remove("need"); setTimeout(() => quiz.requestSubmit(), 180); } });
+    back.addEventListener("click", () => { if (i > 0) { i--; show(); } });
+    $("[data-quiz-restart]", out).addEventListener("click", () => { quiz.reset(); i = 0; out.hidden = true; quiz.hidden = false; show(); $("input", qs[0]).focus(); });
+    show();
+  }
+
   const CK = "unis_consent", SIX_MONTHS = 60 * 60 * 24 * 182;
   const readConsent = () => {
     const m = document.cookie.match(/(?:^|;\s*)unis_consent=([^;]+)/);

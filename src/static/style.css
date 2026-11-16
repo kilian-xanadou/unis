@@ -496,3 +496,32 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 /* Rangée « aller plus loin » */
 .go-row{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0;max-width:none}
 .btn.go{min-height:44px;padding:0 16px;font-size:.95rem;box-shadow:3px 3px 0 var(--ink)}
+
+/* Quiz « Quel UNIS pour qui ? » */
+.quiz{background:var(--paper);color:var(--paper-ink);border:2px solid #3E031B;border-radius:6px;box-shadow:6px 6px 0 #3E031B;padding:24px;max-width:720px;position:relative}
+.quiz::before{content:"";position:absolute;top:-12px;left:40px;width:96px;height:26px;background:var(--tape);transform:rotate(-3deg)}
+.quiz-progress{display:flex;align-items:center;gap:12px;font-weight:700;margin:0 0 16px;max-width:none}
+.quiz-bar{flex:1;height:8px;background:#3E031B1a;border-radius:99px;overflow:hidden}
+.quiz-bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.quiz-q{border:0;padding:0;margin:0}
+.quiz-q legend{font-size:1.6rem;margin-bottom:14px;font-family:var(--display)}
+.quiz-opts{display:grid;gap:10px}
+.quiz-opt{display:flex;align-items:center;gap:12px;min-height:52px;padding:10px 16px;border:2px solid #3E031B;border-radius:10px;cursor:pointer;background:#fff;font-weight:700}
+.quiz-opt:hover{background:var(--postit)}
+.quiz-opt input{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.quiz-opt:has(input:checked){background:var(--postit);box-shadow:3px 3px 0 #3E031B}
+.quiz-opt:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+.quiz-q.need .quiz-opts{outline:3px dashed var(--accent);outline-offset:6px}
+.quiz-nav{display:flex;justify-content:space-between;gap:12px;margin:20px 0 0;max-width:none}
+.quiz-nav .btn[hidden]{display:none}
+.quiz-result{max-width:720px}
+.quiz-result:focus{outline:none}
+.quiz-card{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center;text-decoration:none;color:#3E031B;background:#fff;border:2px solid #3E031B;border-radius:6px;padding:12px;box-shadow:4px 4px 0 #3E031B;margin:12px 0}
+.quiz-card.big{grid-template-columns:200px 1fr;transform:rotate(-.6deg)}
+.quiz-card img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:3px}
+.quiz-card b{font-family:var(--display);font-size:1.4rem;display:block}
+.quiz-card .price{font-family:var(--display);font-weight:800;font-size:1.3rem}
+.quiz-card .why{display:block;margin-top:6px;font-size:.98rem}
+.quiz-alt{font-weight:700;max-width:none}
+.quiz-alt .quiz-card{grid-template-columns:90px 1fr;font-weight:400}
+@media (max-width:560px){.quiz-card,.quiz-card.big{grid-template-columns:110px 1fr}.quiz{padding:18px}.quiz-card b{font-size:1.15rem}}
