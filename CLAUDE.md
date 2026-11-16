@@ -30,7 +30,7 @@ Le nom **UNIS est définitif** (décision de l'équipe, 16 novembre 2026). Ne le
 | `docs/11-communication-social-media.md` | Plan de communication, ligne éditoriale, modération, crise, Social Ads, influence |
 | `docs/12-paiement-kpi-avis.md` | Stratégie de paiement (Mission 10), KPI, avis clients |
 | `data/calendrier-editorial-2027.csv` | Calendrier éditorial sur 12 mois (généré par `node src/calendrier.mjs`) |
-| `src/` | Générateur du site statique : `config.mjs` (réglages), `i18n.mjs`, `i18n-extra.mjs` et `i18n-account.mjs` (textes 4 langues), `data.mjs` (saisons, prix, URL), `build.mjs`, `static/` |
+| `src/` | Générateur du site statique : `config.mjs` (réglages), `i18n.mjs`, `i18n-extra.mjs` et `i18n-account.mjs` (textes 4 langues), `i18n-pdp/` (pages produits `/fr/produits/…` et idées cadeaux `/fr/idees-cadeaux/…`, une langue par fichier), `data.mjs` (saisons, prix, URL), `build.mjs`, `static/` |
 | `supabase/` | Base de données : `schema.sql` (tables, sécurité RLS) et guide de mise en place |
 | `src/legal.mjs` | CGV, vie privée et mentions légales en 4 langues (société fictive : identifiants marqués « fictif ») |
 | `site/` | Site généré par `node src/build.mjs` (ne pas modifier à la main) |

@@ -382,3 +382,30 @@ input[type=checkbox]{width:24px;height:24px;accent-color:var(--ink)}
 .pack-price b{font-family:var(--text);font-size:.9rem;font-weight:700}
 .pack select{border:1.5px solid #3E031B;border-radius:999px;padding:0 14px;min-height:44px;font:inherit;background:#fff;max-width:140px}
 .pack .btn{margin-top:auto}
+
+/* Pages produits : la grande carte reprend .card (même logique d'options et de panier dans app.js) */
+.card .art-link{position:absolute;inset:0;z-index:1}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{text-decoration:underline}
+.pdp-head{padding-bottom:24px}
+.card.pdp{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
+.card.pdp .art{aspect-ratio:1/1;margin:0}
+.card.pdp .art>svg{width:72%}
+.card.pdp .art .mini-art{width:50%}
+.pdp-info h1{font-size:clamp(2rem,5vw,3.4rem);font-variation-settings:"wdth" 78;font-weight:800;margin:0 0 8px}
+.pdp-info .price{display:block;font-size:2rem;margin:0 0 12px}
+.pdp-info .desc{font-size:1.05rem}
+.pdp-info .add{margin-top:6px;width:100%;max-width:420px;min-height:52px;font-size:1.05rem}
+.pdp-size{margin:4px 0}
+.pdp-size a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+.pdp-info .hero-trust{margin:8px 0 16px}
+@media (max-width:820px){.card.pdp{grid-template-columns:1fr;gap:20px}}
+/* Idées cadeaux */
+.pagehead.long h1{font-size:clamp(2rem,4.6vw,3.4rem);max-width:24ch}
+.post h3 a{text-decoration:none}
+.post h3 a:hover{text-decoration:underline}
+.budget li a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+.prose .ctas{margin:24px 0 8px}
+/* Menu à 7 entrées (Idées cadeaux) : pas de retour à la ligne, plus serré entre 961 et 1120 px */
+nav.main a{white-space:nowrap}
+@media (min-width:961px) and (max-width:1120px){nav.main{gap:0}nav.main a{padding:10px 6px;font-size:.92rem}.top .wrap{gap:12px}.logo .logo-mark{width:96px}}
