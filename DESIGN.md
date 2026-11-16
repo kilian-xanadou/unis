@@ -1,7 +1,7 @@
 # UNIS : charte graphique
 
 > Référence visuelle de la marque, pour les humains comme pour les IA (images, maquettes, code).
-> Version du 16 novembre 2026 : **nouveau logo « Bo dans le I »** et palette **bordeaux et rose**.
+> Version du 16 novembre 2026 : **nouveau logo au string** et palette **bordeaux et rose**.
 > En cas de doute sur le ton ou les limites, [CONTEXTE-IA.md](CONTEXTE-IA.md) fait foi.
 
 ---
@@ -10,16 +10,16 @@
 
 ![Logo UNIS](assets/logo/unis-logo-officiel.png)
 
-**L'idée :** le mot **UNIS** en lettres bordeaux, épaisses et arrondies. Le **I est Bo** : sa tête et ses deux oreilles forment le haut de la lettre. **Un string framboise** passe à travers les lettres. On y lit tout de suite la marque : drôle (l'ours en string), sexy (le string), et confortable (des formes rondes et douces).
+**L'idée :** le mot **UNIS** en grandes lettres bordeaux, épaisses et arrondies. **Un string framboise** se faufile à travers les lettres : la ficelle passe devant et derrière le N, le I et le S, et le triangle du string tombe entre le N et le I. On y lit tout de suite la marque : drôle (un string glissé dans le nom), sexy (le string), et confortable (des formes pleines et douces). Le fil rappelle aussi la signature : « Un fil. Tous les corps. »
 
 ### Fichiers
 
 | Fichier | Usage |
 | --- | --- |
-| [`assets/logo/unis-logo-officiel.png`](assets/logo/unis-logo-officiel.png) | Logo officiel (1672 × 941 px, fond rose) : présentations, réseaux, impression, image de partage |
+| [`assets/logo/unis-logo-officiel.png`](assets/logo/unis-logo-officiel.png) | Logo officiel (1024 × 576 px, fond rose) : présentations, réseaux, impression, image de partage |
 | [`assets/logo/unis-logo.svg`](assets/logo/unis-logo.svg) | Version vectorielle simplifiée, sans fond, redessinée pour le web |
 | `src/art.mjs`, fonction `logoMark()` | Le même logo dans le code du site (en-tête et pied de page). Il prend la couleur du texte de la page et la couleur d'accent de la saison |
-| [`src/static/favicon.svg`](src/static/favicon.svg) | Icône de l'onglet : la tête de Bo bordeaux, oreilles et string framboise |
+| [`src/static/favicon.svg`](src/static/favicon.svg) | Icône de l'onglet : le string framboise sur un carré bordeaux |
 | `assets/images/og-unis.jpg` | Image de partage (1200 × 630), tirée du logo officiel |
 
 ### Règles d'usage
@@ -28,11 +28,11 @@
   - bordeaux sur rose (version principale) ;
   - rose pâle sur bordeaux (version inversée, pied de page) ;
   - sur une page de saison, l'encre et l'accent de la saison.
-- **Zone de protection :** laisse autour du logo un espace libre au moins égal à la hauteur d'une oreille de Bo.
-- **Taille minimale :** 96 px de large à l'écran, 25 mm à l'impression. En plus petit, utilise seulement la tête de Bo (le favicon).
+- **Zone de protection :** laisse autour du logo un espace libre au moins égal à la moitié de la hauteur d'une lettre.
+- **Taille minimale :** 96 px de large à l'écran, 25 mm à l'impression. En plus petit, utilise seulement l'icône (le string sur carré bordeaux).
 - **Interdit :**
   - déformer le logo ou changer sa police ;
-  - retirer le string ou les oreilles ;
+  - retirer le string ou changer sa couleur ;
   - ajouter une ombre portée ou un contour ;
   - le poser sur une photo chargée ;
   - écrire « Uniss », « Unis. » ou toute autre variante.
