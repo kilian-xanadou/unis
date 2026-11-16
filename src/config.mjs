@@ -36,7 +36,7 @@ export default {
 
   // Octobre Rose : association bénéficiaire (laisser vide tant qu'aucun accord n'est signé :
   // le site affiche alors une mention générique) et montant reversé par article, en euros.
-  pinkCharity: "",
+  pinkCharity: "Think Pink",
   pinkDonation: 1,
 
   // Version de la politique cookies : la changer redemande le consentement à tout le monde.

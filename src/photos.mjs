@@ -37,16 +37,34 @@ export const PHOTOS = {
       de: "Bo von hinten, mit Hexenhut und Kürbis-String",
     },
   },
+  saintValentin: {
+    file: "bo-ours-unis-saint-valentin", sizes: [[600, 327], [1200, 655]],
+    alt: {
+      fr: "Bo danse avec une rose rouge dans la bouche et un string à cœurs",
+      nl: "Bo danst met een rode roos in zijn mond en een string met hartjes",
+      en: "Bo dancing with a red rose in his mouth and a heart-print thong",
+      de: "Bo tanzt mit einer roten Rose im Mund und einem String mit Herzen",
+    },
+  },
+  octobreRose: {
+    file: "bo-ours-unis-octobre-rose", sizes: [[600, 327], [1200, 655]],
+    alt: {
+      fr: "Bo lève un trophée, avec un string rose brodé du ruban d'Octobre Rose",
+      nl: "Bo heft een trofee op, met een roze string met het lintje van Roze Oktober",
+      en: "Bo raising a trophy, wearing a pink thong with the Pink October ribbon",
+      de: "Bo hebt einen Pokal, mit rosa String und der Schleife des Pink October",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
 export const PLACEMENT = {
   hero: { noel: "noelAllonge", halloween: "halloween" },
-  season: { noel: "noelAllonge", halloween: "halloween" },
+  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRose" },
   boPage: "noel",
   club: "halloweenDos",
-  boCard: { noel: "noel" },     // carte « Bo » et « Bo édition » de la saison
-  boxCard: { noel: "noelAllonge" },
+  boCard: { noel: "noel", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
+  boxCard: { noel: "noelAllonge", valentin: "saintValentin" },
   article: { cadeau: "noel" },
 };
 

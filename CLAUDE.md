@@ -6,7 +6,7 @@ UNIS est une marque e-commerce européenne (Belgique, SRL à créer) qui vend :
 
 - **Bo, l'ours UNIS** : un ours en peluche de collection de 35 cm, à 49 €. Il sert de mannequin à la marque et porte chaque nouveau string.
 - **Des strings unisexes bon marché** : le string adulte à 5 € (coupe Plat ou Poche, du XS au 4XL), le mini-string pour Bo à 3 €, le Duo assorti (adulte + Bo, même motif) à 7 €, et le lot de 5 strings adultes à 20 €.
-- **Six drops saisonniers par an**, en série limitée et jamais réédités : Saint-Valentin (3 février), Printemps (17 mars), Pride (1er juin), Été (15 juin), Halloween (1er octobre) et Noël (1er novembre). En plus : la **capsule Octobre Rose** (1er octobre, page `/fr/saisons/octobre-rose/`), avec 1 € reversé par article à une association belge de lutte contre le cancer du sein (`pinkCharity` et `pinkDonation` dans `src/config.mjs` ; ne jamais nommer une association sans accord signé).
+- **Six drops saisonniers par an**, en série limitée et jamais réédités : Saint-Valentin (3 février), Printemps (17 mars), Pride (1er juin), Été (15 juin), Halloween (1er octobre) et Noël (1er novembre). En plus : la **capsule Octobre Rose** (1er octobre, page `/fr/saisons/octobre-rose/`), avec 1 € reversé par article à Think Pink (`pinkCharity` et `pinkDonation` dans `src/config.mjs`). Partenariat en cours de discussion : le site le précise, ne jamais présenter un don comme déjà effectué.
 
 **Site de démonstration en ligne depuis le 16 novembre 2026** (statique, sans paiement ni enregistrement, `noindex`). Le lancement commercial reste prévu en avril 2027.
 

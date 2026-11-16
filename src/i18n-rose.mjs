@@ -2,6 +2,7 @@
 // NL, EN et DE à faire relire par une personne native.
 export const ROSE = {
   fr: {
+    note: "Partenariat avec {c} en cours de discussion : sur ce site de démonstration, aucune vente n'a lieu et rien n'est encore reversé.",
     title: "String Octobre Rose, 1 € reversé | UNIS",
     phrase: "Le string Octobre Rose",
     h1: "Octobre Rose : le string qui soutient la lutte contre le cancer du sein",
@@ -12,6 +13,7 @@ export const ROSE = {
     badge: "{x} reversé",
   },
   nl: {
+    note: "Samenwerking met {c} in bespreking: op deze demosite wordt niets verkocht en dus nog niets gedoneerd.",
     title: "Roze Oktober string, 1 € gedoneerd | UNIS",
     phrase: "De Roze Oktober string",
     h1: "Roze Oktober: de string die de strijd tegen borstkanker steunt",
@@ -22,6 +24,7 @@ export const ROSE = {
     badge: "{x} gedoneerd",
   },
   en: {
+    note: "Partnership with {c} under discussion: this is a demo site, so nothing is sold and nothing has been donated yet.",
     title: "Pink October thong, €1 donated | UNIS",
     phrase: "The Pink October thong",
     h1: "Pink October: the thong that supports the fight against breast cancer",
@@ -32,6 +35,7 @@ export const ROSE = {
     badge: "{x} donated",
   },
   de: {
+    note: "Partnerschaft mit {c} in Gespräch: Auf dieser Demo-Website wird nichts verkauft, daher wurde noch nichts gespendet.",
     title: "Pink-October-String, 1 € Spende | UNIS",
     phrase: "Der Pink-October-String",
     h1: "Pink October: der String, der den Kampf gegen Brustkrebs unterstützt",

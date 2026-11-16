@@ -76,7 +76,7 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 - **Composition :** 95 % coton, 5 % élasthanne, certifié OEKO-TEX Standard 100.
 - **Livraison :** 3,90 €, offerte dès 30 € d'achat. **Retour :** 14 jours, sauf string porté ou étiquette d'hygiène retirée.
 - **Drops saisonniers** (série limitée, jamais réédités) : Saint-Valentin (3 février), Printemps (17 mars), Pride (1er juin), Été (15 juin), Halloween (1er octobre), Noël (1er novembre).
-- **Capsule solidaire Octobre Rose** (1er octobre) : une partie de chaque vente est reversée à une association de lutte contre le cancer du sein. **Ne jamais nommer une association** tant qu'un accord n'est pas signé.
+- **Capsule solidaire Octobre Rose** (1er octobre) : 1 € par article est reversé à **Think Pink**, l'association choisie par l'équipe. Tant que l'accord n'est pas signé, toujours préciser « partenariat en cours de discussion » et ne jamais présenter un don comme déjà effectué.
 
 ## 5. Identité visuelle
 
@@ -110,7 +110,7 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 | **Âge de Bo** | La cible est 18+, mais Bo est étiqueté « 14 ans et plus ». Garder 14+ (norme jouets) ou passer à « Objet de collection pour adultes » ? |
 | **Nom UNIS et Google** | « UNIS » se confond avec « uni » (couleur unie) dans les recherches. À compenser par le SEO (mots-clés « string unisexe », « Bo l'ours ») et un nom de domaine distinctif. |
 | **Langues** | « Europe » au lancement : confirmer FR, NL, EN, DE, ou ajouter d'autres langues (ES, IT…). |
-| **Montant reversé** | Octobre Rose : « une partie ». Valeur de travail actuelle : 1 € par article. À confirmer, avec l'association. |
+| **Octobre Rose** | Association choisie : Think Pink. Montant de travail : 1 € par article. Accord et montant à confirmer avec Think Pink. |
 
 ## 9. Où trouver le reste
 
