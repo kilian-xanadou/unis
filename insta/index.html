@@ -10,11 +10,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;display=swap">
 <style>
-:root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --logo:#FDD2E3; --paper:#FFFFFF; --muted:#6B2A44; }
+/* Direction « fanzine / fait main » (design.md §7). Caveat (écriture de Bo) : 1er chemin = site publié (site/assets/fonts), 2e = dépôt (src/static/fonts) */
+@font-face { font-family:"Caveat"; font-style:normal; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-700-normal.woff2") format("woff2"), url("../src/static/fonts/caveat-latin-700-normal.woff2") format("woff2"); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:"Caveat"; font-style:normal; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-ext-700-normal.woff2") format("woff2"), url("../src/static/fonts/caveat-latin-ext-700-normal.woff2") format("woff2"); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF; }
+:root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --logo:#FDD2E3; --paper:#FFFFFF; --muted:#6B2A44; --postit:#FFE89A; --tape:#F6E7B8cc; --hand:"Caveat","Comic Sans MS",cursive; --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .01 0 0 0 0 .1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
 :root[data-theme="dark"] { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
+body { margin:0; background-color:var(--bg); background-image:var(--grain); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
 h1, h2, h3 { font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; line-height:1.1; margin:0; }
 a { color:var(--accent); font-weight:700; }
 a:focus-visible, button:focus-visible, .car:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
@@ -27,12 +30,15 @@ h1 { font-size:clamp(32px, 6vw, 54px); }
 .toc li { break-inside:avoid; margin:0 0 6px; }
 .toc a { text-decoration:none; color:var(--ink); }
 .toc a:hover { text-decoration:underline; }
-.num { display:inline-block; min-width:32px; padding:2px 8px; border-radius:999px; background:var(--accent); color:#fff; text-align:center; margin-right:8px; font-weight:700; font-size:14px; }
-.pub { background:var(--paper); border-radius:28px; padding:24px; margin:32px 0; }
+.num { display:inline-block; min-width:34px; padding:2px 8px; border-radius:40% 55% 45% 60% / 55% 45% 60% 40%; background:var(--postit); color:#3E031B; border:2px solid #3E031B; text-align:center; margin-right:8px; font-weight:700; font-size:14px; transform:rotate(-6deg); }
+.pub { position:relative; background:var(--paper); border-radius:4px; border:1px solid #3E031B22; box-shadow:0 10px 24px #3E031B1f, 0 2px 0 #3E031B10; padding:28px 24px 24px; margin:40px 0; }
+.pub::before { content:""; position:absolute; top:-12px; left:50%; width:92px; height:26px; background:var(--tape); transform:translateX(-50%) rotate(-4deg); box-shadow:0 1px 2px #0001; pointer-events:none; }
+.pub:nth-of-type(even)::before { left:22%; transform:translateX(-50%) rotate(5deg); }
+.pub-h h2 .hl, h1 .hl { background-image:linear-gradient(176deg, transparent 56%, var(--soft) 56%, var(--soft) 90%, transparent 90%); -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 6px; }
 .pub-h .kicker { margin:0; font-weight:700; color:var(--muted); font-size:15px; }
 .pub-h h2 { font-size:30px; margin:8px 0 4px; }
 .email-l { margin:0 0 16px; font-size:15px; }
-.badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:999px; border:1.5px solid var(--ink); font-size:13px; color:var(--ink); }
+.badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:4px; border:2px dashed var(--ink); font-size:13px; color:var(--ink); }
 .pub-g { display:grid; grid-template-columns:minmax(0, 380px) minmax(0, 250px) minmax(0, 1fr); gap:24px; align-items:start; }
 @media (max-width:1100px) { .pub-g { grid-template-columns:minmax(0, 380px) minmax(0, 250px); } .info { grid-column:1 / -1; } }
 @media (max-width:680px) { .pub-g { grid-template-columns:minmax(0, 1fr); } .mock-story { max-width:300px; } }
@@ -46,56 +52,67 @@ h1 { font-size:clamp(32px, 6vw, 54px); }
 .car { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; border-radius:18px; scrollbar-width:thin; }
 .car > .vis { flex:0 0 100%; scroll-snap-align:start; }
 .car-nav { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:8px; }
-.car-nav button { min-width:44px; min-height:44px; border-radius:999px; border:1.5px solid #3E031B; background:transparent; color:#3E031B; font:inherit; font-weight:700; cursor:pointer; }
+.car-nav button { min-width:44px; min-height:44px; border-radius:10px; border:2.5px solid #3E031B; background:#FFFFFF; color:#3E031B; font:inherit; font-weight:700; cursor:pointer; box-shadow:3px 3px 0 #3E031B; }
+.car-nav button:active { transform:translate(2px, 2px); box-shadow:1px 1px 0 #3E031B; }
 .car-pos { font-size:14px; min-width:48px; text-align:center; }
 
 /* ── Visuels (unités cqw : se mettent à l'échelle de leur largeur) ── */
-.vis { container-type:inline-size; position:relative; width:100%; background:#FDD2E3; color:#3E031B; overflow:hidden; border-radius:18px; font-family:'Atkinson Hyperlegible', Arial, sans-serif; }
+.vis { container-type:inline-size; position:relative; width:100%; background-color:#FDD2E3; background-image:var(--grain); color:#3E031B; overflow:hidden; border-radius:18px; font-family:'Atkinson Hyperlegible', Arial, sans-serif; }
 .vis.feed { aspect-ratio:4 / 5; }
 .vis.story { aspect-ratio:9 / 16; }
 .vis-top { position:absolute; left:5cqw; right:5cqw; top:4.5cqw; display:flex; align-items:center; justify-content:space-between; gap:3cqw; }
 .vis .logo { width:24cqw; height:auto; flex:none; }
-.kick { background:#FFFFFF; border-radius:999px; padding:1.2cqw 3cqw; font-weight:700; font-size:3.1cqw; line-height:1.2; text-align:right; max-width:62cqw; }
-.ph { position:absolute; left:5cqw; right:5cqw; top:15cqw; height:68cqw; }
-.ph img { display:block; width:100%; height:100%; border-radius:4cqw; }
-.pill { position:absolute; right:-1.5cqw; bottom:-7cqw; width:23cqw; height:23cqw; border-radius:50%; background:#D42A6E; color:#FFFFFF; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(-8deg); box-shadow:0 0 0 1.2cqw #FDD2E3; font-family:'Bricolage Grotesque', Arial, sans-serif; font-stretch:75%; line-height:1; text-align:center; }
+.kick { background:#FFFFFF; border:.45cqw solid #3E031B; border-radius:1.2cqw; box-shadow:.8cqw .8cqw 0 #3E031B; padding:1cqw 2.6cqw; font-weight:700; font-size:3.1cqw; line-height:1.2; text-align:right; max-width:60cqw; transform:rotate(1.5deg); }
+/* Photo façon Polaroid : cadre blanc, scotch en haut, inclinaison de −1,5° à +1,5° */
+.ph { position:absolute; left:6cqw; right:6cqw; top:16.5cqw; height:69cqw; background:#FFFFFF; padding:2.4cqw 2.4cqw 8.6cqw; border:.15cqw solid #3E031B22; box-shadow:0 2.2cqw 4.4cqw #3E031B2e, 0 .4cqw 0 #3E031B14; transform:rotate(-1.5deg); }
+.ph::before { content:""; position:absolute; z-index:2; top:-2.6cqw; left:50%; width:22cqw; height:5.4cqw; background:var(--tape); transform:translateX(-50%) rotate(-4deg); box-shadow:0 .2cqw .4cqw #0001; }
+.car > .vis:nth-child(even) .ph, .story .ph { transform:rotate(1.2deg); }
+.car > .vis:nth-child(even) .ph::before { left:24%; transform:translateX(-50%) rotate(6deg); }
+.ph img { display:block; width:100%; height:100%; border-radius:0; }
+/* Note de Bo : Caveat Framboise, sur le bord du Polaroid, jamais une info clé */
+.bo { position:absolute; left:3cqw; right:20.5cqw; bottom:1.8cqw; margin:0; font-family:var(--hand); font-weight:700; font-size:4.3cqw; line-height:1; color:#D42A6E; white-space:nowrap; transform:rotate(-2deg); transform-origin:left center; }
+.bo span { font-size:.85em; }
+/* Sticker prix : ovale jaune post-it, contour bordeaux, ombre dure */
+.pill { position:absolute; z-index:3; right:-3.5cqw; bottom:-6.5cqw; width:24cqw; height:22cqw; border-radius:40% 55% 45% 60% / 55% 45% 60% 40%; background:#FFE89A; color:#3E031B; border:.55cqw solid #3E031B; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(-8deg); box-shadow:.9cqw .9cqw 0 #3E031B; font-family:'Bricolage Grotesque', Arial, sans-serif; font-stretch:75%; line-height:1; text-align:center; }
 .pill b { font-size:7.4cqw; font-weight:800; white-space:nowrap; }
 .pill-s b { font-size:5cqw; }
 .pill s { font-size:3.6cqw; font-weight:700; opacity:.92; margin-bottom:.6cqw; }
 .pill-l { font-family:'Atkinson Hyperlegible', Arial, sans-serif; font-size:3cqw; font-weight:700; margin-bottom:.6cqw; }
-.txt { position:absolute; left:5cqw; right:27cqw; top:86cqw; }
+.txt { position:absolute; left:6cqw; right:27cqw; top:90cqw; }
+.ttl .hl { background-image:linear-gradient(176deg, transparent 54%, #FAB8D0 54%, #FAB8D0 90%, transparent 90%); -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 1cqw; }
 .ttl { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:8.2cqw; line-height:.98; letter-spacing:-.01em; }
 .sub { margin:1.8cqw 0 0; font-size:3.4cqw; line-height:1.3; font-weight:700; }
 .steps { margin:1.6cqw 0 0; padding-left:4.2cqw; font-size:3.1cqw; line-height:1.3; font-weight:700; }
 .omni { margin:1.6cqw 0 0; font-size:2.6cqw; line-height:1.3; }
-.count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border-radius:999px; padding:.6cqw 2cqw; }
+.count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border:.35cqw solid #3E031B; border-radius:1cqw; padding:.4cqw 1.8cqw; }
 /* Story : même grammaire, plus haute */
-.story .ph { top:16cqw; height:84cqw; }
-.story .txt { top:104cqw; right:5cqw; }
+.story .ph { top:16.5cqw; height:79cqw; }
+.story .txt { top:99cqw; right:6cqw; }
 .story .ttl { font-size:9cqw; }
-.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:4cqw; padding:2.6cqw 3.4cqw; text-align:center; }
+.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:2cqw; padding:2.6cqw 3.4cqw; text-align:center; }
 .stk-t { display:block; font-size:2.5cqw; font-weight:700; color:#D42A6E; text-transform:uppercase; letter-spacing:.06em; margin-bottom:1cqw; }
 .sq { margin:0 0 1.6cqw; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:4.6cqw; line-height:1.05; }
 .opts { display:flex; flex-direction:column; gap:1cqw; }
 .opts.two { flex-direction:row; }
-.opts span { flex:1; border-radius:999px; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
+.opts span { flex:1; border-radius:1.6cqw; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
 .opts span.ok { background:#3E031B; color:#FFFFFF; }
 .cd { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:5.4cqw; color:#D42A6E; line-height:1.05; }
-.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border-radius:999px; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
+.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border:.55cqw solid #3E031B; box-shadow:.9cqw .9cqw 0 #3E031B; border-radius:2.4cqw; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
 .lnk .stk-t { color:#FFFFFF; margin-bottom:.3cqw; font-size:2.2cqw; }
 
 /* ── Colonne d'infos ── */
 .cap-h { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
 .cap-h h3 { font-size:24px; }
-.copy { min-height:52px; padding:0 24px; border-radius:999px; border:0; background:#D42A6E; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; }
+.copy { min-height:52px; padding:0 24px; border-radius:12px; border:2.5px solid #3E031B; background:#D42A6E; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; box-shadow:4px 4px 0 #3E031B; transition:transform .12s, box-shadow .12s; }
+.copy:active { transform:translate(3px, 3px); box-shadow:1px 1px 0 #3E031B; }
 .copied { font-size:14px; font-weight:700; color:var(--muted); }
-.cap { white-space:pre-wrap; font:16px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); border-radius:10px; padding:14px 16px; margin:12px 0 16px; max-width:65ch; }
+.cap { white-space:pre-wrap; font:16px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); border:2px dashed color-mix(in srgb, var(--ink) 35%, transparent); border-radius:4px; padding:14px 16px; margin:12px 0 16px; max-width:65ch; }
 dl { display:grid; grid-template-columns:max-content minmax(0, 1fr); gap:6px 14px; margin:0; font-size:15px; }
 dt { font-weight:700; } dd { margin:0; }
 @media (max-width:520px) { dl { grid-template-columns:minmax(0, 1fr); } dd { margin-bottom:6px; } }
 code { font-size:13px; word-break:break-all; }
 .alts { margin:0; padding-left:20px; }
-.note { background:var(--bg); border-left:4px solid var(--accent); padding:8px 12px; border-radius:10px; font-size:14px; margin:14px 0 0; }
+.note { background:var(--postit); color:#3E031B; padding:10px 14px; border-radius:2px; font-size:14px; margin:16px 0 0; box-shadow:0 6px 14px #3E031B1a; }
 footer { margin-top:48px; font-size:14px; color:var(--muted); max-width:80ch; }
 
 /* ── Mode export (?export) : chaque visuel à 1080 px de large, sans maquette ni zone sticker ── */
@@ -107,6 +124,8 @@ body.export .mock, body.export .mock-story { max-width:none; }
 body.export .frame { background:none; box-shadow:none; padding:0; border-radius:0; }
 body.export .car { display:block; overflow:visible; border-radius:0; }
 body.export .vis { width:1080px; border-radius:0; margin:0 0 40px; }
+body.export .pub::before { display:none; }
+@media (prefers-reduced-motion: reduce) { .copy { transition:none; } }
 body.export .stk, body.export .lnk { visibility:hidden; }
 @media (prefers-reduced-motion: no-preference) { .car { scroll-behavior:smooth; } }
 </style>
@@ -115,7 +134,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
 <div class="wrap">
   <header class="top">
     <div>
-      <h1>Les publications Instagram UNIS</h1>
+      <h1><span class="hl">Les publications Instagram UNIS</span></h1>
       <p class="lead">16 publications, une par envoi de la stratégie emailing (docs/03), dans l'ordre du calendrier. Chacune : un post 4:5 (ou un carrousel) et une story 9:16 avec son sticker, la légende prête à copier, le texte alternatif, l'heure conseillée et les liens UTM. Maquettes UNIS, rien n'est publié.</p>
     </div>
     <svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg>
@@ -140,7 +159,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
 <article class="pub" id="pub-1" aria-labelledby="h-1">
   <header class="pub-h">
     <p class="kicker"><span class="num">01</span>mercredi 2 décembre 2026 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
-    <h2 id="h-1">4 cadeaux drôles à moins de 10 €</h2>
+    <h2 id="h-1"><span class="hl">4 cadeaux drôles à moins de 10 €</span></h2>
     <p class="email-l">Email associé : <a href="../emails/01-newsletter-secret-santa-calendrier-avent.html">01-newsletter-secret-santa-calendrier-avent.html</a></p>
   </header>
   <div class="pub-g">
@@ -150,9 +169,9 @@ body.export .stk, body.export .lnk { visibility:hidden; }
         <div class="car multi" tabindex="0" aria-label="Carrousel de 5 vignettes, défile horizontalement">
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Le calendrier de l'Avent de Bo</span></div>
-  <div class="ph"><img src="../assets/emailing/secret-santa-pochette.jpg" alt="Autour d'une table de fête entre adultes, des mains ouvrent une pochette kraft d'où sort un string rose à petits cœurs." style="object-fit:cover;object-position:50% 60%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>dès 3 €</b></div></div>
+  <div class="ph"><img src="../assets/emailing/secret-santa-pochette.jpg" alt="Autour d'une table de fête entre adultes, des mains ouvrent une pochette kraft d'où sort un string rose à petits cœurs." style="object-fit:cover;object-position:50% 60%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">J'ai ouvert toutes les cases. Oups. <span>— Bo</span></p><div class="pill"><b>dès 3 €</b></div></div>
   <div class="txt">
-    <p class="ttl">4 cadeaux drôles à moins de 10 €</p>
+    <p class="ttl"><span class="hl">4 cadeaux drôles à moins de 10 €</span></p>
     <p class="sub">Glisse pour ouvrir les cases</p>
     
     
@@ -163,7 +182,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 1</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-noel-rennes-plat-1200.webp" alt="String rouge à motif de rennes, de sapins et de flocons, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Le string Rennes disco</p>
+    <p class="ttl"><span class="hl">Le string Rennes disco</span></p>
     <p class="sub">Plat ou Poche, du XS au 4XL</p>
     
     
@@ -174,7 +193,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 2</span></div>
   <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, avec un grand nœud rouge et son mini-string de Noël à rennes." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>3 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Le mini-string pour Bo</p>
+    <p class="ttl"><span class="hl">Le mini-string pour Bo</span></p>
     <p class="sub">Pour qui a déjà son ours</p>
     
     
@@ -185,7 +204,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 3</span></div>
   <div class="ph"><img src="../assets/emailing/email-noel-bo-selfie.jpg" alt="Bo fait un selfie dans un miroir de salon décoré pour Noël, nœud rouge et mini-string à rennes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>7 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Le Duo assorti</p>
+    <p class="ttl"><span class="hl">Le Duo assorti</span></p>
     <p class="sub">Ton string + le mini-string de Bo</p>
     
     
@@ -196,7 +215,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 4</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>20 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Le lot de 5 pour l'équipe</p>
+    <p class="ttl"><span class="hl">Le lot de 5 pour l'équipe</span></p>
     <p class="sub">Soit 4 € la tête</p>
     
     
@@ -213,8 +232,8 @@ body.export .stk, body.export .lnk { visibility:hidden; }
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Secret Santa</span></div>
-  <div class="ph"><img src="../assets/emailing/story-noel-bo-selfie-9x16.jpg" alt="Bo, l'ours en peluche miel, se prend en selfie devant un miroir, dans un salon décoré d'un sapin lumineux." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Quel motif pour qui ?</p></div>
+  <div class="ph"><img src="../assets/emailing/story-noel-bo-selfie-9x16.jpg" alt="Bo, l'ours en peluche miel, se prend en selfie devant un miroir, dans un salon décoré d'un sapin lumineux." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Moi, je suis pro du pull moche. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Quel motif pour qui ?</span></p></div>
   <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Ta personne de Secret Santa, c'est plutôt…</p><div class="opts"><span>La reine ou le roi de la piste</span><span>Pro du pull moche</span><span>Je ne la connais pas du tout</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Voir les 4 idées</div>
 </div>
@@ -249,7 +268,7 @@ Tague la personne qui n'a toujours aucune idée pour son Secret Santa.
 <article class="pub" id="pub-2" aria-labelledby="h-2">
   <header class="pub-h">
     <p class="kicker"><span class="num">02</span>mercredi 16 décembre 2026 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
-    <h2 id="h-2">Noël : tu as jusqu'à demain</h2>
+    <h2 id="h-2"><span class="hl">Noël : tu as jusqu'à demain</span></h2>
     <p class="email-l">Email associé : <a href="../emails/02-campagne-decembre-derniere-livraison.html">02-campagne-decembre-derniere-livraison.html</a></p>
   </header>
   <div class="pub-g">
@@ -259,9 +278,9 @@ Tague la personne qui n'a toujours aucune idée pour son Secret Santa.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Dernière ligne droite</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-allonge-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le côté, bonnet rouge sur la tête et string de Noël rouge." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-allonge-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le côté, bonnet rouge sur la tête et string de Noël rouge." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Je pose. Toi, tu commandes. <span>— Bo</span></p><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Tu as jusqu'à demain</p>
+    <p class="ttl"><span class="hl">Tu as jusqu'à demain</span></p>
     <p class="sub">Commande avant le jeudi 17 décembre pour Noël</p>
     
     
@@ -278,8 +297,8 @@ Tague la personne qui n'a toujours aucune idée pour son Secret Santa.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Jusqu'à demain, jeudi 17 décembre</span></div>
-  <div class="ph"><img src="../assets/images/pochette-kraft-unis-1200.webp" alt="Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Ton Secret Santa est prêt ?</p></div>
+  <div class="ph"><img src="../assets/images/pochette-kraft-unis-1200.webp" alt="Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Pas encore ? Je dis ça, je dis rien. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Ton Secret Santa est prêt ?</span></p></div>
   <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Tu as commandé ?</p><div class="opts two"><span>Oui</span><span>Pas encore</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Prendre le Duo à 7 €</div>
 </div>
@@ -313,7 +332,7 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
 <article class="pub" id="pub-3" aria-labelledby="h-3">
   <header class="pub-h">
     <p class="kicker"><span class="num">03</span>mercredi 6 janvier 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
-    <h2 id="h-3">Ta taille, en 30 secondes</h2>
+    <h2 id="h-3"><span class="hl">Ta taille, en 30 secondes</span></h2>
     <p class="email-l">Email associé : <a href="../emails/03-newsletter-taille-soldes-janvier.html">03-newsletter-taille-soldes-janvier.html</a></p>
   </header>
   <div class="pub-g">
@@ -323,9 +342,9 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
         <div class="car multi" tabindex="0" aria-label="Carrousel de 4 vignettes, défile horizontalement">
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Nouvelle année, nouveaux basiques</span></div>
-  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Mon mètre ruban, c'est mon bras. <span>— Bo</span></p><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Ta taille, en 30 secondes</p>
+    <p class="ttl"><span class="hl">Ta taille, en 30 secondes</span></p>
     <p class="sub">Glisse : 3 étapes, zéro prise de tête</p>
     
     
@@ -336,7 +355,7 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">3 étapes</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat, du bleu encre au blanc, pour illustrer le choix de taille." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill pill-s"><b>XS→4XL</b></div></div>
   <div class="txt">
-    <p class="ttl">Un mètre ruban et c'est réglé</p>
+    <p class="ttl"><span class="hl">Un mètre ruban et c'est réglé</span></p>
     
     <ol class="steps"><li>Prends un mètre ruban</li><li>Mesure ton tour de hanches, au plus large</li><li>Lis ta taille, du XS au 4XL</li></ol>
     
@@ -347,7 +366,7 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Une coupe, pas un genre</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-coupe-plat-poche-1200.webp" alt="Deux strings lilas côte à côte : à gauche la coupe Plat, à droite la coupe Poche avec un avant préformé." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Plat ou Poche ?</p>
+    <p class="ttl"><span class="hl">Plat ou Poche ?</span></p>
     
     <ol class="steps"><li>Plat : un avant lisse, sans volume</li><li>Poche : un avant préformé, de la place sans comprimer</li></ol>
     
@@ -358,7 +377,7 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soldes · −30 % sur le drop Noël</span></div>
   <div class="ph"><img src="../assets/emailing/email-noel-string-fond-rouge.jpg" alt="String rouge à motif de rennes et de sapins posé à plat sur fond rouge, entouré de branches de sapin et de boules." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><s>5 €</s><b>3,50 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Le string Noël à 3,50 €</p>
+    <p class="ttl"><span class="hl">Le string Noël à 3,50 €</span></p>
     <p class="sub">Dans la limite des stocks</p>
     
     <p class="omni">Prix le plus bas des 30 derniers jours : 5 €</p>
@@ -375,8 +394,8 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Ta taille en 30 secondes</span></div>
-  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings unis empilés à plat dans les couleurs Essentiels, sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Petit quiz taille</p></div>
+  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings unis empilés à plat dans les couleurs Essentiels, sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Moi ? Taille unique. Et moelleux. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Petit quiz taille</span></p></div>
   <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Entre deux tailles, tu prends…</p><div class="opts"><span>La plus petite</span><span class="ok">La plus grande ✓</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Trouver ma taille</div>
 </div>
@@ -409,7 +428,7 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
 <article class="pub" id="pub-4" aria-labelledby="h-4">
   <header class="pub-h">
     <p class="kicker"><span class="num">04</span>mercredi 3 février 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
-    <h2 id="h-4">Pourquoi on ne dit jamais « pour lui »</h2>
+    <h2 id="h-4"><span class="hl">Pourquoi on ne dit jamais « pour lui »</span></h2>
     <p class="email-l">Email associé : <a href="../emails/04-newsletter-unisexe-drop-saint-valentin.html">04-newsletter-unisexe-drop-saint-valentin.html</a></p>
   </header>
   <div class="pub-g">
@@ -419,9 +438,9 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
         <div class="car multi" tabindex="0" aria-label="Carrousel de 3 vignettes, défile horizontalement">
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Saint-Valentin · aujourd'hui</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-saint-valentin-1200.webp" alt="Bo, l'ours en peluche miel, danse sur une patte, une rose rouge entre les dents, en mini-string à cœurs." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-saint-valentin-1200.webp" alt="Bo, l'ours en peluche miel, danse sur une patte, une rose rouge entre les dents, en mini-string à cœurs." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Assorti avec toi ? Je rougis. <span>— Bo</span></p><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
   <div class="txt">
-    <p class="ttl">À deux, c'est mieux. À trois, c'est assorti.</p>
+    <p class="ttl"><span class="hl">À deux, c'est mieux. À trois, c'est assorti.</span></p>
     
     
     
@@ -432,7 +451,7 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Cœurs brodés</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-saint-valentin-coeurs-plat-1200.webp" alt="String rose pâle à petits cœurs rouges brodés et ceinture rouge, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Pas de « pour lui ». Pas de « pour elle ».</p>
+    <p class="ttl"><span class="hl">Pas de « pour lui ». Pas de « pour elle ».</span></p>
     <p class="sub">Une coupe, Plat ou Poche. Du XS au 4XL.</p>
     
     
@@ -443,7 +462,7 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Coffret cadeau</span></div>
   <div class="ph"><img src="../assets/images/offrir-bo-coffret-cadeau-1200.webp" alt="Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, pendant un dîner entre amis adultes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>55 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Bo + le Duo de la saison</p>
+    <p class="ttl"><span class="hl">Bo + le Duo de la saison</span></p>
     <p class="sub">Boîte et certificat numéroté</p>
     
     
@@ -460,8 +479,8 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Saint-Valentin</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-saint-valentin-coeurs-plat-1200.webp" alt="String rose pâle à petits cœurs rouges brodés, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Le cadeau qui fait rire, puis rougir</p></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-saint-valentin-coeurs-plat-1200.webp" alt="String rose pâle à petits cœurs rouges brodés, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Rire d'abord. Rougir ensuite. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Le cadeau qui fait rire, puis rougir</span></p></div>
   <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Pour la Saint-Valentin, tu offres…</p><div class="opts two"><span>Des fleurs (encore)</span><span>Un Duo assorti</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Découvrir le drop</div>
 </div>
@@ -495,7 +514,7 @@ Tague ta moitié. Ou envoie-lui ce post en privé, c'est plus discret.
 <article class="pub" id="pub-5" aria-labelledby="h-5">
   <header class="pub-h">
     <p class="kicker"><span class="num">05</span>mercredi 10 février 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
-    <h2 id="h-5">Le cadeau qui fait rire, puis rougir</h2>
+    <h2 id="h-5"><span class="hl">Le cadeau qui fait rire, puis rougir</span></h2>
     <p class="email-l">Email associé : <a href="../emails/05-campagne-saint-valentin-rappel.html">05-campagne-saint-valentin-rappel.html</a></p>
   </header>
   <div class="pub-g">
@@ -505,9 +524,9 @@ Tague ta moitié. Ou envoie-lui ce post en privé, c'est plus discret.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Saint-Valentin · dimanche 14 février</span></div>
-  <div class="ph"><img src="../assets/emailing/email-saint-valentin-bo-rose.jpg" alt="Bo, l'ours en peluche miel, danse sur une patte avec une rose rouge, en mini-string blanc à rayures et cœurs." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="ph"><img src="../assets/emailing/email-saint-valentin-bo-rose.jpg" alt="Bo, l'ours en peluche miel, danse sur une patte avec une rose rouge, en mini-string blanc à rayures et cœurs." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Les chocolats ? Déjà mangés. <span>— Bo</span></p><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
   <div class="txt">
-    <p class="ttl">D'abord on rit. Après, on verra.</p>
+    <p class="ttl"><span class="hl">D'abord on rit. Après, on verra.</span></p>
     
     
     
@@ -524,8 +543,8 @@ Tague ta moitié. Ou envoie-lui ce post en privé, c'est plus discret.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Le 14 tombe un dimanche</span></div>
-  <div class="ph"><img src="../assets/images/offrir-bo-coffret-cadeau-1200.webp" alt="Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, à une table de dîner entre adultes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Commande tôt</p></div>
+  <div class="ph"><img src="../assets/images/offrir-bo-coffret-cadeau-1200.webp" alt="Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, à une table de dîner entre adultes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Le jour J, je suis pris. Désolé. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Commande tôt</span></p></div>
   <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Saint-Valentin</p><p class="cd">dimanche 14 février 2027</p></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Offrir le Duo à 7 €</div>
 </div>
@@ -558,7 +577,7 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
 <article class="pub" id="pub-6" aria-labelledby="h-6">
   <header class="pub-h">
     <p class="kicker"><span class="num">06</span>mardi 16 mars 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
-    <h2 id="h-6">Le Printemps ouvre 24 h avant pour toi</h2>
+    <h2 id="h-6"><span class="hl">Le Printemps ouvre 24 h avant pour toi</span></h2>
     <p class="email-l">Email associé : <a href="../emails/06-campagne-printemps-acces-avant.html">06-campagne-printemps-acces-avant.html</a></p>
   </header>
   <div class="pub-g">
@@ -568,9 +587,9 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
         <div class="car multi" tabindex="0" aria-label="Carrousel de 4 vignettes, défile horizontalement">
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Ouverture demain, mercredi 17 mars</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-printemps-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, un bouquet de tulipes dans les bras, nœud et mini-string lilas à fleurs." style="object-fit:cover;object-position:50% 35%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-printemps-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, un bouquet de tulipes dans les bras, nœud et mini-string lilas à fleurs." style="object-fit:cover;object-position:50% 35%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Pas su attendre. Désolé. <span>— Bo</span></p><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Bo l'a déjà enfilé</p>
+    <p class="ttl"><span class="hl">Bo l'a déjà enfilé</span></p>
     <p class="sub">Nouveau motif. Jamais réédité.</p>
     
     
@@ -581,7 +600,7 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-printemps-fleurs-pastel-plat-1200.webp" alt="String lilas à petites fleurs blanches, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Fleurs pastel</p>
+    <p class="ttl"><span class="hl">Fleurs pastel</span></p>
     <p class="sub">Plat ou Poche, XS à 4XL</p>
     
     
@@ -592,7 +611,7 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-printemps-menthe-plat-1200.webp" alt="String vert menthe uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Menthe</p>
+    <p class="ttl"><span class="hl">Menthe</span></p>
     <p class="sub">Plat ou Poche, XS à 4XL</p>
     
     
@@ -603,7 +622,7 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-printemps-peche-plat-1200.webp" alt="String couleur pêche uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Pêche</p>
+    <p class="ttl"><span class="hl">Pêche</span></p>
     <p class="sub">En Duo avec le mini-string de Bo : 7 €</p>
     
     
@@ -620,8 +639,8 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
-  <div class="ph"><img src="../assets/emailing/bo-printemps-tulipes.jpg" alt="Bo, l'ours en peluche miel, tient un bouquet de tulipes, nœud lilas et mini-string à fleurs, sur fond blanc." style="object-fit:cover;object-position:50% 35%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Ouverture à tout le monde demain</p></div>
+  <div class="ph"><img src="../assets/emailing/bo-printemps-tulipes.jpg" alt="Bo, l'ours en peluche miel, tient un bouquet de tulipes, nœud lilas et mini-string à fleurs, sur fond blanc." style="object-fit:cover;object-position:50% 35%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Moi, je l'ai depuis hier. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Ouverture à tout le monde demain</span></p></div>
   <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Drop Printemps</p><p class="cd">mercredi 17 mars 2027 (heure à confirmer)</p></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Rejoindre la liste d'attente</div>
 </div>
@@ -654,7 +673,7 @@ Tague l'ami·e fan de Bo qui rate toujours les ouvertures.
 <article class="pub" id="pub-7" aria-labelledby="h-7">
   <header class="pub-h">
     <p class="kicker"><span class="num">07</span>jeudi 1er avril 2027</p>
-    <h2 id="h-7">Ceci n'est pas un poisson d'avril</h2>
+    <h2 id="h-7"><span class="hl">Ceci n'est pas un poisson d'avril</span></h2>
     <p class="email-l">Email associé : <a href="../emails/07-campagne-poisson-avril-code-cache.html">07-campagne-poisson-avril-code-cache.html</a></p>
   </header>
   <div class="pub-g">
@@ -664,9 +683,9 @@ Tague l'ami·e fan de Bo qui rate toujours les ouvertures.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">1er avril</span></div>
-  <div class="ph"><img src="../assets/emailing/email-printemps-bo.jpg" alt="Bo, l'ours en peluche miel, assis avec un chapeau de paille et un épi de blé dans la bouche, en mini-string pastel à fleurs." style="object-fit:cover;object-position:45% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">code</span><b>−15 %</b></div></div>
+  <div class="ph"><img src="../assets/emailing/email-printemps-bo.jpg" alt="Bo, l'ours en peluche miel, assis avec un chapeau de paille et un épi de blé dans la bouche, en mini-string pastel à fleurs." style="object-fit:cover;object-position:45% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Ce n'est pas une blague. Si ? <span>— Bo</span></p><div class="pill"><span class="pill-l">code</span><b>−15 %</b></div></div>
   <div class="txt">
-    <p class="ttl">Ceci n'est pas un poisson d'avril</p>
+    <p class="ttl"><span class="hl">Ceci n'est pas un poisson d'avril</span></p>
     <p class="sub">Bo a caché un code. Pour de vrai.</p>
     
     <p class="omni">Prix le plus bas des 30 derniers jours affiché à côté de chaque prix réduit</p>
@@ -683,8 +702,8 @@ Tague l'ami·e fan de Bo qui rate toujours les ouvertures.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Chasse au code</span></div>
-  <div class="ph"><img src="../assets/emailing/email-printemps-bo.jpg" alt="Bo, l'ours en peluche, en chapeau de paille, un épi de blé dans la bouche, l'air de ne rien savoir." style="object-fit:cover;object-position:45% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Où Bo a-t-il caché le code ?</p></div>
+  <div class="ph"><img src="../assets/emailing/email-printemps-bo.jpg" alt="Bo, l'ours en peluche, en chapeau de paille, un épi de blé dans la bouche, l'air de ne rien savoir." style="object-fit:cover;object-position:45% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Je ne dirai rien. Enfin… <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Où Bo a-t-il caché le code ?</span></p></div>
   <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Indice : il adore les pages où l'on parle de lui.</p><div class="opts"><span>Dans le panier</span><span class="ok">Sur la page de Bo ✓</span><span>Sous le canapé</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Partir à la chasse</div>
 </div>
@@ -716,7 +735,7 @@ Tague tes potes : trouve-le avant eux, ou donne-leur l'indice, on ne juge pas.
 <article class="pub" id="pub-8" aria-labelledby="h-8">
   <header class="pub-h">
     <p class="kicker"><span class="num">08</span>mercredi 12 mai 2027</p>
-    <h2 id="h-8">Pride arrive. Bo a déjà sa tenue.</h2>
+    <h2 id="h-8"><span class="hl">Pride arrive. Bo a déjà sa tenue.</span></h2>
     <p class="email-l">Email associé : <a href="../emails/08-campagne-pride-precommande.html">08-campagne-pride-precommande.html</a></p>
   </header>
   <div class="pub-g">
@@ -726,9 +745,9 @@ Tague tes potes : trouve-le avant eux, ou donne-leur l'indice, on ne juge pas.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Précommande Pride</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-pride-drapeau-trans-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le ventre en mini-string aux couleurs du drapeau trans, à côté du string assorti posé à plat." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-pride-drapeau-trans-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le ventre en mini-string aux couleurs du drapeau trans, à côté du string assorti posé à plat." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">J'ai essayé les trois. Évidemment. <span>— Bo</span></p><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Tous les corps. Même le tien.</p>
+    <p class="ttl"><span class="hl">Tous les corps. Même le tien.</span></p>
     <p class="sub">Envoi à partir du 1er juin</p>
     
     
@@ -745,8 +764,8 @@ Tague tes potes : trouve-le avant eux, ou donne-leur l'indice, on ne juge pas.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Précommande Pride</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-pride-fier-en-noir-plat-1200.webp" alt="String bleu nuit à ceinture rayée arc-en-ciel, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Arc-en-ciel, Drapeau trans, Fier·e en noir</p></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-pride-fier-en-noir-plat-1200.webp" alt="String bleu nuit à ceinture rayée arc-en-ciel, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Fier en toutes les couleurs. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Arc-en-ciel, Drapeau trans, Fier·e en noir</span></p></div>
   <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Cette année, tu défiles…</p><div class="opts two"><span>Assorti·e avec Bo</span><span>Depuis mon canapé</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Précommander</div>
 </div>
@@ -781,7 +800,7 @@ Tague ta bande pour défiler assorti·e·s.
 <article class="pub" id="pub-9" aria-labelledby="h-9">
   <header class="pub-h">
     <p class="kicker"><span class="num">09</span>mardi 1er juin 2027</p>
-    <h2 id="h-9">Le drop Pride est là</h2>
+    <h2 id="h-9"><span class="hl">Le drop Pride est là</span></h2>
     <p class="email-l">Email associé : <a href="../emails/09-campagne-drop-pride-ete.html">09-campagne-drop-pride-ete.html</a></p>
   </header>
   <div class="pub-g">
@@ -791,9 +810,9 @@ Tague ta bande pour défiler assorti·e·s.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Pride · aujourd'hui</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-pride-arc-en-ciel-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le ventre, pattes en l'air, en mini-string arc-en-ciel." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-pride-arc-en-ciel-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le ventre, pattes en l'air, en mini-string arc-en-ciel." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Défilé dans le salon : validé. <span>— Bo</span></p><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Fier·e en Duo. Pour 7 €.</p>
+    <p class="ttl"><span class="hl">Fier·e en Duo. Pour 7 €.</span></p>
     <p class="sub">Série limitée, jamais rééditée</p>
     
     
@@ -810,8 +829,8 @@ Tague ta bande pour défiler assorti·e·s.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Et le 15 juin…</span></div>
-  <div class="ph"><img src="../assets/emailing/email-ete-bo-hibiscus.jpg" alt="Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus à l'oreille, à côté d'un string et d'un mini-string à hibiscus." style="object-fit:cover;object-position:50% 20%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Bo prépare sa valise</p></div>
+  <div class="ph"><img src="../assets/emailing/email-ete-bo-hibiscus.jpg" alt="Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus à l'oreille, à côté d'un string et d'un mini-string à hibiscus." style="object-fit:cover;object-position:50% 20%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Ma valise est déjà prête. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Bo prépare sa valise</span></p></div>
   <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Drop Été</p><p class="cd">mardi 15 juin 2027 (heure à confirmer)</p></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Prendre le Duo Pride</div>
 </div>
@@ -844,7 +863,7 @@ Une bande à habiller pour la marche ? Tague-la.
 <article class="pub" id="pub-10" aria-labelledby="h-10">
   <header class="pub-h">
     <p class="kicker"><span class="num">10</span>jeudi 1er juillet 2027</p>
-    <h2 id="h-10">Soldes : le string Été à 4 €</h2>
+    <h2 id="h-10"><span class="hl">Soldes : le string Été à 4 €</span></h2>
     <p class="email-l">Email associé : <a href="../emails/10-campagne-soldes-ete-bande.html">10-campagne-soldes-ete-bande.html</a></p>
   </header>
   <div class="pub-g">
@@ -854,9 +873,9 @@ Une bande à habiller pour la marche ? Tague-la.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soldes d'été · −20 % sur le drop Été</span></div>
-  <div class="ph"><img src="../assets/emailing/email-ete-hibiscus-fond-rose.jpg" alt="String à grandes fleurs d'hibiscus roses et corail, posé à plat sur un fond rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><s>5 €</s><b>4 €</b></div></div>
+  <div class="ph"><img src="../assets/emailing/email-ete-hibiscus-fond-rose.jpg" alt="String à grandes fleurs d'hibiscus roses et corail, posé à plat sur un fond rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Ma bande : moi et mon miroir. <span>— Bo</span></p><div class="pill"><s>5 €</s><b>4 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Toute la bande en UNIS. 4 € la tête.</p>
+    <p class="ttl"><span class="hl">Toute la bande en UNIS. 4 € la tête.</span></p>
     
     
     <p class="omni">Prix le plus bas des 30 derniers jours : 5 € le string Été, 7 € le Duo Été</p>
@@ -873,8 +892,8 @@ Une bande à habiller pour la marche ? Tague-la.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soldes d'été</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-ete-vagues-plat-1200.webp" alt="String bleu à motif de vagues blanches, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Une tenue d'équipe à 4 € la tête</p></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-ete-vagues-plat-1200.webp" alt="String bleu à motif de vagues blanches, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Toute la bande ? Même moi. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Une tenue d'équipe à 4 € la tête</span></p></div>
   <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Cet été, ta bande part…</p><div class="opts two"><span>En festival</span><span>En week-end coloc</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Équiper la bande</div>
 </div>
@@ -908,7 +927,7 @@ Tague le groupe du week-end : chacun·e choisit sa taille.
 <article class="pub" id="pub-11" aria-labelledby="h-11">
   <header class="pub-h">
     <p class="kicker"><span class="num">11</span>mercredi 18 août 2027</p>
-    <h2 id="h-11">Choisis le prochain motif de Bo</h2>
+    <h2 id="h-11"><span class="hl">Choisis le prochain motif de Bo</span></h2>
     <p class="email-l">Email associé : <a href="../emails/11-campagne-vote-drop-saint-valentin.html">11-campagne-vote-drop-saint-valentin.html</a></p>
   </header>
   <div class="pub-g">
@@ -918,9 +937,9 @@ Tague le groupe du week-end : chacun·e choisit sa taille.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Vote · Saint-Valentin 2028</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-ete-hibiscus-1200.webp" alt="Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus, regarde un string et un mini-string posés devant lui." style="object-fit:cover;object-position:50% 22%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill pill-s"><b>1 clic</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-ete-hibiscus-1200.webp" alt="Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus, regarde un string et un mini-string posés devant lui." style="object-fit:cover;object-position:50% 22%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">J'ai voté deux fois. Chut. <span>— Bo</span></p><div class="pill pill-s"><b>1 clic</b></div></div>
   <div class="txt">
-    <p class="ttl">Bo hésite. Tu tranches.</p>
+    <p class="ttl"><span class="hl">Bo hésite. Tu tranches.</span></p>
     <p class="sub">Un seul motif sera fabriqué</p>
     
     
@@ -937,8 +956,8 @@ Tague le groupe du week-end : chacun·e choisit sa taille.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Saint-Valentin 2028</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-ete-hibiscus-1200.webp" alt="Bo, l'ours en peluche, debout en lunettes de soleil en cœur, fleur d'hibiscus et mini-string à hibiscus." style="object-fit:cover;object-position:50% 85%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Aide Bo à choisir</p></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-ete-hibiscus-1200.webp" alt="Bo, l'ours en peluche, debout en lunettes de soleil en cœur, fleur d'hibiscus et mini-string à hibiscus." style="object-fit:cover;object-position:50% 85%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Pile ou face : la pièce a fui. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Aide Bo à choisir</span></p></div>
   <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Le prochain motif de Bo, plutôt…</p><div class="opts two"><span>Tendre</span><span>Coquin</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Je vote</div>
 </div>
@@ -968,7 +987,7 @@ Tague ta bande : plus on est, plus Bo est content.
 <article class="pub" id="pub-12" aria-labelledby="h-12">
   <header class="pub-h">
     <p class="kicker"><span class="num">12</span>mercredi 8 septembre 2027</p>
-    <h2 id="h-12">Rentrée : 5 strings pour 17 €</h2>
+    <h2 id="h-12"><span class="hl">Rentrée : 5 strings pour 17 €</span></h2>
     <p class="email-l">Email associé : <a href="../emails/12-campagne-rentree-essentiels.html">12-campagne-rentree-essentiels.html</a></p>
   </header>
   <div class="pub-g">
@@ -978,9 +997,9 @@ Tague ta bande : plus on est, plus Bo est content.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Rentrée · les Essentiels</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">lot de 5</span><s>20 €</s><b>17 €</b></div></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Doux comme moi ? Flatteur. <span>— Bo</span></p><div class="pill"><span class="pill-l">lot de 5</span><s>20 €</s><b>17 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Doux comme Bo. Prix d'un café.</p>
+    <p class="ttl"><span class="hl">Doux comme Bo. Prix d'un café.</span></p>
     <p class="sub">6 couleurs, Plat ou Poche, XS à 4XL</p>
     
     <p class="omni">Prix le plus bas des 30 derniers jours : 20 € le lot de 5</p>
@@ -997,8 +1016,8 @@ Tague ta bande : plus on est, plus Bo est content.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Les Essentiels</span></div>
-  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings Essentiels empilés à plat, du bleu encre au blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">On trie le tiroir ?</p></div>
+  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings Essentiels empilés à plat, du bleu encre au blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Ton tiroir mérite mieux. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">On trie le tiroir ?</span></p></div>
   <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Les Essentiels, c'est combien de couleurs ?</p><div class="opts"><span>4</span><span class="ok">6 ✓</span><span>12</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Prendre mon lot de 5</div>
 </div>
@@ -1030,7 +1049,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
 <article class="pub" id="pub-13" aria-labelledby="h-13">
   <header class="pub-h">
     <p class="kicker"><span class="num">13</span>vendredi 1er octobre 2027</p>
-    <h2 id="h-13">Fais-toi peur (pour 5 €)</h2>
+    <h2 id="h-13"><span class="hl">Fais-toi peur (pour 5 €)</span></h2>
     <p class="email-l">Email associé : <a href="../emails/13-campagne-drop-halloween-octobre-rose.html">13-campagne-drop-halloween-octobre-rose.html</a></p>
   </header>
   <div class="pub-g">
@@ -1040,9 +1059,9 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
         <div class="car multi" tabindex="0" aria-label="Carrousel de 5 vignettes, défile horizontalement">
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween · aujourd'hui</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-halloween-1200.webp" alt="Bo, l'ours en peluche miel, allongé avec un chapeau de sorcière, en mini-string noir à citrouilles orange." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-halloween-1200.webp" alt="Bo, l'ours en peluche miel, allongé avec un chapeau de sorcière, en mini-string noir à citrouilles orange." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Mon costume : un ours. Bluffant. <span>— Bo</span></p><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Fais-toi peur (pour 5 €)</p>
+    <p class="ttl"><span class="hl">Fais-toi peur (pour 5 €)</span></p>
     <p class="sub">Bo, lui, n'a peur de rien</p>
     
     
@@ -1053,7 +1072,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-halloween-fantomes-plat-1200.webp" alt="String violet foncé à petits fantômes blancs, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Fantômes</p>
+    <p class="ttl"><span class="hl">Fantômes</span></p>
     <p class="sub">Plat ou Poche, XS à 4XL</p>
     
     
@@ -1064,7 +1083,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-halloween-citrouille-plat-1200.webp" alt="String orange citrouille uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Citrouille</p>
+    <p class="ttl"><span class="hl">Citrouille</span></p>
     <p class="sub">En Duo avec le mini-string de Bo : 7 €</p>
     
     
@@ -1075,7 +1094,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Série limitée</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-halloween-phosphorescent-plat-1200.webp" alt="String vert fluo uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Phosphorescent</p>
+    <p class="ttl"><span class="hl">Phosphorescent</span></p>
     <p class="sub">Il brille quand la lumière s'éteint</p>
     
     
@@ -1086,7 +1105,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Capsule Octobre Rose</span></div>
   <div class="ph"><img src="../assets/images/string-unisexe-octobre-rose-ruban-plat-1200.webp" alt="String rose pâle imprimé de petits rubans roses, ceinture framboise, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Projet : 1 € par article reversé</p>
+    <p class="ttl"><span class="hl">Projet : 1 € par article reversé</span></p>
     <p class="sub">Partenariat en cours de discussion : aucun don encore effectué</p>
     
     
@@ -1103,8 +1122,8 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-halloween-phosphorescent-plat-1200.webp" alt="String vert fluo uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Quiz express</p></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-phosphorescent-plat-1200.webp" alt="String vert fluo uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Peur de rien. Sauf l'aspirateur. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Quiz express</span></p></div>
   <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Le string Phosphorescent brille…</p><div class="opts"><span>Au soleil</span><span class="ok">Dans le noir ✓</span><span>Quand tu mens</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Voir le drop Halloween</div>
 </div>
@@ -1137,7 +1156,7 @@ Tague la personne qui a peur du noir. Le Phosphorescent l'aidera.
 <article class="pub" id="pub-14" aria-labelledby="h-14">
   <header class="pub-h">
     <p class="kicker"><span class="num">14</span>mercredi 27 octobre 2027</p>
-    <h2 id="h-14">Ta tenue d'Halloween est prête ?</h2>
+    <h2 id="h-14"><span class="hl">Ta tenue d'Halloween est prête ?</span></h2>
     <p class="email-l">Email associé : <a href="../emails/14-campagne-halloween-tenue-bande.html">14-campagne-halloween-tenue-bande.html</a></p>
   </header>
   <div class="pub-g">
@@ -1147,9 +1166,9 @@ Tague la personne qui a peur du noir. Le Phosphorescent l'aidera.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Halloween · dimanche 31 octobre</span></div>
-  <div class="ph"><img src="../assets/emailing/email-halloween-bo-dos.jpg" alt="Bo, l'ours en peluche miel, vu de dos avec un chapeau de sorcière, en mini-string noir à citrouilles." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">lot de 5</span><b>20 €</b></div></div>
+  <div class="ph"><img src="../assets/emailing/email-halloween-bo-dos.jpg" alt="Bo, l'ours en peluche miel, vu de dos avec un chapeau de sorcière, en mini-string noir à citrouilles." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Citrouille, et fier de l'être. <span>— Bo</span></p><div class="pill"><span class="pill-l">lot de 5</span><b>20 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Tous en citrouille. 4 € la tête.</p>
+    <p class="ttl"><span class="hl">Tous en citrouille. 4 € la tête.</span></p>
     
     
     
@@ -1166,8 +1185,8 @@ Tague la personne qui a peur du noir. Le Phosphorescent l'aidera.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soirée déguisée ?</span></div>
-  <div class="ph"><img src="../assets/images/string-unisexe-halloween-citrouille-plat-1200.webp" alt="String orange citrouille uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Habille toute la bande</p></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-citrouille-plat-1200.webp" alt="String orange citrouille uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Une soirée déguisée ? J'arrive. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Habille toute la bande</span></p></div>
   <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Soirée d'Halloween</p><p class="cd">dimanche 31 octobre 2027</p></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Habiller la bande</div>
 </div>
@@ -1200,7 +1219,7 @@ Tague le groupe de la soirée : chacun·e choisit sa taille.
 <article class="pub" id="pub-15" aria-labelledby="h-15">
   <header class="pub-h">
     <p class="kicker"><span class="num">15</span>lundi 1er novembre 2027</p>
-    <h2 id="h-15">Bo édition Noël est arrivé</h2>
+    <h2 id="h-15"><span class="hl">Bo édition Noël est arrivé</span></h2>
     <p class="email-l">Email associé : <a href="../emails/15-campagne-drop-noel.html">15-campagne-drop-noel.html</a></p>
   </header>
   <div class="pub-g">
@@ -1210,9 +1229,9 @@ Tague le groupe de la soirée : chacun·e choisit sa taille.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Noël · aujourd'hui</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-1200.webp" alt="Bo, l'ours en peluche miel, assis près d'un sapin illuminé, bonnet rouge et mini-string rouge à tête de renne." style="object-fit:cover;object-position:50% 30%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-1200.webp" alt="Bo, l'ours en peluche miel, assis près d'un sapin illuminé, bonnet rouge et mini-string rouge à tête de renne." style="object-fit:cover;object-position:50% 30%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Bonnet, string, guirlande : validé. <span>— Bo</span></p><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Que le Secret Santa commence</p>
+    <p class="ttl"><span class="hl">Que le Secret Santa commence</span></p>
     <p class="sub">Nouveau motif, jamais réédité</p>
     
     
@@ -1229,8 +1248,8 @@ Tague le groupe de la soirée : chacun·e choisit sa taille.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Noël</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Le prix juste</p></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Je garde le bonnet. Et le reste. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Le prix juste</span></p></div>
   <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Le Duo (ton string + le mini de Bo), il coûte…</p><div class="opts"><span class="ok">7 € ✓</span><span>15 €</span><span>25 €</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Voir le drop Noël</div>
 </div>
@@ -1264,7 +1283,7 @@ Partage-le avec ton groupe de Secret Santa.
 <article class="pub" id="pub-16" aria-labelledby="h-16">
   <header class="pub-h">
     <p class="kicker"><span class="num">16</span>vendredi 26 novembre 2027</p>
-    <h2 id="h-16">Pas de −70 %. Juste 5 €.</h2>
+    <h2 id="h-16"><span class="hl">Pas de −70 %. Juste 5 €.</span></h2>
     <p class="email-l">Email associé : <a href="../emails/16-campagne-black-friday-raisonne.html">16-campagne-black-friday-raisonne.html</a></p>
   </header>
   <div class="pub-g">
@@ -1274,9 +1293,9 @@ Partage-le avec ton groupe de Secret Santa.
         <div class="car" >
           <div class="vis feed" data-slide="1">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Vendredi raisonné</span></div>
-  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël, l'air serein." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël, l'air serein." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Rembourré, oui. Gonflé, jamais. <span>— Bo</span></p><div class="pill"><b>5 €</b></div></div>
   <div class="txt">
-    <p class="ttl">Pas de −70 %. Juste 5 €.</p>
+    <p class="ttl"><span class="hl">Pas de −70 %. Juste 5 €.</span></p>
     <p class="sub">Toute l'année. Sans faux rabais.</p>
     
     
@@ -1293,8 +1312,8 @@ Partage-le avec ton groupe de Secret Santa.
         <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
         <div class="vis story">
   <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Vendredi raisonné</span></div>
-  <div class="ph"><img src="../assets/images/pochette-kraft-unis-1200.webp" alt="Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
-  <div class="txt"><p class="ttl">Le seul bon plan du jour</p></div>
+  <div class="ph"><img src="../assets/images/pochette-kraft-unis-1200.webp" alt="Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><p class="bo" aria-hidden="true">Mon ego, lui, n'est jamais soldé. <span>— Bo</span></p></div>
+  <div class="txt"><p class="ttl"><span class="hl">Le seul bon plan du jour</span></p></div>
   <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Un −70 % sur un prix gonflé la veille, tu…</p><div class="opts two"><span>Fonces</span><span>Flaires l'arnaque</span></div></div>
   <div class="lnk"><span class="stk-t">Sticker lien</span>Voir le drop Noël</div>
 </div>

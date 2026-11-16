@@ -21,7 +21,7 @@ function frDate(iso) {
 }
 
 function allText(p) {
-  const parts = [p.caption, p.story.title, p.story.kicker, p.story.sticker.question, p.story.sticker.script, ...(p.story.sticker.options || [])];
+  const parts = [p.caption, p.story.title, p.story.kicker, p.story.sticker.question, p.story.sticker.script, ...(p.story.sticker.options || []), p.bo.feed, p.bo.story];
   for (const s of p.feed.slides) parts.push(s.title, s.kicker, s.sub || "", s.omnibus || "", ...(s.list || []), s.price.now, s.price.old || "");
   return parts.join("\n");
 }
@@ -45,6 +45,12 @@ for (const p of PUBLICATIONS) {
   if (slides !== 1 && (slides < 3 || slides > 5)) errors.push(`${where} : carrousel de ${slides} vignettes`);
   for (const img of [...p.feed.slides.map((s) => s.img), p.story.img]) if (INTERDITES.some((x) => img.includes(x))) errors.push(`${where} : image interdite ${img}`);
   for (const a of [...p.feed.slides.map((s) => s.alt), p.story.alt]) if (!a || a.length < 30) errors.push(`${where} : texte alternatif trop court`);
+  // Notes de Bo (design.md §7) : une par visuel, courte (elle tient sur le bord du Polaroid), sans prix ni info clé.
+  if (!p.bo || !p.bo.feed || !p.bo.story) errors.push(`${where} : notes de Bo feed/story manquantes`);
+  for (const [k, note] of Object.entries(p.bo || {})) {
+    if (note.length > 36) errors.push(`${where} : note de Bo ${k} trop longue (${note.length} car.)`);
+    if (/\d|€|%/.test(note)) errors.push(`${where} : note de Bo ${k} avec un chiffre ou un prix (info clé interdite en manuscrit)`);
+  }
 }
 if (PUBLICATIONS.length !== 16) errors.push(`${PUBLICATIONS.length} publications au lieu de 16`);
 const dates = PUBLICATIONS.map((p) => p.date);
@@ -68,12 +74,15 @@ function photo(o, alt) {
   return `<img src="${esc(o.img)}" alt="${esc(alt)}" style="${style}" loading="lazy" decoding="async">`;
 }
 
-function feedSlide(s, i, total) {
+// Note manuscrite de Bo, écrite sur le bord blanc du Polaroid (décorative, masquée aux lecteurs d'écran).
+const boNote = (t) => t ? `<p class="bo" aria-hidden="true">${esc(t)} <span>— Bo</span></p>` : "";
+
+function feedSlide(s, i, total, note) {
   return `<div class="vis feed" data-slide="${i + 1}">
   <div class="vis-top">${LOGO}<span class="kick">${esc(s.kicker)}</span></div>
-  <div class="ph">${photo(s, s.alt)}${price(s.price)}</div>
+  <div class="ph">${photo(s, s.alt)}${boNote(i === 0 ? note : "")}${price(s.price)}</div>
   <div class="txt">
-    <p class="ttl">${esc(s.title)}</p>
+    <p class="ttl"><span class="hl">${esc(s.title)}</span></p>
     ${s.sub ? `<p class="sub">${esc(s.sub)}</p>` : ""}
     ${s.list ? `<ol class="steps">${s.list.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
     ${s.omnibus ? `<p class="omni">${esc(s.omnibus)}</p>` : ""}
@@ -95,8 +104,8 @@ function storyVis(p) {
   const s = p.story;
   return `<div class="vis story">
   <div class="vis-top">${LOGO}<span class="kick">${esc(s.kicker)}</span></div>
-  <div class="ph">${photo(s, s.alt)}</div>
-  <div class="txt"><p class="ttl">${esc(s.title)}</p></div>
+  <div class="ph">${photo(s, s.alt)}${boNote(p.bo.story)}</div>
+  <div class="txt"><p class="ttl"><span class="hl">${esc(s.title)}</span></p></div>
   ${sticker(s.sticker)}
   <div class="lnk"><span class="stk-t">Sticker lien</span>${esc(s.link)}</div>
 </div>`;
@@ -110,7 +119,7 @@ function article(p) {
   return `<article class="pub" id="pub-${p.n}" aria-labelledby="h-${p.n}">
   <header class="pub-h">
     <p class="kicker"><span class="num">${String(p.n).padStart(2, "0")}</span>${esc(frDate(p.date))}${p.demo ? ` <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span>` : ""}</p>
-    <h2 id="h-${p.n}">${esc(p.emailTitle)}</h2>
+    <h2 id="h-${p.n}"><span class="hl">${esc(p.emailTitle)}</span></h2>
     <p class="email-l">Email associé : <a href="../emails/${esc(p.email)}">${esc(p.email)}</a></p>
   </header>
   <div class="pub-g">
@@ -118,7 +127,7 @@ function article(p) {
       <div class="frame">
         <div class="frame-h">${AVATAR}<span class="handle">@unis</span><span class="fmt">${esc(p.feed.format)}</span></div>
         <div class="car${total > 1 ? " multi" : ""}" ${total > 1 ? `tabindex="0" aria-label="Carrousel de ${total} vignettes, défile horizontalement"` : ""}>
-          ${p.feed.slides.map((s, i) => feedSlide(s, i, total)).join("\n")}
+          ${p.feed.slides.map((s, i) => feedSlide(s, i, total, p.bo.feed)).join("\n")}
         </div>
         ${total > 1 ? `<div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / ${total}</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>` : ""}
         <p class="frame-cap"><b>@unis</b> ${esc(p.caption.split("\n")[0])} <span class="more">… voir la légende complète</span></p>
@@ -162,11 +171,14 @@ const html = `<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;display=swap">
 <style>
-:root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --logo:#FDD2E3; --paper:#FFFFFF; --muted:#6B2A44; }
+/* Direction « fanzine / fait main » (design.md §7). Caveat (écriture de Bo) : 1er chemin = site publié (site/assets/fonts), 2e = dépôt (src/static/fonts) */
+@font-face { font-family:"Caveat"; font-style:normal; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-700-normal.woff2") format("woff2"), url("../src/static/fonts/caveat-latin-700-normal.woff2") format("woff2"); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:"Caveat"; font-style:normal; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-ext-700-normal.woff2") format("woff2"), url("../src/static/fonts/caveat-latin-ext-700-normal.woff2") format("woff2"); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF; }
+:root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --logo:#FDD2E3; --paper:#FFFFFF; --muted:#6B2A44; --postit:#FFE89A; --tape:#F6E7B8cc; --hand:"Caveat","Comic Sans MS",cursive; --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .01 0 0 0 0 .1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
 :root[data-theme="dark"] { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
+body { margin:0; background-color:var(--bg); background-image:var(--grain); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
 h1, h2, h3 { font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; line-height:1.1; margin:0; }
 a { color:var(--accent); font-weight:700; }
 a:focus-visible, button:focus-visible, .car:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
@@ -179,12 +191,15 @@ h1 { font-size:clamp(32px, 6vw, 54px); }
 .toc li { break-inside:avoid; margin:0 0 6px; }
 .toc a { text-decoration:none; color:var(--ink); }
 .toc a:hover { text-decoration:underline; }
-.num { display:inline-block; min-width:32px; padding:2px 8px; border-radius:999px; background:var(--accent); color:#fff; text-align:center; margin-right:8px; font-weight:700; font-size:14px; }
-.pub { background:var(--paper); border-radius:28px; padding:24px; margin:32px 0; }
+.num { display:inline-block; min-width:34px; padding:2px 8px; border-radius:40% 55% 45% 60% / 55% 45% 60% 40%; background:var(--postit); color:#3E031B; border:2px solid #3E031B; text-align:center; margin-right:8px; font-weight:700; font-size:14px; transform:rotate(-6deg); }
+.pub { position:relative; background:var(--paper); border-radius:4px; border:1px solid #3E031B22; box-shadow:0 10px 24px #3E031B1f, 0 2px 0 #3E031B10; padding:28px 24px 24px; margin:40px 0; }
+.pub::before { content:""; position:absolute; top:-12px; left:50%; width:92px; height:26px; background:var(--tape); transform:translateX(-50%) rotate(-4deg); box-shadow:0 1px 2px #0001; pointer-events:none; }
+.pub:nth-of-type(even)::before { left:22%; transform:translateX(-50%) rotate(5deg); }
+.pub-h h2 .hl, h1 .hl { background-image:linear-gradient(176deg, transparent 56%, var(--soft) 56%, var(--soft) 90%, transparent 90%); -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 6px; }
 .pub-h .kicker { margin:0; font-weight:700; color:var(--muted); font-size:15px; }
 .pub-h h2 { font-size:30px; margin:8px 0 4px; }
 .email-l { margin:0 0 16px; font-size:15px; }
-.badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:999px; border:1.5px solid var(--ink); font-size:13px; color:var(--ink); }
+.badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:4px; border:2px dashed var(--ink); font-size:13px; color:var(--ink); }
 .pub-g { display:grid; grid-template-columns:minmax(0, 380px) minmax(0, 250px) minmax(0, 1fr); gap:24px; align-items:start; }
 @media (max-width:1100px) { .pub-g { grid-template-columns:minmax(0, 380px) minmax(0, 250px); } .info { grid-column:1 / -1; } }
 @media (max-width:680px) { .pub-g { grid-template-columns:minmax(0, 1fr); } .mock-story { max-width:300px; } }
@@ -198,56 +213,67 @@ h1 { font-size:clamp(32px, 6vw, 54px); }
 .car { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; border-radius:18px; scrollbar-width:thin; }
 .car > .vis { flex:0 0 100%; scroll-snap-align:start; }
 .car-nav { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:8px; }
-.car-nav button { min-width:44px; min-height:44px; border-radius:999px; border:1.5px solid #3E031B; background:transparent; color:#3E031B; font:inherit; font-weight:700; cursor:pointer; }
+.car-nav button { min-width:44px; min-height:44px; border-radius:10px; border:2.5px solid #3E031B; background:#FFFFFF; color:#3E031B; font:inherit; font-weight:700; cursor:pointer; box-shadow:3px 3px 0 #3E031B; }
+.car-nav button:active { transform:translate(2px, 2px); box-shadow:1px 1px 0 #3E031B; }
 .car-pos { font-size:14px; min-width:48px; text-align:center; }
 
 /* ── Visuels (unités cqw : se mettent à l'échelle de leur largeur) ── */
-.vis { container-type:inline-size; position:relative; width:100%; background:#FDD2E3; color:#3E031B; overflow:hidden; border-radius:18px; font-family:'Atkinson Hyperlegible', Arial, sans-serif; }
+.vis { container-type:inline-size; position:relative; width:100%; background-color:#FDD2E3; background-image:var(--grain); color:#3E031B; overflow:hidden; border-radius:18px; font-family:'Atkinson Hyperlegible', Arial, sans-serif; }
 .vis.feed { aspect-ratio:4 / 5; }
 .vis.story { aspect-ratio:9 / 16; }
 .vis-top { position:absolute; left:5cqw; right:5cqw; top:4.5cqw; display:flex; align-items:center; justify-content:space-between; gap:3cqw; }
 .vis .logo { width:24cqw; height:auto; flex:none; }
-.kick { background:#FFFFFF; border-radius:999px; padding:1.2cqw 3cqw; font-weight:700; font-size:3.1cqw; line-height:1.2; text-align:right; max-width:62cqw; }
-.ph { position:absolute; left:5cqw; right:5cqw; top:15cqw; height:68cqw; }
-.ph img { display:block; width:100%; height:100%; border-radius:4cqw; }
-.pill { position:absolute; right:-1.5cqw; bottom:-7cqw; width:23cqw; height:23cqw; border-radius:50%; background:#D42A6E; color:#FFFFFF; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(-8deg); box-shadow:0 0 0 1.2cqw #FDD2E3; font-family:'Bricolage Grotesque', Arial, sans-serif; font-stretch:75%; line-height:1; text-align:center; }
+.kick { background:#FFFFFF; border:.45cqw solid #3E031B; border-radius:1.2cqw; box-shadow:.8cqw .8cqw 0 #3E031B; padding:1cqw 2.6cqw; font-weight:700; font-size:3.1cqw; line-height:1.2; text-align:right; max-width:60cqw; transform:rotate(1.5deg); }
+/* Photo façon Polaroid : cadre blanc, scotch en haut, inclinaison de −1,5° à +1,5° */
+.ph { position:absolute; left:6cqw; right:6cqw; top:16.5cqw; height:69cqw; background:#FFFFFF; padding:2.4cqw 2.4cqw 8.6cqw; border:.15cqw solid #3E031B22; box-shadow:0 2.2cqw 4.4cqw #3E031B2e, 0 .4cqw 0 #3E031B14; transform:rotate(-1.5deg); }
+.ph::before { content:""; position:absolute; z-index:2; top:-2.6cqw; left:50%; width:22cqw; height:5.4cqw; background:var(--tape); transform:translateX(-50%) rotate(-4deg); box-shadow:0 .2cqw .4cqw #0001; }
+.car > .vis:nth-child(even) .ph, .story .ph { transform:rotate(1.2deg); }
+.car > .vis:nth-child(even) .ph::before { left:24%; transform:translateX(-50%) rotate(6deg); }
+.ph img { display:block; width:100%; height:100%; border-radius:0; }
+/* Note de Bo : Caveat Framboise, sur le bord du Polaroid, jamais une info clé */
+.bo { position:absolute; left:3cqw; right:20.5cqw; bottom:1.8cqw; margin:0; font-family:var(--hand); font-weight:700; font-size:4.3cqw; line-height:1; color:#D42A6E; white-space:nowrap; transform:rotate(-2deg); transform-origin:left center; }
+.bo span { font-size:.85em; }
+/* Sticker prix : ovale jaune post-it, contour bordeaux, ombre dure */
+.pill { position:absolute; z-index:3; right:-3.5cqw; bottom:-6.5cqw; width:24cqw; height:22cqw; border-radius:40% 55% 45% 60% / 55% 45% 60% 40%; background:#FFE89A; color:#3E031B; border:.55cqw solid #3E031B; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(-8deg); box-shadow:.9cqw .9cqw 0 #3E031B; font-family:'Bricolage Grotesque', Arial, sans-serif; font-stretch:75%; line-height:1; text-align:center; }
 .pill b { font-size:7.4cqw; font-weight:800; white-space:nowrap; }
 .pill-s b { font-size:5cqw; }
 .pill s { font-size:3.6cqw; font-weight:700; opacity:.92; margin-bottom:.6cqw; }
 .pill-l { font-family:'Atkinson Hyperlegible', Arial, sans-serif; font-size:3cqw; font-weight:700; margin-bottom:.6cqw; }
-.txt { position:absolute; left:5cqw; right:27cqw; top:86cqw; }
+.txt { position:absolute; left:6cqw; right:27cqw; top:90cqw; }
+.ttl .hl { background-image:linear-gradient(176deg, transparent 54%, #FAB8D0 54%, #FAB8D0 90%, transparent 90%); -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 1cqw; }
 .ttl { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:8.2cqw; line-height:.98; letter-spacing:-.01em; }
 .sub { margin:1.8cqw 0 0; font-size:3.4cqw; line-height:1.3; font-weight:700; }
 .steps { margin:1.6cqw 0 0; padding-left:4.2cqw; font-size:3.1cqw; line-height:1.3; font-weight:700; }
 .omni { margin:1.6cqw 0 0; font-size:2.6cqw; line-height:1.3; }
-.count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border-radius:999px; padding:.6cqw 2cqw; }
+.count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border:.35cqw solid #3E031B; border-radius:1cqw; padding:.4cqw 1.8cqw; }
 /* Story : même grammaire, plus haute */
-.story .ph { top:16cqw; height:84cqw; }
-.story .txt { top:104cqw; right:5cqw; }
+.story .ph { top:16.5cqw; height:79cqw; }
+.story .txt { top:99cqw; right:6cqw; }
 .story .ttl { font-size:9cqw; }
-.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:4cqw; padding:2.6cqw 3.4cqw; text-align:center; }
+.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:2cqw; padding:2.6cqw 3.4cqw; text-align:center; }
 .stk-t { display:block; font-size:2.5cqw; font-weight:700; color:#D42A6E; text-transform:uppercase; letter-spacing:.06em; margin-bottom:1cqw; }
 .sq { margin:0 0 1.6cqw; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:4.6cqw; line-height:1.05; }
 .opts { display:flex; flex-direction:column; gap:1cqw; }
 .opts.two { flex-direction:row; }
-.opts span { flex:1; border-radius:999px; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
+.opts span { flex:1; border-radius:1.6cqw; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
 .opts span.ok { background:#3E031B; color:#FFFFFF; }
 .cd { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:5.4cqw; color:#D42A6E; line-height:1.05; }
-.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border-radius:999px; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
+.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border:.55cqw solid #3E031B; box-shadow:.9cqw .9cqw 0 #3E031B; border-radius:2.4cqw; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
 .lnk .stk-t { color:#FFFFFF; margin-bottom:.3cqw; font-size:2.2cqw; }
 
 /* ── Colonne d'infos ── */
 .cap-h { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
 .cap-h h3 { font-size:24px; }
-.copy { min-height:52px; padding:0 24px; border-radius:999px; border:0; background:#D42A6E; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; }
+.copy { min-height:52px; padding:0 24px; border-radius:12px; border:2.5px solid #3E031B; background:#D42A6E; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; box-shadow:4px 4px 0 #3E031B; transition:transform .12s, box-shadow .12s; }
+.copy:active { transform:translate(3px, 3px); box-shadow:1px 1px 0 #3E031B; }
 .copied { font-size:14px; font-weight:700; color:var(--muted); }
-.cap { white-space:pre-wrap; font:16px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); border-radius:10px; padding:14px 16px; margin:12px 0 16px; max-width:65ch; }
+.cap { white-space:pre-wrap; font:16px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); border:2px dashed color-mix(in srgb, var(--ink) 35%, transparent); border-radius:4px; padding:14px 16px; margin:12px 0 16px; max-width:65ch; }
 dl { display:grid; grid-template-columns:max-content minmax(0, 1fr); gap:6px 14px; margin:0; font-size:15px; }
 dt { font-weight:700; } dd { margin:0; }
 @media (max-width:520px) { dl { grid-template-columns:minmax(0, 1fr); } dd { margin-bottom:6px; } }
 code { font-size:13px; word-break:break-all; }
 .alts { margin:0; padding-left:20px; }
-.note { background:var(--bg); border-left:4px solid var(--accent); padding:8px 12px; border-radius:10px; font-size:14px; margin:14px 0 0; }
+.note { background:var(--postit); color:#3E031B; padding:10px 14px; border-radius:2px; font-size:14px; margin:16px 0 0; box-shadow:0 6px 14px #3E031B1a; }
 footer { margin-top:48px; font-size:14px; color:var(--muted); max-width:80ch; }
 
 /* ── Mode export (?export) : chaque visuel à 1080 px de large, sans maquette ni zone sticker ── */
@@ -259,6 +285,8 @@ body.export .mock, body.export .mock-story { max-width:none; }
 body.export .frame { background:none; box-shadow:none; padding:0; border-radius:0; }
 body.export .car { display:block; overflow:visible; border-radius:0; }
 body.export .vis { width:1080px; border-radius:0; margin:0 0 40px; }
+body.export .pub::before { display:none; }
+@media (prefers-reduced-motion: reduce) { .copy { transition:none; } }
 body.export .stk, body.export .lnk { visibility:hidden; }
 @media (prefers-reduced-motion: no-preference) { .car { scroll-behavior:smooth; } }
 </style>
@@ -267,7 +295,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
 <div class="wrap">
   <header class="top">
     <div>
-      <h1>Les publications Instagram UNIS</h1>
+      <h1><span class="hl">Les publications Instagram UNIS</span></h1>
       <p class="lead">16 publications, une par envoi de la stratégie emailing (docs/03), dans l'ordre du calendrier. Chacune : un post 4:5 (ou un carrousel) et une story 9:16 avec son sticker, la légende prête à copier, le texte alternatif, l'heure conseillée et les liens UTM. Maquettes UNIS, rien n'est publié.</p>
     </div>
     ${LOGO}

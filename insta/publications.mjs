@@ -1,5 +1,6 @@
 // UNIS · 16 publications Instagram alignées sur les 16 envois de docs/03-campagnes-emailing.md.
 // Une entrée = 1 post feed 4:5 (ou carrousel de 3 à 5 vignettes) + 1 story 9:16 avec sticker.
+// bo.feed / bo.story : une note manuscrite de Bo par visuel (1re vignette du carrousel seulement), courte et non essentielle.
 // Chemins d'images relatifs à insta/ (../assets/...). Texte français ; versions NL, EN (« thong »), DE à faire relire par une personne native.
 // Régénérer la page : node insta/build.mjs · Vérifier : node insta/check.mjs
 
@@ -16,6 +17,7 @@ export const PUBLICATIONS = [
     campaign: "2026-12-newsletter-secret-santa", page: "/fr/journal/cadeau-secret-santa-drole/",
     segment: "S1 · Le cadeau qui fait rire", demo: true,
     note: "Le doc 17 prévoit ce jour-là la Story ST3 « Quel motif pour qui ? » : la story ci-dessous la reprend telle quelle.",
+    bo: { feed: "J'ai ouvert toutes les cases. Oups.", story: "Moi, je suis pro du pull moche." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Carrousel · 5 vignettes",
       slides: [
@@ -58,6 +60,7 @@ Tague la personne qui n'a toujours aucune idée pour son Secret Santa.
     campaign: "2026-12-derniere-livraison-noel", page: "/fr/saisons/noel/",
     segment: "S1 · Cadeau qui fait rire + S3 · Organisateur·rice de groupe", demo: true,
     note: "Urgence réelle : date limite du jeudi 17 décembre 2026. Le doc 17 prévoit ce jour-là le sondage « Tu as commandé ? » : la story le reprend.",
+    bo: { feed: "Je pose. Toi, tu commandes.", story: "Pas encore ? Je dis ça, je dis rien." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -90,6 +93,7 @@ Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
     email: "03-newsletter-taille-soldes-janvier.html", emailTitle: "Ta taille, en 30 secondes",
     campaign: "2027-01-newsletter-taille-soldes", page: "/fr/guide-des-tailles/",
     segment: "S5 · Pour soi (et les personnes qui ont reçu un string à Noël)", demo: true,
+    bo: { feed: "Mon mètre ruban, c'est mon bras.", story: "Moi ? Taille unique. Et moelleux." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Carrousel · 4 vignettes",
       slides: [
@@ -127,6 +131,7 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
     email: "04-newsletter-unisexe-drop-saint-valentin.html", emailTitle: "Pourquoi on ne dit jamais « pour lui »",
     campaign: "2027-02-drop-saint-valentin", page: "/fr/saisons/saint-valentin/",
     segment: "S2 · Couple complice + S4 · Collectionneur·se", demo: true,
+    bo: { feed: "Assorti avec toi ? Je rougis.", story: "Rire d'abord. Rougir ensuite." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Carrousel · 3 vignettes",
       slides: [
@@ -164,6 +169,7 @@ Tague ta moitié. Ou envoie-lui ce post en privé, c'est plus discret.
     campaign: "2027-02-saint-valentin-rappel", page: "/fr/saisons/saint-valentin/",
     segment: "S2 · Couple complice", demo: true,
     note: "Le compte à rebours vise le dimanche 14 février (la fête), pas une date limite de livraison : aucune date de livraison garantie n'est fixée dans les docs.",
+    bo: { feed: "Les chocolats ? Déjà mangés.", story: "Le jour J, je suis pris. Désolé." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -196,6 +202,7 @@ Envoie ce post à ta moitié. Subtilement, ou pas.
     campaign: "2027-03-drop-printemps", page: "/fr/saisons/printemps/",
     segment: "S4 · Collectionneur·se (liste d'attente, Club de Bo) + S5 · Pour soi", demo: true,
     note: "Publié la veille du drop (17 mars), le jour de l'accès anticipé réservé à la liste d'attente.",
+    bo: { feed: "Pas su attendre. Désolé.", story: "Moi, je l'ai depuis hier." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Carrousel · 4 vignettes",
       slides: [
@@ -234,6 +241,7 @@ Tague l'ami·e fan de Bo qui rate toujours les ouvertures.
     campaign: "2027-04-code-cache", page: "/fr/",
     segment: "S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire", demo: false,
     note: "Le code lui-même n'est jamais écrit dans la publication. Conditions, durée et prix le plus bas des 30 jours s'affichent sur le site.",
+    bo: { feed: "Ce n'est pas une blague. Si ?", story: "Je ne dirai rien. Enfin…" }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -265,6 +273,7 @@ Tague tes potes : trouve-le avant eux, ou donne-leur l'indice, on ne juge pas.
     campaign: "2027-05-pride-precommande", page: "/fr/saisons/pride/",
     segment: "S5 · Pour soi, confort et valeurs", demo: false,
     note: "Don : « partenariat en cours de discussion », jamais présenté comme acquis. Aucun logo ni visuel officiel d'événement.",
+    bo: { feed: "J'ai essayé les trois. Évidemment.", story: "Fier en toutes les couleurs." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -298,6 +307,7 @@ Tague ta bande pour défiler assorti·e·s.
     email: "09-campagne-drop-pride-ete.html", emailTitle: "Le drop Pride est là",
     campaign: "2027-06-drop-pride", page: "/fr/saisons/pride/",
     segment: "S5 · Pour soi + S3 · Organisateur·rice de groupe", demo: false,
+    bo: { feed: "Défilé dans le salon : validé.", story: "Ma valise est déjà prête." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -330,6 +340,7 @@ Une bande à habiller pour la marche ? Tague-la.
     campaign: "2027-07-soldes-ete", page: "/fr/saisons/ete/",
     segment: "S3 · Organisateur·rice de groupe", demo: false,
     note: "Réduction : prix le plus bas des 30 jours affiché sur le visuel et dans la légende.",
+    bo: { feed: "Ma bande : moi et mon miroir.", story: "Toute la bande ? Même moi." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -363,6 +374,7 @@ Tague le groupe du week-end : chacun·e choisit sa taille.
     campaign: "2027-08-vote-saint-valentin", page: "/fr/club/",
     segment: "S4 · Collectionneur·se de Bo + toute la communauté", demo: false,
     note: "Le sondage de la story est un sondage d'humeur : le vrai vote (et le tirage au sort, 18+, règlement publié) se fait dans le Club de Bo. Les motifs candidats ne sont pas nommés dans l'email : ils ne le sont pas ici non plus.",
+    bo: { feed: "J'ai voté deux fois. Chut.", story: "Pile ou face : la pièce a fui." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -391,6 +403,7 @@ Tague ta bande : plus on est, plus Bo est content.
     email: "12-campagne-rentree-essentiels.html", emailTitle: "Rentrée : 5 strings pour 17 €",
     campaign: "2027-09-rentree-essentiels", page: "/fr/essentiels/",
     segment: "S5 · Pour soi + S3 · Organisateur·rice de groupe", demo: false,
+    bo: { feed: "Doux comme moi ? Flatteur.", story: "Ton tiroir mérite mieux." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -422,6 +435,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
     campaign: "2027-10-drop-halloween", page: "/fr/saisons/halloween/",
     segment: "S4 · Collectionneur·se de Bo + S5 · Pour soi (capsule Octobre Rose)", demo: false,
     note: "Octobre Rose : « partenariat en cours de discussion », aucun don présenté comme effectué. Le nom de l'association reste dans la légende, pas sur le visuel.",
+    bo: { feed: "Mon costume : un ours. Bluffant.", story: "Peur de rien. Sauf l'aspirateur." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Carrousel · 5 vignettes",
       slides: [
@@ -462,6 +476,7 @@ Tague la personne qui a peur du noir. Le Phosphorescent l'aidera.
     campaign: "2027-10-halloween-bande", page: "/fr/saisons/halloween/",
     segment: "S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire", demo: false,
     note: "Le compte à rebours vise la soirée du dimanche 31 octobre. Aucune promesse de livraison : la légende renvoie au délai affiché au panier, comme l'email.",
+    bo: { feed: "Citrouille, et fier de l'être.", story: "Une soirée déguisée ? J'arrive." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -494,6 +509,7 @@ Tague le groupe de la soirée : chacun·e choisit sa taille.
     campaign: "2027-11-drop-noel", page: "/fr/saisons/noel/",
     segment: "S1 · Cadeau qui fait rire + S4 · Collectionneur·se de Bo", demo: false,
     note: "Aucune date limite de livraison 2027 n'est fixée dans les docs : la publication n'en annonce pas.",
+    bo: { feed: "Bonnet, string, guirlande : validé.", story: "Je garde le bonnet. Et le reste." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
@@ -527,6 +543,7 @@ Partage-le avec ton groupe de Secret Santa.
     campaign: "2027-11-black-friday-raisonne", page: "/fr/saisons/noel/",
     segment: "S5 · Pour soi + S1 · Cadeau qui fait rire", demo: false,
     note: "Aucune réduction. « Black Friday » cité en texte seulement, jamais de logo ou visuel officiel. Visuels « Bo de dos » de Noël écartés (texte dans l'image).",
+    bo: { feed: "Rembourré, oui. Gonflé, jamais.", story: "Mon ego, lui, n'est jamais soldé." }, // notes manuscrites de Bo (Caveat), jamais une info clé
     feed: {
       format: "Post · 1 visuel",
       slides: [
