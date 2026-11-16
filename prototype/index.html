@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>String unisexe à 5 € et Bo l'ours | UNIS</title>
+<meta name="description" content="Strings unisexes à 5 €, du XS au 4XL, et Bo, l'ours en peluche qui les porte. Un nouveau motif à chaque saison : Noël, Saint-Valentin, Pride.">
+<link rel="canonical" href="https://unis.eu/fr/">
+<link rel="alternate" hreflang="fr" href="https://unis.eu/fr/">
+<link rel="alternate" hreflang="nl" href="https://unis.eu/nl/">
+<link rel="alternate" hreflang="en" href="https://unis.eu/en/">
+<link rel="alternate" hreflang="de" href="https://unis.eu/de/">
+<link rel="alternate" hreflang="x-default" href="https://unis.eu/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UNIS">
+<meta property="og:title" content="UNIS — Un fil. Tous les corps. Même les ours.">
+<meta property="og:description" content="Strings unisexes à 5 € et Bo, l'ours en peluche qui les porte. Un nouveau motif à chaque saison.">
+<meta property="og:url" content="https://unis.eu/fr/">
+<meta property="og:locale" content="fr_BE">
+<meta name="theme-color" content="#1F5C45">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://unis.eu/#org","name":"UNIS","url":"https://unis.eu/","slogan":"Un fil. Tous les corps.","areaServed":"EU"},
+{"@type":"WebSite","@id":"https://unis.eu/#site","url":"https://unis.eu/","name":"UNIS","inLanguage":["fr","nl","en","de"],"publisher":{"@id":"https://unis.eu/#org"}},
+{"@type":"Product","name":"Bo, l'ours UNIS","brand":{"@type":"Brand","name":"UNIS"},"description":"Ours en peluche de collection de 35 cm, livré avec un mini-string de saison, une boîte et un certificat numéroté. Pour les 14 ans et plus.","offers":{"@type":"Offer","price":"49.00","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},
+{"@type":"Product","name":"String unisexe UNIS","brand":{"@type":"Brand","name":"UNIS"},"description":"String unisexe en coton certifié OEKO-TEX, coupe Plat ou Poche, du XS au 4XL.","offers":{"@type":"Offer","price":"5.00","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},
+{"@type":"Product","name":"Duo assorti UNIS","brand":{"@type":"Brand","name":"UNIS"},"description":"Un string adulte et un mini-string pour Bo, avec le même motif de saison.","offers":{"@type":"Offer","price":"7.00","priceCurrency":"EUR","availability":"https://schema.org/LimitedAvailability"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"C'est qui, Bo ?","acceptedAnswer":{"@type":"Answer","text":"Bo est l'ours en peluche de la marque. Il porte chaque nouveau string à la place d'un mannequin. Tu peux l'adopter (49 €) et l'habiller à chaque saison avec un mini-string à 3 €."}},
+{"@type":"Question","name":"Bo est-il un jouet pour enfants ?","acceptedAnswer":{"@type":"Answer","text":"Non. Bo est un objet de collection et un cadeau humoristique pour les 14 ans et plus. Il passe quand même les tests de sécurité des jouets européens."}},
+{"@type":"Question","name":"Comment choisir ma taille ?","acceptedAnswer":{"@type":"Answer","text":"Mesure ton tour de hanches à l'endroit le plus large, puis reporte-toi au guide des tailles, du XS (82–88 cm) au 4XL (128–136 cm)."}},
+{"@type":"Question","name":"Livraison et retours ?","acceptedAnswer":{"@type":"Answer","text":"Livraison dans toute l'UE en 2 à 4 jours : 3,90 €, offerte dès 30 €. Retour sous 14 jours si le string n'a pas été porté et que l'étiquette d'hygiène est intacte."}}]}
+]}
+</script>
+<style>
+:root{
+  --bg:#EFEAFF; --ink:#1B1B3A; --accent:#FF5A4E; --soft:#C8B6FF; --paper:#FFFFFF; --on-accent:#FFFFFF;
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --text:"Atkinson Hyperlegible",system-ui,sans-serif;
+  --r-big:28px; --r-small:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:1.0625rem;line-height:1.55;transition:background-color .5s ease,color .5s ease}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;z-index:50}
+.skip:focus{left:8px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0;font-weight:750;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.5vw,3.4rem);font-variation-settings:"wdth" 80}
+h3{font-size:1.35rem;font-weight:700}
+p{margin:0 0 1em;max-width:62ch}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);transition:background-color .5s}
+.top .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:2px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:.02em}
+.logo svg{width:44px;height:20px;margin-inline:-4px}
+nav.main{display:flex;gap:22px;margin-left:auto}
+nav.main a{text-decoration:none;font-size:.98rem}
+nav.main a:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.lang{appearance:none;border:1.5px solid var(--ink);background:transparent;border-radius:999px;padding:6px 28px 6px 12px;font:inherit;font-size:.9rem;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat;color:var(--ink)}
+.cartbtn{border:0;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 16px;font-weight:700;display:flex;gap:8px;align-items:center}
+.cartbtn b{background:var(--accent);color:var(--on-accent);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.8rem}
+.burger{display:none;border:0;background:none;padding:6px}
+@media (max-width:900px){
+  nav.main{position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid color-mix(in srgb,var(--ink) 15%,transparent);display:none;padding:8px 20px 16px}
+  nav.main.open{display:flex}
+  nav.main a{padding:10px 0}
+  .burger{display:block;margin-left:auto}
+  .top .wrap{gap:12px}
+}
+
+/* hero */
+.hero{padding:56px 0 24px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(3.4rem,10.5vw,9.4rem);font-variation-settings:"wdth" 75;font-weight:800;line-height:.86;letter-spacing:-.03em}
+.hero h1 span{display:block}
+.hero h1 .h1sub{font-size:clamp(1.25rem,2.4vw,1.7rem);font-variation-settings:"wdth" 100;font-weight:700;letter-spacing:0;line-height:1.2;margin-top:22px}
+.hero .lead{font-size:1.25rem;margin:26px 0 28px;max-width:34ch}
+.drop-tag{display:inline-flex;align-items:center;gap:10px;font-weight:700;margin-bottom:22px;font-size:1rem}
+.drop-tag i{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:15px 26px;font-weight:700;text-decoration:none;font-size:1.05rem}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.ghost{border:2px solid var(--ink);background:transparent;margin-left:10px}
+.btn:hover{filter:brightness(1.06)}
+.hero-art{position:relative;aspect-ratio:1/1;border-radius:50%;background:var(--soft);display:grid;place-items:center;transition:background-color .5s}
+.hero-art svg{width:78%;filter:drop-shadow(0 18px 0 color-mix(in srgb,var(--ink) 14%,transparent));transform:rotate(-8deg)}
+.price-chip{position:absolute;right:4%;bottom:12%;background:var(--paper);color:#1B1B3A;border-radius:999px;padding:10px 18px;font-weight:700;font-family:var(--display);font-size:1.15rem;transform:rotate(6deg)}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:420px;width:100%;margin:8px auto 0}.btn.ghost{margin:12px 0 0}}
+
+/* the thread: signature */
+.thread{width:100%;height:120px;margin-top:-10px}
+.thread path{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;transition:stroke .5s}
+
+/* seasons strip */
+.seasons{padding:20px 0 64px}
+.seasons header{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.seasons header p{margin:0}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:2px solid var(--ink)}
+.season{border:0;background:none;text-align:left;padding:16px 14px 18px;border-right:1px solid color-mix(in srgb,var(--ink) 18%,transparent);position:relative}
+.season:last-child{border-right:0}
+.season .when{font-size:.88rem;opacity:.75;display:block}
+.season .name{font-family:var(--display);font-weight:750;font-size:1.3rem;display:block;margin-top:4px}
+.season .dot{display:flex;gap:4px;margin-top:12px}
+.season .dot i{width:16px;height:16px;border-radius:50%}
+.season[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.season[aria-pressed="true"]::before{content:"";position:absolute;left:0;right:0;top:-2px;height:6px;background:var(--accent)}
+.season .now{font-size:.8rem;font-weight:700;color:var(--accent);margin-left:6px}
+.season[aria-pressed="true"] .now{color:var(--soft)}
+@media (max-width:800px){.strip{grid-template-columns:repeat(3,1fr)}.season:nth-child(3){border-right:0}.season{border-bottom:1px solid color-mix(in srgb,var(--ink) 18%,transparent)}}
+@media (max-width:480px){.strip{grid-template-columns:repeat(2,1fr)}.season:nth-child(3){border-right:1px solid color-mix(in srgb,var(--ink) 18%,transparent)}.season:nth-child(2n){border-right:0}}
+
+/* shop */
+.shop{padding:64px 0;background:var(--paper);color:#1B1B3A}
+.shop h2{margin-bottom:10px}
+.shop .intro{margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:34px 26px}
+.card{display:flex;flex-direction:column}
+.card .art{aspect-ratio:4/3.4;border-radius:var(--r-big);display:grid;place-items:center;margin-bottom:16px;position:relative}
+.card .art svg{width:70%}
+.badge{position:absolute;top:14px;left:14px;background:#1B1B3A;color:#fff;font-size:.8rem;font-weight:700;padding:4px 10px;border-radius:999px}
+.card h3{margin-bottom:4px}
+.card .meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.card .price{font-family:var(--display);font-weight:700;font-size:1.25rem}
+.card .desc{font-size:.95rem;opacity:.8;margin-bottom:14px}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.seg{display:inline-flex;border:1.5px solid #1B1B3A;border-radius:999px;overflow:hidden}
+.seg button{border:0;background:none;padding:6px 14px;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:#1B1B3A;color:#fff}
+.card select{border:1.5px solid #1B1B3A;border-radius:999px;padding:6px 12px;font:inherit;font-size:.9rem;background:#fff;color:#1B1B3A}
+.swatches{display:flex;gap:8px;margin-bottom:12px}
+.swatches button{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px #1B1B3A55}
+.swatches button[aria-pressed="true"]{box-shadow:0 0 0 2.5px #1B1B3A}
+.add{margin-top:auto;border:0;border-radius:999px;padding:12px 18px;font-weight:700;background:#1B1B3A;color:#fff}
+.add:hover{background:var(--accent);color:var(--on-accent)}
+
+/* cuts & sizes */
+.cuts{padding:72px 0}
+.cuts .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:30px}
+.cut{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:start;margin-bottom:28px}
+.cut svg{width:120px}
+table.sizes{border-collapse:collapse;width:100%;font-size:.98rem}
+table.sizes caption{text-align:left;font-family:var(--display);font-weight:700;font-size:1.35rem;margin-bottom:12px}
+table.sizes th,table.sizes td{padding:9px 10px;text-align:left;border-bottom:1px solid color-mix(in srgb,var(--ink) 20%,transparent)}
+table.sizes th{font-weight:700}
+@media (max-width:820px){.cuts .two{grid-template-columns:1fr}}
+
+/* promise */
+.promise{padding:64px 0;background:var(--ink);color:var(--bg);transition:background-color .5s,color .5s}
+.promise .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:30px}
+.promise h3{margin-bottom:10px;color:var(--soft)}
+@media (max-width:820px){.promise .cols{grid-template-columns:1fr}}
+
+/* waitlist */
+.wait{padding:72px 0}
+.wait .box{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.wait form{display:flex;flex-direction:column;gap:12px}
+.wait label{font-weight:700}
+.wait input,.wait select{font:inherit;padding:14px 18px;border-radius:999px;border:2px solid var(--ink);background:var(--paper);color:#1B1B3A}
+.wait .row{display:flex;gap:10px;flex-wrap:wrap}
+.wait .row input{flex:1 1 220px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;font-weight:400!important}
+.check input{width:20px;height:20px;padding:0;margin-top:3px;border-radius:4px}
+.note{font-size:.85rem;opacity:.75}
+.ok{font-weight:700;color:var(--ink);background:var(--soft);padding:12px 16px;border-radius:var(--r-small)}
+@media (max-width:820px){.wait .box{grid-template-columns:1fr}}
+
+/* faq */
+.faq{padding:24px 0 80px}
+.faq details{border-top:1.5px solid var(--ink);padding:18px 0}
+.faq details:last-of-type{border-bottom:1.5px solid var(--ink)}
+.faq summary{font-family:var(--display);font-weight:700;font-size:1.25rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::after{content:"+";font-size:1.6rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:12px 0 0}
+
+footer{background:var(--ink);color:var(--bg);padding:48px 0 32px;transition:background-color .5s,color .5s}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+footer .ft{font-family:var(--display);font-weight:700;font-size:1rem;margin:0 0 10px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:.95rem}
+footer a{text-decoration:none;opacity:.85}
+footer a:hover{opacity:1;text-decoration:underline}
+footer .legal{margin-top:36px;font-size:.85rem;opacity:.7}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr 1fr}}
+
+/* cart drawer */
+.scrim{position:fixed;inset:0;background:#0006;opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;color:#1B1B3A;z-index:41;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid #1B1B3A22}
+.drawer header h2{font-size:1.6rem}
+.drawer .x{border:0;background:none;font-size:1.8rem;line-height:1}
+.lines{flex:1;overflow:auto;padding:10px 22px}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #1B1B3A15}
+.line .mini{width:64px;height:56px;border-radius:12px;display:grid;place-items:center}
+.line .mini svg{width:46px}
+.line small{display:block;opacity:.7}
+.qty{display:flex;align-items:center;gap:6px;margin-top:6px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1.5px solid #1B1B3A;background:none;line-height:1}
+.empty{padding:30px 0;opacity:.8}
+.drawer footer{background:none;color:#1B1B3A;padding:18px 22px;border-top:1px solid #1B1B3A22}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem;margin-bottom:6px}
+.ship{font-size:.9rem;margin-bottom:12px}
+.bar{height:6px;border-radius:99px;background:#1B1B3A1a;margin-bottom:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.drawer .btn{width:100%;justify-content:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);opacity:0;background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-weight:700;transition:.25s;z-index:60}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i="skip">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="UNIS, accueil">UN<svg viewBox="0 0 44 20" aria-hidden="true"><path d="M2 14 C 12 2, 20 2, 22 10 S 34 18, 42 6" fill="none" stroke="var(--accent)" stroke-width="3.2" stroke-linecap="round"/></svg>IS</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg width="26" height="20" viewBox="0 0 26 20"><path d="M2 3h22M2 10h22M2 17h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+    <nav class="main" id="nav" aria-label="Navigation principale">
+      <a href="#boutique" data-i="navShop">Boutique</a>
+      <a href="#saisons" data-i="navSeasons">Saisons</a>
+      <a href="#coupes" data-i="navCuts">Coupes et tailles</a>
+      <a href="#promesse" data-i="navPromise">Notre promesse</a>
+      <a href="#faq" data-i="navFaq">Questions</a>
+    </nav>
+    <label class="sr" for="lang" data-i="langLabel">Langue</label>
+    <select class="lang" id="lang">
+      <option value="fr">FR</option><option value="nl">NL</option><option value="en">EN</option><option value="de">DE</option>
+    </select>
+    <button class="cartbtn" id="openCart" aria-haspopup="dialog"><span data-i="cart">Panier</span> <b id="count">0</b></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div>
+        <p class="drop-tag"><i></i><span id="dropTag">Drop de Noël, en ligne maintenant</span></p>
+        <h1 id="h1"><span data-i="h1a">Un fil.</span><span data-i="h1b">Tous les corps.</span><span class="h1sub" data-i="h1c">Le string unisexe à 5 €. Bo, l'ours, le porte aussi.</span></h1>
+        <p class="lead" data-i="lead">Un string doux, du XS au 4XL, et son mini-modèle pour Bo, notre ours de collection. Un nouveau motif à chaque saison.</p>
+        <a class="btn primary" href="#boutique" id="heroCta">Voir le drop de Noël</a><a class="btn ghost" href="#boutique" data-i="heroCut">Rencontrer Bo</a>
+      </div>
+      <div class="hero-art" id="heroArt" role="img" aria-label="Bo, l'ours UNIS, portant le string de la collection en cours"></div>
+    </div>
+    <svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg>
+  </section>
+
+  <section class="seasons" id="saisons" aria-labelledby="hs">
+    <div class="wrap">
+      <header>
+        <h2 id="hs" data-i="seasonsTitle">Six saisons, six drops</h2>
+        <p data-i="seasonsText">Chaque drop sort en série limitée et n'est jamais réédité. Choisis une saison pour voir sa collection.</p>
+      </header>
+      <div class="strip" id="strip"></div>
+    </div>
+  </section>
+
+  <section class="shop" id="boutique" aria-labelledby="hshop">
+    <div class="wrap">
+      <h2 id="hshop">Boutique</h2>
+      <p class="intro" id="shopIntro"></p>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="cuts" id="coupes" aria-labelledby="hcuts">
+    <div class="wrap">
+      <h2 id="hcuts" data-i="cutsTitle">Deux coupes, pas de genre</h2>
+      <div class="two">
+        <div>
+          <div class="cut"><svg viewBox="0 0 200 160" aria-hidden="true"><path d="M14 34 Q100 52 186 34 L176 56 Q126 74 108 146 L92 146 Q74 74 24 56 Z" fill="var(--soft)" stroke="var(--ink)" stroke-width="3"/></svg>
+            <div><h3 data-i="flatT">Plat</h3><p data-i="flatP">Un avant lisse et ajusté, sans volume. Pour celles et ceux qui veulent une ligne nette sous un pantalon ou une robe.</p></div></div>
+          <div class="cut"><svg viewBox="0 0 200 160" aria-hidden="true"><path d="M14 34 Q100 52 186 34 L176 56 Q132 70 118 108 Q112 146 100 146 Q88 146 82 108 Q68 70 24 56 Z" fill="var(--soft)" stroke="var(--ink)" stroke-width="3"/><path d="M78 74 Q100 64 122 74" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+            <div><h3 data-i="pouchT">Poche</h3><p data-i="pouchP">Un avant préformé, cousu en trois pièces, qui donne de la place sans comprimer. Le fond reste doublé de coton.</p></div></div>
+          <p data-i="cutsNote">Les deux coupes ont la même taille large et douce, sans couture qui irrite, et le même fil arrière fin.</p>
+        </div>
+        <div>
+          <table class="sizes">
+            <caption data-i="sizeCap">Guide des tailles (tour de hanches)</caption>
+            <thead><tr><th scope="col" data-i="sizeCol">Taille</th><th scope="col" data-i="hipCol">Hanches (cm)</th><th scope="col" data-i="waistCol">Taille (cm)</th></tr></thead>
+            <tbody>
+              <tr><td>XS</td><td>82–88</td><td>62–68</td></tr>
+              <tr><td>S</td><td>88–94</td><td>68–74</td></tr>
+              <tr><td>M</td><td>94–100</td><td>74–80</td></tr>
+              <tr><td>L</td><td>100–106</td><td>80–86</td></tr>
+              <tr><td>XL</td><td>106–113</td><td>86–93</td></tr>
+              <tr><td>2XL</td><td>113–120</td><td>93–100</td></tr>
+              <tr><td>3XL</td><td>120–128</td><td>100–108</td></tr>
+              <tr><td>4XL</td><td>128–136</td><td>108–116</td></tr>
+            </tbody>
+          </table>
+          <p class="note" data-i="sizeNote">Entre deux tailles ? Prends la plus grande. L'échange de taille est gratuit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise" id="promesse" aria-labelledby="hprom">
+    <div class="wrap">
+      <h2 id="hprom" data-i="promTitle">Ce qu'on te promet</h2>
+      <div class="cols">
+        <div><h3 data-i="p1t">Bo, notre mannequin</h3><p data-i="p1">Bo pose à la place des mannequins : chaque string est montré sur lui. C'est une peluche de collection, testée selon les normes de sécurité des jouets (EN 71, marquage CE).</p></div>
+        <div><h3 data-i="p2t">Un vrai prix bas</h3><p data-i="p2">5 € le string, 3 € le mini-string pour Bo. Coton certifié OEKO-TEX Standard 100, fabriqué en grande série chez des partenaires audités.</p></div>
+        <div><h3 data-i="p3t">Livré dans ta boîte aux lettres</h3><p data-i="p3">Les strings arrivent en pochette kraft, Bo dans sa boîte cadeau. Livraison 3,90 €, offerte dès 30 €.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wait" id="liste" aria-labelledby="hwait">
+    <div class="wrap box">
+      <div>
+        <h2 id="hwait" data-i="waitTitle">Le prochain drop, 24&nbsp;h avant tout le monde</h2>
+        <p data-i="waitText">Inscris-toi à la liste d'attente : un email par mois, avec les drops, les coulisses et les dates limites de livraison avant les fêtes.</p>
+      </div>
+      <form id="waitForm" novalidate>
+        <label for="email" data-i="emailLabel">Ton adresse email</label>
+        <div class="row">
+          <input id="email" type="email" autocomplete="email" required placeholder="prenom@exemple.be">
+          <button class="btn primary" type="submit" data-i="join">M'inscrire</button>
+        </div>
+        <label class="check"><input type="checkbox" id="consent" required> <span data-i="consent">J'accepte de recevoir les emails d'UNIS. Je peux me désinscrire à tout moment.</span></label>
+        <p class="note" data-i="demo">Version de démonstration : aucune adresse n'est enregistrée.</p>
+        <p class="ok" id="waitMsg" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="hfaq">
+    <div class="wrap">
+      <h2 id="hfaq" data-i="faqTitle" style="margin-bottom:24px">Questions fréquentes</h2>
+      <div id="faqList"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><p style="font-family:var(--display);font-weight:800;font-size:2rem;margin:0 0 6px">UNIS</p><p data-i="footTag">Un fil. Tous les corps. Même les ours.</p></div>
+      <div><p class="ft" data-i="fShop">Boutique</p><ul><li><a href="#boutique" data-i="fEss">Strings Essentiels</a></li><li><a href="#saisons" data-i="fDrops">Drops saisonniers</a></li><li><a href="#boutique" data-i="fGift">Bo, l'ours UNIS</a></li></ul></div>
+      <div><p class="ft" data-i="fHelp">Aide</p><ul><li><a href="#coupes" data-i="fSize">Guide des tailles</a></li><li><a href="#faq" data-i="fRet">Livraison et retours</a></li><li><a href="#faq" data-i="fFaq">Questions fréquentes</a></li></ul></div>
+      <div><p class="ft" data-i="fLegal">Informations</p><ul><li><a href="#" data-i="fCgv">Conditions de vente</a></li><li><a href="#" data-i="fPriv">Vie privée</a></li><li><a href="#" data-i="fImp">Mentions légales</a></li></ul></div>
+    </div>
+    <p class="legal" data-i="legal">© 2027 UNIS SRL, Bruxelles. Prix TTC, TVA de ton pays incluse.</p>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="hcart" aria-hidden="true" inert>
+  <header><h2 id="hcart" data-i="cartTitle">Ton panier</h2><button class="x" id="closeCart" aria-label="Fermer">×</button></header>
+  <div class="lines" id="lines"></div>
+  <footer>
+    <div class="total"><span data-i="total">Total</span><span id="total">0,00 €</span></div>
+    <p class="ship" id="shipMsg"></p>
+    <div class="bar"><i id="shipBar" style="width:0"></i></div>
+    <button class="btn primary" id="checkout" data-i="checkout">Passer commande</button>
+    <p class="note" style="margin:10px 0 0" data-i="checkoutNote">Démo : le paiement sera branché sur Shopify.</p>
+  </footer>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const T={
+fr:{skip:"Aller au contenu",navShop:"Boutique",navSeasons:"Saisons",navCuts:"Coupes et tailles",navPromise:"Notre promesse",navFaq:"Questions",langLabel:"Langue",cart:"Panier",
+h1a:"Un fil.",h1b:"Tous les corps.",h1c:"Le string unisexe, du XS au 4XL",lead:"Doux, bien coupé et fabriqué en Europe. Une ligne permanente, et une collection limitée à chaque saison.",heroCut:"Trouver ma coupe",
+dropLive:"{s} : le drop est en ligne",dropSoon:"{s} : bientôt",heroCta:"Voir le drop {s}",now:"maintenant",
+seasonsTitle:"Six saisons, six drops",seasonsText:"Chaque drop sort en série limitée et n'est jamais réédité. Choisis une saison pour voir sa collection.",
+shop:"Strings unisexes : drop {s} et Essentiels",shopIntro:"Le drop {s} et nos Essentiels, disponibles toute l'année.",limited:"Série limitée",ess:"Essentiels",essName:"String Essentiel",essDesc:"Modal ultra-doux, 6 couleurs, toute l'année.",
+flatT:"Plat",pouchT:"Poche",size:"Taille",color:"Couleur",add:"Ajouter au panier",added:"Ajouté au panier",cutLabel:"Coupe",
+cutsTitle:"Deux coupes, pas de genre",flatP:"Un avant lisse et ajusté, sans volume. Pour celles et ceux qui veulent une ligne nette sous un pantalon ou une robe.",pouchP:"Un avant préformé, cousu en trois pièces, qui donne de la place sans comprimer. Le fond reste doublé de coton.",cutsNote:"Les deux coupes ont la même taille large et douce, sans couture qui irrite, et le même fil arrière fin.",
+sizeCap:"Guide des tailles (tour de hanches)",sizeCol:"Taille",hipCol:"Hanches (cm)",waistCol:"Taille (cm)",sizeNote:"Entre deux tailles ? Prends la plus grande. L'échange de taille est gratuit.",
+promTitle:"Ce qu'on te promet",p1t:"Des matières douces et certifiées",p1:"Modal TENCEL™ pour les Essentiels, coton bio GOTS pour les imprimés. Tous nos tissus sont certifiés OEKO-TEX Standard 100.",p2t:"Fabriqué en Europe",p2:"Nos strings sont cousus en petites séries dans un atelier européen. On produit peu, et on ne réédite pas les drops.",p3t:"Livré dans ta boîte aux lettres",p3:"Une boîte en carton recyclé qui passe dans la fente : pas de passage au dépôt. Livraison en 2 à 4 jours dans l'UE.",
+waitTitle:"Le prochain drop, 24\u00a0h avant tout le monde",waitText:"Inscris-toi à la liste d'attente : un email par mois, avec les drops, les coulisses et les dates limites de livraison avant les fêtes.",emailLabel:"Ton adresse email",join:"M'inscrire",consent:"J'accepte de recevoir les emails d'UNIS. Je peux me désinscrire à tout moment.",demo:"Version de démonstration : aucune adresse n'est enregistrée.",
+errEmail:"Saisis une adresse email valide, par exemple prenom@exemple.be.",errConsent:"Coche la case pour accepter de recevoir nos emails.",okWait:"C'est noté : tu serais sur la liste d'attente. (Démo, rien n'est enregistré.)",
+faqTitle:"Questions fréquentes",
+faq:[["Un string unisexe, ça veut dire quoi ?","Nos strings ne sont pas classés par genre mais par coupe : Plat, avec un avant lisse, ou Poche, avec un avant préformé qui donne plus de place. Choisis celle qui convient à ton corps."],["Comment choisir ma taille ?","Mesure ton tour de hanches à l'endroit le plus large, puis reporte-toi au guide des tailles, du XS (82–88 cm) au 4XL (128–136 cm)."],["Puis-je retourner un string ?","Oui, dans les 14 jours, s'il n'a pas été porté et que l'étiquette d'hygiène est intacte. L'échange de taille est gratuit."],["Que se passe-t-il quand un drop saisonnier est épuisé ?","Il n'est pas réédité. Inscris-toi à la liste d'attente pour accéder au prochain drop 24 heures avant tout le monde."],["Dans quels pays livrez-vous ?","Dans toute l'Union européenne, en 2 à 4 jours ouvrables. La livraison est offerte dès 50 €."]],
+footTag:"Un fil. Tous les corps.",fShop:"Boutique",fEss:"Essentiels",fDrops:"Drops saisonniers",fGift:"Coffrets cadeaux",fHelp:"Aide",fSize:"Guide des tailles",fRet:"Livraison et retours",fFaq:"Questions fréquentes",fLegal:"Informations",fCgv:"Conditions de vente",fPriv:"Vie privée",fImp:"Mentions légales",legal:"© 2027 UNIS SRL, Bruxelles. Prix TTC, TVA de ton pays incluse.",
+cartTitle:"Ton panier",total:"Total",checkout:"Passer commande",checkoutNote:"Démo : le paiement sera branché sur Shopify.",empty:"Ton panier est vide. Commence par un Essentiel, ou par le drop du moment.",shipFree:"La livraison est offerte.",shipLeft:"Plus que {x} pour la livraison offerte.",checkoutMsg:"Démo : le paiement n'est pas encore branché.",remove:"Retirer",
+title:"String unisexe confortable, XS à 4XL | UNIS",desc:"Strings unisexes doux et bien coupés, du XS au 4XL, fabriqués en Europe. Ligne Essentiels et drops saisonniers : Noël, Saint-Valentin, Pride.",artLabel:"String UNIS de la collection {s}, posé à plat"},
+nl:{skip:"Naar de inhoud",navShop:"Shop",navSeasons:"Seizoenen",navCuts:"Snit en maten",navPromise:"Onze belofte",navFaq:"Vragen",langLabel:"Taal",cart:"Mandje",
+h1a:"Eén draad.",h1b:"Elk lichaam.",h1c:"De unisex string, van XS tot 4XL",lead:"Zacht, goed gesneden en gemaakt in Europa. Een vaste lijn, en elk seizoen een beperkte collectie.",heroCut:"Vind mijn snit",
+dropLive:"{s}: de drop is online",dropSoon:"{s}: binnenkort",heroCta:"Bekijk de drop {s}",now:"nu",
+seasonsTitle:"Zes seizoenen, zes drops",seasonsText:"Elke drop is een beperkte oplage en komt nooit terug. Kies een seizoen om de collectie te zien.",
+shop:"Unisex strings: drop {s} en Essentials",shopIntro:"De drop {s} en onze Essentials, het hele jaar beschikbaar.",limited:"Beperkte oplage",ess:"Essentials",essName:"String Essential",essDesc:"Superzachte modal, 6 kleuren, het hele jaar.",
+flatT:"Plat",pouchT:"Buidel",size:"Maat",color:"Kleur",add:"In mijn mandje",added:"Toegevoegd aan je mandje",cutLabel:"Snit",
+cutsTitle:"Twee snitten, geen gender",flatP:"Een gladde, aansluitende voorkant zonder volume. Voor wie een strakke lijn wil onder een broek of jurk.",pouchP:"Een voorgevormde voorkant uit drie delen die ruimte geeft zonder te knellen. Het kruis blijft gevoerd met katoen.",cutsNote:"Beide snitten hebben dezelfde brede, zachte tailleband zonder schurende naden, en hetzelfde fijne achterdraadje.",
+sizeCap:"Matentabel (heupomtrek)",sizeCol:"Maat",hipCol:"Heupen (cm)",waistCol:"Taille (cm)",sizeNote:"Twijfel je tussen twee maten? Neem de grootste. Een andere maat ruilen is gratis.",
+promTitle:"Wat we je beloven",p1t:"Zachte, gecertificeerde stoffen",p1:"TENCEL™ modal voor de Essentials, GOTS-biokatoen voor de prints. Al onze stoffen zijn OEKO-TEX Standard 100 gecertificeerd.",p2t:"Gemaakt in Europa",p2:"Onze strings worden in kleine reeksen genaaid in een Europees atelier. We maken weinig en brengen drops nooit opnieuw uit.",p3t:"Geleverd in je brievenbus",p3:"Een doosje van gerecycleerd karton dat door de brievenbus past: geen ophaalpunt nodig. Levering in 2 tot 4 dagen in de EU.",
+waitTitle:"De volgende drop, 24\u00a0uur voor iedereen",waitText:"Schrijf je in op de wachtlijst: één e-mail per maand, met de drops, de achtergrond en de laatste leverdata voor de feestdagen.",emailLabel:"Je e-mailadres",join:"Inschrijven",consent:"Ik wil e-mails van UNIS ontvangen. Ik kan me altijd uitschrijven.",demo:"Demoversie: er wordt geen adres opgeslagen.",
+errEmail:"Vul een geldig e-mailadres in, bijvoorbeeld voornaam@voorbeeld.be.",errConsent:"Vink het vakje aan om onze e-mails te ontvangen.",okWait:"Genoteerd: je zou op de wachtlijst staan. (Demo, er wordt niets opgeslagen.)",
+faqTitle:"Veelgestelde vragen",
+faq:[["Wat betekent een unisex string?","Onze strings worden niet ingedeeld per gender maar per snit: Plat, met een gladde voorkant, of Buidel, met een voorgevormde voorkant die meer ruimte geeft. Kies wat bij je lichaam past."],["Hoe kies ik mijn maat?","Meet je heupomtrek op het breedste punt en kijk in de matentabel, van XS (82–88 cm) tot 4XL (128–136 cm)."],["Kan ik een string terugsturen?","Ja, binnen 14 dagen, als hij niet gedragen is en het hygiënelabel intact is. Een andere maat ruilen is gratis."],["Wat als een seizoensdrop uitverkocht is?","Dan komt hij niet terug. Schrijf je in op de wachtlijst om de volgende drop 24 uur vroeger te zien."],["Naar welke landen leveren jullie?","Naar de hele Europese Unie, in 2 tot 4 werkdagen. Gratis levering vanaf 50 €."]],
+footTag:"Eén draad. Elk lichaam.",fShop:"Shop",fEss:"Essentials",fDrops:"Seizoensdrops",fGift:"Cadeauboxen",fHelp:"Hulp",fSize:"Matentabel",fRet:"Levering en retour",fFaq:"Veelgestelde vragen",fLegal:"Informatie",fCgv:"Verkoopvoorwaarden",fPriv:"Privacy",fImp:"Wettelijke vermeldingen",legal:"© 2027 UNIS SRL, Brussel. Prijzen incl. btw van je land.",
+cartTitle:"Je mandje",total:"Totaal",checkout:"Afrekenen",checkoutNote:"Demo: betalen wordt gekoppeld aan Shopify.",empty:"Je mandje is leeg. Begin met een Essential, of met de drop van het moment.",shipFree:"Levering is gratis.",shipLeft:"Nog {x} tot gratis levering.",checkoutMsg:"Demo: betalen is nog niet gekoppeld.",remove:"Verwijderen",
+title:"Unisex string, zacht en goed gesneden | UNIS",desc:"Zachte, goed gesneden unisex strings van XS tot 4XL, gemaakt in Europa. Essentials en seizoensdrops: Kerst, Valentijn, Pride, Halloween.",artLabel:"UNIS-string uit de collectie {s}, plat gelegd"},
+en:{skip:"Skip to content",navShop:"Shop",navSeasons:"Seasons",navCuts:"Cuts and sizes",navPromise:"Our promise",navFaq:"Questions",langLabel:"Language",cart:"Bag",
+h1a:"One thread.",h1b:"Every body.",h1c:"The unisex thong, from XS to 4XL",lead:"Soft, well cut and made in Europe. A permanent line, plus a limited collection every season.",heroCut:"Find my cut",
+dropLive:"{s}: the drop is live",dropSoon:"{s}: coming soon",heroCta:"Shop the {s} drop",now:"now",
+seasonsTitle:"Six seasons, six drops",seasonsText:"Each drop is a limited run and never comes back. Pick a season to see its collection.",
+shop:"Unisex thongs: {s} drop and Essentials",shopIntro:"The {s} drop and our Essentials, available all year.",limited:"Limited run",ess:"Essentials",essName:"Essential thong",essDesc:"Ultra-soft modal, 6 colours, all year round.",
+flatT:"Flat",pouchT:"Pouch",size:"Size",color:"Colour",add:"Add to bag",added:"Added to your bag",cutLabel:"Cut",
+cutsTitle:"Two cuts, no gender",flatP:"A smooth, close-fitting front with no volume. For a clean line under trousers or a dress.",pouchP:"A shaped three-piece front that gives room without squeezing. The gusset stays cotton-lined.",cutsNote:"Both cuts share the same wide, soft waistband with no scratchy seams, and the same fine back strap.",
+sizeCap:"Size guide (hip measurement)",sizeCol:"Size",hipCol:"Hips (cm)",waistCol:"Waist (cm)",sizeNote:"Between two sizes? Take the larger one. Size exchanges are free.",
+promTitle:"What we promise",p1t:"Soft, certified fabrics",p1:"TENCEL™ modal for the Essentials, GOTS organic cotton for prints. All our fabrics are OEKO-TEX Standard 100 certified.",p2t:"Made in Europe",p2:"Our thongs are sewn in small runs at a European workshop. We make little and never reissue a drop.",p3t:"Delivered to your letterbox",p3:"A recycled cardboard box that fits through the slot, so no trip to the pick-up point. Delivery in 2 to 4 days across the EU.",
+waitTitle:"The next drop, 24\u00a0hours before everyone",waitText:"Join the waitlist: one email a month, with drops, behind the scenes and last delivery dates before the holidays.",emailLabel:"Your email address",join:"Join the list",consent:"I agree to receive emails from UNIS. I can unsubscribe at any time.",demo:"Demo version: no address is stored.",
+errEmail:"Enter a valid email address, for example name@example.com.",errConsent:"Tick the box to agree to receive our emails.",okWait:"Noted: you would be on the waitlist. (Demo, nothing is stored.)",
+faqTitle:"Frequently asked questions",
+faq:[["What does unisex thong mean?","Our thongs are sorted by cut, not by gender: Flat, with a smooth front, or Pouch, with a shaped front that gives more room. Pick the one that suits your body."],["How do I choose my size?","Measure your hips at the widest point, then check the size guide, from XS (82–88 cm) to 4XL (128–136 cm)."],["Can I return a thong?","Yes, within 14 days, if it hasn't been worn and the hygiene seal is intact. Size exchanges are free."],["What happens when a seasonal drop sells out?","It is not reissued. Join the waitlist to access the next drop 24 hours before everyone."],["Where do you ship?","Across the European Union, in 2 to 4 working days. Free shipping from €50."]],
+footTag:"One thread. Every body.",fShop:"Shop",fEss:"Essentials",fDrops:"Seasonal drops",fGift:"Gift boxes",fHelp:"Help",fSize:"Size guide",fRet:"Shipping and returns",fFaq:"FAQ",fLegal:"Information",fCgv:"Terms of sale",fPriv:"Privacy",fImp:"Legal notice",legal:"© 2027 UNIS SRL, Brussels. Prices include your country's VAT.",
+cartTitle:"Your bag",total:"Total",checkout:"Check out",checkoutNote:"Demo: payment will be connected to Shopify.",empty:"Your bag is empty. Start with an Essential, or the current drop.",shipFree:"Shipping is free.",shipLeft:"{x} more for free shipping.",checkoutMsg:"Demo: payment isn't connected yet.",remove:"Remove",
+title:"Unisex thong, soft and well cut | UNIS",desc:"Soft, well-cut unisex thongs from XS to 4XL, made in Europe. Essentials and seasonal drops: Christmas, Valentine's, Pride, Halloween.",artLabel:"UNIS thong from the {s} collection, laid flat"},
+de:{skip:"Zum Inhalt",navShop:"Shop",navSeasons:"Saisons",navCuts:"Schnitte und Größen",navPromise:"Unser Versprechen",navFaq:"Fragen",langLabel:"Sprache",cart:"Warenkorb",
+h1a:"Ein Faden.",h1b:"Jeder Körper.",h1c:"Der Unisex-String, von XS bis 4XL",lead:"Weich, gut geschnitten und in Europa hergestellt. Eine feste Linie und jede Saison eine limitierte Kollektion.",heroCut:"Meinen Schnitt finden",
+dropLive:"{s}: der Drop ist online",dropSoon:"{s}: bald",heroCta:"Zum {s}-Drop",now:"jetzt",
+seasonsTitle:"Sechs Saisons, sechs Drops",seasonsText:"Jeder Drop ist limitiert und kommt nie wieder. Wähle eine Saison, um ihre Kollektion zu sehen.",
+shop:"Unisex-Strings: {s}-Drop und Essentials",shopIntro:"Der {s}-Drop und unsere Essentials, das ganze Jahr erhältlich.",limited:"Limitiert",ess:"Essentials",essName:"String Essential",essDesc:"Superweiches Modal, 6 Farben, das ganze Jahr.",
+flatT:"Flach",pouchT:"Beutel",size:"Größe",color:"Farbe",add:"In den Warenkorb",added:"Im Warenkorb",cutLabel:"Schnitt",
+cutsTitle:"Zwei Schnitte, kein Gender",flatP:"Eine glatte, anliegende Front ohne Volumen. Für eine klare Linie unter Hose oder Kleid.",pouchP:"Eine vorgeformte Front aus drei Teilen, die Platz gibt, ohne einzuengen. Der Zwickel bleibt mit Baumwolle gefüttert.",cutsNote:"Beide Schnitte haben denselben breiten, weichen Bund ohne kratzende Nähte und denselben feinen Faden hinten.",
+sizeCap:"Größentabelle (Hüftumfang)",sizeCol:"Größe",hipCol:"Hüfte (cm)",waistCol:"Taille (cm)",sizeNote:"Zwischen zwei Größen? Nimm die größere. Der Größentausch ist kostenlos.",
+promTitle:"Was wir versprechen",p1t:"Weiche, zertifizierte Stoffe",p1:"TENCEL™ Modal für die Essentials, GOTS-Biobaumwolle für die Prints. Alle Stoffe sind nach OEKO-TEX Standard 100 zertifiziert.",p2t:"Hergestellt in Europa",p2:"Unsere Strings werden in kleinen Serien in einer europäischen Werkstatt genäht. Wir produzieren wenig und legen Drops nie neu auf.",p3t:"Direkt in deinen Briefkasten",p3:"Eine Box aus Recyclingkarton, die durch den Briefschlitz passt: kein Weg zur Packstation. Lieferung in 2 bis 4 Tagen in der EU.",
+waitTitle:"Der nächste Drop, 24\u00a0Stunden vor allen anderen",waitText:"Trag dich in die Warteliste ein: eine E-Mail pro Monat, mit Drops, Einblicken und den letzten Lieferterminen vor den Feiertagen.",emailLabel:"Deine E-Mail-Adresse",join:"Eintragen",consent:"Ich möchte E-Mails von UNIS erhalten. Ich kann mich jederzeit abmelden.",demo:"Demoversion: Es wird keine Adresse gespeichert.",
+errEmail:"Gib eine gültige E-Mail-Adresse ein, zum Beispiel name@beispiel.de.",errConsent:"Setze das Häkchen, um unsere E-Mails zu erhalten.",okWait:"Notiert: Du wärst auf der Warteliste. (Demo, nichts wird gespeichert.)",
+faqTitle:"Häufige Fragen",
+faq:[["Was bedeutet Unisex-String?","Unsere Strings sind nicht nach Gender sortiert, sondern nach Schnitt: Flach, mit glatter Front, oder Beutel, mit vorgeformter Front und mehr Platz. Wähle, was zu deinem Körper passt."],["Wie finde ich meine Größe?","Miss deinen Hüftumfang an der breitesten Stelle und sieh in der Größentabelle nach, von XS (82–88 cm) bis 4XL (128–136 cm)."],["Kann ich einen String zurückschicken?","Ja, innerhalb von 14 Tagen, wenn er nicht getragen wurde und das Hygienesiegel intakt ist. Der Größentausch ist kostenlos."],["Was passiert, wenn ein Saison-Drop ausverkauft ist?","Er wird nicht neu aufgelegt. Trag dich in die Warteliste ein, um 24 Stunden früher Zugang zum nächsten Drop zu bekommen."],["Wohin liefert ihr?","In die gesamte Europäische Union, in 2 bis 4 Werktagen. Kostenloser Versand ab 50 €."]],
+footTag:"Ein Faden. Jeder Körper.",fShop:"Shop",fEss:"Essentials",fDrops:"Saison-Drops",fGift:"Geschenkboxen",fHelp:"Hilfe",fSize:"Größentabelle",fRet:"Versand und Rückgabe",fFaq:"Häufige Fragen",fLegal:"Informationen",fCgv:"AGB",fPriv:"Datenschutz",fImp:"Impressum",legal:"© 2027 UNIS SRL, Brüssel. Preise inkl. MwSt. deines Landes.",
+cartTitle:"Dein Warenkorb",total:"Summe",checkout:"Zur Kasse",checkoutNote:"Demo: Die Zahlung wird mit Shopify verbunden.",empty:"Dein Warenkorb ist leer. Fang mit einem Essential an oder mit dem aktuellen Drop.",shipFree:"Der Versand ist kostenlos.",shipLeft:"Noch {x} bis zum kostenlosen Versand.",checkoutMsg:"Demo: Die Zahlung ist noch nicht verbunden.",remove:"Entfernen",
+title:"Unisex-String, weich und gut geschnitten | UNIS",desc:"Weiche, gut geschnittene Unisex-Strings von XS bis 4XL, in Europa hergestellt. Essentials und Saison-Drops: Weihnachten, Valentinstag, Pride.",artLabel:"UNIS-String aus der Kollektion {s}, flach gelegt"}
+};
+
+const T2={
+fr:{h1c:"Le string unisexe à 5 €. Bo, l'ours, le porte aussi.",lead:"Un string doux, du XS au 4XL, et son mini-modèle pour Bo, notre ours de collection. Un nouveau motif à chaque saison.",heroCut:"Rencontrer Bo",heroPrice:"Bo 49 €",
+shop:"Strings à 5 € et Bo : drop {s}",shopIntro:"Le motif {s} en version adulte, en mini pour Bo, ou les deux en Duo. Et Bo, à adopter une fois pour toutes.",
+boName:"Bo, l'ours UNIS",boDesc:"Peluche de collection de 35 cm, livrée avec son mini-string {s}, sa boîte et son certificat numéroté. Pour les 14 ans et plus.",adultName:"String {m}",adultDesc:"Coton doux, coupe Plat ou Poche, du XS au 4XL.",miniName:"Mini-string pour Bo",miniDesc:"Le motif {m}, taille unique, pour habiller Bo.",duoName:"Duo assorti {m}",duoDesc:"1 string adulte + 1 mini-string pour Bo, même motif.",essName:"String Essentiel",essDesc:"Uni, 6 couleurs, toute l'année.",collector:"Objet de collection",duoBadge:"Le plus vendu",
+p1t:"Bo, notre mannequin",p1:"Bo pose à la place des mannequins : chaque string est montré sur lui. C'est une peluche de collection, testée selon les normes de sécurité des jouets (EN 71, marquage CE).",p2t:"Un vrai prix bas",p2:"5 € le string, 3 € le mini-string pour Bo. Coton certifié OEKO-TEX Standard 100, fabriqué en grande série chez des partenaires audités.",p3t:"Livré dans ta boîte aux lettres",p3:"Les strings arrivent en pochette kraft, Bo dans sa boîte cadeau. Livraison 3,90 €, offerte dès 30 €.",
+waitText:"Inscris-toi : un email par mois, avec le nouveau motif, les éditions limitées de Bo et les dates limites de livraison avant les fêtes.",
+faq:[["C'est qui, Bo ?","Bo est l'ours en peluche de la marque. Il porte chaque nouveau string à la place d'un mannequin. Tu peux l'adopter (49 €) et l'habiller à chaque saison avec un mini-string à 3 €."],["Bo est-il un jouet pour enfants ?","Non. Bo est un objet de collection et un cadeau humoristique pour les 14 ans et plus. Il passe quand même les tests de sécurité des jouets européens."],["Un string unisexe, ça veut dire quoi ?","Nos strings ne sont pas classés par genre mais par coupe : Plat, avec un avant lisse, ou Poche, avec un avant préformé qui donne plus de place. Choisis celle qui convient à ton corps."],["Comment choisir ma taille ?","Mesure ton tour de hanches à l'endroit le plus large, puis reporte-toi au guide des tailles, du XS (82–88 cm) au 4XL (128–136 cm)."],["Livraison et retours ?","Livraison dans toute l'UE en 2 à 4 jours : 3,90 €, offerte dès 30 €. Retour sous 14 jours si le string n'a pas été porté et que l'étiquette d'hygiène est intacte."]],
+footTag:"Un fil. Tous les corps. Même les ours.",title:"String unisexe à 5 € et Bo l'ours | UNIS",desc:"Strings unisexes à 5 €, du XS au 4XL, et Bo, l'ours en peluche qui les porte. Un nouveau motif à chaque saison : Noël, Saint-Valentin, Pride.",artLabel:"Bo, l'ours UNIS, portant le string de la collection {s}",fEss:"Strings Essentiels",fGift:"Bo, l'ours UNIS"},
+nl:{h1c:"De unisex string voor 5 €. Bo, de beer, draagt hem ook.",lead:"Een zachte string, van XS tot 4XL, en een mini-versie voor Bo, onze verzamelbeer. Elk seizoen een nieuw motief.",heroCut:"Maak kennis met Bo",heroPrice:"Bo 49 €",
+shop:"Strings voor 5 € en Bo: drop {s}",shopIntro:"Het motief {s} voor jou, in mini voor Bo, of allebei als Duo. En Bo, om voor altijd te adopteren.",
+boName:"Bo, de UNIS-beer",boDesc:"Verzamelknuffel van 35 cm, geleverd met zijn mini-string {s}, cadeaudoos en genummerd certificaat. Voor 14 jaar en ouder.",adultName:"String {m}",adultDesc:"Zacht katoen, snit Plat of Buidel, van XS tot 4XL.",miniName:"Mini-string voor Bo",miniDesc:"Het motief {m}, one size, om Bo aan te kleden.",duoName:"Duo {m}",duoDesc:"1 string voor jou + 1 mini-string voor Bo, hetzelfde motief.",essName:"String Essential",essDesc:"Effen, 6 kleuren, het hele jaar.",collector:"Verzamelobject",duoBadge:"Bestseller",
+p1t:"Bo, ons model",p1:"Bo poseert in plaats van modellen: elke string wordt op hem getoond. Het is een verzamelknuffel, getest volgens de Europese speelgoednormen (EN 71, CE-markering).",p2t:"Echt lage prijzen",p2:"5 € per string, 3 € per mini-string voor Bo. OEKO-TEX Standard 100 gecertificeerd katoen, in grote reeksen gemaakt bij geauditeerde partners.",p3t:"Geleverd in je brievenbus",p3:"Strings komen in een kraftenvelop, Bo in zijn cadeaudoos. Levering 3,90 €, gratis vanaf 30 €.",
+waitText:"Schrijf je in: één e-mail per maand, met het nieuwe motief, de beperkte edities van Bo en de laatste leverdata voor de feestdagen.",
+faq:[["Wie is Bo?","Bo is de knuffelbeer van het merk. Hij draagt elke nieuwe string in plaats van een model. Je kunt hem adopteren (49 €) en elk seizoen aankleden met een mini-string van 3 €."],["Is Bo speelgoed voor kinderen?","Nee. Bo is een verzamelobject en een grappig cadeau voor 14 jaar en ouder. Hij doorstaat toch de Europese veiligheidstests voor speelgoed."],["Wat betekent een unisex string?","Onze strings worden niet ingedeeld per gender maar per snit: Plat, met een gladde voorkant, of Buidel, met een voorgevormde voorkant die meer ruimte geeft."],["Hoe kies ik mijn maat?","Meet je heupomtrek op het breedste punt en kijk in de matentabel, van XS (82–88 cm) tot 4XL (128–136 cm)."],["Levering en retour?","Levering in de hele EU in 2 tot 4 dagen: 3,90 €, gratis vanaf 30 €. Retour binnen 14 dagen als de string niet gedragen is en het hygiënelabel intact is."]],
+footTag:"Eén draad. Elk lichaam. Zelfs beren.",title:"Unisex string voor 5 € en Bo de beer | UNIS",desc:"Unisex strings voor 5 €, van XS tot 4XL, en Bo, de knuffelbeer die ze draagt. Elk seizoen een nieuw motief: Kerst, Valentijn, Pride.",artLabel:"Bo, de UNIS-beer, met de string uit de collectie {s}",fEss:"Essential strings",fGift:"Bo, de UNIS-beer"},
+en:{h1c:"The €5 unisex thong. Bo the bear wears it too.",lead:"A soft thong from XS to 4XL, plus a mini version for Bo, our collectible bear. A new print every season.",heroCut:"Meet Bo",heroPrice:"Bo €49",
+shop:"€5 thongs and Bo: {s} drop",shopIntro:"The {s} print for you, in mini for Bo, or both as a Duo. And Bo, to adopt once and for all.",
+boName:"Bo, the UNIS bear",boDesc:"35 cm collectible plush, with his {s} mini thong, gift box and numbered certificate. For ages 14 and up.",adultName:"{m} thong",adultDesc:"Soft cotton, Flat or Pouch cut, XS to 4XL.",miniName:"Mini thong for Bo",miniDesc:"The {m} print, one size, to dress Bo.",duoName:"{m} matching Duo",duoDesc:"1 thong for you + 1 mini thong for Bo, same print.",essName:"Essential thong",essDesc:"Plain, 6 colours, all year.",collector:"Collectible",duoBadge:"Best seller",
+p1t:"Bo, our model",p1:"Bo poses instead of models: every thong is shown on him. He is a collectible plush, tested to EU toy safety standards (EN 71, CE marking).",p2t:"A truly low price",p2:"€5 a thong, €3 a mini thong for Bo. OEKO-TEX Standard 100 certified cotton, made in large runs by audited partners.",p3t:"Delivered to your letterbox",p3:"Thongs arrive in a kraft pouch, Bo in his gift box. Shipping €3.90, free from €30.",
+waitText:"Sign up: one email a month, with the new print, Bo's limited editions and last delivery dates before the holidays.",
+faq:[["Who is Bo?","Bo is the brand's teddy bear. He wears every new thong instead of a model. You can adopt him (€49) and dress him every season with a €3 mini thong."],["Is Bo a children's toy?","No. Bo is a collectible and a funny gift for ages 14 and up. He still passes EU toy safety tests."],["What does unisex thong mean?","Our thongs are sorted by cut, not gender: Flat, with a smooth front, or Pouch, with a shaped front that gives more room."],["How do I choose my size?","Measure your hips at the widest point, then check the size guide, from XS (82–88 cm) to 4XL (128–136 cm)."],["Shipping and returns?","EU-wide delivery in 2 to 4 days: €3.90, free from €30. Returns within 14 days if the thong hasn't been worn and the hygiene seal is intact."]],
+footTag:"One thread. Every body. Even bears.",title:"€5 unisex thong and Bo the bear | UNIS",desc:"Unisex thongs for €5, XS to 4XL, and Bo, the teddy bear who wears them. A new print every season: Christmas, Valentine's, Pride.",artLabel:"Bo, the UNIS bear, wearing the thong from the {s} collection",fEss:"Essential thongs",fGift:"Bo, the UNIS bear"},
+de:{h1c:"Der Unisex-String für 5 €. Bo, der Bär, trägt ihn auch.",lead:"Ein weicher String von XS bis 4XL und eine Mini-Version für Bo, unseren Sammlerbären. Jede Saison ein neues Motiv.",heroCut:"Bo kennenlernen",heroPrice:"Bo 49 €",
+shop:"Strings für 5 € und Bo: {s}-Drop",shopIntro:"Das Motiv {s} für dich, in Mini für Bo, oder beides als Duo. Und Bo, einmal adoptieren und behalten.",
+boName:"Bo, der UNIS-Bär",boDesc:"Sammler-Plüschbär, 35 cm, mit seinem Mini-String {s}, Geschenkbox und nummeriertem Zertifikat. Ab 14 Jahren.",adultName:"String {m}",adultDesc:"Weiche Baumwolle, Schnitt Flach oder Beutel, XS bis 4XL.",miniName:"Mini-String für Bo",miniDesc:"Das Motiv {m}, Einheitsgröße, um Bo anzuziehen.",duoName:"Duo {m}",duoDesc:"1 String für dich + 1 Mini-String für Bo, gleiches Motiv.",essName:"String Essential",essDesc:"Uni, 6 Farben, das ganze Jahr.",collector:"Sammlerstück",duoBadge:"Bestseller",
+p1t:"Bo, unser Model",p1:"Bo posiert statt Models: Jeder String wird an ihm gezeigt. Er ist ein Sammler-Plüschtier, geprüft nach EU-Spielzeugnormen (EN 71, CE-Kennzeichnung).",p2t:"Ein echt niedriger Preis",p2:"5 € pro String, 3 € pro Mini-String für Bo. OEKO-TEX Standard 100 zertifizierte Baumwolle, in großen Serien bei auditierten Partnern hergestellt.",p3t:"Direkt in deinen Briefkasten",p3:"Strings kommen im Kraftumschlag, Bo in seiner Geschenkbox. Versand 3,90 €, kostenlos ab 30 €.",
+waitText:"Trag dich ein: eine E-Mail pro Monat, mit dem neuen Motiv, Bos limitierten Editionen und den letzten Lieferterminen vor den Feiertagen.",
+faq:[["Wer ist Bo?","Bo ist der Teddybär der Marke. Er trägt jeden neuen String statt eines Models. Du kannst ihn adoptieren (49 €) und jede Saison mit einem Mini-String für 3 € anziehen."],["Ist Bo ein Kinderspielzeug?","Nein. Bo ist ein Sammlerstück und ein witziges Geschenk ab 14 Jahren. Er besteht trotzdem die EU-Sicherheitstests für Spielzeug."],["Was bedeutet Unisex-String?","Unsere Strings sind nach Schnitt sortiert, nicht nach Gender: Flach, mit glatter Front, oder Beutel, mit vorgeformter Front und mehr Platz."],["Wie finde ich meine Größe?","Miss deinen Hüftumfang an der breitesten Stelle und sieh in der Größentabelle nach, von XS (82–88 cm) bis 4XL (128–136 cm)."],["Versand und Rückgabe?","EU-weite Lieferung in 2 bis 4 Tagen: 3,90 €, kostenlos ab 30 €. Rückgabe innerhalb von 14 Tagen, wenn der String nicht getragen wurde und das Hygienesiegel intakt ist."]],
+footTag:"Ein Faden. Jeder Körper. Sogar Bären.",title:"Unisex-String für 5 € und Bo der Bär | UNIS",desc:"Unisex-Strings für 5 €, von XS bis 4XL, und Bo, der Teddybär, der sie trägt. Jede Saison ein neues Motiv: Weihnachten, Valentinstag, Pride.",artLabel:"Bo, der UNIS-Bär, mit dem String der Kollektion {s}",fEss:"Essential-Strings",fGift:"Bo, der UNIS-Bär"}
+};
+for(const l in T2)Object.assign(T[l],T2[l]);
+
+const S=[
+ {id:"valentin",from:[1,1],to:[2,14],c:{bg:"#FFE9EE",ink:"#3B0A1E",accent:"#E0234E",soft:"#FFB7C8",on:"#FFFFFF"},
+  name:{fr:"Saint-Valentin",nl:"Valentijn",en:"Valentine's",de:"Valentinstag"},when:{fr:"3 février",nl:"3 februari",en:"3 February",de:"3. Februar"},
+  items:[{n:{fr:"Cœurs brodés",nl:"Geborduurde hartjes",en:"Embroidered hearts",de:"Gestickte Herzen"},p:"hearts",base:"#E0234E",fg:"#FFE9EE"},{n:{fr:"Rose poétique",nl:"Poëtisch roze",en:"Poetic pink",de:"Poetisches Rosa"},p:"solid",base:"#FF8FAB"},{n:{fr:"Coffret duo",nl:"Duobox",en:"Duo gift box",de:"Duo-Box"},p:"hearts",base:"#3B0A1E",fg:"#FF8FAB",price:55}]},
+ {id:"printemps",from:[2,15],to:[4,30],c:{bg:"#EEF6EC",ink:"#1E3324",accent:"#7A5BD8",soft:"#C9E7C1",on:"#FFFFFF"},
+  name:{fr:"Printemps",nl:"Lente",en:"Spring",de:"Frühling"},when:{fr:"17 mars",nl:"17 maart",en:"17 March",de:"17. März"},
+  items:[{n:{fr:"Fleurs pastel",nl:"Pastelbloemen",en:"Pastel blooms",de:"Pastellblüten"},p:"flowers",base:"#C9B6FF",fg:"#FFFFFF"},{n:{fr:"Menthe",nl:"Munt",en:"Mint",de:"Minze"},p:"solid",base:"#9ED9B8"},{n:{fr:"Pêche",nl:"Perzik",en:"Peach",de:"Pfirsich"},p:"solid",base:"#FFC4A3"}]},
+ {id:"pride",from:[5,1],to:[6,14],c:{bg:"#FFF7E0",ink:"#1B1B3A",accent:"#D6336C",soft:"#FFD66B",on:"#FFFFFF"},
+  name:{fr:"Pride",nl:"Pride",en:"Pride",de:"Pride"},when:{fr:"1er juin",nl:"1 juni",en:"1 June",de:"1. Juni"},
+  items:[{n:{fr:"Arc-en-ciel",nl:"Regenboog",en:"Rainbow",de:"Regenbogen"},p:"rainbow"},{n:{fr:"Drapeau trans",nl:"Transvlag",en:"Trans flag",de:"Trans-Flagge"},p:"trans"},{n:{fr:"Fier·e en noir",nl:"Trots in zwart",en:"Proud in black",de:"Stolz in Schwarz"},p:"rainbowband",base:"#1B1B3A"}]},
+ {id:"ete",from:[6,15],to:[8,31],c:{bg:"#E3F4FF",ink:"#0C2D48",accent:"#FF6B2C",soft:"#8FD3FF",on:"#FFFFFF"},
+  name:{fr:"Été",nl:"Zomer",en:"Summer",de:"Sommer"},when:{fr:"15 juin",nl:"15 juni",en:"15 June",de:"15. Juni"},
+  items:[{n:{fr:"Vagues",nl:"Golven",en:"Waves",de:"Wellen"},p:"waves",base:"#1E88E5",fg:"#BDE6FF"},{n:{fr:"Orange sanguine",nl:"Bloedsinaasappel",en:"Blood orange",de:"Blutorange"},p:"solid",base:"#FF6B2C"},{n:{fr:"Citron",nl:"Citroen",en:"Lemon",de:"Zitrone"},p:"solid",base:"#FFE45C"}]},
+ {id:"halloween",from:[9,1],to:[10,31],c:{bg:"#1C1726",ink:"#F3EEFF",accent:"#FF8A1F",soft:"#4A3A66",on:"#1C1726"},
+  name:{fr:"Halloween",nl:"Halloween",en:"Halloween",de:"Halloween"},when:{fr:"1er octobre",nl:"1 oktober",en:"1 October",de:"1. Oktober"},
+  items:[{n:{fr:"Fantômes",nl:"Spookjes",en:"Ghosts",de:"Gespenster"},p:"ghosts",base:"#2A2236",fg:"#F3EEFF"},{n:{fr:"Phosphorescent",nl:"Fluo in het donker",en:"Glow in the dark",de:"Leuchtet im Dunkeln"},p:"solid",base:"#B8FF5C"},{n:{fr:"Citrouille",nl:"Pompoen",en:"Pumpkin",de:"Kürbis"},p:"solid",base:"#FF8A1F"}]},
+ {id:"noel",from:[11,1],to:[12,31],c:{bg:"#EAF2EC",ink:"#12301F",accent:"#C8372D",soft:"#BFD9C6",on:"#FFFFFF"},
+  name:{fr:"Noël",nl:"Kerst",en:"Christmas",de:"Weihnachten"},when:{fr:"1er novembre",nl:"1 november",en:"1 November",de:"1. November"},
+  items:[{n:{fr:"Rennes disco",nl:"Disco-rendieren",en:"Disco reindeer",de:"Disco-Rentiere"},p:"trees",base:"#1F5C45",fg:"#D4A24C"},{n:{fr:"Pull moche",nl:"Foute kersttrui",en:"Ugly sweater",de:"Hässlicher Pulli"},p:"zigzag",base:"#C8372D",fg:"#FFFFFF"},{n:{fr:"Coffret cadeau",nl:"Cadeaubox",en:"Gift box",de:"Geschenkbox"},p:"trees",base:"#D4A24C",fg:"#1F5C45",price:55}]}
+];
+const ESS=[{k:"encre",c:"#1B1B3A"},{k:"lilas",c:"#C8B6FF"},{k:"corail",c:"#FF5A4E"},{k:"sable",c:"#D9C3A5"},{k:"cacao",c:"#5A3A2E"},{k:"blanc",c:"#F7F7F2"}];
+const SIZES=["XS","S","M","L","XL","2XL","3XL","4XL"];
+const FREE=30;
+
+let lang="fr",active=null,cart=[];
+try{const l=localStorage.getItem("unis-lang");if(l&&T[l])lang=l;}catch(e){}
+
+const $=s=>document.querySelector(s);
+const t=(k,v={})=>{let s=T[lang][k]??T.fr[k];for(const x in v)s=s.replace("{"+x+"}",v[x]);return s;};
+const eur=n=>new Intl.NumberFormat(lang==="en"?"en-IE":lang+"-BE",{style:"currency",currency:"EUR"}).format(n);
+
+function current(d=new Date()){const m=d.getMonth()+1,day=d.getDate(),v=m*100+day;return S.find(s=>v>=s.from[0]*100+s.from[1]&&v<=s.to[0]*100+s.to[1])||S[5];}
+const live=current();
+
+let uid=0;
+function thong(item,opts={}){
+  const id="p"+(uid++);const b=item.base||"#C8B6FF",f=item.fg||"#fff";
+  let def="",fill=b;
+  const pat=(w,h,inner)=>{def=`<pattern id="${id}" width="${w}" height="${h}" patternUnits="userSpaceOnUse"><rect width="${w}" height="${h}" fill="${b}"/>${inner}</pattern>`;fill=`url(#${id})`;};
+  switch(item.p){
+    case"hearts":pat(26,24,`<path d="M13 19 C4 12 6 5 10 5 C12 5 13 7 13 8 C13 7 14 5 16 5 C20 5 22 12 13 19Z" fill="${f}"/>`);break;
+    case"flowers":pat(28,28,`<g fill="${f}"><circle cx="14" cy="9" r="4"/><circle cx="19" cy="14" r="4"/><circle cx="14" cy="19" r="4"/><circle cx="9" cy="14" r="4"/></g><circle cx="14" cy="14" r="3" fill="#FFD66B"/>`);break;
+    case"waves":pat(40,16,`<path d="M0 10 Q10 2 20 10 T40 10" fill="none" stroke="${f}" stroke-width="3"/>`);break;
+    case"ghosts":pat(34,34,`<path d="M10 26 V14 a7 7 0 0 1 14 0 V26 l-3.5-3 -3.5 3 -3.5-3Z" fill="${f}"/><circle cx="14.5" cy="15" r="1.3" fill="${b}"/><circle cx="19.5" cy="15" r="1.3" fill="${b}"/>`);break;
+    case"trees":pat(30,32,`<path d="M15 4 L24 24 H6Z" fill="${f}"/><rect x="13.5" y="24" width="3" height="4" fill="${f}"/>`);break;
+    case"zigzag":pat(24,20,`<path d="M0 12 L6 6 L12 12 L18 6 L24 12" fill="none" stroke="${f}" stroke-width="3"/><circle cx="12" cy="17" r="1.6" fill="${f}"/>`);break;
+    case"rainbow":def=`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">${["#E40303","#FF8C00","#FFED00","#008026","#004DFF","#750787"].map((c,i)=>`<stop offset="${i/6}" stop-color="${c}"/><stop offset="${(i+1)/6}" stop-color="${c}"/>`).join("")}</linearGradient>`;fill=`url(#${id})`;break;
+    case"trans":def=`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">${["#5BCEFA","#F5A9B8","#FFFFFF","#F5A9B8","#5BCEFA"].map((c,i)=>`<stop offset="${i/5}" stop-color="${c}"/><stop offset="${(i+1)/5}" stop-color="${c}"/>`).join("")}</linearGradient>`;fill=`url(#${id})`;break;
+  }
+  const band=item.p==="rainbowband"?`<path d="M14 34 Q100 52 186 34 L183 42 Q100 60 17 42Z" fill="url(#${id}b)"/>`:"";
+  if(item.p==="rainbowband")def=`<linearGradient id="${id}b">${["#E40303","#FF8C00","#FFED00","#008026","#004DFF","#750787"].map((c,i)=>`<stop offset="${i/5}" stop-color="${c}"/>`).join("")}</linearGradient>`;
+  const pouch=opts.cut==="pouch";
+  const shape=pouch?"M14 34 Q100 52 186 34 L176 56 Q132 70 118 108 Q112 146 100 146 Q88 146 82 108 Q68 70 24 56 Z":"M14 34 Q100 52 186 34 L176 56 Q126 74 108 146 L92 146 Q74 74 24 56 Z";
+  return `<svg viewBox="0 0 200 160" aria-hidden="true"><defs>${def}</defs><path d="${shape}" fill="${fill}" stroke="rgba(0,0,0,.18)" stroke-width="1.5"/>${band}<path d="M14 34 Q100 52 186 34" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><path d="M24 56 Q100 62 176 56" fill="none" stroke="rgba(0,0,0,.12)" stroke-width="1.5" stroke-dasharray="3 3"/></svg>`;
+}
+
+function bear(item,opts={}){
+  const id="b"+(uid++);const b=item.base||"#C8B6FF",f=item.fg||"#fff";const bow=opts.bow||"#C8372D";
+  const inner=thong(item).replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"");
+  return `<svg viewBox="0 0 200 220" aria-hidden="true"><g fill="#C98B4B"><circle cx="58" cy="36" r="20"/><circle cx="142" cy="36" r="20"/><ellipse cx="100" cy="150" rx="58" ry="56"/><circle cx="100" cy="66" r="46"/><ellipse cx="40" cy="132" rx="16" ry="30" transform="rotate(20 40 132)"/><ellipse cx="160" cy="132" rx="16" ry="30" transform="rotate(-20 160 132)"/><ellipse cx="62" cy="200" rx="26" ry="18"/><ellipse cx="138" cy="200" rx="26" ry="18"/></g><g fill="#E8C49A"><circle cx="58" cy="36" r="10"/><circle cx="142" cy="36" r="10"/><ellipse cx="100" cy="82" rx="20" ry="15"/><ellipse cx="62" cy="202" rx="13" ry="9"/><ellipse cx="138" cy="202" rx="13" ry="9"/></g><circle cx="83" cy="60" r="4.5" fill="#2B1A12"/><circle cx="117" cy="60" r="4.5" fill="#2B1A12"/><ellipse cx="100" cy="76" rx="7" ry="5" fill="#2B1A12"/><path d="M93 88 Q100 94 107 88" fill="none" stroke="#2B1A12" stroke-width="2.5" stroke-linecap="round"/><path d="M84 112 L100 120 L84 128Z M116 112 L100 120 L116 128Z" fill="${bow}"/><circle cx="100" cy="120" r="5" fill="${bow}"/><g transform="translate(46 140) scale(0.54)">${inner}</g></svg>`;
+}
+function theme(s){const r=document.documentElement.style;r.setProperty("--bg",s.c.bg);r.setProperty("--ink",s.c.ink);r.setProperty("--accent",s.c.accent);r.setProperty("--soft",s.c.soft);r.setProperty("--on-accent",s.c.on);document.querySelector('meta[name="theme-color"]').content=s.c.accent;}
+
+function renderStrip(){
+  $("#strip").innerHTML=S.map(s=>`<button class="season" aria-pressed="${s===active}" data-s="${s.id}"><span class="when">${s.when[lang]}${s===live?`<span class="now">• ${t("now")}</span>`:""}</span><span class="name">${s.name[lang]}</span><span class="dot">${[s.c.accent,s.c.soft,s.c.ink].map(c=>`<i style="background:${c}"></i>`).join("")}</span></button>`).join("");
+}
+function renderHero(){
+  const n=active.name[lang];
+  $("#dropTag").textContent=t(active===live?"dropLive":"dropSoon",{s:n});
+  $("#heroCta").textContent=t("heroCta",{s:n});
+  $("#heroArt").innerHTML=bear(active.items[0],{bow:active.c.accent})+`<span class="price-chip">${t("heroPrice")}</span>`;
+  $("#heroArt").setAttribute("aria-label",t("artLabel",{s:n}));
+}
+const cardState={};
+function cardsFor(){
+  const it=active.items[0],m=it.n[lang],sn=active.name[lang];
+  return [
+    {key:"bo",kind:"bo",name:t("boName"),desc:t("boDesc",{s:sn}),price:49,badge:t("collector"),item:it},
+    {key:"duo",kind:"duo",name:t("duoName",{m}),desc:t("duoDesc"),price:7,badge:t("duoBadge"),item:it,sized:true},
+    {key:"adult",kind:"adult",name:t("adultName",{m}),desc:t("adultDesc"),price:5,badge:t("limited"),item:it,sized:true},
+    {key:"mini",kind:"mini",name:t("miniName"),desc:t("miniDesc",{m}),price:3,badge:t("limited"),item:it},
+    {key:"ess",kind:"ess",name:t("essName"),desc:t("essDesc"),price:5,badge:t("ess"),sized:true}
+  ];
+}
+function artFor(c,st){
+  if(c.kind==="bo")return bear(c.item,{bow:active.c.accent});
+  if(c.kind==="ess")return thong({p:"solid",base:ESS[st.col].c},{cut:st.cut});
+  if(c.kind==="mini")return `<div style="width:46%">${thong(c.item)}</div>`;
+  if(c.kind==="duo")return `<div style="display:flex;align-items:flex-end;gap:6%;width:84%"><div style="flex:1.6">${thong(c.item,{cut:st.cut})}</div><div style="flex:1">${thong(c.item)}</div></div>`;
+  return thong(c.item,{cut:st.cut});
+}
+function renderShop(){
+  $("#hshop").textContent=t("shop",{s:active.name[lang]});
+  $("#shopIntro").textContent=t("shopIntro",{s:active.name[lang]});
+  $("#grid").innerHTML=cardsFor().map(c=>{
+    const st=cardState[c.key]||(cardState[c.key]={cut:"flat",size:"M",col:0});
+    return `<article class="card" data-k="${c.key}">
+      <div class="art" style="background:${c.kind==="ess"?"#F1EEF8":active.c.soft}">${artFor(c,st)}<span class="badge">${c.badge}</span></div>
+      <div class="meta"><h3>${c.name}</h3><span class="price">${eur(c.price)}</span></div>
+      <p class="desc">${c.desc}</p>
+      ${c.kind==="ess"?`<div class="swatches" role="group" aria-label="${t("color")}">${ESS.map((e,i)=>`<button style="background:${e.c}" aria-pressed="${i===st.col}" data-col="${i}" aria-label="${t("color")} ${i+1}"></button>`).join("")}</div>`:""}
+      ${c.sized?`<div class="opts"><div class="seg" role="group" aria-label="${t("cutLabel")}"><button data-cut="flat" aria-pressed="${st.cut==="flat"}">${t("flatT")}</button><button data-cut="pouch" aria-pressed="${st.cut==="pouch"}">${t("pouchT")}</button></div>
+      <label class="sr" for="sz-${c.key}">${t("size")}</label><select id="sz-${c.key}" data-size>${SIZES.map(s=>`<option${s===st.size?" selected":""}>${s}</option>`).join("")}</select></div>`:""}
+      <button class="add" data-add>${t("add")}</button>
+    </article>`;}).join("");
+}
+function renderFaq(){$("#faqList").innerHTML=T[lang].faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");}
+function renderText(){
+  document.documentElement.lang=lang;document.title=t("title");document.querySelector('meta[name="description"]').content=t("desc");
+  document.querySelectorAll("[data-i]").forEach(el=>{const k=el.dataset.i;if(T[lang][k]!=null&&typeof T[lang][k]==="string")el.textContent=T[lang][k];});
+  $("#lang").value=lang;
+}
+function renderCart(){
+  const n=cart.reduce((s,l)=>s+l.q,0),sum=cart.reduce((s,l)=>s+l.q*l.price,0);
+  $("#count").textContent=n;
+  $("#lines").innerHTML=cart.length?cart.map((l,i)=>`<div class="line"><div class="mini" style="background:${l.bg}">${l.kind==="bo"?bear(l.item,{bow:l.bow}):thong(l.item,{cut:l.cut})}</div><div><b>${l.name}</b>${l.sized?`<small>${t(l.cut==="flat"?"flatT":"pouchT")}, ${l.size}</small>`:""}<div class="qty"><button data-dec="${i}" aria-label="-1">−</button><span>${l.q}</span><button data-inc="${i}" aria-label="+1">+</button></div></div><b>${eur(l.q*l.price)}</b></div>`).join(""):`<p class="empty">${t("empty")}</p>`;
+  $("#total").textContent=eur(sum);
+  $("#shipMsg").textContent=sum>=FREE?t("shipFree"):t("shipLeft",{x:eur(FREE-sum)});
+  $("#shipBar").style.width=Math.min(100,sum/FREE*100)+"%";
+}
+function renderAll(){renderText();renderStrip();renderHero();renderShop();renderFaq();renderCart();}
+function setSeason(s){active=s;theme(s);renderStrip();renderHero();renderShop();}
+
+let toastT;function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove("on"),2200);}
+
+document.addEventListener("click",e=>{
+  const sb=e.target.closest(".season");if(sb){setSeason(S.find(s=>s.id===sb.dataset.s));document.querySelector(`.season[data-s="${sb.dataset.s}"]`).focus();return;}
+  const card=e.target.closest(".card");
+  if(card){const k=card.dataset.k,st=cardState[k];
+    const cb=e.target.closest("[data-cut]");if(cb){st.cut=cb.dataset.cut;renderShop();card.isConnected||document.querySelector(`.card[data-k="${k}"] [data-cut="${st.cut}"]`).focus();return;}
+    const sw=e.target.closest("[data-col]");if(sw){st.col=+sw.dataset.col;renderShop();document.querySelector(`.card[data-k="${k}"] [data-col="${st.col}"]`).focus();return;}
+    const ad=e.target.closest("[data-add]");if(ad){
+      const c=cardsFor().find(x=>x.key===k);const it=c.kind==="ess"?{p:"solid",base:ESS[st.col].c}:c.item;
+      const id=active.id+k+(c.sized?st.cut+st.size:"")+(c.kind==="ess"?st.col:"");const ex=cart.find(l=>l.id===id);
+      if(ex)ex.q++;else cart.push({id,kind:c.kind,name:c.name,price:c.price,cut:st.cut,size:st.size,sized:!!c.sized,item:it,bow:active.c.accent,bg:c.kind==="ess"?"#F1EEF8":active.c.soft,q:1});
+      renderCart();toast(t("added"));return;}
+  }
+  const inc=e.target.closest("[data-inc]");if(inc){cart[+inc.dataset.inc].q++;renderCart();return;}
+  const dec=e.target.closest("[data-dec]");if(dec){const l=cart[+dec.dataset.dec];l.q--;if(!l.q)cart.splice(+dec.dataset.dec,1);renderCart();return;}
+});
+document.addEventListener("change",e=>{if(e.target.matches("[data-size]")){cardState[e.target.closest(".card").dataset.k].size=e.target.value;}});
+$("#lang").addEventListener("change",e=>{lang=e.target.value;try{localStorage.setItem("unis-lang",lang);}catch(x){}renderAll();});
+
+const drawer=$("#drawer"),scrim=$("#scrim");let lastFocus;
+function openCart(){lastFocus=document.activeElement;drawer.classList.add("on");scrim.classList.add("on");drawer.setAttribute("aria-hidden","false");drawer.inert=false;$("#closeCart").focus();}
+function closeCart(){drawer.classList.remove("on");scrim.classList.remove("on");drawer.setAttribute("aria-hidden","true");drawer.inert=true;lastFocus&&lastFocus.focus();}
+$("#openCart").onclick=openCart;$("#closeCart").onclick=closeCart;scrim.onclick=closeCart;
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("on"))closeCart();});
+$("#checkout").onclick=()=>toast(t("checkoutMsg"));
+
+const burger=$(".burger"),nav=$("#nav");
+burger.onclick=()=>{const o=nav.classList.toggle("open");burger.setAttribute("aria-expanded",o);};
+nav.addEventListener("click",e=>{if(e.target.closest("a")){nav.classList.remove("open");burger.setAttribute("aria-expanded","false");}});
+
+$("#waitForm").addEventListener("submit",e=>{e.preventDefault();const m=$("#waitMsg");const em=$("#email").value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){m.textContent=t("errEmail");m.hidden=false;$("#email").focus();return;}
+  if(!$("#consent").checked){m.textContent=t("errConsent");m.hidden=false;$("#consent").focus();return;}
+  m.textContent=t("okWait");m.hidden=false;e.target.reset();});
+
+active=live;theme(active);renderAll();
+})();
+</script>
+</body>
+</html>

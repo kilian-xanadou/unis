@@ -1,0 +1,12 @@
+# Render : site statique gratuit. Dashboard Render > New > Blueprint > choisir ce dépôt.
+services:
+  - type: web
+    name: unis-demo
+    runtime: static
+    buildCommand: node src/build.mjs
+    staticPublishPath: ./site
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=86400

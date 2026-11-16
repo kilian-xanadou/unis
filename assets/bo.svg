@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" role="img" aria-label="Bo, l'ours UNIS, portant le string de Noël">
+<defs><pattern id="t" width="14" height="15" patternUnits="userSpaceOnUse"><rect width="14" height="15" fill="#1F5C45"/><path d="M7 2 L11.5 11 H2.5Z" fill="#D4A24C"/><rect x="6" y="11" width="2" height="2.5" fill="#D4A24C"/></pattern></defs>
+<g fill="#C98B4B"><circle cx="58" cy="36" r="20"/><circle cx="142" cy="36" r="20"/><ellipse cx="100" cy="150" rx="58" ry="56"/><circle cx="100" cy="66" r="46"/><ellipse cx="40" cy="132" rx="16" ry="30" transform="rotate(20 40 132)"/><ellipse cx="160" cy="132" rx="16" ry="30" transform="rotate(-20 160 132)"/><ellipse cx="62" cy="200" rx="26" ry="18"/><ellipse cx="138" cy="200" rx="26" ry="18"/></g>
+<g fill="#E8C49A"><circle cx="58" cy="36" r="10"/><circle cx="142" cy="36" r="10"/><ellipse cx="100" cy="82" rx="20" ry="15"/><ellipse cx="62" cy="202" rx="13" ry="9"/><ellipse cx="138" cy="202" rx="13" ry="9"/></g>
+<circle cx="83" cy="60" r="4.5" fill="#2B1A12"/><circle cx="117" cy="60" r="4.5" fill="#2B1A12"/><ellipse cx="100" cy="76" rx="7" ry="5" fill="#2B1A12"/><path d="M93 88 Q100 94 107 88" fill="none" stroke="#2B1A12" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M84 112 L100 120 L84 128Z M116 112 L100 120 L116 128Z" fill="#C8372D"/><circle cx="100" cy="120" r="5" fill="#C8372D"/>
+<path d="M54 158 Q100 168 146 158 L144 167 Q118 172 110 196 L90 196 Q82 172 56 167 Z" fill="url(#t)"/><path d="M54 158 Q100 168 146 158" fill="none" stroke="#D4A24C" stroke-width="3"/>
+</svg>
