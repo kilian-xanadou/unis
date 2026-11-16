@@ -4,6 +4,8 @@
 // link = clé de page (pathOf) ; sid = saison éventuelle ("live" = drop du moment).
 export const V = {
 fr: {
+  chip: "String", share: "Partager", copied: "Lien copié : colle-le où tu veux.",
+  xmasBar: "Pour recevoir avant Noël, commande au plus tard le jeudi 17 décembre.",
   forTitle: "Un UNIS pour chaque occasion",
   forIntro: "Faire rire, faire rougir, souder la bande ou te faire plaisir : il y a un string pour ça.",
   for: [
@@ -38,6 +40,8 @@ fr: {
   },
 },
 nl: {
+  chip: "String", share: "Delen", copied: "Link gekopieerd: plak hem waar je wilt.",
+  xmasBar: "Wil je het vóór Kerstmis ontvangen? Bestel uiterlijk donderdag 17 december.",
   forTitle: "Een UNIS voor elke gelegenheid",
   forIntro: "Doen lachen, doen blozen, de vriendengroep samenbrengen of jezelf verwennen: daar is een string voor.",
   for: [
@@ -72,6 +76,8 @@ nl: {
   },
 },
 en: {
+  chip: "Thong", share: "Share", copied: "Link copied: paste it wherever you like.",
+  xmasBar: "To get it before Christmas, order by Thursday 17 December.",
   forTitle: "A UNIS for every occasion",
   forIntro: "Make them laugh, make them blush, bring the gang together or treat yourself: there's a thong for that.",
   for: [
@@ -106,6 +112,8 @@ en: {
   },
 },
 de: {
+  chip: "String", share: "Teilen", copied: "Link kopiert: Füg ihn ein, wo du willst.",
+  xmasBar: "Damit es vor Weihnachten ankommt: Bestell bis spätestens Donnerstag, 17. Dezember.",
   forTitle: "Ein UNIS für jeden Anlass",
   forIntro: "Zum Lachen bringen, erröten lassen, die Clique zusammenschweißen oder dir etwas gönnen: Dafür gibt's einen String.",
   for: [

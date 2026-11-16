@@ -2,7 +2,7 @@
 (() => {
   const S = JSON.parse(document.getElementById("i18n").textContent);
   const $ = (s, r = document) => r.querySelector(s);
-  const eur = (n) => new Intl.NumberFormat(S.locale, { style: "currency", currency: "EUR" }).format(n);
+  const eur = (n) => new Intl.NumberFormat(S.locale, { style: "currency", currency: "EUR", minimumFractionDigits: n % 1 ? 2 : 0 }).format(n);
   const fill = (s, v) => s.replace(/\{(\w)\}/g, (_, k) => v[k]);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
@@ -152,6 +152,15 @@
   }));
 
   // ---------- Cookies : consentement (RGPD) ----------
+  // Partager (action clé « acheter, puis partager ») : menu natif sur mobile, sinon copie du lien.
+  document.querySelectorAll("[data-share]").forEach((btn) => btn.addEventListener("click", async () => {
+    const data = { title: btn.dataset.title, url: btn.dataset.url };
+    try {
+      if (navigator.share) { await navigator.share(data); }
+      else { await navigator.clipboard.writeText(data.url); toast(S.copied); }
+      (window.dataLayer = window.dataLayer || []).push({ event: "share", method: navigator.share ? "native" : "copy", content_type: S.page });
+    } catch (e) { if (e && e.name !== "AbortError") toast(data.url); }
+  }));
   const CK = "unis_consent", SIX_MONTHS = 60 * 60 * 24 * 182;
   const readConsent = () => {
     const m = document.cookie.match(/(?:^|;\s*)unis_consent=([^;]+)/);

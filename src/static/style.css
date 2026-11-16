@@ -322,3 +322,19 @@ table.sizes th,table.sizes td{padding:10px;text-align:left;border-bottom:1px sol
 .forwho-list li{background:var(--soft);color:var(--ink);border-radius:var(--r-big);padding:22px;display:flex;flex-direction:column;gap:6px}
 .forwho-list p{margin:0;flex:1}
 .forwho-list a{font-weight:700;min-height:44px;display:flex;align-items:center}
+
+/* Date limite de commande (urgence réelle) */
+.deadline{display:flex;align-items:center;gap:10px;max-width:none;margin:8px 0 0;background:var(--ink);color:var(--bg);border-radius:var(--r-small);padding:12px 16px;font-weight:700}
+.deadline svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* Bouton partager */
+.share-row{margin:0 0 16px}
+.btn.share{min-height:44px;padding:0 20px;font-size:.95rem;border:1.5px solid var(--ink);background:transparent;color:var(--ink)}
+/* Liens du pied de page : cibles tactiles de 44 px (charte) */
+.foot li a{display:inline-flex;align-items:center;min-height:44px}
+/* Mobile : réassurance sur une ligne qui défile, pour remonter les produits */
+@media (max-width:700px){
+  .reassure{display:flex;overflow-x:auto;gap:8px;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x proximity}
+  .reassure::-webkit-scrollbar{display:none}
+  .reassure li{flex:none;white-space:nowrap;scroll-snap-align:start;font-size:.88rem;padding:8px 14px}
+  .deadline{font-size:.92rem;padding:10px 14px}
+}

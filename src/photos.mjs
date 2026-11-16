@@ -13,10 +13,10 @@ export const PHOTOS = {
   noelAllonge: {
     file: "bo-ours-unis-noel-allonge", sizes: [[600, 400], [1200, 800]],
     alt: {
-      fr: "Bo allongé sur fond blanc, avec bonnet de Père Noël et string rouge à sapins",
-      nl: "Bo ligt op een witte achtergrond met kerstmuts en rode string met dennenbomen",
-      en: "Bo lying on a white background in a Santa hat and red tree-print thong",
-      de: "Bo liegt vor weißem Hintergrund mit Weihnachtsmütze und rotem Tannen-String",
+      fr: "Bo allongé sur fond blanc, avec bonnet de Père Noël et string rouge à rennes",
+      nl: "Bo ligt op een witte achtergrond met kerstmuts en rode string met rendieren",
+      en: "Bo lying on a white background in a Santa hat and red reindeer-print thong",
+      de: "Bo liegt vor weißem Hintergrund mit Weihnachtsmütze und rotem Rentier-String",
     },
   },
   halloween: {
