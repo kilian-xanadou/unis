@@ -1,5 +1,6 @@
 // Génère le site statique dans site/. Usage : node src/build.mjs
-import { mkdirSync, writeFileSync, copyFileSync, rmSync, cpSync, existsSync } from "node:fs";
+import { mkdirSync, writeFileSync, copyFileSync, rmSync, cpSync, existsSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import CFG from "./config.mjs";
@@ -17,7 +18,10 @@ import { thong, bear, logoThread, SHAPE } from "./art.mjs";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "site");
 const SITE = CFG.siteUrl.replace(/\/$/, "");
-const BASE_PATH = new URL(SITE + "/").pathname; // "/" sur Render, "/unis/" sur GitHub Pages
+const BASE_PATH = new URL(SITE + "/").pathname;
+// Numéro de version des fichiers CSS/JS (empreinte du contenu) : un fichier modifié change d'URL, donc pas de vieux cache.
+const ver = (f) => createHash("sha256").update(readFileSync(join(ROOT, "src/static", f))).digest("hex").slice(0, 10);
+const V = { css: ver("style.css"), js: ver("app.js") }; // "/" sur Render, "/unis/" sur GitHub Pages
 const LIVE = SEASONS.find((s) => s.id === CFG.currentSeason);
 const warnings = [];
 
@@ -221,7 +225,7 @@ ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${here("assets/style.css")}">
+<link rel="stylesheet" href="${here("assets/style.css")}?v=${V.css}">
 <style>:root{--bg:${palette.bg};--ink:${palette.ink};--accent:${palette.accent};--soft:${palette.soft};--on-accent:${palette.on}}</style>
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph })}</script>
 </head>
@@ -288,7 +292,7 @@ ${body2}
     </div>
   </div>
 </div>
-<script src="${here("assets/app.js")}" defer></script>
+<script src="${here("assets/app.js")}?v=${V.js}" defer></script>
 </body>
 </html>
 `;
