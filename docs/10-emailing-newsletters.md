@@ -17,6 +17,8 @@ Complète [03-campagnes-emailing.md](03-campagnes-emailing.md). Sources de cours
 
 ## 3 newsletters mensuelles (1 newsletter = 1 article du journal)
 
+> Rendus HTML : `emails/01`, `emails/03` et `emails/04` (fusionnées avec les campagnes de décembre, janvier et février). Relances : `emails/17` à `emails/21`.
+
 | | Newsletter 1 | Newsletter 2 | Newsletter 3 |
 | --- | --- | --- | --- |
 | Date | Mer. 2 déc. 2026 | Mer. 6 janv. 2027 | Mer. 3 févr. 2027 |
@@ -25,7 +27,7 @@ Complète [03-campagnes-emailing.md](03-campagnes-emailing.md). Sources de cours
 | Objet B | Secret Santa : Bo a une idée | Plat ou Poche ? On t'explique | Un string, tous les corps |
 | Pre-header | Et ils arrivent avant le 24 décembre. | Mètre ruban, 3 étapes, zéro prise de tête. | Le drop Saint-Valentin sort aujourd'hui. |
 | Article lié | [Idées cadeaux Secret Santa](../site/fr/journal/cadeau-secret-santa-drole/index.html) | [Bien choisir sa taille](../site/fr/journal/choisir-sa-taille-de-string/index.html) | [Unisexe : coupe plutôt que genre](../site/fr/journal/string-unisexe-coupe-pas-genre/index.html) |
-| Corps (résumé) | Bo présente 4 idées de cadeaux : Duo 7 €, mini-string 3 €, lot de 5, coffret. Rappel : commande avant le jeudi 17 décembre. | 3 étapes pour mesurer ses hanches, le tableau XS–4XL, le retour sous 14 jours si le string n'est pas porté. | Le manifeste en 100 mots, puis le drop Cœurs brodés et Bo édition Cœur. |
+| Corps (résumé) | Bo présente 4 idées de cadeaux à moins de 10 € : string 5 €, Duo 7 €, mini-string 3 €, lot de 5 (4 € par personne). Rappel : commande avant le jeudi 17 décembre. | 3 étapes pour mesurer ses hanches, le tableau XS–4XL, le retour sous 14 jours si le string n'est pas porté. | Le manifeste en 100 mots, puis le drop Cœurs brodés et Bo édition Cœur. |
 | CTA | Voir les idées | Trouver ma taille | Découvrir le drop |
 | KPI | Ouverture, clic, achats | Clic vers le guide, taux de retour | Ventes du drop à J+1 |
 
