@@ -559,7 +559,7 @@ ${CFG.indexable ? "" : '<meta name="robots" content="noindex, follow">'}
 ${LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(x + "/")}">`).join("\n")}
 <link rel="alternate" hreflang="x-default" href="${abs(XDEFAULT + "/")}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<script>(function(){var l=(navigator.language||"fr").slice(0,2).toLowerCase();var ok=${JSON.stringify(LANGS)};location.replace((ok.indexOf(l)>-1?l:"${DEFAULT_LANG}")+"/");})();</script>
+<script>(function(){var l=(navigator.language||"fr").slice(0,2).toLowerCase();var ok=${JSON.stringify(LANGS)};location.replace((ok.indexOf(l)>-1?l:"${DEFAULT_LANG}")+"/"+location.search);})();</script>
 <style>body{font-family:system-ui,sans-serif;background:#EFEAFF;color:#1B1B3A;display:grid;place-items:center;min-height:100vh;margin:0}a{display:inline-block;margin:6px;padding:12px 18px;border:2px solid #1B1B3A;border-radius:999px;color:inherit;text-decoration:none;font-weight:700}</style>
 </head><body><main><h1>UNIS</h1><p>${LANGS.map((x) => `<a href="${x}/" hreflang="${x}" lang="${x}">${T[x].langName}</a>`).join("")}</p></main></body></html>
 `);
