@@ -4,6 +4,10 @@
 // link = clé de page (pathOf) ; sid = saison éventuelle ("live" = drop du moment).
 export const V = {
 fr: {
+  ctaGift: "Offrir un string à 5 €", noSize: "Tu ne connais pas sa taille ? Offre le mini-string pour Bo (3 €)",
+  heroTrustXmas: "Livré avant Noël si tu commandes avant le 17 décembre · Retour 14 jours · Fabriqué en Europe",
+  heroTrust: "Livraison offerte dès 30 € · Retour 14 jours · Fabriqué en Europe",
+  upsell: "Plus que {x} pour la livraison offerte :", upLot: "le lot de 5 (20 €)", upDuo: "un Duo assorti (7 €)", upOr: "ou",
   productsTitle: "Les produits",
   chip: "String", share: "Partager", copied: "Lien copié : colle-le où tu veux.",
   xmasBar: "Pour recevoir avant Noël, commande au plus tard le jeudi 17 décembre.",
@@ -41,6 +45,10 @@ fr: {
   },
 },
 nl: {
+  ctaGift: "Geef een string van 5 €", noSize: "Ken je de maat niet? Geef de mini-string voor Bo (3 €)",
+  heroTrustXmas: "Vóór Kerstmis geleverd als je bestelt vóór 17 december · 14 dagen retour · Gemaakt in Europa",
+  heroTrust: "Gratis levering vanaf 30 € · 14 dagen retour · Gemaakt in Europa",
+  upsell: "Nog {x} voor gratis levering:", upLot: "het pakket van 5 (20 €)", upDuo: "een bijpassende Duo (7 €)", upOr: "of",
   productsTitle: "De producten",
   chip: "String", share: "Delen", copied: "Link gekopieerd: plak hem waar je wilt.",
   xmasBar: "Wil je het vóór Kerstmis ontvangen? Bestel uiterlijk donderdag 17 december.",
@@ -78,6 +86,10 @@ nl: {
   },
 },
 en: {
+  ctaGift: "Gift a €5 thong", noSize: "Don't know their size? Gift the mini thong for Bo (€3)",
+  heroTrustXmas: "Delivered before Christmas if you order by 17 December · 14-day returns · Made in Europe",
+  heroTrust: "Free shipping from €30 · 14-day returns · Made in Europe",
+  upsell: "{x} more for free shipping:", upLot: "the 5-pack (€20)", upDuo: "a matching Duo (€7)", upOr: "or",
   productsTitle: "The products",
   chip: "Thong", share: "Share", copied: "Link copied: paste it wherever you like.",
   xmasBar: "To get it before Christmas, order by Thursday 17 December.",
@@ -115,6 +127,10 @@ en: {
   },
 },
 de: {
+  ctaGift: "Einen String für 5 € schenken", noSize: "Größe unbekannt? Schenk den Mini-String für Bo (3 €)",
+  heroTrustXmas: "Vor Weihnachten geliefert bei Bestellung bis 17. Dezember · 14 Tage Rückgabe · Hergestellt in Europa",
+  heroTrust: "Kostenloser Versand ab 30 € · 14 Tage Rückgabe · Hergestellt in Europa",
+  upsell: "Noch {x} bis zum kostenlosen Versand:", upLot: "das 5er-Pack (20 €)", upDuo: "ein passendes Duo (7 €)", upOr: "oder",
   productsTitle: "Die Produkte",
   chip: "String", share: "Teilen", copied: "Link kopiert: Füg ihn ein, wo du willst.",
   xmasBar: "Damit es vor Weihnachten ankommt: Bestell bis spätestens Donnerstag, 17. Dezember.",

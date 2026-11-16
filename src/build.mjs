@@ -82,7 +82,8 @@ function seasonProducts(s, l) {
   list.push({ sku: `UNIS-${code}-MINI`, kind: "mini", name: fill(T[l].miniName, { m }), desc: T[l].miniDesc, price: PRICES.mini, badge: T[l].limited, item: it });
   if (s.box) list.push({ sku: `UNIS-BOX-${s.id.toUpperCase()}${yr}`, kind: "bo", name: fill(T[l].boxName, { s: sn }), desc: fill(T[l].boxDesc, { s: sn }), price: PRICES.box, badge: T[l].collector, item: it, hat: s.id === "noel", bo: true });
   const photoFor = (p) => PLACEMENT.itemCard[p.sku] || (p.bo ? (p.sku.startsWith("UNIS-BOX") ? PLACEMENT.boxCard[s.id] : PLACEMENT.boCard[s.id]) : null);
-  return list.map((p) => ({ ...p, buyable: s === LIVE, color: it.base || s.c.accent, season: s, photo: photoFor(p), badge: s.capsule ? roseFill(ROSE[l].badge, l) : p.badge }));
+  const miniSku = `UNIS-${code}-MINI`;
+  return list.map((p) => ({ ...p, giftAlt: ["adult", "duo"].includes(p.kind) ? `${BASE_PATH}${pathOf(l, "season", s.id)}#p-${miniSku.toLowerCase()}` : null, buyable: s === LIVE, color: it.base || s.c.accent, season: s, photo: photoFor(p), badge: s.capsule ? roseFill(ROSE[l].badge, l) : p.badge }));
 }
 const boProduct = (l) => ({ sku: "UNIS-BO", kind: "bo", name: T[l].boName, desc: T[l].boDesc, price: PRICES.bo, badge: T[l].collector, item: LIVE.items[0], bo: true, buyable: true, color: "#C98B4B", season: LIVE, photo: PLACEMENT.boCard[LIVE.id] || null });
 const essProduct = (l) => ({ sku: "UNIS-ESS", kind: "ess", name: T[l].essName, desc: T[l].essDesc, price: PRICES.adult, badge: T[l].ess, sized: true, buyable: true, color: ESS[0].c , photo: PLACEMENT.itemCard["UNIS-ESS"] });
@@ -112,11 +113,12 @@ function card(p, l, ctx) {
     ? `<button type="button" class="add" data-add data-sku="${p.sku}" data-name="${esc(p.name)}" data-price="${p.price}" data-color="${p.color}">${t.add}</button>`
     : `<a class="add" href="#liste">${t.notify}</a>`;
   const mention = p.bo ? `<p class="mention">${t.boMention}</p>` : (p.kind !== "bo" ? `<p class="compo">${t.composition}</p>` : "");
-  return `<article class="card" data-cut="flat">
+  const giftAlt = p.giftAlt && p.buyable ? `<a class="nosize" href="${p.giftAlt}">${VPC[l].noSize}</a>` : "";
+  return `<article class="card" id="p-${id}" data-cut="flat">
   <div class="art${p.photo ? " has-photo" : ""}" style="background:${bg}">${art(p, l)}<span class="badge">${esc(p.badge)}</span></div>
   <div class="meta"><h3>${esc(p.name)}</h3><span class="price">${eur(p.price, l)}</span></div>
   <p class="desc">${esc(p.desc)}</p>${mention}
-  ${opts.length ? `<div class="opts">${opts.join("")}</div>` : ""}
+  ${opts.length ? `<div class="opts">${opts.join("")}</div>` : ""}${giftAlt}
   ${action}
 </article>`;
 }
@@ -188,6 +190,8 @@ const REASSURE_ICONS = [
 const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${[...X[l].reassure, VPC[l].europe].map((r, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${REASSURE_ICONS[i]}</svg>${r}</li>`).join("")}</ul>`;
 const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>${VPC[l].xmasBar}</span></p>`;
 const shareBtn = (l, title, url) => `<p class="share-row"><button class="btn ghost share" type="button" data-share data-title="${esc(title)}" data-url="${url}">${VPC[l].share}</button></p>`;
+const heroInset = (l) => { const k = PLACEMENT.itemCard[seasonProducts(LIVE, l).find((p) => p.kind === "adult")?.sku]; return k ? `<span class="hero-inset">${photo(k, l, { sizes: "160px" })}</span>` : ""; };
+const buyBar = (p, l) => p ? `<div class="buybar" id="buybar"><span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span><button type="button" class="btn primary" data-buybar="${p.sku}">${T[l].add}</button></div>` : "";
 const PAY = ["Bancontact", "Visa", "Mastercard", "Apple Pay", "Google Pay", "iDEAL"];
 const payBadges = () => `<ul class="pay">${PAY.map((p) => `<li>${p}</li>`).join("")}</ul>`;
 
@@ -215,7 +219,7 @@ function layout({ l, key, sid, title, desc, body, ld = [], palette = BASE, noAlt
   // La 404 peut être servie à n'importe quelle profondeur : liens absolus depuis la racine du site.
   const here = key === "404" ? (p) => BASE_PATH + p : (p) => "../".repeat(depth) + p;
   const alts = noAlt ? "" : LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(pathOf(x, key, sid))}">`).join("\n") + `\n<link rel="alternate" hreflang="x-default" href="${abs(pathOf(XDEFAULT, key, sid))}">`;
-  const strings = { copied: VPC[l].copied, cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: DB ? a.okContactSaved : x.contact.ok, lang: l, page: key,
+  const strings = { copied: VPC[l].copied, upsell: VPC[l].upsell, upLot: VPC[l].upLot, upDuo: VPC[l].upDuo, upOr: VPC[l].upOr, upLotUrl: `${BASE_PATH}${pathOf(l, "ess")}#p-unis-ess-lot5`, upDuoUrl: `${BASE_PATH}${pathOf(l, "season", LIVE.id)}#p-${(seasonProducts(LIVE, l).find((p) => p.kind === "duo")?.sku || "").toLowerCase()}`, cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: DB ? a.okContactSaved : x.contact.ok, lang: l, page: key,
     okWaitSaved: a.okWaitSaved, waitAlready: a.waitAlready, acc: a.account,
     db: DB ? { url: CFG.supabaseUrl, key: CFG.supabaseAnonKey, lib: SB_LIB } : null,
     consentVersion: CFG.consentVersion, ga4: CFG.ga4Id, pixel: CFG.metaPixelId,
@@ -291,7 +295,7 @@ ${body2}
   <footer>
     <dl class="sums"><div><dt>${x.subtotal}</dt><dd id="subtotal">${eur(0, l)}</dd></div><div><dt>${x.shipping}</dt><dd id="shipCost">${eur(SHIPPING.fee, l)}</dd></div></dl>
     <div class="total"><span>${t.total}</span><span id="total">${eur(0, l)}</span></div>
-    <p class="ship" id="shipMsg"></p>
+    <p class="ship" id="shipMsg"></p><p class="upsell" id="upsell" hidden></p>
     <div class="bar"><i id="shipBar"></i></div>
     <label class="check cgv"><input type="checkbox" id="cgv"> <span>${x.cgv} <a href="${here(pathOf(l, "terms"))}">${x.cgvLink}</a></span></label>
     <p class="err" id="cgvErr" role="alert" hidden>${x.errCgv}</p>
@@ -343,9 +347,10 @@ for (const l of LANGS) {
     <p class="drop-tag"><i></i><span>${fill(t.dropLive, { s: liveName })}</span></p>
     <h1 id="h1"><span>${t.home.h1a}</span><span>${t.home.h1b}</span><span class="h1sub">${t.home.h1c}</span></h1>
     <p class="lead">${t.home.lead}</p>
-    <div class="ctas"><a class="btn primary" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.ctaDrop, { s: liveName })}</a><a class="btn ghost" href="${here(pathOf(l, "bo"))}">${t.home.ctaBo}</a></div>
+    <div class="ctas"><a class="btn primary" href="${here(pathOf(l, "season", LIVE.id))}#produits">${VPC[l].ctaGift}</a><a class="btn ghost" href="${here(pathOf(l, "bo"))}">${t.home.ctaBo}</a></div>
+    <p class="hero-trust">${LIVE.id === "noel" ? VPC[l].heroTrustXmas : VPC[l].heroTrust}</p>
   </div>
-  ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}<span class="price-chip">${VPC[l].chip} ${eur(PRICES.adult, l)}</span></div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
+  ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}${heroInset(l)}<span class="price-chip">${VPC[l].chip} ${eur(PRICES.adult, l)}</span></div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
 <div class="wrap">${LIVE.id === "noel" ? xmasBar(l) : ""}${reassure(l)}</div>
 <section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
@@ -395,7 +400,8 @@ ${waitlist(l)}` }));
 <div class="wrap">${live && s.id === "noel" ? xmasBar(l) : ""}${reassure(l)}${shareBtn(l, st.title.split(" | ")[0], url)}</div>
 ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p><p class="note">${roseFill(ROSE[l].note, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
-<section class="shop band" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${grid(ps, l)}</div></section>
+<section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${grid(ps, l)}</div></section>
+${live ? buyBar(ps.find((p) => p.kind === "duo"), l) : ""}
 ${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
 ${faqBlock(sfaq, t.faqTitle)}

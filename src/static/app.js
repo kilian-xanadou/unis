@@ -25,6 +25,7 @@
     $("#shipCost").textContent = sum >= S.free ? S.shippingFree : eur(S.fee);
     $("#total").textContent = eur(sum + ship);
     $("#shipMsg").textContent = sum >= S.free ? S.shipFree : fill(S.shipLeft, { x: eur(S.free - sum) });
+    const up = $("#upsell"); if (up) { const show = sum > 0 && sum < S.free; up.hidden = !show; if (show) up.innerHTML = `${esc(fill(S.upsell, { x: eur(S.free - sum) }))} <a href="${S.upLotUrl}">${esc(S.upLot)}</a> ${esc(S.upOr)} <a href="${S.upDuoUrl}">${esc(S.upDuo)}</a>`; }
     $("#shipBar").style.width = Math.min(100, (sum / S.free) * 100) + "%";
   }
 
@@ -163,6 +164,12 @@
       (window.dataLayer = window.dataLayer || []).push({ event: "share", method: navigator.share ? "native" : "copy", content_type: S.page });
     } catch (e) { if (e && e.name !== "AbortError") toast(data.url); }
   }));
+  // Barre d'achat mobile : ajoute le Duo du drop avec la taille choisie sur sa carte.
+  document.querySelectorAll("[data-buybar]").forEach((b) => b.addEventListener("click", () => {
+    const btn = document.querySelector(`[data-add][data-sku="${b.dataset.buybar}"]`); if (btn) btn.click();
+  }));
+  // Liens du panier vers un produit : on ferme le panier avant de suivre le lien.
+  document.addEventListener("click", (e) => { if (e.target.closest("#upsell a") && typeof close === "function") close(); });
   const CK = "unis_consent", SIX_MONTHS = 60 * 60 * 24 * 182;
   const readConsent = () => {
     const m = document.cookie.match(/(?:^|;\s*)unis_consent=([^;]+)/);
