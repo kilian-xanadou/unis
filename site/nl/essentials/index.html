@@ -59,9 +59,14 @@
 <footer class="foot"><div class="wrap">
   <div class="cols">
     <div><p class="foot-logo">UNIS</p><p>Eén draad. Elk lichaam. Zelfs beren.</p></div>
-    <div><p class="ft">Shop</p><ul><li><a href="../../nl/seizoenen/kerst/">drop Kerst</a></li><li><a href="../../nl/bo/">Bo, de UNIS-beer</a></li><li><a href="../../nl/essentials/">Essentials</a></li><li><a href="../../nl/seizoenen/">Seizoenen</a></li></ul></div>
-    <div><p class="ft">Hulp</p><ul><li><a href="../../nl/maatgids/">Matentabel</a></li><li><a href="../../nl/hulp/">Levering · Retour</a></li><li><a href="../../nl/hulp/#faq">Veelgestelde vragen</a></li></ul></div>
-    <div><p class="ft">Informatie</p><ul><li><a href="../../nl/verkoopvoorwaarden/">Verkoopvoorwaarden</a></li><li><a href="../../nl/privacy/">Privacy</a></li><li><a href="../../nl/wettelijke-vermeldingen/">Wettelijke vermeldingen</a></li></ul></div>
+    <div><p class="ft">Shop</p><ul><li><a href="../../nl/seizoenen/kerst/">drop Kerst</a></li><li><a href="../../nl/bo/">Bo, de UNIS-beer</a></li><li><a href="../../nl/essentials/">Essentials</a></li><li><a href="../../nl/seizoenen/">Seizoenen</a></li><li><a href="../../nl/club/">Club van Bo</a></li></ul></div>
+    <div><p class="ft">Hulp</p><ul><li><a href="../../nl/maatgids/">Matentabel</a></li><li><a href="../../nl/hulp/">Levering · Retour</a></li><li><a href="../../nl/hulp/#faq">Veelgestelde vragen</a></li><li><a href="../../nl/contact/">Contact</a></li></ul></div>
+    <div><p class="ft">Informatie</p><ul><li><a href="../../nl/over-ons/">Over ons</a></li><li><a href="../../nl/journal/">Journal</a></li><li><a href="../../nl/verkoopvoorwaarden/">Verkoopvoorwaarden</a></li><li><a href="../../nl/privacy/">Privacy</a></li><li><a href="../../nl/wettelijke-vermeldingen/">Wettelijke vermeldingen</a></li><li><a href="../../nl/cookies/">Cookies</a></li></ul></div>
+  </div>
+  <div class="trust">
+    <div><p class="ft">Veilig betalen</p><ul class="pay"><li>Bancontact</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>iDEAL</li></ul><p class="small">HTTPS en 3D Secure. Bancontact, kaarten, Apple Pay, Google Pay en iDEAL (bij de lancering).</p></div>
+    <div><p class="ft">2 jaar wettelijke garantie</p><p class="small"><a href="https://mediationconsommateur.be" rel="noopener">Geschil? Consumentenombudsdienst</a></p></div>
+    <div><p class="ft">Volg Bo</p><p class="small">Binnenkort op Instagram en TikTok. Deel je foto's met #BoPorte.</p></div>
   </div>
   <p class="legal">© 2026 UNIS SRL, Brussel. Prijzen incl. btw van je land. Site online sinds 16 november 2026.</p>
 </div></footer>
@@ -70,15 +75,19 @@
   <header><h2 id="hcart">Je mandje</h2><button class="x" id="closeCart" type="button" aria-label="Sluiten">×</button></header>
   <div class="lines" id="lines"></div>
   <footer>
+    <dl class="sums"><div><dt>Subtotaal</dt><dd id="subtotal">€ 0,00</dd></div><div><dt>Levering</dt><dd id="shipCost">€ 3,90</dd></div></dl>
     <div class="total"><span>Totaal</span><span id="total">€ 0,00</span></div>
     <p class="ship" id="shipMsg"></p>
     <div class="bar"><i id="shipBar"></i></div>
+    <label class="check cgv"><input type="checkbox" id="cgv"> <span>Ik heb de algemene verkoopvoorwaarden gelezen en ga ermee akkoord. <a href="../../nl/verkoopvoorwaarden/">Voorwaarden lezen</a></span></label>
+    <p class="err" id="cgvErr" role="alert" hidden>Vink het vakje van de algemene verkoopvoorwaarden aan om verder te gaan.</p>
     <button class="btn primary" id="checkout" type="button">Afrekenen</button>
-    <p class="note">Demo: betalen is nog niet gekoppeld.</p>
+    <p class="note">Je hoeft geen account aan te maken om te bestellen. Demo: betalen is nog niet gekoppeld.</p>
+    <ul class="pay"><li>Bancontact</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>iDEAL</li></ul>
   </footer>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="i18n">{"cart":"Mandje","empty":"Je mandje is leeg. Begin met een Essential, of met de drop van het moment.","shipFree":"Levering is gratis.","shipLeft":"Nog {x} tot gratis levering.","added":"Toegevoegd aan je mandje","checkoutMsg":"Demo: betalen is nog niet gekoppeld.","errEmail":"Vul een geldig e-mailadres in, bijvoorbeeld voornaam@voorbeeld.be.","errConsent":"Vink het vakje aan om onze e-mails te ontvangen.","okWait":"Genoteerd: je zou op de wachtlijst staan. (Demo, er wordt niets opgeslagen.)","flat":"Plat","pouch":"Buidel","minus":"Eén minder","plus":"Eén meer","locale":"nl-BE","free":30}</script>
+<script type="application/json" id="i18n">{"cart":"Mandje","empty":"Je mandje is leeg. Begin met een Essential, of met de drop van het moment.","shipFree":"Levering is gratis.","shipLeft":"Nog {x} tot gratis levering.","added":"Toegevoegd aan je mandje","checkoutMsg":"Demo: betalen is nog niet gekoppeld.","errEmail":"Vul een geldig e-mailadres in, bijvoorbeeld voornaam@voorbeeld.be.","errConsent":"Vink het vakje aan om onze e-mails te ontvangen.","okWait":"Genoteerd: je zou op de wachtlijst staan. (Demo, er wordt niets opgeslagen.)","flat":"Plat","pouch":"Buidel","minus":"Eén minder","plus":"Eén meer","locale":"nl-BE","free":30,"fee":3.9,"shippingFree":"Gratis","errName":"Vul je voornaam in.","errMsg":"Schrijf je bericht.","okContact":"Bedankt! Je bericht zou nu onderweg zijn. (Demo, er wordt niets verstuurd.)","lang":"nl","page":"ess"}</script>
 <script src="../../assets/app.js" defer></script>
 </body>
 </html>

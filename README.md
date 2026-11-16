@@ -29,7 +29,7 @@ node src/serve.mjs     # aperçu sur http://localhost:4321
 
 ## Arborescence du site
 
-`/fr/` accueil · `/fr/bo/` · `/fr/essentiels/` · `/fr/saisons/` + une page par saison (`noel`, `saint-valentin`, `printemps`, `pride`, `ete`, `halloween`) · `/fr/guide-des-tailles/` · `/fr/aide/` · pages légales. Même chose en `/nl/`, `/en/`, `/de/` avec des slugs traduits.
+`/fr/` accueil · `/fr/bo/` · `/fr/essentiels/` · `/fr/saisons/` + une page par saison (`noel`, `saint-valentin`, `printemps`, `pride`, `ete`, `halloween`) · `/fr/guide-des-tailles/` · `/fr/aide/` · `/fr/a-propos/` · `/fr/contact/` · `/fr/club/` · `/fr/journal/` (3 articles) · pages légales et cookies. Même chose en `/nl/`, `/en/`, `/de/` avec des slugs traduits.
 
 SEO en place : une URL par langue, `hreflang` + `x-default` (EN), canonical, titles < 60 et meta 120–155 caractères (vérifiés au build), JSON-LD (Organization, WebSite, Product + Offer avec livraison et retours, BreadcrumbList, FAQPage), `sitemap.xml` avec alternates, `robots.txt`, 404 personnalisée.
 
@@ -45,4 +45,4 @@ SEO en place : une URL par langue, `hreflang` + `x-default` (EN), canonical, tit
 
 ## Documents du projet
 
-`CLAUDE.md` (contexte et règles) · `docs/` (business plan, marque, emailing, SEO, brief, SEA) · `data/products.csv` (import Shopify) · `prototype/index.html` (prototype d'origine).
+`CLAUDE.md` (contexte et règles) · **`docs/00-cours-et-livrables.md` (ce que chaque cours demande et où c'est)** · `docs/` (business plan, marque, emailing, SEO, brief, SEA, stratégie digitale, personas, fidélité, newsletters, communication, paiement et KPI) · `data/calendrier-editorial-2027.csv` · `data/products.csv` (import Shopify) · `prototype/index.html` (prototype d'origine).

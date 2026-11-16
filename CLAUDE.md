@@ -14,13 +14,21 @@ Le nom UNIS est provisoire. Ne le dépose nulle part et n'achète aucun domaine 
 
 | Dossier ou fichier | Contenu |
 | --- | --- |
+| `docs/00-cours-et-livrables.md` | **Ce que chaque cours (E-gestion, e-Commerce, Communication Web, Marketing Digital) demande et où c'est dans le projet**, échéances d'examen |
 | `docs/01-business-plan.md` | Modèle économique, prix, coûts, prévisions sur 3 ans, risques |
 | `docs/02-marque.md` | Identité, ton, couleurs, typographies, règles pour Bo |
 | `docs/03-campagnes-emailing.md` | Calendrier des 12 campagnes et règles d'emailing |
 | `docs/04-seo.md` | Exigences SEO : URL, hreflang, titles, données structurées, KPI |
 | `docs/05-brief-developpement.md` | **Ce qu'il faut construire**, étape par étape |
 | `docs/06-sea.md` | Plan de publicité payante (Google Ads, Meta), calendrier et UTM |
-| `src/` | Générateur du site statique : `config.mjs` (réglages), `i18n.mjs` (textes 4 langues), `data.mjs` (saisons, prix, URL), `build.mjs`, `static/` |
+| `docs/07-strategie-digitale.md` | Mission, vision, SWOT, STP, 4P, Business Model Canvas, domaine, plateforme, marketplaces |
+| `docs/08-personas-customer-journey.md` | 3 personas (canevas du cours), 3 customer journeys, thèmes de contenu |
+| `docs/09-fidelisation-crm.md` | Club de Bo (fidélité), NPS, base clients |
+| `docs/10-emailing-newsletters.md` | 3 newsletters + 5 relances automatiques |
+| `docs/11-communication-social-media.md` | Plan de communication, ligne éditoriale, modération, crise, Social Ads, influence |
+| `docs/12-paiement-kpi-avis.md` | Stratégie de paiement (Mission 10), KPI, avis clients |
+| `data/calendrier-editorial-2027.csv` | Calendrier éditorial sur 12 mois (généré par `node src/calendrier.mjs`) |
+| `src/` | Générateur du site statique : `config.mjs` (réglages), `i18n.mjs` et `i18n-extra.mjs` (textes 4 langues), `data.mjs` (saisons, prix, URL), `build.mjs`, `static/` |
 | `site/` | Site généré par `node src/build.mjs` (ne pas modifier à la main) |
 | `render.yaml` | Déploiement gratuit sur Render (site statique `unis-demo`) |
 | `assets/images/` | Photos du site (WebP < 150 Ko, voir le README du dossier) |

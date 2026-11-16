@@ -59,9 +59,14 @@
 <footer class="foot"><div class="wrap">
   <div class="cols">
     <div><p class="foot-logo">UNIS</p><p>Ein Faden. Jeder Körper. Sogar Bären.</p></div>
-    <div><p class="ft">Shop</p><ul><li><a href="../../de/saisons/weihnachten/">Weihnachten-Drop</a></li><li><a href="../../de/bo/">Bo, der UNIS-Bär</a></li><li><a href="../../de/essentials/">Essentials</a></li><li><a href="../../de/saisons/">Saisons</a></li></ul></div>
-    <div><p class="ft">Hilfe</p><ul><li><a href="../../de/groessentabelle/">Größentabelle</a></li><li><a href="../../de/hilfe/">Versand · Rückgabe</a></li><li><a href="../../de/hilfe/#faq">Häufige Fragen</a></li></ul></div>
-    <div><p class="ft">Informationen</p><ul><li><a href="../../de/agb/">AGB</a></li><li><a href="../../de/datenschutz/">Datenschutz</a></li><li><a href="../../de/impressum/">Impressum</a></li></ul></div>
+    <div><p class="ft">Shop</p><ul><li><a href="../../de/saisons/weihnachten/">Weihnachten-Drop</a></li><li><a href="../../de/bo/">Bo, der UNIS-Bär</a></li><li><a href="../../de/essentials/">Essentials</a></li><li><a href="../../de/saisons/">Saisons</a></li><li><a href="../../de/club/">Bos Club</a></li></ul></div>
+    <div><p class="ft">Hilfe</p><ul><li><a href="../../de/groessentabelle/">Größentabelle</a></li><li><a href="../../de/hilfe/">Versand · Rückgabe</a></li><li><a href="../../de/hilfe/#faq">Häufige Fragen</a></li><li><a href="../../de/kontakt/">Kontakt</a></li></ul></div>
+    <div><p class="ft">Informationen</p><ul><li><a href="../../de/ueber-uns/">Über uns</a></li><li><a href="../../de/journal/">Journal</a></li><li><a href="../../de/agb/">AGB</a></li><li><a href="../../de/datenschutz/">Datenschutz</a></li><li><a href="../../de/impressum/">Impressum</a></li><li><a href="../../de/cookies/">Cookies</a></li></ul></div>
+  </div>
+  <div class="trust">
+    <div><p class="ft">Sichere Zahlung</p><ul class="pay"><li>Bancontact</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>iDEAL</li></ul><p class="small">HTTPS und 3D Secure. Bancontact, Karten, Apple Pay, Google Pay und iDEAL (zum Start).</p></div>
+    <div><p class="ft">2 Jahre gesetzliche Gewährleistung</p><p class="small"><a href="https://mediationconsommateur.be" rel="noopener">Streitfall? Verbraucherombudsdienst</a></p></div>
+    <div><p class="ft">Folge Bo</p><p class="small">Bald auf Instagram und TikTok. Teile deine Fotos mit #BoPorte.</p></div>
   </div>
   <p class="legal">© 2026 UNIS SRL, Brüssel. Preise inkl. MwSt. deines Landes. Website online seit 16. November 2026.</p>
 </div></footer>
@@ -70,15 +75,19 @@
   <header><h2 id="hcart">Dein Warenkorb</h2><button class="x" id="closeCart" type="button" aria-label="Schließen">×</button></header>
   <div class="lines" id="lines"></div>
   <footer>
+    <dl class="sums"><div><dt>Zwischensumme</dt><dd id="subtotal">0,00 €</dd></div><div><dt>Versand</dt><dd id="shipCost">3,90 €</dd></div></dl>
     <div class="total"><span>Summe</span><span id="total">0,00 €</span></div>
     <p class="ship" id="shipMsg"></p>
     <div class="bar"><i id="shipBar"></i></div>
+    <label class="check cgv"><input type="checkbox" id="cgv"> <span>Ich habe die Allgemeinen Geschäftsbedingungen gelesen und akzeptiere sie. <a href="../../de/agb/">AGB lesen</a></span></label>
+    <p class="err" id="cgvErr" role="alert" hidden>Hake das Kästchen für die AGB an, um fortzufahren.</p>
     <button class="btn primary" id="checkout" type="button">Zur Kasse</button>
-    <p class="note">Demo: Die Zahlung ist noch nicht verbunden.</p>
+    <p class="note">Du brauchst kein Kundenkonto, um zu bestellen. Demo: Die Zahlung ist noch nicht verbunden.</p>
+    <ul class="pay"><li>Bancontact</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>iDEAL</li></ul>
   </footer>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="i18n">{"cart":"Warenkorb","empty":"Dein Warenkorb ist leer. Fang mit einem Essential an oder mit dem aktuellen Drop.","shipFree":"Der Versand ist kostenlos.","shipLeft":"Noch {x} bis zum kostenlosen Versand.","added":"Im Warenkorb","checkoutMsg":"Demo: Die Zahlung ist noch nicht verbunden.","errEmail":"Gib eine gültige E-Mail-Adresse ein, zum Beispiel name@beispiel.de.","errConsent":"Setze das Häkchen, um unsere E-Mails zu erhalten.","okWait":"Notiert: Du wärst auf der Warteliste. (Demo, nichts wird gespeichert.)","flat":"Flach","pouch":"Beutel","minus":"Eins weniger","plus":"Eins mehr","locale":"de-BE","free":30}</script>
+<script type="application/json" id="i18n">{"cart":"Warenkorb","empty":"Dein Warenkorb ist leer. Fang mit einem Essential an oder mit dem aktuellen Drop.","shipFree":"Der Versand ist kostenlos.","shipLeft":"Noch {x} bis zum kostenlosen Versand.","added":"Im Warenkorb","checkoutMsg":"Demo: Die Zahlung ist noch nicht verbunden.","errEmail":"Gib eine gültige E-Mail-Adresse ein, zum Beispiel name@beispiel.de.","errConsent":"Setze das Häkchen, um unsere E-Mails zu erhalten.","okWait":"Notiert: Du wärst auf der Warteliste. (Demo, nichts wird gespeichert.)","flat":"Flach","pouch":"Beutel","minus":"Eins weniger","plus":"Eins mehr","locale":"de-BE","free":30,"fee":3.9,"shippingFree":"Kostenlos","errName":"Gib deinen Vornamen ein.","errMsg":"Schreib deine Nachricht.","okContact":"Danke! Deine Nachricht wäre jetzt unterwegs. (Demo, es wird nichts gesendet.)","lang":"de","page":"ess"}</script>
 <script src="../../assets/app.js" defer></script>
 </body>
 </html>

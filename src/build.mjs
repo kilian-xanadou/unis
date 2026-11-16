@@ -4,6 +4,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import CFG from "./config.mjs";
 import { T } from "./i18n.mjs";
+import { X } from "./i18n-extra.mjs";
 import { LANGS, DEFAULT_LANG, XDEFAULT, PATHS, SEASONS, BASE, ESS, SIZES, SIZE_TABLE, PRICES, SHIPPING } from "./data.mjs";
 import { thong, bear, logoThread, SHAPE } from "./art.mjs";
 
@@ -23,8 +24,12 @@ const sName = (s, l) => s.name[l];
 
 function pathOf(l, key, sid) {
   if (key === "season") return `${l}/${PATHS[l].seasons}${SEASONS.find((s) => s.id === sid).slug[l]}/`;
+  if (key === "article") return `${l}/${X[l].slugs.journal}${X[l].articles[sid].slug}`;
+  if (X[l].slugs[key]) return `${l}/${X[l].slugs[key]}`;
   return `${l}/${PATHS[l][key]}`;
 }
+const ARTICLES = Object.keys(X.fr.articles); // ordre d'affichage : du plus récent au plus ancien
+ARTICLES.sort((a, b) => X.fr.articles[b].date.localeCompare(X.fr.articles[a].date));
 const abs = (p) => `${SITE}/${p}`;
 
 // ---------- contrast check (WCAG) ----------
@@ -136,11 +141,31 @@ function waitlist(l) {
   <form class="waitform" novalidate>
     <label for="email">${t.emailLabel}</label>
     <div class="row"><input id="email" name="email" type="email" autocomplete="email" required placeholder="${l === "en" ? "name@example.com" : l === "de" ? "name@beispiel.de" : "prenom@exemple.be"}"><button class="btn primary" type="submit">${t.join}</button></div>
+    <label for="cutpref">${X[l].cutPref}</label>
+    <select id="cutpref" name="cut"><option value="">${X[l].cutAny}</option><option value="flat">${t.flat}</option><option value="pouch">${t.pouch}</option></select>
     <label class="check"><input type="checkbox" name="consent" required> <span>${t.consent}</span></label>
-    <p class="note">${t.waitDemo}</p>
+    <p class="note">${X[l].doubleOptin} ${t.waitDemo}</p>
     <p class="ok" role="status" hidden></p>
   </form></div></section>`;
 }
+const REASSURE_ICONS = [
+  '<path d="M4 12h16M12 4v16" />', // prix
+  '<path d="M4 18 L4 6 M20 18 L20 6 M8 12h8" />', // tailles
+  '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" /><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/>', // livraison
+  '<path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4" />', // retour
+];
+const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${X[l].reassure.map((r, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${REASSURE_ICONS[i]}</svg>${r}</li>`).join("")}</ul>`;
+const PAY = ["Bancontact", "Visa", "Mastercard", "Apple Pay", "Google Pay", "iDEAL"];
+const payBadges = () => `<ul class="pay">${PAY.map((p) => `<li>${p}</li>`).join("")}</ul>`;
+
+function faqCats(l, here) {
+  const x = X[l];
+  return `<section class="faq band" id="faq" aria-labelledby="h-faq"><div class="wrap"><h2 id="h-faq">${T[l].faqTitle}</h2>
+  <p class="note">${fill(x.faqUpdated, { d: fdate(CFG.launchDate, l) })}</p>
+  ${x.faqCats.map(([cat, qs]) => `<h3 class="faqcat">${cat}</h3>${qs.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}`).join("")}
+  <p class="more">${x.faqMore} <a href="${here(pathOf(l, "contact"))}">${x.faqContact}</a></p></div></section>`;
+}
+
 function promise(l) {
   const t = T[l];
   return `<section class="promise band" aria-labelledby="h-prom"><div class="wrap"><h2 id="h-prom">${t.promTitle}</h2><div class="cols">${t.prom.map(([h, p]) => `<div><h3>${h}</h3><p>${p}</p></div>`).join("")}</div></div></section>`;
@@ -151,13 +176,13 @@ const pageHead = (h1, intro, crumbs, here) => `<section class="pagehead"><div cl
 
 // ---------- layout ----------
 function layout({ l, key, sid, title, desc, body, ld = [], palette = LIVE.c, noAlt = false }) {
-  const t = T[l];
+  const t = T[l], x = X[l];
   const self = key === "404" ? "404.html" : pathOf(l, key, sid);
   const depth = key === "404" ? 0 : self.split("/").filter(Boolean).length;
   // La 404 peut être servie à n'importe quelle profondeur : liens absolus depuis la racine du site.
   const here = key === "404" ? (p) => BASE_PATH + p : (p) => "../".repeat(depth) + p;
   const alts = noAlt ? "" : LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(pathOf(x, key, sid))}">`).join("\n") + `\n<link rel="alternate" hreflang="x-default" href="${abs(pathOf(XDEFAULT, key, sid))}">`;
-  const strings = { cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom };
+  const strings = { cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: x.contact.ok, lang: l, page: key };
   const nav = [["shop", pathOf(l, "season", LIVE.id)], ["bo", pathOf(l, "bo")], ["ess", pathOf(l, "ess")], ["seasons", pathOf(l, "seasons")], ["size", pathOf(l, "size")], ["help", pathOf(l, "help")]];
   const graph = [ORG, ...ld];
   if (title.length >= 60) warnings.push(`Title trop long (${title.length}) : ${self} « ${title} »`);
@@ -204,9 +229,14 @@ ${body2}
 <footer class="foot"><div class="wrap">
   <div class="cols">
     <div><p class="foot-logo">UNIS</p><p>${t.signature}</p></div>
-    <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li></ul></div>
-    <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li></ul></div>
-    <div><p class="ft">${t.footInfo}</p><ul>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}</ul></div>
+    <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
+    <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li></ul></div>
+    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
+  </div>
+  <div class="trust">
+    <div><p class="ft">${x.payTitle}</p>${payBadges()}<p class="small">${x.payNote}</p></div>
+    <div><p class="ft">${x.guarantee}</p><p class="small"><a href="https://mediationconsommateur.be" rel="noopener">${x.mediation}</a></p></div>
+    <div><p class="ft">${x.followTitle}</p><p class="small">${x.followText}</p></div>
   </div>
   <p class="legal">${t.legalLine}</p>
 </div></footer>
@@ -215,11 +245,15 @@ ${body2}
   <header><h2 id="hcart">${t.cartTitle}</h2><button class="x" id="closeCart" type="button" aria-label="${t.close}">×</button></header>
   <div class="lines" id="lines"></div>
   <footer>
+    <dl class="sums"><div><dt>${x.subtotal}</dt><dd id="subtotal">${eur(0, l)}</dd></div><div><dt>${x.shipping}</dt><dd id="shipCost">${eur(SHIPPING.fee, l)}</dd></div></dl>
     <div class="total"><span>${t.total}</span><span id="total">${eur(0, l)}</span></div>
     <p class="ship" id="shipMsg"></p>
     <div class="bar"><i id="shipBar"></i></div>
+    <label class="check cgv"><input type="checkbox" id="cgv"> <span>${x.cgv} <a href="${here(pathOf(l, "terms"))}">${x.cgvLink}</a></span></label>
+    <p class="err" id="cgvErr" role="alert" hidden>${x.errCgv}</p>
     <button class="btn primary" id="checkout" type="button">${t.checkout}</button>
-    <p class="note">${t.checkoutNote}</p>
+    <p class="note">${x.guest} ${t.checkoutNote}</p>
+    ${payBadges()}
   </footer>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -252,6 +286,7 @@ for (const l of LANGS) {
   </div>
   <div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
+<div class="wrap">${reassure(l)}</div>
 <section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}</div></section>
 <section class="shop band" aria-labelledby="hshop"><div class="wrap"><h2 id="hshop">${fill(t.home.shopTitle, { s: liveName })}</h2><p class="intro">${t.home.shopIntro}</p>${grid(homeProducts, l)}<p class="more"><a class="btn ghost" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.seeAll, { s: liveName })}</a></p></div></section>
 <section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div></div></section>
@@ -295,6 +330,7 @@ ${waitlist(l)}` }));
     add(l, "season", s.id, layout({ l, key: "season", sid: s.id, title: st.title, desc: fill(t.seasonDesc, { p: st.phrase }), palette: s.c,
       ld: [crumbsLD(crumbs), ...ps.map((p) => productLD(p, l, url))],
       body: (here) => `${pageHead(st.h1, st.intro, crumbs, here)}
+<div class="wrap">${reassure(l)}</div>
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" aria-label="${esc(sn)}"><div class="wrap">${grid(ps, l)}</div></section>
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
@@ -311,10 +347,79 @@ ${waitlist(l)}` }));
 
   // Aide
   add(l, "help", null, layout({ l, key: "help", title: t.helpPage.title, desc: t.helpPage.desc,
-    ld: [crumbsLD([home, [t.nav.help, pathOf(l, "help")]]), faqLD(t.faq)],
+    ld: [crumbsLD([home, [t.nav.help, pathOf(l, "help")]]), faqLD(X[l].faqCats.flatMap(([, qs]) => qs))],
     body: (here) => `${pageHead(t.helpPage.h1, "", [home, [t.nav.help, pathOf(l, "help")]], here)}
 <section class="band"><div class="wrap cols3">${[["shipTitle", "ship"], ["retTitle", "ret"], ["payTitle", "pay"]].map(([h, p]) => `<div class="prose"><h2 class="h3">${t.helpPage[h]}</h2><p>${t.helpPage[p]}</p></div>`).join("")}</div></section>
-${faqBlock(t.faq, t.faqTitle)}` }));
+${faqCats(l, here)}` }));
+
+  // ---- Pages ajoutées après les cours ----
+  const x = X[l];
+  const crumb = (k, name) => [home, [name, pathOf(l, k)]];
+
+  // À propos / manifeste (Communication Web : Qui ? ; e-Commerce p.73-75)
+  add(l, "about", null, layout({ l, key: "about", title: x.about.title, desc: x.about.desc,
+    ld: [crumbsLD(crumb("about", x.nav.about)), { "@type": "AboutPage", name: x.about.title, url: abs(pathOf(l, "about")), about: { "@id": `${SITE}/#org` } }],
+    body: (here) => `${pageHead(x.about.h1, x.about.intro, crumb("about", x.nav.about), here)}
+<section class="band"><div class="wrap split"><div class="prose"><h2>${x.about.manifestoTitle}</h2>${x.about.manifesto.map((p) => `<p>${p}</p>`).join("")}</div>
+<div class="hero-art small" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}</div></div></section>
+<section class="promise band" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">${x.about.valuesTitle}</h2><div class="cols cols4">${x.about.values.map(([h, p]) => `<div><h3>${h}</h3><p>${p}</p></div>`).join("")}</div></div></section>
+<section class="band"><div class="wrap two"><div class="prose"><h2>${x.about.teamTitle}</h2><p>${x.about.team}</p><h2 class="h3">${x.about.pitchTitle}</h2><p class="pitch">${t.home.h1c} ${t.seasonsText}</p></div>
+<div class="prose" id="regles"><h2>${x.about.rulesTitle}</h2><ul class="ticks">${x.about.rules.map((r) => `<li>${r}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></p></div></div></section>` }));
+
+  // Contact (e-Commerce p.77-84 ; Communication Web : réactivité)
+  add(l, "contact", null, layout({ l, key: "contact", title: x.contact.title, desc: x.contact.desc,
+    ld: [crumbsLD(crumb("contact", x.nav.contact)), { "@type": "ContactPage", name: x.contact.title, url: abs(pathOf(l, "contact")) }],
+    body: (here) => `${pageHead(x.contact.h1, x.contact.intro, crumb("contact", x.nav.contact), here)}
+<section class="band"><div class="wrap two">
+<form class="contactform" novalidate>
+  <label for="c-name">${x.contact.name}</label><input id="c-name" name="name" autocomplete="given-name" required>
+  <label for="c-email">${x.contact.email}</label><input id="c-email" name="email" type="email" autocomplete="email" required>
+  <label for="c-subject">${x.contact.subject}</label><select id="c-subject" name="subject">${x.contact.subjects.map((s) => `<option>${s}</option>`).join("")}</select>
+  <label for="c-order">${x.contact.order}</label><input id="c-order" name="order">
+  <label for="c-msg">${x.contact.message}</label><textarea id="c-msg" name="message" rows="6" required></textarea>
+  <label class="check"><input type="checkbox" name="consent" required> <span>${x.contact.consent}</span></label>
+  <button class="btn primary" type="submit">${x.contact.send}</button>
+  <p class="note">${x.contact.demo}</p>
+  <p class="ok" role="status" hidden></p>
+</form>
+<div class="prose"><h2 class="h3">${T[l].faqTitle}</h2><p><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a> · <a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a></p>
+<h2 class="h3">${x.contact.coordTitle}</h2><p>${x.contact.coord}</p><p>${x.contact.mailLabel} : ${x.contact.mail}</p><p>${x.contact.mediationText}</p></div>
+</div></section>` }));
+
+  // Club de Bo (E-gestion S5 : programme de fidélité)
+  add(l, "club", null, layout({ l, key: "club", title: x.club.title, desc: x.club.desc,
+    ld: [crumbsLD(crumb("club", x.nav.club))],
+    body: (here) => `${pageHead(x.club.h1, x.club.intro, crumb("club", x.nav.club), here)}
+<section class="band"><div class="wrap"><h2>${x.club.stepsTitle}</h2><ol class="stamps">${x.club.steps.map(([h, p], i) => `<li><span class="stamp" aria-hidden="true">${[1, 3, 6][i]}</span><h3>${h}</h3><p>${p}</p></li>`).join("")}</ol></div></section>
+<section class="band"><div class="wrap split"><div class="prose"><h2>${x.club.perksTitle}</h2><ul class="ticks">${x.club.perks.map((p) => `<li>${p}</li>`).join("")}</ul><p class="note">${x.club.note}</p></div>
+<div class="hero-art small" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}</div></div></section>
+${waitlist(l)}` }));
+
+  // Journal + articles (content marketing : 1 newsletter = 1 article)
+  add(l, "journal", null, layout({ l, key: "journal", title: x.journal.title, desc: x.journal.desc,
+    ld: [crumbsLD(crumb("journal", x.nav.journal)), { "@type": "Blog", name: x.journal.h1, url: abs(pathOf(l, "journal")), publisher: { "@id": `${SITE}/#org` } }],
+    body: (here) => `${pageHead(x.journal.h1, x.journal.intro, crumb("journal", x.nav.journal), here)}
+<section class="band"><div class="wrap"><div class="posts">${ARTICLES.map((id) => { const a = x.articles[id]; return `<article class="post"><p class="note">${fill(x.journal.published, { d: fdate(a.date, l) })}</p><h2 class="h3"><a href="${here(pathOf(l, "article", id))}">${a.h1}</a></h2><p>${a.lead}</p><a class="add" href="${here(pathOf(l, "article", id))}" aria-hidden="true" tabindex="-1">${x.journal.read}</a></article>`; }).join("")}</div></div></section>
+${waitlist(l)}` }));
+
+  for (const id of ARTICLES) {
+    const a = x.articles[id];
+    const crumbs = [home, [x.nav.journal, pathOf(l, "journal")], [a.h1, pathOf(l, "article", id)]];
+    const links = { taille: [["size", t.sizeLink], ["ess", t.nav.ess]], cadeau: [["season:" + LIVE.id, fill(t.home.ctaDrop, { s: sName(LIVE, l) })], ["bo", t.boName]], unisexe: [["about", x.nav.about], ["size", t.sizeLink]] }[id] || [];
+    add(l, "article", id, layout({ l, key: "article", sid: id, title: a.title, desc: a.desc,
+      ld: [crumbsLD(crumbs), { "@type": "BlogPosting", headline: a.h1, description: a.desc, datePublished: a.date, inLanguage: l, mainEntityOfPage: abs(pathOf(l, "article", id)), image: `${SITE}/assets/bo.svg`, author: { "@id": `${SITE}/#org` }, publisher: { "@id": `${SITE}/#org` } }],
+      body: (here) => `${pageHead(a.h1, a.lead, crumbs, here)}
+<section class="band"><div class="wrap prose article"><p class="note">${fill(x.journal.published, { d: fdate(a.date, l) })}</p>${a.body.map(([h, p]) => `<h2 class="h3">${h}</h2><p>${p}</p>`).join("")}
+<h2 class="h3">${x.journal.related}</h2><p class="ctas">${links.map(([k, label]) => `<a class="btn ghost" href="${here(k.startsWith("season:") ? pathOf(l, "season", k.slice(7)) : pathOf(l, k))}">${label}</a>`).join("")}</p>
+<p><a href="${here(pathOf(l, "journal"))}">← ${x.journal.back}</a></p></div></section>
+${waitlist(l)}` }));
+  }
+
+  // Cookies
+  add(l, "cookies", null, layout({ l, key: "cookies", title: x.cookies.title, desc: "",
+    ld: [crumbsLD(crumb("cookies", x.nav.cookies))],
+    body: (here) => `${pageHead(x.cookies.h1, "", crumb("cookies", x.nav.cookies), here)}
+<section class="band"><div class="wrap prose legaltext">${x.cookies.body.map((p) => `<p>${p}</p>`).join("")}<p><a href="${here(pathOf(l, "privacy"))}">${t.legalNav.privacy}</a></p></div></section>` }));
 
   // Pages légales
   for (const k of ["terms", "privacy", "legal"]) {
@@ -324,6 +429,8 @@ ${faqBlock(t.faq, t.faqTitle)}` }));
       if (k === "legal" && i === 0) return `<p>${t.publisher}</p>`;
       if (k === "legal" && i === 1) return `<p>${t.host}</p>`;
       if (k === "terms" && i === 3) return `<p>${t.helpPage.ret}</p><p class="draft">${t.legalDraft}</p>`;
+      if (k === "terms" && i === 4) return `<p>${X[l].guarantee}.</p><p class="draft">${t.legalDraft}</p>`;
+      if (k === "privacy" && i === 4) return `<p>${X[l].cookies.body[0]}</p>`;
       if (k === "terms" && i === 2) return `<p>${t.helpPage.ship}</p><p class="draft">${t.legalDraft}</p>`;
       return `<p class="draft">${t.legalDraft}</p>`;
     };
