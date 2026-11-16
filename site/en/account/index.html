@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My UNIS account: profile and Bo's Club | UNIS</title>
+<meta name="description" content="Create your UNIS account or log in: your profile, your favourite cut and size, your Bo's Club stamp card, and one-click deletion of your account.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://unis-demo.onrender.com/en/account/">
+<link rel="alternate" hreflang="fr" href="https://unis-demo.onrender.com/fr/compte/">
+<link rel="alternate" hreflang="nl" href="https://unis-demo.onrender.com/nl/mijn-account/">
+<link rel="alternate" hreflang="en" href="https://unis-demo.onrender.com/en/account/">
+<link rel="alternate" hreflang="de" href="https://unis-demo.onrender.com/de/konto/">
+<link rel="alternate" hreflang="x-default" href="https://unis-demo.onrender.com/en/account/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UNIS">
+<meta property="og:title" content="My UNIS account: profile and Bo's Club | UNIS">
+<meta property="og:description" content="Create your UNIS account or log in: your profile, your favourite cut and size, your Bo's Club stamp card, and one-click deletion of your account.">
+<meta property="og:url" content="https://unis-demo.onrender.com/en/account/">
+<meta property="og:locale" content="en_IE">
+<meta name="theme-color" content="#C8372D">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>:root{--bg:#EAF2EC;--ink:#12301F;--accent:#C8372D;--soft:#BFD9C6;--on-accent:#FFFFFF}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://unis-demo.onrender.com/#org","name":"UNIS","url":"https://unis-demo.onrender.com/","logo":"https://unis-demo.onrender.com/assets/favicon.svg","slogan":"Un fil. Tous les corps. Même les ours."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://unis-demo.onrender.com/en/"},{"@type":"ListItem","position":2,"name":"My account","item":"https://unis-demo.onrender.com/en/account/"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="demo-bar">Demo site: you can't place orders and nothing is stored.</p>
+<header class="top"><div class="wrap">
+  <a class="logo" href="../../en/" aria-label="UNIS">UN<svg viewBox="0 0 44 20" aria-hidden="true" focusable="false"><path d="M2 14 C 12 2, 20 2, 22 10 S 34 18, 42 6" fill="none" stroke="var(--accent)" stroke-width="3.2" stroke-linecap="round"/></svg>IS</a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true"><path d="M2 3h22M2 10h22M2 17h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+  <nav class="main" id="nav" aria-label="Menu"><a href="../../en/seasons/christmas/">Current drop</a><a href="../../en/bo/">Bo</a><a href="../../en/essentials/">Essentials</a><a href="../../en/seasons/">Seasons</a><a href="../../en/size-guide/">Sizes</a><a href="../../en/help/">Help</a></nav>
+  <details class="lang"><summary aria-label="Language">EN</summary><ul><li><a href="../../fr/compte/" hreflang="fr" lang="fr">Français</a></li><li><a href="../../nl/mijn-account/" hreflang="nl" lang="nl">Nederlands</a></li><li><a href="../../en/account/" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="../../de/konto/" hreflang="de" lang="de">Deutsch</a></li></ul></details>
+  <a class="accbtn" href="../../en/account/" aria-label="My account" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></a>
+  <button class="cartbtn" id="openCart" type="button" aria-haspopup="dialog"><span>Bag</span> <b id="count">0</b></button>
+</div></header>
+<main id="main">
+<section class="pagehead"><div class="wrap">
+  <nav aria-label="Breadcrumb" class="crumbs"><ol><li><a href="../../en/">Home</a></li><li aria-current="page">My account</li></ol></nav>
+  <h1>My account</h1><p class="lead">An account is optional: you can order without one. It lets you follow your Bo's Club stamp card and keep your preferences.</p></div></section>
+<section class="band"><div class="wrap account" id="account" data-state="off">
+  <p class="soon-box acc-off">Accounts aren't switched on yet on this demo site.</p>
+  <p class="acc-loading">Loading…</p>
+  <div class="acc-guest two">
+    <form class="accform" id="loginForm" novalidate>
+      <h2 class="h3">Log in</h2>
+      <label for="li-email">Email address</label><input id="li-email" name="email" type="email" autocomplete="email" required>
+      <label for="li-pass">Password</label><input id="li-pass" name="password" type="password" autocomplete="current-password" required>
+      <button class="btn primary" type="submit">Log in</button>
+      <button class="linkbtn" type="button" id="forgotBtn">Forgot your password?</button>
+      <p class="ok" role="status" hidden></p>
+    </form>
+    <form class="accform" id="signupForm" novalidate>
+      <h2 class="h3">Create an account</h2>
+      <label for="su-name">First name</label><input id="su-name" name="first_name" autocomplete="given-name" maxlength="80">
+      <label for="su-email">Email address</label><input id="su-email" name="email" type="email" autocomplete="email" required>
+      <label for="su-pass">Password</label><input id="su-pass" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="su-pass-hint"><small id="su-pass-hint">At least 8 characters.</small>
+      <label for="su-cut">Favourite cut</label><select id="su-cut" name="cut_pref"><option value="">No preference</option><option value="flat">Flat</option><option value="pouch">Pouch</option></select>
+      <label class="check"><input type="checkbox" name="newsletter"> <span>I'd like to receive the UNIS newsletter (one email a month, unsubscribe in one click).</span></label>
+      <label class="check"><input type="checkbox" name="terms" required> <span>I accept the terms of sale and the privacy policy. <a href="../../en/terms-of-sale/">Terms of sale</a> · <a href="../../en/privacy/">Privacy</a></span></label>
+      <button class="btn primary" type="submit">Create my account</button>
+      <p class="ok" role="status" hidden></p>
+    </form>
+  </div>
+  <div class="acc-user">
+    <h2 id="acc-hello"></h2>
+    <div class="two">
+      <form class="accform" id="profileForm" novalidate>
+        <h3>My profile</h3>
+        <p class="note" id="acc-email"></p>
+        <label for="pf-name">First name</label><input id="pf-name" name="first_name" maxlength="80">
+        <label for="pf-cut">Favourite cut</label><select id="pf-cut" name="cut_pref"><option value="">No preference</option><option value="flat">Flat</option><option value="pouch">Pouch</option></select>
+        <label for="pf-size">Favourite size</label><select id="pf-size" name="size_pref"><option value="">No preference</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>4XL</option></select>
+        <label for="pf-lang">Language</label><select id="pf-lang" name="lang"><option value="fr">Français</option><option value="nl">Nederlands</option><option value="en">English</option><option value="de">Deutsch</option></select>
+        <label class="check"><input type="checkbox" name="newsletter_optin"> <span>I'd like to receive the UNIS newsletter (one email a month, unsubscribe in one click).</span></label>
+        <button class="btn primary" type="submit">Save</button>
+        <p class="ok" role="status" hidden></p>
+      </form>
+      <div>
+        <h3>My Bo's Club stamp card</h3>
+        <ol class="carnet" id="carnet"><li data-season="valentin" style="--sacc:#E0234E"><span class="stamp" aria-hidden="true"></span>Valentine's</li><li data-season="printemps" style="--sacc:#7A5BD8"><span class="stamp" aria-hidden="true"></span>Spring</li><li data-season="pride" style="--sacc:#C42A60"><span class="stamp" aria-hidden="true"></span>Pride</li><li data-season="ete" style="--sacc:#FF6B2C"><span class="stamp" aria-hidden="true"></span>Summer</li><li data-season="halloween" style="--sacc:#FF8A1F"><span class="stamp" aria-hidden="true"></span>Halloween</li><li data-season="noel" style="--sacc:#C8372D"><span class="stamp" aria-hidden="true"></span>Christmas</li></ol>
+        <p id="club-progress"></p>
+        <p class="note">Demo: the 'Check out' button in the bag adds the stamp for the current season. <a href="../../en/club/">Bo's Club</a></p>
+        <p><button class="btn ghost" type="button" id="logoutBtn">Log out</button></p>
+        <details class="danger"><summary>Delete my account</summary><p>Your profile and stamp card are deleted for good. This can't be undone.</p><button class="btn ghost" type="button" id="deleteBtn">Delete for good</button></details>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div><p class="foot-logo">UNIS</p><p>One thread. Every body. Even bears.</p></div>
+    <div><p class="ft">Shop</p><ul><li><a href="../../en/seasons/christmas/">Christmas drop</a></li><li><a href="../../en/bo/">Bo, the UNIS bear</a></li><li><a href="../../en/essentials/">Essentials</a></li><li><a href="../../en/seasons/">Seasons</a></li><li><a href="../../en/club/">Bo's Club</a></li></ul></div>
+    <div><p class="ft">Help</p><ul><li><a href="../../en/size-guide/">Size guide</a></li><li><a href="../../en/help/">Shipping · Returns</a></li><li><a href="../../en/help/#faq">FAQ</a></li><li><a href="../../en/contact/">Contact</a></li><li><a href="../../en/account/">My account</a></li><li><button type="button" class="linkbtn" data-cookie-open>Manage cookies</button></li></ul></div>
+    <div><p class="ft">Information</p><ul><li><a href="../../en/about/">About</a></li><li><a href="../../en/journal/">Journal</a></li><li><a href="../../en/terms-of-sale/">Terms of sale</a></li><li><a href="../../en/privacy/">Privacy</a></li><li><a href="../../en/legal-notice/">Legal notice</a></li><li><a href="../../en/cookies/">Cookies</a></li></ul></div>
+  </div>
+  <div class="trust">
+    <div><p class="ft">Secure payment</p><ul class="pay"><li>Bancontact</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>iDEAL</li></ul><p class="small">HTTPS and 3D Secure. Bancontact, cards, Apple Pay, Google Pay and iDEAL (at launch).</p></div>
+    <div><p class="ft">2-year legal guarantee</p><p class="small"><a href="https://mediationconsommateur.be" rel="noopener">A dispute? Consumer Mediation Service</a></p></div>
+    <div><p class="ft">Follow Bo</p><p class="small">Coming soon to Instagram and TikTok. Share your photos with #BoPorte.</p></div>
+  </div>
+  <p class="legal">© 2026 UNIS SRL, Brussels. Prices include your country's VAT. Site live since 16 November 2026.</p>
+</div></footer>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="hcart" aria-hidden="true" inert>
+  <header><h2 id="hcart">Your bag</h2><button class="x" id="closeCart" type="button" aria-label="Close">×</button></header>
+  <div class="lines" id="lines"></div>
+  <footer>
+    <dl class="sums"><div><dt>Subtotal</dt><dd id="subtotal">€0.00</dd></div><div><dt>Shipping</dt><dd id="shipCost">€3.90</dd></div></dl>
+    <div class="total"><span>Total</span><span id="total">€0.00</span></div>
+    <p class="ship" id="shipMsg"></p>
+    <div class="bar"><i id="shipBar"></i></div>
+    <label class="check cgv"><input type="checkbox" id="cgv"> <span>I have read and accept the terms of sale. <a href="../../en/terms-of-sale/">Read the terms</a></span></label>
+    <p class="err" id="cgvErr" role="alert" hidden>Tick the terms of sale box to continue.</p>
+    <button class="btn primary" id="checkout" type="button">Check out</button>
+    <p class="note">No need to create an account to order. Demo: payment isn't connected yet.</p>
+    <ul class="pay"><li>Bancontact</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>iDEAL</li></ul>
+  </footer>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="application/json" id="i18n">{"cart":"Bag","empty":"Your bag is empty. Start with an Essential, or the current drop.","shipFree":"Shipping is free.","shipLeft":"{x} more for free shipping.","added":"Added to your bag","checkoutMsg":"Demo: payment isn't connected yet.","errEmail":"Enter a valid email address, for example name@example.com.","errConsent":"Tick the box to agree to receive our emails.","okWait":"Noted: you would be on the waitlist. (Demo, nothing is stored.)","flat":"Flat","pouch":"Pouch","minus":"One less","plus":"One more","locale":"en-IE","free":30,"fee":3.9,"shippingFree":"Free","errName":"Enter your first name.","errMsg":"Write your message.","okContact":"Thanks! Your message would be on its way. (Demo, nothing is sent.)","lang":"en","page":"account","okWaitSaved":"Got it! You're on the waiting list.","waitAlready":"This address is already on the waiting list.","acc":{"title":"My UNIS account: profile and Bo's Club | UNIS","desc":"Create your UNIS account or log in: your profile, your favourite cut and size, your Bo's Club stamp card, and one-click deletion of your account.","h1":"My account","intro":"An account is optional: you can order without one. It lets you follow your Bo's Club stamp card and keep your preferences.","login":"Log in","signup":"Create an account","email":"Email address","password":"Password","passwordHint":"At least 8 characters.","firstName":"First name","cut":"Favourite cut","size":"Favourite size","none":"No preference","newsletter":"I'd like to receive the UNIS newsletter (one email a month, unsubscribe in one click).","terms":"I accept the terms of sale and the privacy policy.","signupBtn":"Create my account","loginBtn":"Log in","forgot":"Forgot your password?","resetBtn":"Send me a link","resetSent":"If an account exists for this address, a link to change your password is on its way.","checkEmail":"Account created! Check your inbox to confirm your address, then log in.","errEmail":"Enter a valid email address.","errPassword":"Your password needs at least 8 characters.","errTerms":"Tick the box to accept the terms.","errLogin":"Wrong email or password, or your address isn't confirmed yet.","errGeneric":"Oops, that didn't work. Try again in a moment.","notConfigured":"Accounts aren't switched on yet on this demo site.","hello":"Hi {n}!","profileTitle":"My profile","save":"Save","saved":"Saved.","clubTitle":"My Bo's Club stamp card","clubProgress":"{n} stamp(s) out of 6 this year.","clubDemo":"Demo: the 'Check out' button in the bag adds the stamp for the current season.","stampAdded":"{s} stamp added to your card!","logout":"Log out","deleteTitle":"Delete my account","deleteText":"Your profile and stamp card are deleted for good. This can't be undone.","deleteBtn":"Delete for good","deleteConfirm":"Delete your UNIS account for good?","deleted":"Your account has been deleted.","loading":"Loading…"},"db":null,"consentVersion":"2026-11-16","ga4":"","pixel":"","stamp":{"season":"noel","year":2026,"name":"Christmas"},"seasons":[{"id":"valentin","name":"Valentine's","color":"#E0234E"},{"id":"printemps","name":"Spring","color":"#7A5BD8"},{"id":"pride","name":"Pride","color":"#C42A60"},{"id":"ete","name":"Summer","color":"#FF6B2C"},{"id":"halloween","name":"Halloween","color":"#FF8A1F"},{"id":"noel","name":"Christmas","color":"#C8372D"}]}</script>
+<div class="cookiebar" id="cookiebar" role="dialog" aria-modal="false" aria-labelledby="ck-title" hidden>
+  <div class="ck-inner">
+    <h2 id="ck-title" class="h3">Shall we talk cookies?</h2>
+    <p>Necessary cookies keep the site running (bag, login, your choice below). With your consent, we'd also like to measure our audience and our ads. You can change your mind at any time via 'Manage cookies' at the bottom of the page. <a href="../../en/cookies/">Learn more</a></p>
+    <div class="ck-prefs" id="ck-prefs" hidden>
+      <label class="check"><input type="checkbox" checked disabled> <span><b>Necessary</b> (Always on). Bag, login session and remembering your choice. Always on.</span></label>
+      <label class="check"><input type="checkbox" id="ck-analytics"> <span><b>Analytics</b>. Google Analytics 4: pages viewed and journeys, to improve the site.</span></label>
+      <label class="check"><input type="checkbox" id="ck-marketing"> <span><b>Advertising</b>. Meta pixel: measuring how well our ads perform on Instagram and Facebook.</span></label>
+    </div>
+    <div class="ck-actions">
+      <button type="button" class="btn ck" data-ck="reject_all">Reject all</button>
+      <button type="button" class="btn ck" data-ck="customize" id="ck-custom">Customise</button>
+      <button type="button" class="btn ck" data-ck="save" id="ck-save" hidden>Save my choices</button>
+      <button type="button" class="btn ck" data-ck="accept_all">Accept all</button>
+    </div>
+  </div>
+</div>
+<script src="../../assets/app.js" defer></script>
+</body>
+</html>

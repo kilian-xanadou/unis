@@ -28,7 +28,9 @@ Le nom UNIS est provisoire. Ne le dépose nulle part et n'achète aucun domaine 
 | `docs/11-communication-social-media.md` | Plan de communication, ligne éditoriale, modération, crise, Social Ads, influence |
 | `docs/12-paiement-kpi-avis.md` | Stratégie de paiement (Mission 10), KPI, avis clients |
 | `data/calendrier-editorial-2027.csv` | Calendrier éditorial sur 12 mois (généré par `node src/calendrier.mjs`) |
-| `src/` | Générateur du site statique : `config.mjs` (réglages), `i18n.mjs` et `i18n-extra.mjs` (textes 4 langues), `data.mjs` (saisons, prix, URL), `build.mjs`, `static/` |
+| `src/` | Générateur du site statique : `config.mjs` (réglages), `i18n.mjs`, `i18n-extra.mjs` et `i18n-account.mjs` (textes 4 langues), `data.mjs` (saisons, prix, URL), `build.mjs`, `static/` |
+| `supabase/` | Base de données : `schema.sql` (tables, sécurité RLS) et guide de mise en place |
+| `src/legal.mjs` | CGV, vie privée et mentions légales en 4 langues (société fictive : identifiants marqués « fictif ») |
 | `site/` | Site généré par `node src/build.mjs` (ne pas modifier à la main) |
 | `render.yaml` | Déploiement gratuit sur Render (site statique `unis-demo`) |
 | `assets/images/` | Photos du site (WebP < 150 Ko, voir le README du dossier) |
@@ -66,6 +68,7 @@ En cas d'écart entre ces fichiers et les prix ci-dessus, **les prix de ce CLAUD
 
 ## Conventions de travail
 
+- Ne mets jamais la clé `service_role` de Supabase dans le code : seules l'URL du projet et la clé `anon` (publique) vont dans `src/config.mjs`.
 - Demande avant toute action irréversible ou payante (achat de domaine, publication, envoi d'emails, compte Shopify).
 - Compte les longueurs des titles et des meta descriptions avec un script (title < 60 caractères, meta 120–155).
 - Vérifie les jours de la semaine des dates avec un script.

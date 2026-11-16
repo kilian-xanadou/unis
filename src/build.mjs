@@ -5,6 +5,12 @@ import { fileURLToPath } from "node:url";
 import CFG from "./config.mjs";
 import { T } from "./i18n.mjs";
 import { X } from "./i18n-extra.mjs";
+import { A } from "./i18n-account.mjs";
+import { L } from "./legal.mjs";
+
+// Base Supabase branchée ? Sinon le site reste en mode démo (rien n'est enregistré).
+const DB = Boolean(CFG.supabaseUrl && CFG.supabaseAnonKey);
+const SB_LIB = { src: "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js", integrity: "sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" };
 import { LANGS, DEFAULT_LANG, XDEFAULT, PATHS, SEASONS, BASE, ESS, SIZES, SIZE_TABLE, PRICES, SHIPPING } from "./data.mjs";
 import { thong, bear, logoThread, SHAPE } from "./art.mjs";
 
@@ -25,6 +31,7 @@ const sName = (s, l) => s.name[l];
 function pathOf(l, key, sid) {
   if (key === "season") return `${l}/${PATHS[l].seasons}${SEASONS.find((s) => s.id === sid).slug[l]}/`;
   if (key === "article") return `${l}/${X[l].slugs.journal}${X[l].articles[sid].slug}`;
+  if (key === "account") return `${l}/${A[l].slug}`;
   if (X[l].slugs[key]) return `${l}/${X[l].slugs[key]}`;
   return `${l}/${PATHS[l][key]}`;
 }
@@ -144,7 +151,7 @@ function waitlist(l) {
     <label for="cutpref">${X[l].cutPref}</label>
     <select id="cutpref" name="cut"><option value="">${X[l].cutAny}</option><option value="flat">${t.flat}</option><option value="pouch">${t.pouch}</option></select>
     <label class="check"><input type="checkbox" name="consent" required> <span>${t.consent}</span></label>
-    <p class="note">${X[l].doubleOptin} ${t.waitDemo}</p>
+    <p class="note">${X[l].doubleOptin} ${DB ? A[l].waitNoteReal : t.waitDemo}</p>
     <p class="ok" role="status" hidden></p>
   </form></div></section>`;
 }
@@ -176,13 +183,18 @@ const pageHead = (h1, intro, crumbs, here) => `<section class="pagehead"><div cl
 
 // ---------- layout ----------
 function layout({ l, key, sid, title, desc, body, ld = [], palette = LIVE.c, noAlt = false }) {
-  const t = T[l], x = X[l];
+  const t = T[l], x = X[l], a = A[l];
   const self = key === "404" ? "404.html" : pathOf(l, key, sid);
   const depth = key === "404" ? 0 : self.split("/").filter(Boolean).length;
   // La 404 peut être servie à n'importe quelle profondeur : liens absolus depuis la racine du site.
   const here = key === "404" ? (p) => BASE_PATH + p : (p) => "../".repeat(depth) + p;
   const alts = noAlt ? "" : LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(pathOf(x, key, sid))}">`).join("\n") + `\n<link rel="alternate" hreflang="x-default" href="${abs(pathOf(XDEFAULT, key, sid))}">`;
-  const strings = { cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: x.contact.ok, lang: l, page: key };
+  const strings = { cart: t.cart, empty: t.empty, shipFree: t.shipFree, shipLeft: t.shipLeft, added: t.added, checkoutMsg: t.checkoutMsg, errEmail: t.errEmail, errConsent: t.errConsent, okWait: t.okWait, flat: t.flat, pouch: t.pouch, minus: t.qtyMinus, plus: t.qtyPlus, locale: t.locale, free: SHIPPING.freeFrom, fee: SHIPPING.fee, shippingFree: x.shippingFree, errName: x.contact.errName, errMsg: x.contact.errMsg, okContact: DB ? a.okContactSaved : x.contact.ok, lang: l, page: key,
+    okWaitSaved: a.okWaitSaved, waitAlready: a.waitAlready, acc: a.account,
+    db: DB ? { url: CFG.supabaseUrl, key: CFG.supabaseAnonKey, lib: SB_LIB } : null,
+    consentVersion: CFG.consentVersion, ga4: CFG.ga4Id, pixel: CFG.metaPixelId,
+    stamp: { season: LIVE.id, year: CFG.dropYear, name: sName(LIVE, l) },
+    seasons: SEASONS.map((s) => ({ id: s.id, name: sName(s, l), color: s.c.accent })) };
   const nav = [["shop", pathOf(l, "season", LIVE.id)], ["bo", pathOf(l, "bo")], ["ess", pathOf(l, "ess")], ["seasons", pathOf(l, "seasons")], ["size", pathOf(l, "size")], ["help", pathOf(l, "help")]];
   const graph = [ORG, ...ld];
   if (title.length >= 60) warnings.push(`Title trop long (${title.length}) : ${self} « ${title} »`);
@@ -221,6 +233,7 @@ ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
   <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="${t.menu}"><svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true"><path d="M2 3h22M2 10h22M2 17h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
   <nav class="main" id="nav" aria-label="${t.menu}">${nav.map(([k, p]) => `<a href="${here(p)}"${p === self ? ' aria-current="page"' : ""}>${t.nav[k]}</a>`).join("")}</nav>
   <details class="lang"><summary aria-label="${t.langLabel}">${l.toUpperCase()}</summary><ul>${LANGS.map((x) => `<li><a href="${here(key === "404" ? pathOf(x, "home") : pathOf(x, key, sid))}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="true"' : ""}>${T[x].langName}</a></li>`).join("")}</ul></details>
+  <a class="accbtn" href="${here(pathOf(l, "account"))}" aria-label="${a.navAccount}"${key === "account" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></a>
   <button class="cartbtn" id="openCart" type="button" aria-haspopup="dialog"><span>${t.cart}</span> <b id="count">0</b></button>
 </div></header>
 <main id="main">
@@ -230,7 +243,7 @@ ${body2}
   <div class="cols">
     <div><p class="foot-logo">UNIS</p><p>${t.signature}</p></div>
     <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
-    <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li></ul></div>
+    <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li><li><a href="${here(pathOf(l, "account"))}">${a.navAccount}</a></li><li><button type="button" class="linkbtn" data-cookie-open>${a.cookie.manage}</button></li></ul></div>
     <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
   </div>
   <div class="trust">
@@ -258,6 +271,23 @@ ${body2}
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script type="application/json" id="i18n">${JSON.stringify(strings)}</script>
+<div class="cookiebar" id="cookiebar" role="dialog" aria-modal="false" aria-labelledby="ck-title" hidden>
+  <div class="ck-inner">
+    <h2 id="ck-title" class="h3">${a.cookie.title}</h2>
+    <p>${a.cookie.text} <a href="${here(pathOf(l, "cookies"))}">${a.cookie.policy}</a></p>
+    <div class="ck-prefs" id="ck-prefs" hidden>
+      <label class="check"><input type="checkbox" checked disabled> <span><b>${a.cookie.necessary[0]}</b> (${a.cookie.always}). ${a.cookie.necessary[1]}</span></label>
+      <label class="check"><input type="checkbox" id="ck-analytics"> <span><b>${a.cookie.analytics[0]}</b>. ${a.cookie.analytics[1]}</span></label>
+      <label class="check"><input type="checkbox" id="ck-marketing"> <span><b>${a.cookie.marketing[0]}</b>. ${a.cookie.marketing[1]}</span></label>
+    </div>
+    <div class="ck-actions">
+      <button type="button" class="btn ck" data-ck="reject_all">${a.cookie.reject}</button>
+      <button type="button" class="btn ck" data-ck="customize" id="ck-custom">${a.cookie.customize}</button>
+      <button type="button" class="btn ck" data-ck="save" id="ck-save" hidden>${a.cookie.save}</button>
+      <button type="button" class="btn ck" data-ck="accept_all">${a.cookie.accept}</button>
+    </div>
+  </div>
+</div>
 <script src="${here("assets/app.js")}" defer></script>
 </body>
 </html>
@@ -379,11 +409,11 @@ ${faqCats(l, here)}` }));
   <label for="c-msg">${x.contact.message}</label><textarea id="c-msg" name="message" rows="6" required></textarea>
   <label class="check"><input type="checkbox" name="consent" required> <span>${x.contact.consent}</span></label>
   <button class="btn primary" type="submit">${x.contact.send}</button>
-  <p class="note">${x.contact.demo}</p>
+  <p class="note">${DB ? A[l].contactNoteReal : x.contact.demo}</p>
   <p class="ok" role="status" hidden></p>
 </form>
 <div class="prose"><h2 class="h3">${T[l].faqTitle}</h2><p><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a> · <a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a></p>
-<h2 class="h3">${x.contact.coordTitle}</h2><p>${x.contact.coord}</p><p>${x.contact.mailLabel} : ${x.contact.mail}</p><p>${x.contact.mediationText}</p></div>
+<h2 class="h3">${x.contact.coordTitle}</h2><ul class="plain">${Object.values(L[l].company).map((v) => `<li>${esc(v)}</li>`).join("")}</ul><p>${x.contact.mediationText}</p></div>
 </div></section>` }));
 
   // Club de Bo (E-gestion S5 : programme de fidélité)
@@ -419,25 +449,87 @@ ${waitlist(l)}` }));
   add(l, "cookies", null, layout({ l, key: "cookies", title: x.cookies.title, desc: "",
     ld: [crumbsLD(crumb("cookies", x.nav.cookies))],
     body: (here) => `${pageHead(x.cookies.h1, "", crumb("cookies", x.nav.cookies), here)}
-<section class="band"><div class="wrap prose legaltext">${x.cookies.body.map((p) => `<p>${p}</p>`).join("")}<p><a href="${here(pathOf(l, "privacy"))}">${t.legalNav.privacy}</a></p></div></section>` }));
+<section class="band"><div class="wrap prose legaltext">${A[l].cookiesBody.map((p) => `<p>${p}</p>`).join("")}<p><button type="button" class="btn ghost" data-cookie-open>${A[l].cookie.manage}</button></p><p><a href="${here(pathOf(l, "privacy"))}">${t.legalNav.privacy}</a></p></div></section>` }));
+
+  // Mon compte (base Supabase : inscription, connexion, profil, Club de Bo, suppression)
+  {
+    const ac = A[l].account, sizes = SIZES.map((s) => `<option>${s}</option>`).join("");
+    const cutOpts = `<option value="">${ac.none}</option><option value="flat">${t.flat}</option><option value="pouch">${t.pouch}</option>`;
+    add(l, "account", null, layout({ l, key: "account", title: ac.title, desc: ac.desc,
+      ld: [crumbsLD(crumb("account", A[l].navAccount))],
+      body: (here) => `${pageHead(ac.h1, ac.intro, crumb("account", A[l].navAccount), here)}
+<section class="band"><div class="wrap account" id="account" data-state="${DB ? "loading" : "off"}">
+  <p class="soon-box acc-off">${ac.notConfigured}</p>
+  <p class="acc-loading">${ac.loading}</p>
+  <div class="acc-guest two">
+    <form class="accform" id="loginForm" novalidate>
+      <h2 class="h3">${ac.login}</h2>
+      <label for="li-email">${ac.email}</label><input id="li-email" name="email" type="email" autocomplete="email" required>
+      <label for="li-pass">${ac.password}</label><input id="li-pass" name="password" type="password" autocomplete="current-password" required>
+      <button class="btn primary" type="submit">${ac.loginBtn}</button>
+      <button class="linkbtn" type="button" id="forgotBtn">${ac.forgot}</button>
+      <p class="ok" role="status" hidden></p>
+    </form>
+    <form class="accform" id="signupForm" novalidate>
+      <h2 class="h3">${ac.signup}</h2>
+      <label for="su-name">${ac.firstName}</label><input id="su-name" name="first_name" autocomplete="given-name" maxlength="80">
+      <label for="su-email">${ac.email}</label><input id="su-email" name="email" type="email" autocomplete="email" required>
+      <label for="su-pass">${ac.password}</label><input id="su-pass" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="su-pass-hint"><small id="su-pass-hint">${ac.passwordHint}</small>
+      <label for="su-cut">${ac.cut}</label><select id="su-cut" name="cut_pref">${cutOpts}</select>
+      <label class="check"><input type="checkbox" name="newsletter"> <span>${ac.newsletter}</span></label>
+      <label class="check"><input type="checkbox" name="terms" required> <span>${ac.terms} <a href="${here(pathOf(l, "terms"))}">${t.legalNav.terms}</a> · <a href="${here(pathOf(l, "privacy"))}">${t.legalNav.privacy}</a></span></label>
+      <button class="btn primary" type="submit">${ac.signupBtn}</button>
+      <p class="ok" role="status" hidden></p>
+    </form>
+  </div>
+  <div class="acc-user">
+    <h2 id="acc-hello"></h2>
+    <div class="two">
+      <form class="accform" id="profileForm" novalidate>
+        <h3>${ac.profileTitle}</h3>
+        <p class="note" id="acc-email"></p>
+        <label for="pf-name">${ac.firstName}</label><input id="pf-name" name="first_name" maxlength="80">
+        <label for="pf-cut">${ac.cut}</label><select id="pf-cut" name="cut_pref">${cutOpts}</select>
+        <label for="pf-size">${ac.size}</label><select id="pf-size" name="size_pref"><option value="">${ac.none}</option>${sizes}</select>
+        <label for="pf-lang">${t.langLabel}</label><select id="pf-lang" name="lang">${LANGS.map((x) => `<option value="${x}">${T[x].langName}</option>`).join("")}</select>
+        <label class="check"><input type="checkbox" name="newsletter_optin"> <span>${ac.newsletter}</span></label>
+        <button class="btn primary" type="submit">${ac.save}</button>
+        <p class="ok" role="status" hidden></p>
+      </form>
+      <div>
+        <h3>${ac.clubTitle}</h3>
+        <ol class="carnet" id="carnet">${SEASONS.map((s) => `<li data-season="${s.id}" style="--sacc:${s.c.accent}"><span class="stamp" aria-hidden="true"></span>${sName(s, l)}</li>`).join("")}</ol>
+        <p id="club-progress"></p>
+        <p class="note">${ac.clubDemo} <a href="${here(pathOf(l, "club"))}">${X[l].nav.club}</a></p>
+        <p><button class="btn ghost" type="button" id="logoutBtn">${ac.logout}</button></p>
+        <details class="danger"><summary>${ac.deleteTitle}</summary><p>${ac.deleteText}</p><button class="btn ghost" type="button" id="deleteBtn">${ac.deleteBtn}</button></details>
+      </div>
+    </div>
+  </div>
+</div></section>` }));
+  }
 
   // Pages légales
   for (const k of ["terms", "privacy", "legal"]) {
-    const lp = t.legalPages[k];
-    const content = (sec, i) => {
-      if (k === "privacy" && i === 1) return `<p>${t.legalDemo}</p><p>${t.legalFonts}</p><p class="draft">${t.legalDraft}</p>`;
-      if (k === "legal" && i === 0) return `<p>${t.publisher}</p>`;
-      if (k === "legal" && i === 1) return `<p>${t.host}</p>`;
-      if (k === "terms" && i === 3) return `<p>${t.helpPage.ret}</p><p class="draft">${t.legalDraft}</p>`;
-      if (k === "terms" && i === 4) return `<p>${X[l].guarantee}.</p><p class="draft">${t.legalDraft}</p>`;
-      if (k === "privacy" && i === 4) return `<p>${X[l].cookies.body[0]}</p>`;
-      if (k === "terms" && i === 2) return `<p>${t.helpPage.ship}</p><p class="draft">${t.legalDraft}</p>`;
-      return `<p class="draft">${t.legalDraft}</p>`;
+    const lg = L[l], lp = lg[k];
+    const companyHtml = `<ul class="plain">${Object.values(lg.company).map((v) => `<li>${esc(v)}</li>`).join("")}</ul>`;
+    // Paragraphes ; ceux qui commencent par "- " sont regroupés en liste.
+    const paras = (ps) => {
+      let out = "", list = [];
+      const flush = () => { if (list.length) { out += `<ul class="ticks">${list.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`; list = []; } };
+      for (const p of ps) {
+        if (p.startsWith("- ")) { list.push(p.slice(2)); continue; }
+        flush();
+        out += p === "{company}" ? companyHtml : `<p>${esc(p)}</p>`;
+      }
+      flush();
+      return out;
     };
+    const form = k === "terms" ? `<section class="withdraw" id="retractation"><h2 class="h3">${lp.formTitle}</h2><p>${esc(lp.formIntro)}</p><ol class="plain">${lp.form.map((x) => `<li>${esc(x)}</li>`).join("")}</ol></section>` : "";
     add(l, k, null, layout({ l, key: k, title: lp.title, desc: "",
       ld: [crumbsLD([home, [lp.h1, pathOf(l, k)]])],
       body: (here) => `${pageHead(lp.h1, "", [home, [lp.h1, pathOf(l, k)]], here)}
-<section class="band"><div class="wrap prose legaltext">${k !== "legal" ? `<p class="note">${t.legalDemo}</p>` : ""}${lp.sections.map((s, i) => `<h2 class="h3">${s}</h2>${content(s, i)}`).join("")}</div></section>` }));
+<section class="band"><div class="wrap prose legaltext"><p class="note">${esc(DB ? lg.demoNotice : t.legalDemo)}</p><p class="note">${lg.updated}</p>${lp.sections.map(([h, ps]) => `<h2 class="h3">${esc(h)}</h2>${paras(ps)}`).join("")}${form}</div></section>` }));
   }
 }
 

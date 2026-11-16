@@ -19,4 +19,21 @@ export default {
 
   // Fin de validité des prix du drop en cours (priceValidUntil dans le JSON-LD).
   dropPriceValidUntil: "2026-12-31",
+  // Année du drop en cours (tampons du Club de Bo).
+  dropYear: 2026,
+
+  // Base de données Supabase (comptes, liste d'attente, contact, consentements cookies).
+  // Supabase > Project Settings > API : "Project URL" et clé "anon public" (publishable).
+  // Ces deux valeurs sont publiques par conception : la sécurité vient des règles RLS de supabase/schema.sql.
+  // Ne mets JAMAIS ici la clé "service_role" (secrète).
+  // Laisser vide = mode démo (rien n'est enregistré).
+  supabaseUrl: "",
+  supabaseAnonKey: "",
+
+  // Mesure (chargée seulement après accord dans le bandeau cookies). Vide = rien n'est chargé.
+  ga4Id: "",        // ex. "G-XXXXXXXXXX"
+  metaPixelId: "",  // ex. "123456789012345"
+
+  // Version de la politique cookies : la changer redemande le consentement à tout le monde.
+  consentVersion: "2026-11-16",
 };

@@ -25,6 +25,8 @@ node src/serve.mjs     # aperçu sur http://localhost:4321
 | `src/i18n.mjs` | Tous les textes, dans les 4 langues |
 | `src/data.mjs` | Saisons, motifs, couleurs, prix, URL traduites |
 | `src/static/` | Styles (`style.css`) et panier (`app.js`) |
+| `src/i18n-account.mjs`, `src/legal.mjs` | Comptes, bandeau cookies, pages juridiques |
+| `supabase/` | Base de données (voir `supabase/README.md`) |
 | `assets/images/` | Tes photos (voir le README du dossier) |
 
 ## Arborescence du site
@@ -38,10 +40,10 @@ SEO en place : une URL par langue, `hreflang` + `x-default` (EN), canonical, tit
 - [ ] Passer `indexable: true` dans `src/config.mjs` et mettre le vrai domaine
 - [ ] Remplacer les illustrations par les photos (WebP < 150 Ko)
 - [ ] Héberger les polices sur le site (WOFF2) au lieu de Google Fonts
-- [ ] Brancher le paiement (Shopify Buy Button ou Stripe) et la liste d'attente (Brevo, Klaviyo…)
+- [ ] Brancher le paiement (Shopify Buy Button ou Stripe)
+- [ ] Remplacer les identifiants fictifs (BCE, TVA, adresse) dans `src/legal.mjs` et faire valider les textes par un·e juriste
 - [ ] Faire relire les textes NL, EN et DE par des personnes natives
-- [ ] Faire rédiger les pages légales par un juriste (`[À COMPLÉTER PAR LE JURISTE]`)
-- [ ] Bandeau cookies et mesure (voir `docs/06-sea.md`)
+- [ ] Renseigner `ga4Id` et `metaPixelId` dans `src/config.mjs` (chargés seulement après accord dans le bandeau cookies)
 
 ## Documents du projet
 
