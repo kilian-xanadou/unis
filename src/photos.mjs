@@ -64,18 +64,65 @@ export const PHOTOS = {
       de: "Kraftumschlag im Briefkastenformat mit einem String in rosa Seidenpapier",
     },
   },
+  prideArcEnCiel: {
+    file: "bo-ours-unis-pride-arc-en-ciel", sizes: [[600, 548], [1200, 1097]],
+    alt: {
+      fr: "Bo allongé sur le ventre, avec un string arc-en-ciel du drop Pride",
+      nl: "Bo ligt op zijn buik, met een regenboogstring uit de Pride-drop",
+      en: "Bo lying on his tummy in a rainbow thong from the Pride drop",
+      de: "Bo liegt auf dem Bauch, mit einem Regenbogen-String aus dem Pride-Drop",
+    },
+  },
+  printemps: {
+    file: "bo-ours-unis-printemps", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "Bo assis avec un chapeau de paille, un épi de blé et un string lilas fleuri",
+      nl: "Bo zit met een strohoed, een korenaar en een lila string met bloemetjes",
+      en: "Bo sitting in a straw hat with a wheat stalk and a lilac floral thong",
+      de: "Bo sitzt mit Strohhut, Weizenähre und einem fliederfarbenen Blumen-String",
+    },
+  },
+  stringNoel: {
+    file: "string-unisexe-noel-rennes-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe rouge à plat, imprimé rennes, sapins et flocons de neige",
+      nl: "Rode unisex string plat gelegd, met rendieren, kerstbomen en sneeuwvlokken",
+      en: "Red unisex thong laid flat, printed with reindeer, Christmas trees and snowflakes",
+      de: "Roter Unisex-String flach gelegt, mit Rentieren, Tannen und Schneeflocken",
+    },
+  },
+  noelStudio: {
+    file: "bo-ours-unis-noel-studio", sizes: [[600, 750], [1122, 1402]],
+    alt: {
+      fr: "Bo debout de face sur fond blanc, gros nœud rouge et string de Noël à rennes",
+      nl: "Bo staat recht op een witte achtergrond, met grote rode strik en kerststring",
+      en: "Bo standing on a white background with a big red bow and reindeer Christmas thong",
+      de: "Bo steht vor weißem Hintergrund, mit großer roter Schleife und Rentier-String",
+    },
+  },
+  stringTrans: {
+    file: "string-unisexe-pride-drapeau-trans", sizes: [[600, 400], [1200, 800]],
+    alt: {
+      fr: "Bo allongé avec un string aux couleurs du drapeau trans, et le même string à plat",
+      nl: "Bo ligt met een string in de kleuren van de transvlag, en dezelfde string plat",
+      en: "Bo lying in a trans flag thong, next to the same thong laid flat",
+      de: "Bo liegt mit einem String in den Farben der Trans-Flagge, daneben derselbe String",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
 export const PLACEMENT = {
   hero: { noel: "noelAllonge", halloween: "halloween" },
-  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRose" },
-  boPage: "noel",
+  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRose", pride: "prideArcEnCiel", printemps: "printemps" },
+  boPage: "noelStudio",
   club: "halloweenDos",
-  boCard: { noel: "noel", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
+  boCard: { noel: "noelStudio", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
   boxCard: { noel: "noelAllonge", valentin: "saintValentin" },
   article: { cadeau: "noel" },
   help: "pochette",
+  // Photo d'un produit précis, par SKU (strings à plat).
+  itemCard: { "UNIS-NOEL27-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel" },
 };
 
 // Vidéos (MP4 H.264 sans son, lecture auto en muet et en boucle, sauf si l'appareil demande moins d'animations).

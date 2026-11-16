@@ -80,7 +80,7 @@ function seasonProducts(s, l) {
   for (const x of s.items) list.push({ sku: `UNIS-${s.id.toUpperCase()}${yr}-${x.sku || x.p.toUpperCase()}`, kind: "adult", name: fill(T[l].adultName, { m: x.n[l] }), desc: T[l].adultDesc, price: PRICES.adult, badge: T[l].limited, item: x, sized: true });
   list.push({ sku: `UNIS-${code}-MINI`, kind: "mini", name: fill(T[l].miniName, { m }), desc: T[l].miniDesc, price: PRICES.mini, badge: T[l].limited, item: it });
   if (s.box) list.push({ sku: `UNIS-BOX-${s.id.toUpperCase()}${yr}`, kind: "bo", name: fill(T[l].boxName, { s: sn }), desc: fill(T[l].boxDesc, { s: sn }), price: PRICES.box, badge: T[l].collector, item: it, hat: s.id === "noel", bo: true });
-  const photoFor = (p) => p.bo ? (p.sku.startsWith("UNIS-BOX") ? PLACEMENT.boxCard[s.id] : PLACEMENT.boCard[s.id]) : null;
+  const photoFor = (p) => PLACEMENT.itemCard[p.sku] || (p.bo ? (p.sku.startsWith("UNIS-BOX") ? PLACEMENT.boxCard[s.id] : PLACEMENT.boCard[s.id]) : null);
   return list.map((p) => ({ ...p, buyable: s === LIVE, color: it.base || s.c.accent, season: s, photo: photoFor(p), badge: s.capsule ? roseFill(ROSE[l].badge, l) : p.badge }));
 }
 const boProduct = (l) => ({ sku: "UNIS-BO", kind: "bo", name: T[l].boName, desc: T[l].boDesc, price: PRICES.bo, badge: T[l].collector, item: LIVE.items[0], bo: true, buyable: true, color: "#C98B4B", season: LIVE, photo: PLACEMENT.boCard[LIVE.id] || null });
