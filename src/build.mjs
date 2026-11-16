@@ -8,7 +8,7 @@ import { T } from "./i18n.mjs";
 import { X } from "./i18n-extra.mjs";
 import { A } from "./i18n-account.mjs";
 import { L } from "./legal.mjs";
-import { PHOTOS, PLACEMENT, OG_IMAGE } from "./photos.mjs";
+import { PHOTOS, PLACEMENT, OG_IMAGE, VIDEOS } from "./photos.mjs";
 import { ROSE } from "./i18n-rose.mjs";
 
 // Base Supabase branchée ? Sinon le site reste en mode démo (rien n'est enregistré).
@@ -386,7 +386,7 @@ ${waitlist(l)}` }));
       ld: [crumbsLD(crumbs), ...ps.map((p) => productLD(p, l, url))],
       body: (here) => `${pageHead(st.h1, st.intro, crumbs, here)}
 <div class="wrap">${reassure(l)}</div>
-${PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
+${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="metadata" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p><p class="note">${roseFill(ROSE[l].note, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" aria-label="${esc(sn)}"><div class="wrap">${grid(ps, l)}</div></section>
@@ -575,6 +575,7 @@ mkdirSync(join(OUT, "assets"), { recursive: true });
 for (const f of ["style.css", "app.js", "favicon.svg"]) copyFileSync(join(ROOT, "src/static", f), join(OUT, "assets", f));
 copyFileSync(join(ROOT, "assets/bo.svg"), join(OUT, "assets/bo.svg"));
 // Visuels (photos WebP) : tout ce qui est dans assets/images/ est publié dans site/assets/images/
+if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
 if (existsSync(join(ROOT, "assets/images"))) cpSync(join(ROOT, "assets/images"), join(OUT, "assets/images"), { recursive: true, filter: (f) => !f.endsWith(".md") });
 
 // Racine : choix de la langue (redirige selon la langue du navigateur, FR par défaut)

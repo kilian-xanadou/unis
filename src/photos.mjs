@@ -78,4 +78,17 @@ export const PLACEMENT = {
   help: "pochette",
 };
 
+// Vidéos (MP4 H.264 sans son, lecture auto en muet et en boucle, sauf si l'appareil demande moins d'animations).
+export const VIDEOS = {
+  noel: {
+    file: "bo-revele-drop-noel", poster: "bo-revele-drop-noel-poster.webp", width: 1280, height: 720,
+    label: {
+      fr: "Vidéo : Bo se retourne avec son bonnet de Noël et révèle le string Rennes du drop de Noël",
+      nl: "Video: Bo draait zich om met zijn kerstmuts en toont de rendierstring van de kerstdrop",
+      en: "Video: Bo turns around in his Santa hat and reveals the reindeer thong from the Christmas drop",
+      de: "Video: Bo dreht sich mit Weihnachtsmütze um und zeigt den Rentier-String des Weihnachts-Drops",
+    },
+  },
+};
+
 export const OG_IMAGE = { file: "og-unis.jpg", width: 1200, height: 630 };

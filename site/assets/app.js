@@ -280,5 +280,10 @@
     }).catch(() => setState("off"));
   }
 
+  // Vidéos : lecture auto en muet, sauf si l'appareil demande de réduire les animations.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("video[data-autoplay]").forEach((v) => { v.play().catch(() => {}); });
+  }
+
   render();
 })();
