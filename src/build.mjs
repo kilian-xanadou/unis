@@ -245,7 +245,7 @@ function packs(l, ps) {
     [v.pack1, fill(v.pack1d, { m: duo.name }), [item(duo, 3, true)]],
     [v.pack2, fill(v.pack2d, { m: adult.name }), [item(lot, 1, false), item(adult, 2, true)]],
   ];
-  return `<section class="band packs-wrap" aria-labelledby="hpacks"><div class="wrap"><h2 id="hpacks">${v.packsTitle}</h2><p class="intro">${v.packsIntro}</p><div class="packs">${list.map(([h, d, its], i) => {
+  return `<section class="band packs-wrap" aria-labelledby="hpacks"><div class="wrap"><h2 id="hpacks">${v.packsTitle}</h2><p class="intro">${v.packsIntro}</p><p class="bo-note">${v.notes.packs}</p><div class="packs">${list.map(([h, d, its], i) => {
     const total = its.reduce((s, it) => s + it.price * it.q, 0);
     return `<article class="pack"><h3>${h}</h3><p>${d}</p><p class="pack-price">${eur(total, l)}${total >= SHIPPING.freeFrom ? ` · <b>${T[l].shipFree}</b>` : ""}</p><label for="pk${i}-${l}">${T[l].size}</label> <select id="pk${i}-${l}" data-size>${SIZES.map((s) => `<option${s === "M" ? " selected" : ""}>${s}</option>`).join("")}</select><button type="button" class="btn primary" data-pack="${esc(JSON.stringify(its))}" data-total="${total}">${v.packAdd}</button></article>`;
   }).join("")}</div></div></section>`;
@@ -315,6 +315,7 @@ ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
 <link rel="icon" href="${here("assets/favicon.svg")}" type="image/svg+xml">
 <link rel="preload" href="${here("assets/fonts/bricolage-grotesque-latin-standard-normal.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${here("assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2")}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${here("assets/fonts/caveat-latin-700-normal.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${here("assets/style.css")}?v=${V.css}">
 <style>:root{--bg:${palette.bg};--ink:${palette.ink};--accent:${palette.accent};--soft:${palette.soft};--on-accent:${palette.on}}</style>
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph })}</script>
@@ -407,13 +408,14 @@ for (const l of LANGS) {
     <h1 id="h1"><span>${t.home.h1a}</span><span>${t.home.h1b}</span><span class="h1sub">${t.home.h1c}</span></h1>
     <p class="lead">${t.home.lead}</p>
     <div class="ctas"><a class="btn primary" href="${here(pathOf(l, "season", LIVE.id))}#produits">${VPC[l].ctaGift}</a><a class="btn ghost" href="${here(pathOf(l, "bo"))}">${t.home.ctaBo}</a></div>
+    <p class="bo-note">${VPC[l].notes.cta}</p>
     <p class="hero-trust">${LIVE.id === "noel" ? VPC[l].heroTrustXmas : VPC[l].heroTrust}</p>
     <p class="bo-meteo" data-meteo hidden></p>
   </div>
-  ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-side"><div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}</div>${heroInset(l)}</div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
+  ${PLACEMENT.hero[LIVE.id] ? `<div class="hero-side"><p class="bo-note right">${VPC[l].notes.hero}</p><div class="hero-art photo">${photo(PLACEMENT.hero[LIVE.id], l, { eager: true })}</div>${heroInset(l)}</div>` : `<div class="hero-art" role="img" aria-label="${esc(t.boName)}">${bear(LIVE.items[0], LIVE.c.accent, LIVE.id === "noel")}<span class="price-chip">Bo ${eur(PRICES.bo, l)}</span></div>`}
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
 <div class="wrap">${LIVE.id === "noel" ? xmasBar(l) : ""}${reassure(l)}</div>
-<section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
+<section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><p class="bo-note right">${VPC[l].notes.forwho}</p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
 <section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}</div></section>
 <section class="shop band" aria-labelledby="hshop"><div class="wrap"><h2 id="hshop">${fill(t.home.shopTitle, { s: liveName })}</h2><p class="intro">${t.home.shopIntro}</p>${grid(homeProducts, l)}<p class="more"><a class="btn ghost" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.seeAll, { s: liveName })}</a></p></div></section>
 <section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div></div></section>
@@ -459,7 +461,7 @@ ${waitlist(l)}` }));
 <div class="wrap">${live && s.id === "noel" ? xmasBar(l) : ""}${reassure(l)}${shareBtn(l, st.title.split(" | ")[0], url)}</div>
 ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p><p class="note">${roseFill(ROSE[l].note, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
-<section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${grid(ps, l)}</div></section>
+<section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${live ? `<p class="bo-note right">${VPC[l].notes.drop}</p>` : ""}${grid(ps, l)}</div></section>
 ${live ? packs(l, ps) + buyBar(ps.find((p) => p.kind === "duo"), l) : ""}
 ${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>

@@ -137,3 +137,33 @@ Les 6 couleurs des strings Essentiels restent inchangées : Encre `#1B1B3A`, Lil
 | Post Instagram | Rose logo `#FDD2E3` | Bordeaux | Framboise |
 | Email (en-tête) | Rose dragée | Bordeaux | Bouton Framboise |
 | Emballage (pochette kraft, boîte de Bo) | Kraft ou Rose dragée | Bordeaux | Autocollant Framboise |
+
+---
+
+## 7. Direction « fanzine / fait main » (depuis le 16 novembre 2026)
+
+**Pourquoi :** le site faisait « généré par IA » (cartes pastel identiques, tout en pilules, photos trop lisses). La marque est drôle et faite par des étudiants qui s'amusent : le site doit avoir l'air **bricolé avec soin**.
+
+| Élément | Règle |
+| --- | --- |
+| Fond | Rose dragée avec un grain de papier très léger (bruit SVG à 5 %) |
+| Écriture de Bo | **Caveat** (manuscrite, hébergée sur le site), en Framboise `#D42A6E`, inclinée de 2 à 3°, avec une petite flèche. Réservée aux notes de Bo : jamais pour une info indispensable (prix, taille, livraison) |
+| Titres h2 | Bricolage Grotesque, avec un coup de surligneur Rose bonbon légèrement de travers |
+| Photos | Façon Polaroid : cadre blanc, morceau de scotch en haut, inclinaison de −1,5° à +1,5° |
+| Badges | Stickers ovales jaune post-it `#FFE89A`, contour bordeaux, écrits en Caveat |
+| Boutons | Coins de 10 à 12 px, contour bordeaux de 2,5 px, **ombre dure décalée** (4 px), qui s'enfonce au clic |
+| Encadrés | Post-it jaunes ou roses, scotchés, un peu de travers ; tirets « découpés » pour la réassurance |
+| Bandeau bordeaux | Bords déchirés |
+| Animations | Très légères (une carte se redresse au survol), coupées si l'appareil demande moins d'animations |
+
+**À ne pas faire :** pencher le texte courant, mettre une info clé en écriture manuscrite, multiplier les notes de Bo (une par section maximum), utiliser une police manuscrite pour un bouton.
+
+**Notes de Bo** (textes dans `src/i18n-vpc.mjs`, clé `notes`) : courtes, à la première personne, drôles, jamais vulgaires. Exemple : « ça, c'est moi. Oui, en string. »
+
+### Style photo pour les prochaines images
+
+Pour que les photos fassent moins « IA », ajoute à la fin de chaque prompt :
+
+> `candid smartphone photo, slightly imperfect framing, direct flash or natural window light, visible film grain, real apartment background slightly messy, not studio, not glossy, not 3D render`
+
+et retire « studio », « seamless white background », « 85mm lens » sauf pour les strings posés à plat des fiches produits (qui restent sur fond blanc, pour Google Shopping).

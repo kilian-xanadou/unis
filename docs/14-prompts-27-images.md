@@ -118,3 +118,6 @@ Chaque prompt est **complet** : il suffit de copier le bloc gris dans l'IA d'ima
 
 ### 27. Offrir Bo
 > `Adult hands holding out a pale lilac gift box with a clear window, inside it a honey-brown plush teddy bear (fur color #C98B4B) with round black button eyes, NO eyebrows and a red satin bow, offered across a table in a stylish adult apartment, warm soft light, surprise and joy, faces out of frame, lifestyle photo --ar 4:5 --no children, kids, nursery, text, letters, logo, brand name, watermark, faces, eyebrows`
+
+
+> **Mise à jour du 16/11/2026 (direction « fanzine ») :** pour les photos de Bo en situation, ajoute la consigne « photo de téléphone » de `design.md` §7 pour un rendu moins « IA ». Les strings à plat des fiches produits restent sur fond blanc.

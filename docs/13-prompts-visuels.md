@@ -245,3 +245,6 @@ Une situation drôle par semaine, toujours dans un décor adulte :
 - [ ] Rien d'explicite : drôle et coquin, jamais vulgaire.
 - [ ] Format adapté à l'usage (tableau de la section 0).
 - [ ] Les humains éventuels sont adultes, sans visage reconnaissable, ou avec leur accord écrit.
+
+
+> **Mise à jour du 16/11/2026 (direction « fanzine ») :** pour les photos de Bo en situation, ajoute la consigne « photo de téléphone » de `design.md` §7 pour un rendu moins « IA ». Les strings à plat des fiches produits restent sur fond blanc.

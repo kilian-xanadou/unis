@@ -4,6 +4,7 @@
 // link = clé de page (pathOf) ; sid = saison éventuelle ("live" = drop du moment).
 export const V = {
 fr: {
+  notes: { hero: "ça, c'est moi. Oui, en string.", cta: "promis, c'est doux (j'ai testé)", forwho: "choisis ta case, je m'occupe du reste", drop: "série limitée. Je ne mens jamais.", packs: "le plus simple pour le bureau" },
   cd: { left: "Plus que {d} j {h} h.", hours: "Plus que {h} h {m} min.", zen: "Bo est zen.", count: "Bo compte sur ses pattes.", panic: "Bo commence à paniquer.", last: "Bo panique complètement.", over: "Trop tard pour Noël. Pas pour le fun : Bo te livre quand même." },
   meteo: { label: "La météo de Bo", freeze: "Il gèle à Bruxelles ({t}) : Bo a sorti le bonnet et garde le string sous la couette.", cold: "{t} à Bruxelles : Bo a gardé son bonnet. Le string, lui, est déjà en place.", rain: "Il pleut à Bruxelles ({t}) : Bo reste à l'intérieur et choisit ses cadeaux.", snow: "Il neige à Bruxelles ({t}) : Bo se roule dedans. En string, évidemment.", mild: "{t} à Bruxelles : temps idéal pour un string et un bon plaid.", warm: "{t} à Bruxelles : Bo a troqué le bonnet contre des lunettes de soleil." },
   packsTitle: "Packs prêts à offrir", packsIntro: "Plusieurs cadeaux en un clic, au prix normal. Tu choisis une taille pour tout le pack.", packAdd: "Ajouter le pack",
@@ -50,6 +51,7 @@ fr: {
   },
 },
 nl: {
+  notes: { hero: "dat ben ik. Ja, in string.", cta: "beloofd, het is zacht (getest)", forwho: "kies je vakje, ik doe de rest", drop: "beperkte reeks. Ik lieg nooit.", packs: "het makkelijkst voor op kantoor" },
   cd: { left: "Nog {d} d {h} u.", hours: "Nog {h} u {m} min.", zen: "Bo is zen.", count: "Bo telt op zijn poten.", panic: "Bo begint in paniek te raken.", last: "Bo is volledig in paniek.", over: "Te laat voor Kerstmis. Niet voor de fun: Bo levert toch." },
   meteo: { label: "Het weer van Bo", freeze: "Het vriest in Brussel ({t}): Bo heeft zijn muts op en houdt de string onder het dekbed.", cold: "{t} in Brussel: Bo houdt zijn muts op. De string zit al op zijn plaats.", rain: "Het regent in Brussel ({t}): Bo blijft binnen en kiest zijn cadeaus.", snow: "Het sneeuwt in Brussel ({t}): Bo rolt erin. In string, natuurlijk.", mild: "{t} in Brussel: ideaal weer voor een string en een warm plaid.", warm: "{t} in Brussel: Bo ruilde zijn muts voor een zonnebril." },
   packsTitle: "Kant-en-klare cadeaupakketten", packsIntro: "Meerdere cadeaus in één klik, aan de normale prijs. Je kiest één maat voor het hele pakket.", packAdd: "Pakket toevoegen",
@@ -96,6 +98,7 @@ nl: {
   },
 },
 en: {
+  notes: { hero: "that's me. Yes, in a thong.", cta: "promise, it's soft (I tested it)", forwho: "pick your box, I'll do the rest", drop: "limited run. I never lie.", packs: "easiest for the office" },
   cd: { left: "{d} d {h} h left.", hours: "{h} h {m} min left.", zen: "Bo is zen.", count: "Bo is counting on his paws.", panic: "Bo is starting to panic.", last: "Bo is in full panic.", over: "Too late for Christmas. Not for fun: Bo still delivers." },
   meteo: { label: "Bo's weather", freeze: "It's freezing in Brussels ({t}): Bo has his hat on and keeps the thong under the duvet.", cold: "{t} in Brussels: Bo kept his hat on. The thong is already in place.", rain: "It's raining in Brussels ({t}): Bo is staying in to pick his gifts.", snow: "It's snowing in Brussels ({t}): Bo is rolling in it. In a thong, obviously.", mild: "{t} in Brussels: perfect weather for a thong and a cosy blanket.", warm: "{t} in Brussels: Bo swapped his hat for sunglasses." },
   packsTitle: "Ready-to-gift packs", packsIntro: "Several gifts in one click, at the normal price. Pick one size for the whole pack.", packAdd: "Add the pack",
@@ -142,6 +145,7 @@ en: {
   },
 },
 de: {
+  notes: { hero: "das bin ich. Ja, im String.", cta: "versprochen, er ist weich (getestet)", forwho: "such dir dein Kästchen aus, den Rest mache ich", drop: "limitierte Serie. Ich lüge nie.", packs: "am einfachsten fürs Büro" },
   cd: { left: "Noch {d} T. {h} Std.", hours: "Noch {h} Std. {m} Min.", zen: "Bo ist entspannt.", count: "Bo zählt an seinen Pfoten.", panic: "Bo wird langsam panisch.", last: "Bo ist in voller Panik.", over: "Zu spät für Weihnachten. Nicht für den Spaß: Bo liefert trotzdem." },
   meteo: { label: "Bos Wetter", freeze: "In Brüssel friert es ({t}): Bo trägt Mütze und lässt den String unter der Decke.", cold: "{t} in Brüssel: Bo behält die Mütze auf. Der String sitzt schon.", rain: "In Brüssel regnet es ({t}): Bo bleibt drinnen und sucht Geschenke aus.", snow: "In Brüssel schneit es ({t}): Bo wälzt sich darin. Im String, natürlich.", mild: "{t} in Brüssel: perfektes Wetter für einen String und eine Kuscheldecke.", warm: "{t} in Brüssel: Bo hat die Mütze gegen eine Sonnenbrille getauscht." },
   packsTitle: "Fertige Geschenk-Packs", packsIntro: "Mehrere Geschenke mit einem Klick, zum normalen Preis. Du wählst eine Größe für das ganze Pack.", packAdd: "Pack hinzufügen",

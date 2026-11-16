@@ -414,3 +414,76 @@ nav.main a{white-space:nowrap}
 .deadline .cd{display:inline-block;margin-left:4px;font-variant-numeric:tabular-nums}
 .bo-meteo{margin:10px 0 0;font-size:.92rem;background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:var(--r-small);padding:8px 12px;max-width:46ch}
 .bo-meteo b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+
+/* =====================================================================
+   Direction « fanzine / fait main » (16/11/2026) : papier, scotch, Polaroid,
+   stickers et notes manuscrites de Bo. Couche finale : elle surcharge le reste.
+   ===================================================================== */
+@font-face{font-family:"Caveat";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/caveat-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Caveat";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/caveat-latin-ext-700-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
+:root{--hand:"Caveat","Comic Sans MS",cursive;--kraft:#D8B48A;--postit:#FFE89A;--tape:#F6E7B8cc;--r-big:6px;--r-small:4px;--shadow-hard:4px 4px 0 var(--ink)}
+/* papier légèrement grainé */
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .01 0 0 0 0 .1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* titres : surligneur de travers */
+h2{position:relative;display:inline-block;max-width:100%}
+h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;bottom:.06em;height:.38em;background:var(--soft);opacity:.85;z-index:-1;transform:rotate(-1.2deg);border-radius:2px}
+.band,.forwho,.shop,.cuts,.seasons,.pagehead{position:relative;isolation:isolate}
+/* notes manuscrites de Bo */
+.bo-note{font-family:var(--hand);font-weight:700;font-size:1.55rem;line-height:1.1;color:var(--accent);margin:0;max-width:24ch;transform:rotate(-3deg)}
+.bo-note::before{content:"";display:inline-block;width:34px;height:20px;margin-right:6px;vertical-align:middle;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 20'%3E%3Cpath d='M2 14c8-10 18-12 28-6m0 0-7-5m7 5-6 6' fill='none' stroke='%23D42A6E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.bo-note.right{text-align:right;margin-left:auto;transform:rotate(2.5deg)}
+/* boutons : gros feutre, ombre dure, coins à peine arrondis */
+.btn{border-radius:12px;border:2.5px solid var(--ink);box-shadow:var(--shadow-hard);transition:transform .12s,box-shadow .12s}
+.btn.primary{border-color:var(--ink)}
+.btn:hover{filter:none;transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.add{border-radius:10px;border:2.5px solid #3E031B;box-shadow:3px 3px 0 #3E031B}
+.cartbtn{border-radius:12px;box-shadow:3px 3px 0 var(--accent)}
+.lang summary,.accbtn{border-radius:12px}
+.seg{border-radius:10px}
+.card select,.pack select,.waitform input[type=email]{border-radius:10px}
+/* photos et visuels produits : Polaroid avec scotch, légèrement de travers */
+.card .art,.hero-art.photo,.season-photo,.cuts-photo,.pack{background:#fff;border:1px solid #3E031B22;box-shadow:0 10px 24px #3E031B1f,0 2px 0 #3E031B10}
+.card .art{border-radius:3px;padding:10px 10px 0;overflow:visible}
+.card .art::before,.hero-art.photo::before,.season-photo::before,.pack::before{content:"";position:absolute;top:-12px;left:50%;width:92px;height:26px;background:var(--tape);transform:translateX(-50%) rotate(-4deg);box-shadow:0 1px 2px #0001;z-index:2;pointer-events:none}
+.card .art.has-photo img{inset:10px;width:calc(100% - 20px);height:calc(100% - 10px)}
+.grid>.card:nth-child(odd) .art{transform:rotate(-1.2deg)}
+.grid>.card:nth-child(even) .art{transform:rotate(1deg)}
+.grid>.card:nth-child(3n) .art::before{left:22%;transform:translateX(-50%) rotate(6deg)}
+.hero-art.photo{border-radius:3px;padding:12px 12px 44px;transform:rotate(1.5deg);overflow:visible}
+.hero-art.photo img{border-radius:0}
+.season-photo,.cuts-photo{border-radius:3px;padding:12px;position:relative;overflow:visible}
+.season-photo img,.cuts-photo img{border-radius:0}
+.hero-strip{border-radius:4px;transform:rotate(-1.5deg);border:2px dashed #3E031B55;box-shadow:none}
+/* badges : stickers ronds-ovales de travers */
+.badge{border-radius:40% 55% 45% 60%/55% 45% 60% 40%;padding:6px 12px;transform:rotate(-6deg);background:var(--postit);color:#3E031B;border:2px solid #3E031B;font-family:var(--hand);font-size:1.15rem;font-weight:700;top:4px;left:2px;z-index:3}
+/* réassurance : liste cochée au feutre plutôt que pilules */
+.reassure li{border-radius:4px;background:transparent;border:2px dashed color-mix(in srgb,var(--ink) 35%,transparent)}
+/* « pour chaque occasion » : post-it */
+.forwho-list li{border-radius:2px;background:var(--postit);color:#3E031B;box-shadow:0 8px 16px #3E031B1a;position:relative}
+.forwho-list li:nth-child(2n){background:#FFD3E2;transform:rotate(1.4deg)}
+.forwho-list li:nth-child(2n+1){transform:rotate(-1.2deg)}
+.forwho-list li::before{content:"";position:absolute;top:-10px;left:50%;width:70px;height:22px;background:var(--tape);transform:translateX(-50%) rotate(3deg)}
+.forwho-list h3{font-family:var(--hand);font-size:1.9rem;font-weight:700;line-height:1}
+/* packs : fiche bricolée */
+.pack{border-radius:3px;border:2px solid #3E031B;position:relative}
+.pack:nth-child(2){transform:rotate(.8deg)}
+/* bandeau bordeaux : bord déchiré */
+.promise{clip-path:polygon(0 14px,6% 4px,13% 12px,21% 2px,30% 10px,38% 0,47% 9px,55% 3px,64% 12px,72% 2px,81% 10px,89% 3px,100% 12px,100% calc(100% - 10px),92% 100%,83% calc(100% - 9px),74% 100%,65% calc(100% - 8px),55% 100%,46% calc(100% - 10px),36% 100%,27% calc(100% - 8px),18% 100%,9% calc(100% - 10px),0 100%);padding:76px 0}
+.promise h3{font-family:var(--hand);font-size:2rem;font-weight:700;color:var(--soft)}
+/* saisons : frise façon tampons */
+.season .name{font-family:var(--hand);font-size:1.7rem;font-weight:700}
+.season .now{border-radius:3px;transform:rotate(-4deg);display:inline-block}
+/* pied de page */
+.foot{position:relative}
+/* bande de date limite : ticket */
+.deadline{border-radius:4px;border:2px dashed var(--bg);outline:4px solid var(--ink)}
+/* hero : un peu de désordre */
+.hero h1 span:first-child{transform:rotate(-1.5deg);display:block;transform-origin:left}
+.drop-tag{background:var(--postit);color:#3E031B;padding:6px 12px;transform:rotate(-2deg);border:2px solid #3E031B}
+/* animations discrètes, coupées si l'appareil le demande */
+@media (prefers-reduced-motion:no-preference){
+  .grid>.card .art{transition:transform .25s}
+  .grid>.card:hover .art{transform:rotate(0) scale(1.02)}
+}
+@media (max-width:700px){.bo-note{font-size:1.35rem}.hero-art.photo{padding:8px 8px 30px}.promise{padding:60px 0}}
