@@ -62,9 +62,9 @@
 
 Le site vérifie ces contrastes à chaque génération (`node src/build.mjs`).
 
-### Palettes de saison (pages de drop)
+### Palettes de saison (motifs, photos et réseaux sociaux)
 
-Chaque page de drop garde sa propre ambiance. Le logo s'y adapte tout seul, avec l'encre et l'accent de la saison.
+Depuis le 16 novembre 2026, **toutes les pages du site, pages de drop comprises, sont en palette de marque** (rose et bordeaux). Les palettes de saison servent aux motifs des strings, aux photos, aux visuels réseaux et aux emails de la saison.
 
 | Saison | Fond | Encre | Accent | Doux |
 | --- | --- | --- | --- | --- |
@@ -132,7 +132,7 @@ Les 6 couleurs des strings Essentiels restent inchangées : Encre `#1B1B3A`, Lil
 | Support | Fond | Logo | Accent |
 | --- | --- | --- | --- |
 | Site, pages générales | Rose dragée | Bordeaux + string Framboise | Framboise |
-| Site, pages de drop | Fond de la saison | Encre de la saison | Accent de la saison |
+| Site, pages de drop | Rose dragée | Bordeaux + string Framboise | Framboise |
 | Pied de page | Bordeaux | Rose dragée + string Framboise | — |
 | Post Instagram | Rose logo `#FDD2E3` | Bordeaux | Framboise |
 | Email (en-tête) | Rose dragée | Bordeaux | Bouton Framboise |
