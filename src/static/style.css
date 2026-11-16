@@ -346,8 +346,6 @@ input[type=checkbox]{width:24px;height:24px;accent-color:var(--ink)}
 
 /* Conversion : réassurance sous les boutons, médaillon du string, taille inconnue, barre d'achat mobile, suggestion du panier */
 .hero-trust{font-size:.92rem;font-weight:700;margin:14px 0 0;max-width:46ch}
-.hero-inset{position:absolute;left:4%;bottom:6%;width:30%;max-width:160px;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 24px #0002;border:3px solid #fff}
-.hero-inset img{display:block;width:100%;height:auto}
 .nosize{display:block;font-size:.88rem;font-weight:700;margin:8px 0 4px;min-height:44px;display:flex;align-items:center}
 .card:target{outline:3px solid var(--accent);outline-offset:4px}
 .buybar{display:none}
@@ -359,3 +357,10 @@ input[type=checkbox]{width:24px;height:24px;accent-color:var(--ink)}
 }
 .upsell{font-size:.9rem;margin:4px 0 10px}
 .upsell a{font-weight:700}
+
+/* Accueil : le string du drop sous la photo, sans la recouvrir */
+.hero-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.hero-strip{display:flex;align-items:center;gap:12px;margin:0;max-width:none;background:var(--paper);color:var(--paper-ink);border-radius:var(--r-small);padding:8px 14px 8px 8px;box-shadow:0 6px 18px #0001}
+.hero-strip img{width:72px;height:72px;object-fit:cover;border-radius:8px;flex:none}
+.hero-strip b{display:block}
+@media (max-width:860px){.hero-side{max-width:400px;width:100%;margin:8px auto 0}.hero-side .hero-art{margin:0;max-width:none}}
