@@ -78,7 +78,7 @@ export const SEASONS = [
     ] },
 ];
 
-export const BASE = { bg: "#EFEAFF", ink: "#1B1B3A", accent: "#FF5A4E", soft: "#C8B6FF", on: "#1B1B3A" };
+export const BASE = { bg: "#FFE3EE", ink: "#3E031B", accent: "#D42A6E", soft: "#FAB8D0", on: "#FFFFFF" };
 
 export const ESS = [
   { k: "encre", c: "#1B1B3A", n: { fr: "Encre", nl: "Inkt", en: "Ink", de: "Tinte" } },

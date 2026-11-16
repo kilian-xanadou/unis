@@ -15,7 +15,7 @@ import { ROSE } from "./i18n-rose.mjs";
 const DB = Boolean(CFG.supabaseUrl && CFG.supabaseAnonKey);
 const SB_LIB = { src: "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js", integrity: "sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" };
 import { LANGS, DEFAULT_LANG, XDEFAULT, PATHS, SEASONS, BASE, ESS, SIZES, SIZE_TABLE, PRICES, SHIPPING } from "./data.mjs";
-import { thong, bear, logoThread, SHAPE } from "./art.mjs";
+import { thong, bear, logoMark, SHAPE } from "./art.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "site");
@@ -202,7 +202,7 @@ const pageHead = (h1, intro, crumbs, here) => `<section class="pagehead"><div cl
   <h1>${h1}</h1>${intro ? `<p class="lead">${intro}</p>` : ""}</div></section>`;
 
 // ---------- layout ----------
-function layout({ l, key, sid, title, desc, body, ld = [], palette = LIVE.c, noAlt = false }) {
+function layout({ l, key, sid, title, desc, body, ld = [], palette = BASE, noAlt = false }) {
   const t = T[l], x = X[l], a = A[l];
   const self = key === "404" ? "404.html" : pathOf(l, key, sid);
   const depth = key === "404" ? 0 : self.split("/").filter(Boolean).length;
@@ -254,7 +254,7 @@ ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
 <a class="skip" href="#main">${t.skip}</a>
 <p class="demo-bar">${t.demo}</p>
 <header class="top"><div class="wrap">
-  <a class="logo" href="${here(pathOf(l, "home"))}" aria-label="UNIS">UN${logoThread("var(--accent)")}IS</a>
+  <a class="logo" href="${here(pathOf(l, "home"))}" aria-label="UNIS">${logoMark()}</a>
   <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="${t.menu}"><svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true"><path d="M2 3h22M2 10h22M2 17h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
   <nav class="main" id="nav" aria-label="${t.menu}">${nav.map(([k, p]) => `<a href="${here(p)}"${p === self ? ' aria-current="page"' : ""}>${t.nav[k]}</a>`).join("")}</nav>
   <details class="lang"><summary aria-label="${t.langLabel}">${l.toUpperCase()}</summary><ul>${LANGS.map((x) => `<li><a href="${here(key === "404" ? pathOf(x, "home") : pathOf(x, key, sid))}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="true"' : ""}>${T[x].langName}</a></li>`).join("")}</ul></details>
@@ -266,7 +266,7 @@ ${body2}
 </main>
 <footer class="foot"><div class="wrap">
   <div class="cols">
-    <div><p class="foot-logo">UNIS</p><p>${t.signature}</p></div>
+    <div><p class="foot-logo">${logoMark()}<span class="sr">UNIS</span></p><p>${t.signature}</p></div>
     <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
     <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li><li><a href="${here(pathOf(l, "account"))}">${a.navAccount}</a></li><li><button type="button" class="linkbtn" data-cookie-open>${a.cookie.manage}</button></li></ul></div>
     <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
@@ -589,7 +589,7 @@ ${LANGS.map((x) => `<link rel="alternate" hreflang="${x}" href="${abs(x + "/")}"
 <link rel="alternate" hreflang="x-default" href="${abs(XDEFAULT + "/")}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>(function(){var l=(navigator.language||"fr").slice(0,2).toLowerCase();var ok=${JSON.stringify(LANGS)};location.replace((ok.indexOf(l)>-1?l:"${DEFAULT_LANG}")+"/"+location.search);})();</script>
-<style>body{font-family:system-ui,sans-serif;background:#EFEAFF;color:#1B1B3A;display:grid;place-items:center;min-height:100vh;margin:0}a{display:inline-block;margin:6px;padding:12px 18px;border:2px solid #1B1B3A;border-radius:999px;color:inherit;text-decoration:none;font-weight:700}</style>
+<style>body{font-family:system-ui,sans-serif;background:#FFE3EE;color:#3E031B;display:grid;place-items:center;min-height:100vh;margin:0}a{display:inline-block;margin:6px;padding:12px 18px;border:2px solid #1B1B3A;border-radius:999px;color:inherit;text-decoration:none;font-weight:700}</style>
 </head><body><main><h1>UNIS</h1><p>${LANGS.map((x) => `<a href="${x}/" hreflang="${x}" lang="${x}">${T[x].langName}</a>`).join("")}</p></main></body></html>
 `);
 

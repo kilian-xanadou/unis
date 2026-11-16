@@ -80,9 +80,10 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 
 ## 5. Identité visuelle
 
-- **Couleurs :** Encre `#1B1B3A`, Corail `#FF5A4E`, Lilas pâle `#EFEAFF`, Lilas `#C8B6FF`, Miel (Bo) `#C98B4B`. Chaque saison a sa palette (voir `docs/02-marque.md`).
+- **Charte complète :** [DESIGN.md](DESIGN.md).
+- **Couleurs :** Bordeaux `#3E031B`, Framboise `#D42A6E`, Rose dragée `#FFE3EE`, Rose bonbon `#FAB8D0`, Miel (Bo) `#C98B4B`. Chaque saison a sa palette (voir DESIGN.md).
 - **Typographies :** Bricolage Grotesque (titres, version étroite) et Atkinson Hyperlegible (textes).
-- **Logo :** le mot UNIS coupé par un fil ondulé.
+- **Logo :** le mot UNIS en bordeaux, le I est Bo (tête et oreilles), un string framboise passe à travers les lettres (`assets/logo/`).
 - **Photos :** Bo sur fond clair ou dans un décor de saison adulte ; le string à plat pour les fiches produits. Formats WebP de moins de 150 Ko, avec un texte alternatif descriptif dans chaque langue.
 - **Accessibilité :** contraste du texte d'au moins 4,5:1, cibles tactiles de 44 px, navigation au clavier.
 

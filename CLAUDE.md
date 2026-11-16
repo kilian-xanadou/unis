@@ -58,7 +58,8 @@ En cas d'écart entre ces fichiers et les prix ci-dessus, **les prix de ce CLAUD
 - **Ton :** direct, chaleureux, avec de l'humour mais jamais vulgaire.
 - **Pas de genre :** on ne dit jamais « pour homme » ou « pour femme ». On parle de coupe (Plat ou Poche) et de taille (tour de hanches).
 - **Bo n'est pas un jouet pour enfants.** C'est un objet de collection pour les 14 ans et plus. Aucun visuel ni texte ne vise les enfants. Chaque fiche de Bo affiche « Objet de collection, 14 ans et plus » et le marquage CE (tests EN 71 prévus).
-- **Couleurs :** Encre `#1B1B3A`, Corail `#FF5A4E`, Lilas pâle `#EFEAFF`, Lilas `#C8B6FF`, Miel (Bo) `#C98B4B`. Chaque saison a sa palette (voir `prototype/index.html`, tableau `S`).
+- **Charte graphique :** [DESIGN.md](DESIGN.md) (logo « Bo dans le I », palette, typographies, composants).
+- **Couleurs :** Bordeaux `#3E031B`, Framboise `#D42A6E`, Rose dragée `#FFE3EE`, Rose bonbon `#FAB8D0`, Miel (Bo) `#C98B4B`. Pages générales en palette de marque (`BASE` dans `src/data.mjs`), pages de drop en palette de saison (`SEASONS[].c`).
 - **Typographies :** Bricolage Grotesque (titres, version étroite, `wdth` 75) et Atkinson Hyperlegible (textes). Les héberger sur le site (WOFF2) plutôt que de les charger depuis Google Fonts.
 - **Accessibilité :** contraste du texte ≥ 4,5:1, focus clavier visible, cibles tactiles ≥ 44 px, `prefers-reduced-motion` respecté.
 

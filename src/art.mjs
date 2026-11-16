@@ -40,3 +40,16 @@ export function bear(item, bow = "#C8372D", hat = false) {
 
 export const logoThread = (color = "currentColor") =>
   `<svg viewBox="0 0 44 20" aria-hidden="true" focusable="false"><path d="M2 14 C 12 2, 20 2, 22 10 S 34 18, 42 6" fill="none" stroke="${color}" stroke-width="3.2" stroke-linecap="round"/></svg>`;
+
+// Logo UNIS (version 2026-11) : lettres bordeaux, le I est Bo (tête et oreilles), un string framboise passe à travers les lettres.
+// ink = couleur des lettres, accent = string et intérieur des oreilles.
+export const logoMark = (ink = "currentColor", accent = "var(--accent)") =>
+  `<svg class="logo-mark" viewBox="0 0 268 108" aria-hidden="true" focusable="false">` +
+  `<g fill="${ink}" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle">` +
+  `<text x="40" y="104">U</text><text x="112" y="104">N</text><text x="230" y="104">S</text></g>` +
+  `<g fill="${ink}"><rect x="157" y="44" width="22" height="60" rx="2"/><rect x="146" y="20" width="44" height="40" rx="19"/>` +
+  `<circle cx="151" cy="21" r="7.5"/><circle cx="185" cy="21" r="7.5"/></g>` +
+  `<g fill="${accent}"><circle cx="151" cy="21" r="3.4"/><circle cx="185" cy="21" r="3.4"/>` +
+  `<path d="M137 66 Q 148 71 160 66 L 151 93 Q 148 97 145 93 Z"/></g>` +
+  `<path d="M60 52 C 90 47, 116 54, 137 66 M160 66 C 178 54, 196 47, 212 46 M151 90 C 176 86, 200 76, 250 70" fill="none" stroke="${accent}" stroke-width="3.2" stroke-linecap="round"/>` +
+  `</svg>`;
