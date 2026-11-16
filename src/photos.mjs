@@ -46,6 +46,15 @@ export const PHOTOS = {
       de: "Bo tanzt mit einer roten Rose im Mund und einem String mit Herzen",
     },
   },
+  octobreRoseLarge: {
+    file: "octobre-rose-string-ruban-large", sizes: [[600, 327], [1200, 655]],
+    alt: {
+      fr: "Le string Octobre Rose à plat : rose clair imprimé de petits rubans roses, ceinture framboise",
+      nl: "De Roze Oktober-string plat gelegd: lichtroze met kleine roze lintjes en frambooskleurige band",
+      en: "The Pink October thong laid flat: light pink with small pink ribbons and a raspberry waistband",
+      de: "Der Pink-October-String flach gelegt: hellrosa mit kleinen rosa Schleifen und himbeerfarbenem Bund",
+    },
+  },
   octobreRose: {
     file: "bo-ours-unis-octobre-rose", sizes: [[600, 327], [1200, 655]],
     alt: {
@@ -294,7 +303,7 @@ export const PHOTOS = {
 // Quelle photo va où. null = on garde l'illustration SVG.
 export const PLACEMENT = {
   hero: { noel: "noelAllonge", halloween: "halloween" },
-  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRose", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
+  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRoseLarge", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
   boPage: "noelStudio",
   club: "halloweenDos",
   boCard: { noel: "noelStudio", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
