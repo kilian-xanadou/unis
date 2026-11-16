@@ -134,7 +134,7 @@ Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui 
           alt: "Bo, l'ours en peluche miel, danse sur une patte, une rose rouge entre les dents, en mini-string à cœurs." },
         { img: I("string-unisexe-saint-valentin-coeurs-plat-1200.webp"), fit: "cover", kicker: "Cœurs brodés", title: "Pas de « pour lui ». Pas de « pour elle ».", sub: "Une coupe, Plat ou Poche. Du XS au 4XL.", price: { now: "5 €" },
           alt: "String rose pâle à petits cœurs rouges brodés et ceinture rouge, posé à plat sur fond blanc." },
-        { img: I("offrir-bo-coffret-cadeau-1200.webp"), fit: "cover", pos: "50% 45%", kicker: "Coffret cadeau", title: "Bo + le Duo de la saison", sub: "Bo : objet de collection, 14 ans et plus", price: { now: "55 €" },
+        { img: I("offrir-bo-coffret-cadeau-1200.webp"), fit: "cover", pos: "50% 45%", kicker: "Coffret cadeau", title: "Bo + le Duo de la saison", sub: "Boîte et certificat numéroté", price: { now: "55 €" },
           alt: "Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, pendant un dîner entre amis adultes." },
       ],
     },
@@ -152,7 +152,6 @@ Duo assorti, ton string + le mini-string de Bo : 7 €
 Bo édition Cœur, avec mini-string, boîte et certificat numéroté : 49 €
 Coffret cadeau, Bo + le Duo de la saison : 55 €
 Série limitée, jamais rééditée. Livraison 3,90 €, offerte dès 30 €.
-Bo : objet de collection, 14 ans et plus.
 Découvre le drop via le lien en bio.
 Tague ta moitié. Ou envoie-lui ce post en privé, c'est plus discret.
 #BoPorte #UNIS #SaintValentin #CadeauCouple #UnFilTousLesCorps`,
@@ -222,7 +221,7 @@ Le drop Printemps ouvre à tout le monde demain, mercredi 17 mars. La liste d'at
 Fleurs pastel, Menthe, Pêche :
 String Printemps, Plat ou Poche, XS à 4XL : 5 €
 Duo assorti avec le mini-string de Bo : 7 €
-Bo, avec mini-string, boîte et certificat numéroté : 49 € (objet de collection, 14 ans et plus)
+Bo, avec mini-string, boîte et certificat numéroté : 49 €
 Tu veux passer devant au prochain drop ? Rejoins la liste d'attente via le lien en bio.
 Tague l'ami·e fan de Bo qui rate toujours les ouvertures.
 #BoPorte #UNIS #DropPrintemps #StringUnisexe #UnFilTousLesCorps`,
@@ -400,8 +399,8 @@ Tague ta bande : plus on est, plus Bo est content.
       ],
     },
     story: {
-      img: E("email-essentiels-6-couleurs.jpg"), fit: "cover", kicker: "Les Essentiels", title: "Le tri du tiroir, c'est maintenant",
-      sticker: { type: "quiz", question: "Les Essentiels existent en combien de couleurs ?", options: ["4", "6", "12"], answer: 1,
+      img: E("email-essentiels-6-couleurs.jpg"), fit: "cover", kicker: "Les Essentiels", title: "On trie le tiroir ?",
+      sticker: { type: "quiz", question: "Les Essentiels, c'est combien de couleurs ?", options: ["4", "6", "12"], answer: 1,
         script: "Quiz, bonne réponse : 6 (Encre, Lilas, Corail, Sable, Cacao, Blanc). Écran 2 : « Lot de 5 : 17 € au lieu de 20 € (prix le plus bas des 30 derniers jours : 20 €). » + sticker lien." },
       link: "Prendre mon lot de 5",
       alt: "Six strings Essentiels empilés à plat, du bleu encre au blanc.",
@@ -439,7 +438,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
       ],
     },
     story: {
-      img: I("string-unisexe-halloween-phosphorescent-plat-1200.webp"), fit: "cover", kicker: "Drop Halloween", title: "Le Phosphorescent, quiz express",
+      img: I("string-unisexe-halloween-phosphorescent-plat-1200.webp"), fit: "cover", kicker: "Drop Halloween", title: "Quiz express",
       sticker: { type: "quiz", question: "Le string Phosphorescent brille…", options: ["Au soleil", "Dans le noir", "Quand tu mens"], answer: 1,
         script: "Quiz, bonne réponse : dans le noir. Écran 2 : visuel de Bo en chapeau de sorcière, « Série limitée, jamais rééditée. 5 €. » + sticker lien." },
       link: "Voir le drop Halloween",
@@ -449,7 +448,7 @@ Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
 Le drop Halloween est ouvert : Fantômes, Citrouille, et un modèle Phosphorescent en série limitée, pour briller quand la lumière s'éteint.
 String Halloween : 5 €
 Duo assorti avec le mini-string de Bo : 7 €
-Bo, avec mini-string, boîte et certificat numéroté : 49 € (objet de collection, 14 ans et plus)
+Bo, avec mini-string, boîte et certificat numéroté : 49 €
 Aussi aujourd'hui : la capsule Octobre Rose. Notre projet : reverser 1 € par article à Think Pink. Partenariat en cours de discussion : aucun don n'est encore effectué. Dès que l'accord est signé, on publie le montant et la preuve.
 Découvre le drop via le lien en bio.
 Tague la personne qui a peur du noir. Le Phosphorescent l'aidera.
@@ -513,7 +512,7 @@ Tague le groupe de la soirée : chacun·e choisit sa taille.
 Le drop Noël est ouvert. Nouveau motif, jamais réédité.
 String de Noël, Plat ou Poche : 5 €
 Duo assorti avec le mini-string de Bo : 7 €
-Bo édition Noël, avec mini-string, boîte et certificat numéroté : 49 € (objet de collection, 14 ans et plus)
+Bo édition Noël, avec mini-string, boîte et certificat numéroté : 49 €
 Coffret cadeau, Bo + le Duo de la saison : 55 €
 Livraison 3,90 €, offerte dès 30 €. Drôle devant ta boss, coquin entre potes.
 Vois le drop via le lien en bio.

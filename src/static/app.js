@@ -46,6 +46,19 @@
       const a = $(".ess-art", card); if (a) a.style.color = sw.dataset.hex;
       return;
     }
+    // Pack prêt à offrir : plusieurs produits existants ajoutés d'un coup, à leur prix normal, dans la taille choisie.
+    const pack = e.target.closest("[data-pack]");
+    if (pack) {
+      const box = pack.closest(".pack"), size = $("[data-size]", box).value;
+      JSON.parse(pack.dataset.pack).forEach((it) => {
+        const opt = it.cut ? [S.flat, size] : it.sized ? [size] : [];
+        const id = it.sku + "|" + opt.join("|"), ex = cart.find((l) => l.id === id);
+        if (ex) ex.q += it.q; else cart.push({ id, name: it.name, price: it.price, color: it.color, opt: opt.join(", "), q: it.q });
+      });
+      save(); render(); toast(S.added);
+      track("add_to_cart", { currency: "EUR", value: +pack.dataset.total, items: JSON.parse(pack.dataset.pack).map((it) => ({ item_id: it.sku, item_name: it.name, price: it.price, quantity: it.q })) });
+      return;
+    }
     const add = e.target.closest("[data-add]");
     if (add && card) {
       const opt = [];
@@ -90,12 +103,19 @@
   };
   const hasSession = () => { try { return Object.keys(localStorage).some((k) => k.startsWith("sb-") && k.endsWith("-auth-token")); } catch (e) { return false; } };
   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const say = (f, msg) => { const m = $(".ok", f); m.textContent = msg; m.hidden = false; };
+  // Message de formulaire. Avec un champ en 3e argument, c'est une erreur : annoncée tout de suite (role="alert") et reliée au champ (WCAG 3.3.1).
+  let msgN = 0;
+  const say = (f, msg, bad) => {
+    const m = $(".ok", f); m.textContent = msg; m.hidden = false; m.setAttribute("role", bad ? "alert" : "status");
+    f.querySelectorAll("[aria-invalid]").forEach((e) => { e.removeAttribute("aria-invalid"); e.removeAttribute("aria-errormessage"); });
+    if (bad && bad.setAttribute) { m.id ||= "msg-" + ++msgN; bad.setAttribute("aria-invalid", "true"); bad.setAttribute("aria-errormessage", m.id); }
+  };
 
   // ---------- Panier : commande factice (+ tampon du Club si connecté) ----------
   $("#checkout").onclick = async () => {
     const cgv = $("#cgv"), err = $("#cgvErr");
-    if (!cgv.checked) { err.hidden = false; cgv.focus(); return; }
+    if (!cgv.checked) { err.hidden = false; cgv.setAttribute("aria-invalid", "true"); cgv.setAttribute("aria-errormessage", "cgvErr"); cgv.focus(); return; }
+    cgv.removeAttribute("aria-invalid");
     err.hidden = true;
     track("begin_checkout", { currency: "EUR", value: cart.reduce((s, l) => s + l.q * l.price, 0) });
     toast(S.checkoutMsg);
@@ -118,8 +138,8 @@
   document.querySelectorAll(".waitform").forEach((f) => f.addEventListener("submit", async (e) => {
     e.preventDefault();
     const em = f.elements.email.value.trim(), cut = f.elements.cut ? f.elements.cut.value : "";
-    if (!EMAIL.test(em)) { say(f, S.errEmail); f.elements.email.focus(); return; }
-    if (!f.elements.consent.checked) { say(f, S.errConsent); f.elements.consent.focus(); return; }
+    if (!EMAIL.test(em)) { say(f, S.errEmail, f.elements.email); f.elements.email.focus(); return; }
+    if (!f.elements.consent.checked) { say(f, S.errConsent, f.elements.consent); f.elements.consent.focus(); return; }
     if (S.db) {
       try {
         const c = await sb();
@@ -137,7 +157,7 @@
   document.querySelectorAll(".contactform").forEach((f) => f.addEventListener("submit", async (e) => {
     e.preventDefault();
     const el = f.elements;
-    const err = (msg, input) => { say(f, msg); input.focus(); };
+    const err = (msg, input) => { say(f, msg, input); input.focus(); };
     if (!el.name.value.trim()) return err(S.errName, el.name);
     if (!EMAIL.test(el.email.value.trim())) return err(S.errEmail, el.email);
     if (!el.message.value.trim()) return err(S.errMsg, el.message);
@@ -262,7 +282,7 @@
       });
       $("#forgotBtn").addEventListener("click", async () => {
         const f = $("#loginForm"), em = f.elements.email.value.trim();
-        if (!EMAIL.test(em)) { say(f, A.errEmail); f.elements.email.focus(); return; }
+        if (!EMAIL.test(em)) { say(f, A.errEmail, f.elements.email); f.elements.email.focus(); return; }
         await c.auth.resetPasswordForEmail(em, { redirectTo: location.origin + location.pathname });
         say(f, A.resetSent);
       });

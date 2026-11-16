@@ -57,7 +57,7 @@ En cas d'écart entre ces fichiers et les prix ci-dessus, **les prix de ce CLAUD
 - **Langues :** FR (par défaut), NL, EN et DE. En anglais, on dit « thong » et non « string ». Tutoiement dans les 4 langues (« du », « je »).
 - **Ton :** direct, chaleureux, avec de l'humour mais jamais vulgaire.
 - **Pas de genre :** on ne dit jamais « pour homme » ou « pour femme ». On parle de coupe (Plat ou Poche) et de taille (tour de hanches).
-- **Bo n'est pas un jouet pour enfants.** C'est un objet de collection pour les 14 ans et plus. Aucun visuel ni texte ne vise les enfants. Les fiches de Bo n'affichent plus de mention d'âge ni de marquage CE (décision du 16/11/2026) ; la conformité reste à vérifier avant la vente réelle.
+- **Bo n'est pas un jouet pour enfants.** C'est un objet de collection pour adultes, 18 ans et plus (décidé le 16/11/2026). Aucun visuel ni texte ne vise les enfants. Les fiches de Bo n'affichent plus de mention d'âge ni de marquage CE (décision du 16/11/2026) ; la conformité reste à vérifier avant la vente réelle.
 - **Charte graphique :** [design.md](design.md) (logo au string, palette, typographies, composants).
 - **Couleurs :** Bordeaux `#3E031B`, Framboise `#D42A6E`, Rose dragée `#FFE3EE`, Rose bonbon `#FAB8D0`, Miel (Bo) `#C98B4B`. Pages générales en palette de marque (`BASE` dans `src/data.mjs`), pages de drop en palette de marque aussi (les saisons gardent leurs photos et motifs).
 - **Typographies :** Bricolage Grotesque (titres, version étroite, `wdth` 75) et Atkinson Hyperlegible (textes). Les héberger sur le site (WOFF2) plutôt que de les charger depuis Google Fonts.

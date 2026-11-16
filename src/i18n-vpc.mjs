@@ -4,6 +4,9 @@
 // link = clé de page (pathOf) ; sid = saison éventuelle ("live" = drop du moment).
 export const V = {
 fr: {
+  packsTitle: "Packs prêts à offrir", packsIntro: "Plusieurs cadeaux en un clic, au prix normal. Tu choisis une taille pour tout le pack.", packAdd: "Ajouter le pack",
+  pack1: "Kit Secret Santa", pack1d: "3 × {m} : un cadeau pour chaque tirage au sort, et Bo assorti à chacun.",
+  pack2: "Kit bande", pack2d: "Le lot de 5 Essentiels + 2 × {m}. Toute la bande assortie, livraison offerte.",
   ctaGift: "Offrir un string à 5 €", noSize: "Tu ne connais pas sa taille ? Offre le mini-string pour Bo (3 €)",
   heroTrustXmas: "Livré avant Noël si tu commandes avant le 17 décembre · Retour 14 jours · Fabriqué en Europe",
   heroTrust: "Livraison offerte dès 30 € · Retour 14 jours · Fabriqué en Europe",
@@ -45,6 +48,9 @@ fr: {
   },
 },
 nl: {
+  packsTitle: "Kant-en-klare cadeaupakketten", packsIntro: "Meerdere cadeaus in één klik, aan de normale prijs. Je kiest één maat voor het hele pakket.", packAdd: "Pakket toevoegen",
+  pack1: "Secret Santa-kit", pack1d: "3 × {m}: een cadeau voor elke trekking, en Bo telkens bijpassend.",
+  pack2: "Bende-kit", pack2d: "Het pakket van 5 Essentials + 2 × {m}. De hele bende bijpassend, gratis levering.",
   ctaGift: "Geef een string van 5 €", noSize: "Ken je de maat niet? Geef de mini-string voor Bo (3 €)",
   heroTrustXmas: "Vóór Kerstmis geleverd als je bestelt vóór 17 december · 14 dagen retour · Gemaakt in Europa",
   heroTrust: "Gratis levering vanaf 30 € · 14 dagen retour · Gemaakt in Europa",
@@ -86,6 +92,9 @@ nl: {
   },
 },
 en: {
+  packsTitle: "Ready-to-gift packs", packsIntro: "Several gifts in one click, at the normal price. Pick one size for the whole pack.", packAdd: "Add the pack",
+  pack1: "Secret Santa kit", pack1d: "3 × {m}: one gift per name drawn, with Bo matching each one.",
+  pack2: "Gang kit", pack2d: "The 5-pack of Essentials + 2 × {m}. The whole gang matching, free shipping.",
   ctaGift: "Gift a €5 thong", noSize: "Don't know their size? Gift the mini thong for Bo (€3)",
   heroTrustXmas: "Delivered before Christmas if you order by 17 December · 14-day returns · Made in Europe",
   heroTrust: "Free shipping from €30 · 14-day returns · Made in Europe",
@@ -127,6 +136,9 @@ en: {
   },
 },
 de: {
+  packsTitle: "Fertige Geschenk-Packs", packsIntro: "Mehrere Geschenke mit einem Klick, zum normalen Preis. Du wählst eine Größe für das ganze Pack.", packAdd: "Pack hinzufügen",
+  pack1: "Wichtel-Kit", pack1d: "3 × {m}: ein Geschenk pro gezogenem Namen, und Bo passend dazu.",
+  pack2: "Cliquen-Kit", pack2d: "Das 5er-Pack Essentials + 2 × {m}. Die ganze Clique passend, kostenloser Versand.",
   ctaGift: "Einen String für 5 € schenken", noSize: "Größe unbekannt? Schenk den Mini-String für Bo (3 €)",
   heroTrustXmas: "Vor Weihnachten geliefert bei Bestellung bis 17. Dezember · 14 Tage Rückgabe · Hergestellt in Europa",
   heroTrust: "Kostenloser Versand ab 30 € · 14 Tage Rückgabe · Hergestellt in Europa",

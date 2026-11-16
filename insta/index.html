@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Publications Instagram UNIS</title>
+<meta name="description" content="Aperçu des 16 publications Instagram UNIS alignées sur la stratégie emailing : visuels 4:5 et 9:16, légendes, textes alternatifs et liens UTM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;display=swap">
+<style>
+:root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --logo:#FDD2E3; --paper:#FFFFFF; --muted:#6B2A44; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
+:root[data-theme="dark"] { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
+h1, h2, h3 { font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; line-height:1.1; margin:0; }
+a { color:var(--accent); font-weight:700; }
+a:focus-visible, button:focus-visible, .car:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
+.wrap { max-width:1320px; margin:0 auto; padding:32px 16px 64px; }
+.top { display:flex; flex-wrap:wrap; gap:16px 32px; align-items:center; justify-content:space-between; }
+.top .logo { width:180px; height:auto; }
+h1 { font-size:clamp(32px, 6vw, 54px); }
+.lead { max-width:65ch; }
+.toc { columns:2 300px; padding:0; list-style:none; font-size:15px; margin:24px 0 0; }
+.toc li { break-inside:avoid; margin:0 0 6px; }
+.toc a { text-decoration:none; color:var(--ink); }
+.toc a:hover { text-decoration:underline; }
+.num { display:inline-block; min-width:32px; padding:2px 8px; border-radius:999px; background:var(--accent); color:#fff; text-align:center; margin-right:8px; font-weight:700; font-size:14px; }
+.pub { background:var(--paper); border-radius:28px; padding:24px; margin:32px 0; }
+.pub-h .kicker { margin:0; font-weight:700; color:var(--muted); font-size:15px; }
+.pub-h h2 { font-size:30px; margin:8px 0 4px; }
+.email-l { margin:0 0 16px; font-size:15px; }
+.badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:999px; border:1.5px solid var(--ink); font-size:13px; color:var(--ink); }
+.pub-g { display:grid; grid-template-columns:minmax(0, 380px) minmax(0, 250px) minmax(0, 1fr); gap:24px; align-items:start; }
+@media (max-width:1100px) { .pub-g { grid-template-columns:minmax(0, 380px) minmax(0, 250px); } .info { grid-column:1 / -1; } }
+@media (max-width:680px) { .pub-g { grid-template-columns:minmax(0, 1fr); } .mock-story { max-width:300px; } }
+.frame { background:#FFFFFF; color:#3E031B; border-radius:28px; padding:12px; box-shadow:0 0 0 1.5px var(--soft); }
+.frame-h { display:flex; align-items:center; gap:8px; padding:2px 4px 10px; font-size:15px; }
+.avatar { width:32px; height:32px; flex:none; }
+.handle { font-weight:700; }
+.fmt { margin-left:auto; font-size:13px; color:#6B2A44; }
+.frame-cap { margin:10px 4px 2px; font-size:14px; line-height:1.45; }
+.frame-cap .more { color:#6B2A44; }
+.car { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; border-radius:18px; scrollbar-width:thin; }
+.car > .vis { flex:0 0 100%; scroll-snap-align:start; }
+.car-nav { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:8px; }
+.car-nav button { min-width:44px; min-height:44px; border-radius:999px; border:1.5px solid #3E031B; background:transparent; color:#3E031B; font:inherit; font-weight:700; cursor:pointer; }
+.car-pos { font-size:14px; min-width:48px; text-align:center; }
+
+/* ── Visuels (unités cqw : se mettent à l'échelle de leur largeur) ── */
+.vis { container-type:inline-size; position:relative; width:100%; background:#FDD2E3; color:#3E031B; overflow:hidden; border-radius:18px; font-family:'Atkinson Hyperlegible', Arial, sans-serif; }
+.vis.feed { aspect-ratio:4 / 5; }
+.vis.story { aspect-ratio:9 / 16; }
+.vis-top { position:absolute; left:5cqw; right:5cqw; top:4.5cqw; display:flex; align-items:center; justify-content:space-between; gap:3cqw; }
+.vis .logo { width:24cqw; height:auto; flex:none; }
+.kick { background:#FFFFFF; border-radius:999px; padding:1.2cqw 3cqw; font-weight:700; font-size:3.1cqw; line-height:1.2; text-align:right; max-width:62cqw; }
+.ph { position:absolute; left:5cqw; right:5cqw; top:15cqw; height:68cqw; }
+.ph img { display:block; width:100%; height:100%; border-radius:4cqw; }
+.pill { position:absolute; right:-1.5cqw; bottom:-7cqw; width:23cqw; height:23cqw; border-radius:50%; background:#D42A6E; color:#FFFFFF; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(-8deg); box-shadow:0 0 0 1.2cqw #FDD2E3; font-family:'Bricolage Grotesque', Arial, sans-serif; font-stretch:75%; line-height:1; text-align:center; }
+.pill b { font-size:7.4cqw; font-weight:800; white-space:nowrap; }
+.pill-s b { font-size:5cqw; }
+.pill s { font-size:3.6cqw; font-weight:700; opacity:.92; margin-bottom:.6cqw; }
+.pill-l { font-family:'Atkinson Hyperlegible', Arial, sans-serif; font-size:3cqw; font-weight:700; margin-bottom:.6cqw; }
+.txt { position:absolute; left:5cqw; right:27cqw; top:86cqw; }
+.ttl { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:8.2cqw; line-height:.98; letter-spacing:-.01em; }
+.sub { margin:1.8cqw 0 0; font-size:3.4cqw; line-height:1.3; font-weight:700; }
+.steps { margin:1.6cqw 0 0; padding-left:4.2cqw; font-size:3.1cqw; line-height:1.3; font-weight:700; }
+.omni { margin:1.6cqw 0 0; font-size:2.6cqw; line-height:1.3; }
+.count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border-radius:999px; padding:.6cqw 2cqw; }
+/* Story : même grammaire, plus haute */
+.story .ph { top:16cqw; height:84cqw; }
+.story .txt { top:104cqw; right:5cqw; }
+.story .ttl { font-size:9cqw; }
+.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:4cqw; padding:2.6cqw 3.4cqw; text-align:center; }
+.stk-t { display:block; font-size:2.5cqw; font-weight:700; color:#D42A6E; text-transform:uppercase; letter-spacing:.06em; margin-bottom:1cqw; }
+.sq { margin:0 0 1.6cqw; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:4.6cqw; line-height:1.05; }
+.opts { display:flex; flex-direction:column; gap:1cqw; }
+.opts.two { flex-direction:row; }
+.opts span { flex:1; border-radius:999px; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
+.opts span.ok { background:#3E031B; color:#FFFFFF; }
+.cd { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:5.4cqw; color:#D42A6E; line-height:1.05; }
+.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border-radius:999px; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
+.lnk .stk-t { color:#FFFFFF; margin-bottom:.3cqw; font-size:2.2cqw; }
+
+/* ── Colonne d'infos ── */
+.cap-h { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+.cap-h h3 { font-size:24px; }
+.copy { min-height:52px; padding:0 24px; border-radius:999px; border:0; background:#D42A6E; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; }
+.copied { font-size:14px; font-weight:700; color:var(--muted); }
+.cap { white-space:pre-wrap; font:16px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); border-radius:10px; padding:14px 16px; margin:12px 0 16px; max-width:65ch; }
+dl { display:grid; grid-template-columns:max-content minmax(0, 1fr); gap:6px 14px; margin:0; font-size:15px; }
+dt { font-weight:700; } dd { margin:0; }
+@media (max-width:520px) { dl { grid-template-columns:minmax(0, 1fr); } dd { margin-bottom:6px; } }
+code { font-size:13px; word-break:break-all; }
+.alts { margin:0; padding-left:20px; }
+.note { background:var(--bg); border-left:4px solid var(--accent); padding:8px 12px; border-radius:10px; font-size:14px; margin:14px 0 0; }
+footer { margin-top:48px; font-size:14px; color:var(--muted); max-width:80ch; }
+
+/* ── Mode export (?export) : chaque visuel à 1080 px de large, sans maquette ni zone sticker ── */
+body.export .wrap > :not(main) , body.export .pub-h, body.export .info, body.export .frame-h, body.export .frame-cap, body.export .car-nav, body.export .count { display:none; }
+body.export .wrap { max-width:none; padding:0; }
+body.export .pub { background:none; padding:0; margin:0; }
+body.export .pub-g { display:block; }
+body.export .mock, body.export .mock-story { max-width:none; }
+body.export .frame { background:none; box-shadow:none; padding:0; border-radius:0; }
+body.export .car { display:block; overflow:visible; border-radius:0; }
+body.export .vis { width:1080px; border-radius:0; margin:0 0 40px; }
+body.export .stk, body.export .lnk { visibility:hidden; }
+@media (prefers-reduced-motion: no-preference) { .car { scroll-behavior:smooth; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Les publications Instagram UNIS</h1>
+      <p class="lead">16 publications, une par envoi de la stratégie emailing (docs/03), dans l'ordre du calendrier. Chacune : un post 4:5 (ou un carrousel) et une story 9:16 avec son sticker, la légende prête à copier, le texte alternatif, l'heure conseillée et les liens UTM. Maquettes UNIS, rien n'est publié.</p>
+    </div>
+    <svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg>
+  </header>
+  <nav aria-label="Calendrier des publications"><ol class="toc"><li><a href="#pub-1"><span class="num">01</span>mercredi 2 décembre 2026 · 4 cadeaux drôles à moins de 10 €</a></li>
+<li><a href="#pub-2"><span class="num">02</span>mercredi 16 décembre 2026 · Noël : tu as jusqu'à demain</a></li>
+<li><a href="#pub-3"><span class="num">03</span>mercredi 6 janvier 2027 · Ta taille, en 30 secondes</a></li>
+<li><a href="#pub-4"><span class="num">04</span>mercredi 3 février 2027 · Pourquoi on ne dit jamais « pour lui »</a></li>
+<li><a href="#pub-5"><span class="num">05</span>mercredi 10 février 2027 · Le cadeau qui fait rire, puis rougir</a></li>
+<li><a href="#pub-6"><span class="num">06</span>mardi 16 mars 2027 · Le Printemps ouvre 24 h avant pour toi</a></li>
+<li><a href="#pub-7"><span class="num">07</span>jeudi 1er avril 2027 · Ceci n'est pas un poisson d'avril</a></li>
+<li><a href="#pub-8"><span class="num">08</span>mercredi 12 mai 2027 · Pride arrive. Bo a déjà sa tenue.</a></li>
+<li><a href="#pub-9"><span class="num">09</span>mardi 1er juin 2027 · Le drop Pride est là</a></li>
+<li><a href="#pub-10"><span class="num">10</span>jeudi 1er juillet 2027 · Soldes : le string Été à 4 €</a></li>
+<li><a href="#pub-11"><span class="num">11</span>mercredi 18 août 2027 · Choisis le prochain motif de Bo</a></li>
+<li><a href="#pub-12"><span class="num">12</span>mercredi 8 septembre 2027 · Rentrée : 5 strings pour 17 €</a></li>
+<li><a href="#pub-13"><span class="num">13</span>vendredi 1er octobre 2027 · Fais-toi peur (pour 5 €)</a></li>
+<li><a href="#pub-14"><span class="num">14</span>mercredi 27 octobre 2027 · Ta tenue d'Halloween est prête ?</a></li>
+<li><a href="#pub-15"><span class="num">15</span>lundi 1er novembre 2027 · Bo édition Noël est arrivé</a></li>
+<li><a href="#pub-16"><span class="num">16</span>vendredi 26 novembre 2027 · Pas de −70 %. Juste 5 €.</a></li></ol></nav>
+  <main>
+<article class="pub" id="pub-1" aria-labelledby="h-1">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">01</span>mercredi 2 décembre 2026 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
+    <h2 id="h-1">4 cadeaux drôles à moins de 10 €</h2>
+    <p class="email-l">Email associé : <a href="../emails/01-newsletter-secret-santa-calendrier-avent.html">01-newsletter-secret-santa-calendrier-avent.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Carrousel · 5 vignettes</span></div>
+        <div class="car multi" tabindex="0" aria-label="Carrousel de 5 vignettes, défile horizontalement">
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Le calendrier de l'Avent de Bo</span></div>
+  <div class="ph"><img src="../assets/emailing/secret-santa-pochette.jpg" alt="Autour d'une table de fête entre adultes, des mains ouvrent une pochette kraft d'où sort un string rose à petits cœurs." style="object-fit:cover;object-position:50% 60%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>dès 3 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">4 cadeaux drôles à moins de 10 €</p>
+    <p class="sub">Glisse pour ouvrir les cases</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">1/5</span>
+</div>
+<div class="vis feed" data-slide="2">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 1</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-noel-rennes-plat-1200.webp" alt="String rouge à motif de rennes, de sapins et de flocons, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Le string Rennes disco</p>
+    <p class="sub">Plat ou Poche, du XS au 4XL</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">2/5</span>
+</div>
+<div class="vis feed" data-slide="3">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 2</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, avec un grand nœud rouge et son mini-string de Noël à rennes." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>3 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Le mini-string pour Bo</p>
+    <p class="sub">Pour qui a déjà son ours</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">3/5</span>
+</div>
+<div class="vis feed" data-slide="4">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 3</span></div>
+  <div class="ph"><img src="../assets/emailing/email-noel-bo-selfie.jpg" alt="Bo fait un selfie dans un miroir de salon décoré pour Noël, nœud rouge et mini-string à rennes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>7 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Le Duo assorti</p>
+    <p class="sub">Ton string + le mini-string de Bo</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">4/5</span>
+</div>
+<div class="vis feed" data-slide="5">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Case 4</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>20 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Le lot de 5 pour l'équipe</p>
+    <p class="sub">Soit 4 € la tête</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">5/5</span>
+</div>
+        </div>
+        <div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / 5</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>
+        <p class="frame-cap"><b>@unis</b> Budget Secret Santa : 10 €. Fou rire : illimité. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Secret Santa</span></div>
+  <div class="ph"><img src="../assets/emailing/story-noel-bo-selfie-9x16.jpg" alt="Bo, l'ours en peluche miel, se prend en selfie devant un miroir, dans un salon décoré d'un sapin lumineux." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Quel motif pour qui ?</p></div>
+  <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Ta personne de Secret Santa, c'est plutôt…</p><div class="opts"><span>La reine ou le roi de la piste</span><span>Pro du pull moche</span><span>Je ne la connais pas du tout</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Voir les 4 idées</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-1">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-1">Budget Secret Santa : 10 €. Fou rire : illimité.
+Bo a ouvert 4 cases de son calendrier de l'Avent. Glisse pour les voir :
+1. Le string Rennes disco, Plat ou Poche : 5 €
+2. Le mini-string pour Bo : 3 €
+3. Le Duo assorti, string + mini-string : 7 €
+4. Le lot de 5 pour toute l'équipe : 20 €, soit 4 € la tête
+Du XS au 4XL, 95 % coton certifié OEKO-TEX, fabriqué en Europe.
+Pour Noël, commande avant le jeudi 17 décembre. Livraison 3,90 €, offerte dès 30 €.
+Les 4 idées t'attendent dans le lien en bio.
+Tague la personne qui n'a toujours aucune idée pour son Secret Santa.
+#BoPorte #UNIS #SecretSanta #CadeauDrole #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S1 · Le cadeau qui fait rire</dd>
+        <dt>Heure conseillée</dt><dd>12 h 30 · pause de midi, quand les groupes parlent du tirage au sort</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/journal/cadeau-secret-santa-drole/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2026-12-newsletter-secret-santa&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/journal/cadeau-secret-santa-drole/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2026-12-newsletter-secret-santa&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd><ol class="alts"><li>Autour d'une table de fête entre adultes, des mains ouvrent une pochette kraft d'où sort un string rose à petits cœurs.</li><li>String rouge à motif de rennes, de sapins et de flocons, posé à plat sur fond blanc.</li><li>Bo, l'ours en peluche miel, debout sur fond blanc, avec un grand nœud rouge et son mini-string de Noël à rennes.</li><li>Bo fait un selfie dans un miroir de salon décoré pour Noël, nœud rouge et mini-string à rennes.</li><li>Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc.</li></ol></dd>
+        <dt>Alt story</dt><dd>Bo, l'ours en peluche miel, se prend en selfie devant un miroir, dans un salon décoré d'un sapin lumineux.</dd>
+        <dt>Story, déroulé</dt><dd>Quiz sans bonne réponse (ST3 du doc 17). Écran 2 : Piste de danse → Rennes disco. Pull moche → Pull moche. Inconnue → Bo, une seule taille. Écran 3 : « Envoie ce quiz à ton groupe de Secret Santa » + sticker lien.</dd>
+      </dl>
+      <p class="note">Le doc 17 prévoit ce jour-là la Story ST3 « Quel motif pour qui ? » : la story ci-dessous la reprend telle quelle.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-2" aria-labelledby="h-2">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">02</span>mercredi 16 décembre 2026 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
+    <h2 id="h-2">Noël : tu as jusqu'à demain</h2>
+    <p class="email-l">Email associé : <a href="../emails/02-campagne-decembre-derniere-livraison.html">02-campagne-decembre-derniere-livraison.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Dernière ligne droite</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-allonge-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le côté, bonnet rouge sur la tête et string de Noël rouge." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Tu as jusqu'à demain</p>
+    <p class="sub">Commande avant le jeudi 17 décembre pour Noël</p>
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Ton Secret Santa, c'est quand déjà ? Si la réponse est « bientôt » : respire. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Jusqu'à demain, jeudi 17 décembre</span></div>
+  <div class="ph"><img src="../assets/images/pochette-kraft-unis-1200.webp" alt="Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Ton Secret Santa est prêt ?</p></div>
+  <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Tu as commandé ?</p><div class="opts two"><span>Oui</span><span>Pas encore</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Prendre le Duo à 7 €</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-2">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-2">Ton Secret Santa, c'est quand déjà ? Si la réponse est « bientôt » : respire.
+Tu as jusqu'à demain, jeudi 17 décembre, pour commander et recevoir ton colis avant le 24.
+Le kit de dernière minute :
+Duo Secret Santa, string + mini-string, même motif : 7 €
+String Rennes disco ou Pull moche : 5 €
+Lot de 5 pour toute la bande : 20 €
+Tout part dans sa pochette kraft, prête à glisser sous le sapin. Livraison 3,90 €, offerte dès 30 €.
+Prends ton Duo via le lien en bio.
+Envoie ce post à la personne qui organise le Secret Santa. Elle te dira merci.
+#BoPorte #UNIS #SecretSanta #CadeauDrole #NoelEntrePotes</pre>
+      <dl>
+        <dt>Segment</dt><dd>S1 · Cadeau qui fait rire + S3 · Organisateur·rice de groupe</dd>
+        <dt>Heure conseillée</dt><dd>8 h 30 · rappel du matin ; story de rappel vers 18 h</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/noel/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2026-12-derniere-livraison-noel&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/noel/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2026-12-derniere-livraison-noel&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, allongé sur le côté, bonnet rouge sur la tête et string de Noël rouge.</dd>
+        <dt>Alt story</dt><dd>Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose.</dd>
+        <dt>Story, déroulé</dt><dd>Sondage (repris du doc 17, 16/12). Écran 2 pour « Pas encore » : « Il te reste demain. Moi, je dis ça, je dis rien. » + sticker lien.</dd>
+      </dl>
+      <p class="note">Urgence réelle : date limite du jeudi 17 décembre 2026. Le doc 17 prévoit ce jour-là le sondage « Tu as commandé ? » : la story le reprend.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-3" aria-labelledby="h-3">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">03</span>mercredi 6 janvier 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
+    <h2 id="h-3">Ta taille, en 30 secondes</h2>
+    <p class="email-l">Email associé : <a href="../emails/03-newsletter-taille-soldes-janvier.html">03-newsletter-taille-soldes-janvier.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Carrousel · 4 vignettes</span></div>
+        <div class="car multi" tabindex="0" aria-label="Carrousel de 4 vignettes, défile horizontalement">
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Nouvelle année, nouveaux basiques</span></div>
+  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Ta taille, en 30 secondes</p>
+    <p class="sub">Glisse : 3 étapes, zéro prise de tête</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">1/4</span>
+</div>
+<div class="vis feed" data-slide="2">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">3 étapes</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat, du bleu encre au blanc, pour illustrer le choix de taille." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill pill-s"><b>XS→4XL</b></div></div>
+  <div class="txt">
+    <p class="ttl">Un mètre ruban et c'est réglé</p>
+    
+    <ol class="steps"><li>Prends un mètre ruban</li><li>Mesure ton tour de hanches, au plus large</li><li>Lis ta taille, du XS au 4XL</li></ol>
+    
+  </div>
+  <span class="count" aria-hidden="true">2/4</span>
+</div>
+<div class="vis feed" data-slide="3">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Une coupe, pas un genre</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-coupe-plat-poche-1200.webp" alt="Deux strings lilas côte à côte : à gauche la coupe Plat, à droite la coupe Poche avec un avant préformé." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Plat ou Poche ?</p>
+    
+    <ol class="steps"><li>Plat : un avant lisse, sans volume</li><li>Poche : un avant préformé, de la place sans comprimer</li></ol>
+    
+  </div>
+  <span class="count" aria-hidden="true">3/4</span>
+</div>
+<div class="vis feed" data-slide="4">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soldes · −30 % sur le drop Noël</span></div>
+  <div class="ph"><img src="../assets/emailing/email-noel-string-fond-rouge.jpg" alt="String rouge à motif de rennes et de sapins posé à plat sur fond rouge, entouré de branches de sapin et de boules." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><s>5 €</s><b>3,50 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Le string Noël à 3,50 €</p>
+    <p class="sub">Dans la limite des stocks</p>
+    
+    <p class="omni">Prix le plus bas des 30 derniers jours : 5 €</p>
+  </div>
+  <span class="count" aria-hidden="true">4/4</span>
+</div>
+        </div>
+        <div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / 4</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>
+        <p class="frame-cap"><b>@unis</b> Ton tour de hanches, tu le connais ? Non ? Ton mètre ruban non plus, il dort au fond d'un tiroir. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Ta taille en 30 secondes</span></div>
+  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings unis empilés à plat dans les couleurs Essentiels, sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Petit quiz taille</p></div>
+  <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Entre deux tailles, tu prends…</p><div class="opts"><span>La plus petite</span><span class="ok">La plus grande ✓</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Trouver ma taille</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-3">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-3">Ton tour de hanches, tu le connais ? Non ? Ton mètre ruban non plus, il dort au fond d'un tiroir.
+Ici, pas de genre : une coupe et un tour de hanches. Glisse pour les 3 étapes :
+1. Prends un mètre ruban.
+2. Mesure ton tour de hanches, à l'endroit le plus large.
+3. Lis ta taille dans le tableau, du XS au 4XL. Entre deux tailles ? Prends la plus grande.
+Et c'est les soldes : −30 % sur le drop Noël. Le string passe de 5 € à 3,50 €, dans la limite des stocks (prix le plus bas des 30 derniers jours : 5 €). Le lot de 5 Essentiels reste à 20 €.
+Trouve ta taille via le lien en bio.
+Quelqu'un a reçu un string UNIS à Noël et hésite sur sa taille ? Envoie-lui ce post.
+#BoPorte #UNIS #StringUnisexe #GuideDesTailles #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S5 · Pour soi (et les personnes qui ont reçu un string à Noël)</dd>
+        <dt>Heure conseillée</dt><dd>19 h · soirée, moment calme pour sortir le mètre ruban</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/guide-des-tailles/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/guide-des-tailles/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-01-newsletter-taille-soldes&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd><ol class="alts"><li>Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc.</li><li>Six strings unis empilés à plat, du bleu encre au blanc, pour illustrer le choix de taille.</li><li>Deux strings lilas côte à côte : à gauche la coupe Plat, à droite la coupe Poche avec un avant préformé.</li><li>String rouge à motif de rennes et de sapins posé à plat sur fond rouge, entouré de branches de sapin et de boules.</li></ol></dd>
+        <dt>Alt story</dt><dd>Six strings unis empilés à plat dans les couleurs Essentiels, sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Quiz, bonne réponse : la plus grande. Écran 2 : « Mètre ruban, tour de hanches, tableau. 30 secondes. » + sticker lien vers le guide des tailles.</dd>
+      </dl>
+      
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-4" aria-labelledby="h-4">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">04</span>mercredi 3 février 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
+    <h2 id="h-4">Pourquoi on ne dit jamais « pour lui »</h2>
+    <p class="email-l">Email associé : <a href="../emails/04-newsletter-unisexe-drop-saint-valentin.html">04-newsletter-unisexe-drop-saint-valentin.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Carrousel · 3 vignettes</span></div>
+        <div class="car multi" tabindex="0" aria-label="Carrousel de 3 vignettes, défile horizontalement">
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Saint-Valentin · aujourd'hui</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-saint-valentin-1200.webp" alt="Bo, l'ours en peluche miel, danse sur une patte, une rose rouge entre les dents, en mini-string à cœurs." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">À deux, c'est mieux. À trois, c'est assorti.</p>
+    
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">1/3</span>
+</div>
+<div class="vis feed" data-slide="2">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Cœurs brodés</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-saint-valentin-coeurs-plat-1200.webp" alt="String rose pâle à petits cœurs rouges brodés et ceinture rouge, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Pas de « pour lui ». Pas de « pour elle ».</p>
+    <p class="sub">Une coupe, Plat ou Poche. Du XS au 4XL.</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">2/3</span>
+</div>
+<div class="vis feed" data-slide="3">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Coffret cadeau</span></div>
+  <div class="ph"><img src="../assets/images/offrir-bo-coffret-cadeau-1200.webp" alt="Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, pendant un dîner entre amis adultes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>55 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Bo + le Duo de la saison</p>
+    <p class="sub">Boîte et certificat numéroté</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">3/3</span>
+</div>
+        </div>
+        <div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / 3</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>
+        <p class="frame-cap"><b>@unis</b> Pourquoi on ne dit jamais « pour lui » ? Parce qu'un string n'a pas de genre. Il a une coupe. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Saint-Valentin</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-saint-valentin-coeurs-plat-1200.webp" alt="String rose pâle à petits cœurs rouges brodés, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Le cadeau qui fait rire, puis rougir</p></div>
+  <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Pour la Saint-Valentin, tu offres…</p><div class="opts two"><span>Des fleurs (encore)</span><span>Un Duo assorti</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Découvrir le drop</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-4">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-4">Pourquoi on ne dit jamais « pour lui » ? Parce qu'un string n'a pas de genre. Il a une coupe.
+Plat ou Poche, du XS au 4XL. Le reste, c'est toi qui décides.
+Le drop Saint-Valentin sort aujourd'hui : motifs Cœurs brodés et Rose poétique. Bo édition Cœur les a déjà enfilés.
+Duo assorti, ton string + le mini-string de Bo : 7 €
+Bo édition Cœur, avec mini-string, boîte et certificat numéroté : 49 €
+Coffret cadeau, Bo + le Duo de la saison : 55 €
+Série limitée, jamais rééditée. Livraison 3,90 €, offerte dès 30 €.
+Découvre le drop via le lien en bio.
+Tague ta moitié. Ou envoie-lui ce post en privé, c'est plus discret.
+#BoPorte #UNIS #SaintValentin #CadeauCouple #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S2 · Couple complice + S4 · Collectionneur·se</dd>
+        <dt>Heure conseillée</dt><dd>9 h · ouverture du drop</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/saint-valentin/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-02-drop-saint-valentin&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/saint-valentin/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-02-drop-saint-valentin&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd><ol class="alts"><li>Bo, l'ours en peluche miel, danse sur une patte, une rose rouge entre les dents, en mini-string à cœurs.</li><li>String rose pâle à petits cœurs rouges brodés et ceinture rouge, posé à plat sur fond blanc.</li><li>Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, pendant un dîner entre amis adultes.</li></ol></dd>
+        <dt>Alt story</dt><dd>String rose pâle à petits cœurs rouges brodés, posé à plat sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Sondage. Écran 2 : « Les fleurs fanent. Le Duo, lui, se porte. 7 €. » + sticker lien.</dd>
+      </dl>
+      
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-5" aria-labelledby="h-5">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">05</span>mercredi 10 février 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
+    <h2 id="h-5">Le cadeau qui fait rire, puis rougir</h2>
+    <p class="email-l">Email associé : <a href="../emails/05-campagne-saint-valentin-rappel.html">05-campagne-saint-valentin-rappel.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Saint-Valentin · dimanche 14 février</span></div>
+  <div class="ph"><img src="../assets/emailing/email-saint-valentin-bo-rose.jpg" alt="Bo, l'ours en peluche miel, danse sur une patte avec une rose rouge, en mini-string blanc à rayures et cœurs." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">D'abord on rit. Après, on verra.</p>
+    
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Les fleurs fanent. Les chocolats disparaissent. Le Duo assorti, lui, se porte. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Le 14 tombe un dimanche</span></div>
+  <div class="ph"><img src="../assets/images/offrir-bo-coffret-cadeau-1200.webp" alt="Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, à une table de dîner entre adultes." style="object-fit:cover;object-position:50% 45%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Commande tôt</p></div>
+  <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Saint-Valentin</p><p class="cd">dimanche 14 février 2027</p></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Offrir le Duo à 7 €</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-5">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-5">Les fleurs fanent. Les chocolats disparaissent. Le Duo assorti, lui, se porte.
+Toi d'un côté, Bo de l'autre, et un clin d'œil qui dure plus longtemps que le dessert.
+Duo assorti Cœurs brodés : 7 €
+Deux Duos, un pour chacun·e : 14 €
+Coffret cadeau, Bo + le Duo de la saison : 55 €, livraison offerte (on dépasse 30 €)
+Ton corps, ta taille, ton string. Bo s'occupe du reste.
+Le 14 février tombe un dimanche : commande tôt, via le lien en bio.
+Envoie ce post à ta moitié. Subtilement, ou pas.
+#BoPorte #UNIS #SaintValentin #CadeauCouple #CadeauDrole</pre>
+      <dl>
+        <dt>Segment</dt><dd>S2 · Couple complice</dd>
+        <dt>Heure conseillée</dt><dd>19 h 30 · soirée, moment où l'on prépare son cadeau</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/saint-valentin/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-02-saint-valentin-rappel&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/saint-valentin/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-02-saint-valentin-rappel&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, danse sur une patte avec une rose rouge, en mini-string blanc à rayures et cœurs.</dd>
+        <dt>Alt story</dt><dd>Des mains tendent une boîte à fenêtre où est assis Bo, l'ours en peluche, à une table de dîner entre adultes.</dd>
+        <dt>Story, déroulé</dt><dd>Compte à rebours jusqu'au dimanche 14 février 2027. Texte : « Commande tôt : le 14 tombe un dimanche. » + sticker lien.</dd>
+      </dl>
+      <p class="note">Le compte à rebours vise le dimanche 14 février (la fête), pas une date limite de livraison : aucune date de livraison garantie n'est fixée dans les docs.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-6" aria-labelledby="h-6">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">06</span>mardi 16 mars 2027 <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span></p>
+    <h2 id="h-6">Le Printemps ouvre 24 h avant pour toi</h2>
+    <p class="email-l">Email associé : <a href="../emails/06-campagne-printemps-acces-avant.html">06-campagne-printemps-acces-avant.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Carrousel · 4 vignettes</span></div>
+        <div class="car multi" tabindex="0" aria-label="Carrousel de 4 vignettes, défile horizontalement">
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Ouverture demain, mercredi 17 mars</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-printemps-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, un bouquet de tulipes dans les bras, nœud et mini-string lilas à fleurs." style="object-fit:cover;object-position:50% 35%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Bo l'a déjà enfilé</p>
+    <p class="sub">Nouveau motif. Jamais réédité.</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">1/4</span>
+</div>
+<div class="vis feed" data-slide="2">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-printemps-fleurs-pastel-plat-1200.webp" alt="String lilas à petites fleurs blanches, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Fleurs pastel</p>
+    <p class="sub">Plat ou Poche, XS à 4XL</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">2/4</span>
+</div>
+<div class="vis feed" data-slide="3">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-printemps-menthe-plat-1200.webp" alt="String vert menthe uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Menthe</p>
+    <p class="sub">Plat ou Poche, XS à 4XL</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">3/4</span>
+</div>
+<div class="vis feed" data-slide="4">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-printemps-peche-plat-1200.webp" alt="String couleur pêche uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Pêche</p>
+    <p class="sub">En Duo avec le mini-string de Bo : 7 €</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">4/4</span>
+</div>
+        </div>
+        <div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / 4</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>
+        <p class="frame-cap"><b>@unis</b> Nouveau motif. Jamais réédité. Bo l'a déjà enfilé (il n'a pas su attendre). <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Printemps</span></div>
+  <div class="ph"><img src="../assets/emailing/bo-printemps-tulipes.jpg" alt="Bo, l'ours en peluche miel, tient un bouquet de tulipes, nœud lilas et mini-string à fleurs, sur fond blanc." style="object-fit:cover;object-position:50% 35%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Ouverture à tout le monde demain</p></div>
+  <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Drop Printemps</p><p class="cd">mercredi 17 mars 2027 (heure à confirmer)</p></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Rejoindre la liste d'attente</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-6">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-6">Nouveau motif. Jamais réédité. Bo l'a déjà enfilé (il n'a pas su attendre).
+Le drop Printemps ouvre à tout le monde demain, mercredi 17 mars. La liste d'attente, elle, est déjà dedans depuis aujourd'hui.
+Fleurs pastel, Menthe, Pêche :
+String Printemps, Plat ou Poche, XS à 4XL : 5 €
+Duo assorti avec le mini-string de Bo : 7 €
+Bo, avec mini-string, boîte et certificat numéroté : 49 €
+Tu veux passer devant au prochain drop ? Rejoins la liste d'attente via le lien en bio.
+Tague l'ami·e fan de Bo qui rate toujours les ouvertures.
+#BoPorte #UNIS #DropPrintemps #StringUnisexe #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S4 · Collectionneur·se (liste d'attente, Club de Bo) + S5 · Pour soi</dd>
+        <dt>Heure conseillée</dt><dd>18 h · veille de l'ouverture publique, le jour de l'accès anticipé</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/printemps/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-03-drop-printemps&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/printemps/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-03-drop-printemps&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd><ol class="alts"><li>Bo, l'ours en peluche miel, debout sur fond blanc, un bouquet de tulipes dans les bras, nœud et mini-string lilas à fleurs.</li><li>String lilas à petites fleurs blanches, posé à plat sur fond blanc.</li><li>String vert menthe uni, posé à plat sur fond blanc.</li><li>String couleur pêche uni, posé à plat sur fond blanc.</li></ol></dd>
+        <dt>Alt story</dt><dd>Bo, l'ours en peluche miel, tient un bouquet de tulipes, nœud lilas et mini-string à fleurs, sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Compte à rebours jusqu'à l'ouverture publique du mercredi 17 mars. Texte : « La liste d'attente est déjà dedans. Toi aussi, au prochain drop ? » + sticker lien vers le Club de Bo.</dd>
+      </dl>
+      <p class="note">Publié la veille du drop (17 mars), le jour de l'accès anticipé réservé à la liste d'attente.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-7" aria-labelledby="h-7">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">07</span>jeudi 1er avril 2027</p>
+    <h2 id="h-7">Ceci n'est pas un poisson d'avril</h2>
+    <p class="email-l">Email associé : <a href="../emails/07-campagne-poisson-avril-code-cache.html">07-campagne-poisson-avril-code-cache.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">1er avril</span></div>
+  <div class="ph"><img src="../assets/emailing/email-printemps-bo.jpg" alt="Bo, l'ours en peluche miel, assis avec un chapeau de paille et un épi de blé dans la bouche, en mini-string pastel à fleurs." style="object-fit:cover;object-position:45% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">code</span><b>−15 %</b></div></div>
+  <div class="txt">
+    <p class="ttl">Ceci n'est pas un poisson d'avril</p>
+    <p class="sub">Bo a caché un code. Pour de vrai.</p>
+    
+    <p class="omni">Prix le plus bas des 30 derniers jours affiché à côté de chaque prix réduit</p>
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Ceci n'est pas un poisson d'avril. Enfin, un peu. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Chasse au code</span></div>
+  <div class="ph"><img src="../assets/emailing/email-printemps-bo.jpg" alt="Bo, l'ours en peluche, en chapeau de paille, un épi de blé dans la bouche, l'air de ne rien savoir." style="object-fit:cover;object-position:45% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Où Bo a-t-il caché le code ?</p></div>
+  <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Indice : il adore les pages où l'on parle de lui.</p><div class="opts"><span>Dans le panier</span><span class="ok">Sur la page de Bo ✓</span><span>Sous le canapé</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Partir à la chasse</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-7">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-7">Ceci n'est pas un poisson d'avril. Enfin, un peu.
+Bo a planqué un code −15 % quelque part sur le site. Pour de vrai.
+Indice : il adore les pages où l'on parle de lui.
+Conditions et durée de validité affichées avec le code. À côté de chaque prix réduit, tu verras le prix le plus bas des 30 derniers jours.
+Rappel des prix : string 5 €, mini-string 3 €, Duo 7 €, lot de 5 20 €. Livraison 3,90 €, offerte dès 30 €.
+Pars à la chasse au code via le lien en bio.
+Tague tes potes : trouve-le avant eux, ou donne-leur l'indice, on ne juge pas.
+#BoPorte #UNIS #PoissonDAvril #ChasseAuCode #CadeauDrole</pre>
+      <dl>
+        <dt>Segment</dt><dd>S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire</dd>
+        <dt>Heure conseillée</dt><dd>12 h · milieu de journée, quand les blagues du 1er avril circulent</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-04-code-cache&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-04-code-cache&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, assis avec un chapeau de paille et un épi de blé dans la bouche, en mini-string pastel à fleurs.</dd>
+        <dt>Alt story</dt><dd>Bo, l'ours en peluche, en chapeau de paille, un épi de blé dans la bouche, l'air de ne rien savoir.</dd>
+        <dt>Story, déroulé</dt><dd>Quiz, bonne réponse : la page de Bo (même indice que l'email). Écran 2 : « Trouve-le avant tes potes. » + sticker lien vers l'accueil.</dd>
+      </dl>
+      <p class="note">Le code lui-même n'est jamais écrit dans la publication. Conditions, durée et prix le plus bas des 30 jours s'affichent sur le site.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-8" aria-labelledby="h-8">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">08</span>mercredi 12 mai 2027</p>
+    <h2 id="h-8">Pride arrive. Bo a déjà sa tenue.</h2>
+    <p class="email-l">Email associé : <a href="../emails/08-campagne-pride-precommande.html">08-campagne-pride-precommande.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Précommande Pride</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-pride-drapeau-trans-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le ventre en mini-string aux couleurs du drapeau trans, à côté du string assorti posé à plat." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Tous les corps. Même le tien.</p>
+    <p class="sub">Envoi à partir du 1er juin</p>
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Pride arrive. Bo a déjà sa tenue (il a essayé les trois, évidemment). <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Précommande Pride</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-pride-fier-en-noir-plat-1200.webp" alt="String bleu nuit à ceinture rayée arc-en-ciel, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Arc-en-ciel, Drapeau trans, Fier·e en noir</p></div>
+  <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Cette année, tu défiles…</p><div class="opts two"><span>Assorti·e avec Bo</span><span>Depuis mon canapé</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Précommander</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-8">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-8">Pride arrive. Bo a déjà sa tenue (il a essayé les trois, évidemment).
+Chez nous, un string n'a pas de genre : une coupe, Plat ou Poche, et une taille, du XS au 4XL.
+La précommande du drop Pride est ouverte : tu réserves aujourd'hui, ton colis part à partir du 1er juin.
+Arc-en-ciel, Drapeau trans, Fier·e en noir :
+String Pride : 5 €
+Duo Pride avec le mini-string de Bo : 7 €
+Lot de 5 : 20 €
+On aimerait reverser une partie des ventes Pride à une association. Partenariat en cours de discussion : rien n'est signé, aucun don n'est encore promis. On te dira tout, preuve à l'appui.
+Précommande via le lien en bio.
+Tague ta bande pour défiler assorti·e·s.
+#BoPorte #UNIS #Pride #StringUnisexe #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S5 · Pour soi, confort et valeurs</dd>
+        <dt>Heure conseillée</dt><dd>18 h 30 · fin de journée</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/pride/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-05-pride-precommande&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/pride/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-05-pride-precommande&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, allongé sur le ventre en mini-string aux couleurs du drapeau trans, à côté du string assorti posé à plat.</dd>
+        <dt>Alt story</dt><dd>String bleu nuit à ceinture rayée arc-en-ciel, posé à plat sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Sondage. Écran 2 : « Dans les deux cas, tu as droit à un string qui ne te genre pas. 5 €. » + sticker lien vers la précommande.</dd>
+      </dl>
+      <p class="note">Don : « partenariat en cours de discussion », jamais présenté comme acquis. Aucun logo ni visuel officiel d'événement.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-9" aria-labelledby="h-9">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">09</span>mardi 1er juin 2027</p>
+    <h2 id="h-9">Le drop Pride est là</h2>
+    <p class="email-l">Email associé : <a href="../emails/09-campagne-drop-pride-ete.html">09-campagne-drop-pride-ete.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Pride · aujourd'hui</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-pride-arc-en-ciel-1200.webp" alt="Bo, l'ours en peluche miel, allongé sur le ventre, pattes en l'air, en mini-string arc-en-ciel." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">Duo</span><b>7 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Fier·e en Duo. Pour 7 €.</p>
+    <p class="sub">Série limitée, jamais rééditée</p>
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Bo a défilé dans le salon toute la nuit. Il est prêt. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Et le 15 juin…</span></div>
+  <div class="ph"><img src="../assets/emailing/email-ete-bo-hibiscus.jpg" alt="Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus à l'oreille, à côté d'un string et d'un mini-string à hibiscus." style="object-fit:cover;object-position:50% 20%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Bo prépare sa valise</p></div>
+  <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Drop Été</p><p class="cd">mardi 15 juin 2027 (heure à confirmer)</p></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Prendre le Duo Pride</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-9">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-9">Bo a défilé dans le salon toute la nuit. Il est prêt.
+Le drop Pride est ouvert : le string à 5 €, et le Duo assorti à 7 € pour que Bo défile avec toi.
+Arc-en-ciel, Drapeau trans ou Fier·e en noir. Série limitée, jamais rééditée.
+Lot de 5 pour la bande : 20 €.
+Projet de don à une association : partenariat en cours de discussion, rien n'est encore acquis.
+Et le mardi 15 juin, drop Été : Hibiscus, Vagues, Orange sanguine et Citron. Bo prépare sa valise.
+Prends ton Duo Pride via le lien en bio.
+Une bande à habiller pour la marche ? Tague-la.
+#BoPorte #UNIS #Pride #DuoAssorti #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S5 · Pour soi + S3 · Organisateur·rice de groupe</dd>
+        <dt>Heure conseillée</dt><dd>9 h · ouverture du drop</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/pride/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-06-drop-pride&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/pride/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-06-drop-pride&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, allongé sur le ventre, pattes en l'air, en mini-string arc-en-ciel.</dd>
+        <dt>Alt story</dt><dd>Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus à l'oreille, à côté d'un string et d'un mini-string à hibiscus.</dd>
+        <dt>Story, déroulé</dt><dd>Compte à rebours jusqu'au drop Été du mardi 15 juin. Écran précédent : visuel du post Pride + sticker lien « Prendre le Duo Pride ».</dd>
+      </dl>
+      
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-10" aria-labelledby="h-10">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">10</span>jeudi 1er juillet 2027</p>
+    <h2 id="h-10">Soldes : le string Été à 4 €</h2>
+    <p class="email-l">Email associé : <a href="../emails/10-campagne-soldes-ete-bande.html">10-campagne-soldes-ete-bande.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soldes d'été · −20 % sur le drop Été</span></div>
+  <div class="ph"><img src="../assets/emailing/email-ete-hibiscus-fond-rose.jpg" alt="String à grandes fleurs d'hibiscus roses et corail, posé à plat sur un fond rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><s>5 €</s><b>4 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Toute la bande en UNIS. 4 € la tête.</p>
+    
+    
+    <p class="omni">Prix le plus bas des 30 derniers jours : 5 € le string Été, 7 € le Duo Été</p>
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Festival, coloc, enterrement de vie de célibataire : ta bande a besoin d'une tenue d'équipe. Elle tient dans une poche. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soldes d'été</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-ete-vagues-plat-1200.webp" alt="String bleu à motif de vagues blanches, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Une tenue d'équipe à 4 € la tête</p></div>
+  <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Cet été, ta bande part…</p><div class="opts two"><span>En festival</span><span>En week-end coloc</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Équiper la bande</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-10">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-10">Festival, coloc, enterrement de vie de célibataire : ta bande a besoin d'une tenue d'équipe. Elle tient dans une poche.
+Les soldes commencent : −20 % sur le drop Été.
+String Été : 4 € au lieu de 5 €
+Duo Été : 5,60 € au lieu de 7 €
+5 strings Été pour la bande : 20 €, soit 4 € la tête
+Prix le plus bas des 30 derniers jours avant les soldes : 5 € le string Été, 7 € le Duo Été.
+Du XS au 4XL : personne ne reste sur le banc. Livraison 3,90 €, offerte dès 30 €.
+Équipe ta bande via le lien en bio.
+Tague le groupe du week-end : chacun·e choisit sa taille.
+#BoPorte #UNIS #SoldesEte #WeekEndEntrePotes #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S3 · Organisateur·rice de groupe</dd>
+        <dt>Heure conseillée</dt><dd>12 h 30 · pause de midi, premier jour des soldes</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/ete/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-07-soldes-ete&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/ete/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-07-soldes-ete&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>String à grandes fleurs d'hibiscus roses et corail, posé à plat sur un fond rose.</dd>
+        <dt>Alt story</dt><dd>String bleu à motif de vagues blanches, posé à plat sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Sondage. Écran 2 : « Dans les deux cas : string Été à 4 € au lieu de 5 € (prix le plus bas des 30 derniers jours : 5 €). » + sticker lien.</dd>
+      </dl>
+      <p class="note">Réduction : prix le plus bas des 30 jours affiché sur le visuel et dans la légende.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-11" aria-labelledby="h-11">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">11</span>mercredi 18 août 2027</p>
+    <h2 id="h-11">Choisis le prochain motif de Bo</h2>
+    <p class="email-l">Email associé : <a href="../emails/11-campagne-vote-drop-saint-valentin.html">11-campagne-vote-drop-saint-valentin.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Vote · Saint-Valentin 2028</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-ete-hibiscus-1200.webp" alt="Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus, regarde un string et un mini-string posés devant lui." style="object-fit:cover;object-position:50% 22%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill pill-s"><b>1 clic</b></div></div>
+  <div class="txt">
+    <p class="ttl">Bo hésite. Tu tranches.</p>
+    <p class="sub">Un seul motif sera fabriqué</p>
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Bo n'arrive pas à choisir son motif. Il a tenté le pile ou face : la pièce a refusé de trancher. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Saint-Valentin 2028</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-ete-hibiscus-1200.webp" alt="Bo, l'ours en peluche, debout en lunettes de soleil en cœur, fleur d'hibiscus et mini-string à hibiscus." style="object-fit:cover;object-position:50% 85%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Aide Bo à choisir</p></div>
+  <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Le prochain motif de Bo, plutôt…</p><div class="opts two"><span>Tendre</span><span>Coquin</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Je vote</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-11">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-11">Bo n'arrive pas à choisir son motif. Il a tenté le pile ou face : la pièce a refusé de trancher.
+Le drop Saint-Valentin 2028 se prépare déjà, et c'est toi qui votes. Le motif gagnant sera fabriqué en Europe, en série limitée, jamais réédité.
+Le vote se fait en un clic dans le Club de Bo. Un tirage au sort est organisé parmi les votant·e·s : participation gratuite, sans obligation d'achat, réservée aux 18 ans et plus. Lot et règlement complet publiés sur le site.
+Vote via le lien en bio.
+Tague ta bande : plus on est, plus Bo est content.
+#BoPorte #UNIS #ClubDeBo #SaintValentin #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S4 · Collectionneur·se de Bo + toute la communauté</dd>
+        <dt>Heure conseillée</dt><dd>19 h · soirée, format communauté</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/club/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-08-vote-saint-valentin&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/club/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-08-vote-saint-valentin&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche, lunettes de soleil en cœur et fleur d'hibiscus, regarde un string et un mini-string posés devant lui.</dd>
+        <dt>Alt story</dt><dd>Bo, l'ours en peluche, debout en lunettes de soleil en cœur, fleur d'hibiscus et mini-string à hibiscus.</dd>
+        <dt>Story, déroulé</dt><dd>Sondage d'humeur. Écran 2 : « Le vrai vote, c'est dans le Club de Bo. Un clic. » + sticker lien. Mention : tirage au sort réservé aux 18 ans et plus, règlement sur le site.</dd>
+      </dl>
+      <p class="note">Le sondage de la story est un sondage d'humeur : le vrai vote (et le tirage au sort, 18+, règlement publié) se fait dans le Club de Bo. Les motifs candidats ne sont pas nommés dans l'email : ils ne le sont pas ici non plus.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-12" aria-labelledby="h-12">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">12</span>mercredi 8 septembre 2027</p>
+    <h2 id="h-12">Rentrée : 5 strings pour 17 €</h2>
+    <p class="email-l">Email associé : <a href="../emails/12-campagne-rentree-essentiels.html">12-campagne-rentree-essentiels.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Rentrée · les Essentiels</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-essentiels-lot-de-5-1200.webp" alt="Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">lot de 5</span><s>20 €</s><b>17 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Doux comme Bo. Prix d'un café.</p>
+    <p class="sub">6 couleurs, Plat ou Poche, XS à 4XL</p>
+    
+    <p class="omni">Prix le plus bas des 30 derniers jours : 20 € le lot de 5</p>
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> La rentrée, c'est le moment de faire le tri dans le tiroir. Oui, celui-là. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Les Essentiels</span></div>
+  <div class="ph"><img src="../assets/emailing/email-essentiels-6-couleurs.jpg" alt="Six strings Essentiels empilés à plat, du bleu encre au blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">On trie le tiroir ?</p></div>
+  <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Les Essentiels, c'est combien de couleurs ?</p><div class="opts"><span>4</span><span class="ok">6 ✓</span><span>12</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Prendre mon lot de 5</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-12">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-12">La rentrée, c'est le moment de faire le tri dans le tiroir. Oui, celui-là.
+Les Essentiels : 6 couleurs (Encre, Lilas, Corail, Sable, Cacao, Blanc), coupes Plat ou Poche, du XS au 4XL.
+95 % coton et 5 % élasthanne, certifié OEKO-TEX, fabriqué en Europe.
+Lot de 5 Essentiels : 17 € au lieu de 20 € (prix le plus bas des 30 derniers jours : 20 €).
+String Essentiel à l'unité : 5 €.
+Prends ton lot de 5 via le lien en bio.
+Ta ou ton coloc doit renouveler son tiroir ? Tague-la, tague-le.
+#BoPorte #UNIS #StringUnisexe #Essentiels #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S5 · Pour soi + S3 · Organisateur·rice de groupe</dd>
+        <dt>Heure conseillée</dt><dd>12 h 30 · pause de midi en semaine de rentrée</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/essentiels/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-09-rentree-essentiels&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/essentiels/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-09-rentree-essentiels&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Six strings unis empilés à plat : bleu encre, lilas, corail, sable, cacao et blanc.</dd>
+        <dt>Alt story</dt><dd>Six strings Essentiels empilés à plat, du bleu encre au blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Quiz, bonne réponse : 6 (Encre, Lilas, Corail, Sable, Cacao, Blanc). Écran 2 : « Lot de 5 : 17 € au lieu de 20 € (prix le plus bas des 30 derniers jours : 20 €). » + sticker lien.</dd>
+      </dl>
+      
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-13" aria-labelledby="h-13">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">13</span>vendredi 1er octobre 2027</p>
+    <h2 id="h-13">Fais-toi peur (pour 5 €)</h2>
+    <p class="email-l">Email associé : <a href="../emails/13-campagne-drop-halloween-octobre-rose.html">13-campagne-drop-halloween-octobre-rose.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Carrousel · 5 vignettes</span></div>
+        <div class="car multi" tabindex="0" aria-label="Carrousel de 5 vignettes, défile horizontalement">
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween · aujourd'hui</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-halloween-1200.webp" alt="Bo, l'ours en peluche miel, allongé avec un chapeau de sorcière, en mini-string noir à citrouilles orange." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Fais-toi peur (pour 5 €)</p>
+    <p class="sub">Bo, lui, n'a peur de rien</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">1/5</span>
+</div>
+<div class="vis feed" data-slide="2">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-fantomes-plat-1200.webp" alt="String violet foncé à petits fantômes blancs, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Fantômes</p>
+    <p class="sub">Plat ou Poche, XS à 4XL</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">2/5</span>
+</div>
+<div class="vis feed" data-slide="3">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-citrouille-plat-1200.webp" alt="String orange citrouille uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Citrouille</p>
+    <p class="sub">En Duo avec le mini-string de Bo : 7 €</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">3/5</span>
+</div>
+<div class="vis feed" data-slide="4">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Série limitée</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-phosphorescent-plat-1200.webp" alt="String vert fluo uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Phosphorescent</p>
+    <p class="sub">Il brille quand la lumière s'éteint</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">4/5</span>
+</div>
+<div class="vis feed" data-slide="5">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Capsule Octobre Rose</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-octobre-rose-ruban-plat-1200.webp" alt="String rose pâle imprimé de petits rubans roses, ceinture framboise, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Projet : 1 € par article reversé</p>
+    <p class="sub">Partenariat en cours de discussion : aucun don encore effectué</p>
+    
+    
+  </div>
+  <span class="count" aria-hidden="true">5/5</span>
+</div>
+        </div>
+        <div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / 5</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>
+        <p class="frame-cap"><b>@unis</b> Fais-toi peur. Bo, lui, n'a peur de rien (sauf de l'aspirateur). <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Halloween</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-phosphorescent-plat-1200.webp" alt="String vert fluo uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Quiz express</p></div>
+  <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Le string Phosphorescent brille…</p><div class="opts"><span>Au soleil</span><span class="ok">Dans le noir ✓</span><span>Quand tu mens</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Voir le drop Halloween</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-13">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-13">Fais-toi peur. Bo, lui, n'a peur de rien (sauf de l'aspirateur).
+Le drop Halloween est ouvert : Fantômes, Citrouille, et un modèle Phosphorescent en série limitée, pour briller quand la lumière s'éteint.
+String Halloween : 5 €
+Duo assorti avec le mini-string de Bo : 7 €
+Bo, avec mini-string, boîte et certificat numéroté : 49 €
+Aussi aujourd'hui : la capsule Octobre Rose. Notre projet : reverser 1 € par article à Think Pink. Partenariat en cours de discussion : aucun don n'est encore effectué. Dès que l'accord est signé, on publie le montant et la preuve.
+Découvre le drop via le lien en bio.
+Tague la personne qui a peur du noir. Le Phosphorescent l'aidera.
+#BoPorte #UNIS #Halloween #OctobreRose #StringUnisexe</pre>
+      <dl>
+        <dt>Segment</dt><dd>S4 · Collectionneur·se de Bo + S5 · Pour soi (capsule Octobre Rose)</dd>
+        <dt>Heure conseillée</dt><dd>9 h · ouverture du drop et de la capsule</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/halloween/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-10-drop-halloween&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/halloween/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-10-drop-halloween&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd><ol class="alts"><li>Bo, l'ours en peluche miel, allongé avec un chapeau de sorcière, en mini-string noir à citrouilles orange.</li><li>String violet foncé à petits fantômes blancs, posé à plat sur fond blanc.</li><li>String orange citrouille uni, posé à plat sur fond blanc.</li><li>String vert fluo uni, posé à plat sur fond blanc.</li><li>String rose pâle imprimé de petits rubans roses, ceinture framboise, posé à plat sur fond blanc.</li></ol></dd>
+        <dt>Alt story</dt><dd>String vert fluo uni, posé à plat sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Quiz, bonne réponse : dans le noir. Écran 2 : visuel de Bo en chapeau de sorcière, « Série limitée, jamais rééditée. 5 €. » + sticker lien.</dd>
+      </dl>
+      <p class="note">Octobre Rose : « partenariat en cours de discussion », aucun don présenté comme effectué. Le nom de l'association reste dans la légende, pas sur le visuel.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-14" aria-labelledby="h-14">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">14</span>mercredi 27 octobre 2027</p>
+    <h2 id="h-14">Ta tenue d'Halloween est prête ?</h2>
+    <p class="email-l">Email associé : <a href="../emails/14-campagne-halloween-tenue-bande.html">14-campagne-halloween-tenue-bande.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Halloween · dimanche 31 octobre</span></div>
+  <div class="ph"><img src="../assets/emailing/email-halloween-bo-dos.jpg" alt="Bo, l'ours en peluche miel, vu de dos avec un chapeau de sorcière, en mini-string noir à citrouilles." style="object-fit:contain;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><span class="pill-l">lot de 5</span><b>20 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Tous en citrouille. 4 € la tête.</p>
+    
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Soirée déguisée ce week-end ? Ton costume est prêt. Ce qu'il y a dessous, beaucoup moins. <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Soirée déguisée ?</span></div>
+  <div class="ph"><img src="../assets/images/string-unisexe-halloween-citrouille-plat-1200.webp" alt="String orange citrouille uni, posé à plat sur fond blanc." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Habille toute la bande</p></div>
+  <div class="stk" data-type="compte à rebours"><span class="stk-t">Sticker compte à rebours</span><p class="sq">Soirée d'Halloween</p><p class="cd">dimanche 31 octobre 2027</p></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Habiller la bande</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-14">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-14">Soirée déguisée ce week-end ? Ton costume est prêt. Ce qu'il y a dessous, beaucoup moins.
+Habille toute la bande du même délire : lot de 5 à 20 €, soit 4 € la tête.
+String Halloween à l'unité : 5 €
+Duo assorti, pour emmener Bo : 7 €
+Du XS au 4XL, personne ne reste sur le banc. Livraison 3,90 €, offerte dès 30 €.
+Vérifie le délai de livraison affiché au panier avant ta soirée.
+Habille la bande via le lien en bio.
+Tague le groupe de la soirée : chacun·e choisit sa taille.
+#BoPorte #UNIS #Halloween #SoireeDeguisee #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S3 · Organisateur·rice de groupe + S1 · Cadeau qui fait rire</dd>
+        <dt>Heure conseillée</dt><dd>18 h 30 · fin de journée, on organise la soirée du week-end</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/halloween/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-10-halloween-bande&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/halloween/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-10-halloween-bande&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, vu de dos avec un chapeau de sorcière, en mini-string noir à citrouilles.</dd>
+        <dt>Alt story</dt><dd>String orange citrouille uni, posé à plat sur fond blanc.</dd>
+        <dt>Story, déroulé</dt><dd>Compte à rebours jusqu'au dimanche 31 octobre. Texte : « Lot de 5 : 20 €. Vérifie le délai de livraison affiché au panier. » + sticker lien.</dd>
+      </dl>
+      <p class="note">Le compte à rebours vise la soirée du dimanche 31 octobre. Aucune promesse de livraison : la légende renvoie au délai affiché au panier, comme l'email.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-15" aria-labelledby="h-15">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">15</span>lundi 1er novembre 2027</p>
+    <h2 id="h-15">Bo édition Noël est arrivé</h2>
+    <p class="email-l">Email associé : <a href="../emails/15-campagne-drop-noel.html">15-campagne-drop-noel.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Noël · aujourd'hui</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-1200.webp" alt="Bo, l'ours en peluche miel, assis près d'un sapin illuminé, bonnet rouge et mini-string rouge à tête de renne." style="object-fit:cover;object-position:50% 30%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Que le Secret Santa commence</p>
+    <p class="sub">Nouveau motif, jamais réédité</p>
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Bo a enfilé le motif de Noël avant tout le monde. Il appelle ça « contrôle qualité ». <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Drop Noël</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Le prix juste</p></div>
+  <div class="stk" data-type="quiz"><span class="stk-t">Sticker quiz</span><p class="sq">Le Duo (ton string + le mini de Bo), il coûte…</p><div class="opts"><span class="ok">7 € ✓</span><span>15 €</span><span>25 €</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Voir le drop Noël</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-15">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-15">Bo a enfilé le motif de Noël avant tout le monde. Il appelle ça « contrôle qualité ».
+Le drop Noël est ouvert. Nouveau motif, jamais réédité.
+String de Noël, Plat ou Poche : 5 €
+Duo assorti avec le mini-string de Bo : 7 €
+Bo édition Noël, avec mini-string, boîte et certificat numéroté : 49 €
+Coffret cadeau, Bo + le Duo de la saison : 55 €
+Livraison 3,90 €, offerte dès 30 €. Drôle devant ta boss, coquin entre potes.
+Vois le drop via le lien en bio.
+Partage-le avec ton groupe de Secret Santa.
+#BoPorte #UNIS #SecretSanta #CadeauDrole #DropNoel</pre>
+      <dl>
+        <dt>Segment</dt><dd>S1 · Cadeau qui fait rire + S4 · Collectionneur·se de Bo</dd>
+        <dt>Heure conseillée</dt><dd>9 h · ouverture du drop</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/noel/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-11-drop-noel&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/noel/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-11-drop-noel&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, assis près d'un sapin illuminé, bonnet rouge et mini-string rouge à tête de renne.</dd>
+        <dt>Alt story</dt><dd>Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël.</dd>
+        <dt>Story, déroulé</dt><dd>Quiz (format ST2 du doc 17), bonne réponse : 7 €. Écran 2 : « Et la livraison est offerte dès… » quiz 30 € / 50 € / 80 € (bonne réponse : 30 €). Écran 3 : sticker lien.</dd>
+      </dl>
+      <p class="note">Aucune date limite de livraison 2027 n'est fixée dans les docs : la publication n'en annonce pas.</p>
+    </section>
+  </div>
+</article>
+<article class="pub" id="pub-16" aria-labelledby="h-16">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">16</span>vendredi 26 novembre 2027</p>
+    <h2 id="h-16">Pas de −70 %. Juste 5 €.</h2>
+    <p class="email-l">Email associé : <a href="../emails/16-campagne-black-friday-raisonne.html">16-campagne-black-friday-raisonne.html</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Post · 1 visuel</span></div>
+        <div class="car" >
+          <div class="vis feed" data-slide="1">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Vendredi raisonné</span></div>
+  <div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-1200.webp" alt="Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël, l'air serein." style="object-fit:cover;object-position:50% 40%;background:#FFFFFF" loading="lazy" decoding="async"><div class="pill"><b>5 €</b></div></div>
+  <div class="txt">
+    <p class="ttl">Pas de −70 %. Juste 5 €.</p>
+    <p class="sub">Toute l'année. Sans faux rabais.</p>
+    
+    
+  </div>
+  
+</div>
+        </div>
+        
+        <p class="frame-cap"><b>@unis</b> Aujourd'hui, partout, des −70 % sur des prix gonflés la veille. Chez nous, rien ne gonfle. Même pas l'ego de Bo (bon, un peu). <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h"><svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg><span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        <div class="vis story">
+  <div class="vis-top"><svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg><span class="kick">Vendredi raisonné</span></div>
+  <div class="ph"><img src="../assets/images/pochette-kraft-unis-1200.webp" alt="Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose." style="object-fit:cover;object-position:50% 50%;background:#FFFFFF" loading="lazy" decoding="async"></div>
+  <div class="txt"><p class="ttl">Le seul bon plan du jour</p></div>
+  <div class="stk" data-type="sondage"><span class="stk-t">Sticker sondage</span><p class="sq">Un −70 % sur un prix gonflé la veille, tu…</p><div class="opts two"><span>Fonces</span><span>Flaires l'arnaque</span></div></div>
+  <div class="lnk"><span class="stk-t">Sticker lien</span>Voir le drop Noël</div>
+</div>
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="cap-16">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="cap-16">Aujourd'hui, partout, des −70 % sur des prix gonflés la veille. Chez nous, rien ne gonfle. Même pas l'ego de Bo (bon, un peu).
+Le string UNIS est à 5 € toute l'année. Pas de compte à rebours, pas de stock « presque épuisé » inventé.
+Le seul bon plan du jour (et de tous les jours) : 6 strings = 30 € = livraison offerte.
+Lot de 5 : 20 €. Duo assorti : 7 €.
+On voudrait aussi reverser 1 € par article à une association. Partenariat en cours de discussion : rien n'est signé, aucun don n'est encore effectué.
+Vois le drop Noël via le lien en bio.
+Partage avec la personne qui a déjà 14 onglets de promos ouverts.
+#BoPorte #UNIS #PasDeBlackFriday #CadeauDrole #UnFilTousLesCorps</pre>
+      <dl>
+        <dt>Segment</dt><dd>S5 · Pour soi + S1 · Cadeau qui fait rire</dd>
+        <dt>Heure conseillée</dt><dd>12 h 30 · milieu de journée, au pic des promos du jour</dd>
+        <dt>Lien bio (post)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/noel/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-11-black-friday-raisonne&amp;utm_content=feed</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>https://unis-demo.onrender.com/fr/saisons/noel/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=2027-11-black-friday-raisonne&amp;utm_content=story</code></dd>
+        <dt>Texte alternatif</dt><dd>Bo, l'ours en peluche miel, debout sur fond blanc, grand nœud rouge et mini-string de Noël, l'air serein.</dd>
+        <dt>Alt story</dt><dd>Pochette kraft entrouverte sur une table en bois, un string glissé dans du papier de soie rose.</dd>
+        <dt>Story, déroulé</dt><dd>Sondage. Écran 2 : « Chez nous : 5 € toute l'année. 6 strings = 30 € = livraison offerte. » + sticker lien.</dd>
+      </dl>
+      <p class="note">Aucune réduction. « Black Friday » cité en texte seulement, jamais de logo ou visuel officiel. Visuels « Bo de dos » de Noël écartés (texte dans l'image).</p>
+    </section>
+  </div>
+</article>
+  </main>
+  <footer>
+    <p>Heures conseillées : point de départ à ajuster avec les statistiques du compte (aucune donnée d'audience à ce jour). Les publications « mode démo » tombent avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement. Instagram ne rend pas les liens cliquables dans les légendes : le lien UTM du jour va dans la bio et dans le sticker lien. Exports : ouvrir cette page avec <code>?export</code> (voir insta/README.md). Versions NL, EN (« thong ») et DE à faire relire par une personne native.</p>
+    <p>Un fil. Tous les corps. Même les ours.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  if (/[?&]export\b/.test(location.search)) document.body.classList.add("export");
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    return legacyCopy(text);
+  }
+  // Repli pour file:// et les navigateurs sans API presse-papiers
+  function legacyCopy(text) {
+    return new Promise(function (ok, ko) {
+      var t = document.createElement("textarea");
+      t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy") ? ok() : ko(); } catch (e) { ko(e); }
+      document.body.removeChild(t);
+    });
+  }
+  document.querySelectorAll("button.copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var pre = document.getElementById(b.dataset.target);
+      var status = b.parentNode.querySelector(".copied");
+      copyText(pre.textContent).then(function () { status.textContent = "Légende copiée."; }, function () { status.textContent = "Copie impossible : sélectionne le texte à la main."; });
+      setTimeout(function () { status.textContent = ""; }, 3000);
+    });
+  });
+  document.querySelectorAll(".frame").forEach(function (f) {
+    var car = f.querySelector(".car.multi"); if (!car) return;
+    var pos = f.querySelector(".car-pos"), n = car.children.length;
+    var cur = 0, timer;
+    function idx() { return Math.round(car.scrollLeft / car.clientWidth); }
+    function go(d) { cur = Math.max(0, Math.min(n - 1, cur + d)); pos.textContent = (cur + 1) + " / " + n; car.scrollTo({ left: car.children[cur].offsetLeft - car.children[0].offsetLeft }); }
+    car.addEventListener("scroll", function () { clearTimeout(timer); timer = setTimeout(function () { cur = idx(); }, 150); }, { passive: true });
+    f.querySelector(".prev").addEventListener("click", function () { go(-1); });
+    f.querySelector(".next").addEventListener("click", function () { go(1); });
+    car.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { e.preventDefault(); go(1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); } });
+    car.addEventListener("scrollend", function () { cur = idx(); pos.textContent = (cur + 1) + " / " + n; });
+  });
+})();
+</script>
+</body>
+</html>

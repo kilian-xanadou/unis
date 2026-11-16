@@ -222,18 +222,18 @@ h1 { font-size:clamp(32px, 6vw, 54px); }
 .omni { margin:1.6cqw 0 0; font-size:2.6cqw; line-height:1.3; }
 .count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border-radius:999px; padding:.6cqw 2cqw; }
 /* Story : même grammaire, plus haute */
-.story .ph { top:16cqw; height:100cqw; }
-.story .txt { top:121cqw; right:5cqw; }
+.story .ph { top:16cqw; height:84cqw; }
+.story .txt { top:104cqw; right:5cqw; }
 .story .ttl { font-size:9cqw; }
-.stk { position:absolute; left:12cqw; right:12cqw; top:140cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:4cqw; padding:2.6cqw 3.4cqw; text-align:center; }
+.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:4cqw; padding:2.6cqw 3.4cqw; text-align:center; }
 .stk-t { display:block; font-size:2.5cqw; font-weight:700; color:#D42A6E; text-transform:uppercase; letter-spacing:.06em; margin-bottom:1cqw; }
 .sq { margin:0 0 1.6cqw; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:4.6cqw; line-height:1.05; }
-.opts { display:flex; flex-direction:column; gap:1.2cqw; }
+.opts { display:flex; flex-direction:column; gap:1cqw; }
 .opts.two { flex-direction:row; }
-.opts span { flex:1; border-radius:999px; background:#FFE3EE; padding:1.2cqw 2cqw; font-size:3.2cqw; font-weight:700; line-height:1.2; }
+.opts span { flex:1; border-radius:999px; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
 .opts span.ok { background:#3E031B; color:#FFFFFF; }
 .cd { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:5.4cqw; color:#D42A6E; line-height:1.05; }
-.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5cqw; background:#D42A6E; color:#FFFFFF; border-radius:999px; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
+.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border-radius:999px; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
 .lnk .stk-t { color:#FFFFFF; margin-bottom:.3cqw; font-size:2.2cqw; }
 
 /* ── Colonne d'infos ── */
@@ -285,7 +285,11 @@ ${PUBLICATIONS.map(article).join("\n")}
 (function () {
   if (/[?&]export\\b/.test(location.search)) document.body.classList.add("export");
   function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    return legacyCopy(text);
+  }
+  // Repli pour file:// et les navigateurs sans API presse-papiers
+  function legacyCopy(text) {
     return new Promise(function (ok, ko) {
       var t = document.createElement("textarea");
       t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
@@ -305,12 +309,14 @@ ${PUBLICATIONS.map(article).join("\n")}
   document.querySelectorAll(".frame").forEach(function (f) {
     var car = f.querySelector(".car.multi"); if (!car) return;
     var pos = f.querySelector(".car-pos"), n = car.children.length;
+    var cur = 0, timer;
     function idx() { return Math.round(car.scrollLeft / car.clientWidth); }
-    function go(d) { var i = Math.max(0, Math.min(n - 1, idx() + d)); car.scrollTo({ left: i * car.clientWidth }); }
+    function go(d) { cur = Math.max(0, Math.min(n - 1, cur + d)); pos.textContent = (cur + 1) + " / " + n; car.scrollTo({ left: car.children[cur].offsetLeft - car.children[0].offsetLeft }); }
+    car.addEventListener("scroll", function () { clearTimeout(timer); timer = setTimeout(function () { cur = idx(); }, 150); }, { passive: true });
     f.querySelector(".prev").addEventListener("click", function () { go(-1); });
     f.querySelector(".next").addEventListener("click", function () { go(1); });
     car.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { e.preventDefault(); go(1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); } });
-    car.addEventListener("scroll", function () { pos.textContent = (idx() + 1) + " / " + n; }, { passive: true });
+    car.addEventListener("scrollend", function () { cur = idx(); pos.textContent = (cur + 1) + " / " + n; });
   });
 })();
 </script>

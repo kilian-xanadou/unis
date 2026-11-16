@@ -1,0 +1,329 @@
+// Génère insta/index.html à partir de insta/publications.mjs.
+// Usage (depuis le dossier unis/) : node insta/build.mjs
+import { writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+import { PUBLICATIONS, SITE } from "./publications.mjs";
+
+const here = dirname(fileURLToPath(import.meta.url));
+
+// ── Contrôles de contenu (échouent bruyamment) ──────────────────────
+const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+const INTERDITES = ["email-octobre-rose-bo.jpg", "bo-ours-unis-octobre-rose-", "email-halloween-bo-dos-a.jpg", "email-noel-bo-dos-a.jpg", "email-noel-bo-dos-b.jpg", "email-je-taime-mon-nounours.jpg"];
+const PRIX_OK = new Set(["3", "5", "7", "20", "49", "55", "3,90", "30", "4", "17", "3,50", "5,60", "14", "10", "1"]); // 1 € = projet de don par article
+const errors = [];
+
+function frDate(iso) {
+  const d = new Date(iso + "T12:00:00Z");
+  const j = d.getUTCDate();
+  return `${JOURS[d.getUTCDay()]} ${j === 1 ? "1er" : j} ${MOIS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+function allText(p) {
+  const parts = [p.caption, p.story.title, p.story.kicker, p.story.sticker.question, p.story.sticker.script, ...(p.story.sticker.options || [])];
+  for (const s of p.feed.slides) parts.push(s.title, s.kicker, s.sub || "", s.omnibus || "", ...(s.list || []), s.price.now, s.price.old || "");
+  return parts.join("\n");
+}
+
+for (const p of PUBLICATIONS) {
+  const t = allText(p);
+  const where = `#${p.n}`;
+  if (/pour (homme|femme)s?\b/i.test(t)) errors.push(`${where} : « pour homme/femme »`);
+  if (/\b(enfant|bébé|gamin|jouet)/i.test(t)) errors.push(`${where} : référence à l'enfance`);
+  if (/échange (de taille )?gratuit/i.test(t)) errors.push(`${where} : échange gratuit`);
+  if (/\bEVJF|EVG\b/.test(t)) errors.push(`${where} : terme genré (EVJF/EVG)`);
+  const prixTexte = [p.caption, ...p.feed.slides.map((s) => [s.title, s.sub || "", s.omnibus || "", s.price.now, s.price.old || ""].join(" ")), p.story.title].join("\n"); // les leurres des quiz sont exclus
+  for (const m of prixTexte.matchAll(/(\d+(?:,\d+)?)\s?€/g)) if (!PRIX_OK.has(m[1])) errors.push(`${where} : montant non prévu « ${m[0]} »`);
+  if (/(reversé|don)/i.test(t) && /(Think Pink|association)/.test(t) && !/en cours de discussion/.test(t)) errors.push(`${where} : don sans « en cours de discussion »`);
+  if (/(au lieu de|passe de \d)/.test(p.caption) && !/prix le plus bas des 30 derniers jours/i.test(p.caption)) errors.push(`${where} : réduction sans prix le plus bas des 30 jours`);
+  const tags = p.caption.match(/#\w+/g) || [];
+  if (tags.length < 5 || tags.length > 10) errors.push(`${where} : ${tags.length} hashtags`);
+  if (!tags.includes("#BoPorte") || !tags.includes("#UNIS")) errors.push(`${where} : #BoPorte ou #UNIS manquant`);
+  if (/\b(vous|votre|vos)\b/i.test(p.caption.replace(/#\w+/g, ""))) errors.push(`${where} : vouvoiement ?`);
+  const slides = p.feed.slides.length;
+  if (slides !== 1 && (slides < 3 || slides > 5)) errors.push(`${where} : carrousel de ${slides} vignettes`);
+  for (const img of [...p.feed.slides.map((s) => s.img), p.story.img]) if (INTERDITES.some((x) => img.includes(x))) errors.push(`${where} : image interdite ${img}`);
+  for (const a of [...p.feed.slides.map((s) => s.alt), p.story.alt]) if (!a || a.length < 30) errors.push(`${where} : texte alternatif trop court`);
+}
+if (PUBLICATIONS.length !== 16) errors.push(`${PUBLICATIONS.length} publications au lieu de 16`);
+const dates = PUBLICATIONS.map((p) => p.date);
+if (dates.join() !== [...dates].sort().join()) errors.push("publications hors de l'ordre du calendrier");
+if (errors.length) { console.error("Contrôles en échec :\n- " + errors.join("\n- ")); process.exit(1); }
+
+// ── Rendu ───────────────────────────────────────────────────────────
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const utm = (p, content) => `${SITE}${p.page}?utm_source=instagram&utm_medium=social&utm_campaign=${p.campaign}&utm_content=${content}`;
+
+const LOGO = `<svg class="logo" viewBox="0 0 262 84" role="img" aria-label="UNIS"><g fill="#3E031B" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="96" text-anchor="middle"><text x="40" y="80">U</text><text x="112" y="80">N</text><text x="224" y="80">S</text></g><rect x="157" y="14" width="22" height="66" rx="1.5" fill="#3E031B"/><path d="M137 40 Q 148 45 160 40 L 151 70 Q 148 74 145 70 Z" fill="#D42A6E"/><path d="M58 28 C 90 24, 116 30, 137 40 M160 40 C 182 28, 208 20, 228 22 M151 66 C 176 62, 204 52, 246 44" fill="none" stroke="#D42A6E" stroke-width="3.2" stroke-linecap="round"/></svg>`;
+// Icône de profil de la maquette : le string framboise sur carré bordeaux (icône UNIS, cf. design.md).
+const AVATAR = `<svg class="avatar" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E031B"/><path d="M6 15 C 13 13, 17 15, 20 17 C 23 15, 27 13, 34 15" fill="none" stroke="#D42A6E" stroke-width="2.6" stroke-linecap="round"/><path d="M15 16 Q 20 19 25 16 L 21 28 Q 20 30 19 28 Z" fill="#D42A6E"/></svg>`;
+
+function price(pr) {
+  return `<div class="pill${pr.small ? " pill-s" : ""}">${pr.label ? `<span class="pill-l">${esc(pr.label)}</span>` : ""}${pr.old ? `<s>${esc(pr.old)}</s>` : ""}<b>${esc(pr.now)}</b></div>`;
+}
+
+function photo(o, alt) {
+  const style = `object-fit:${o.fit || "cover"};object-position:${o.pos || "50% 50%"};background:${o.bg || "#FFFFFF"}`;
+  return `<img src="${esc(o.img)}" alt="${esc(alt)}" style="${style}" loading="lazy" decoding="async">`;
+}
+
+function feedSlide(s, i, total) {
+  return `<div class="vis feed" data-slide="${i + 1}">
+  <div class="vis-top">${LOGO}<span class="kick">${esc(s.kicker)}</span></div>
+  <div class="ph">${photo(s, s.alt)}${price(s.price)}</div>
+  <div class="txt">
+    <p class="ttl">${esc(s.title)}</p>
+    ${s.sub ? `<p class="sub">${esc(s.sub)}</p>` : ""}
+    ${s.list ? `<ol class="steps">${s.list.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
+    ${s.omnibus ? `<p class="omni">${esc(s.omnibus)}</p>` : ""}
+  </div>
+  ${total > 1 ? `<span class="count" aria-hidden="true">${i + 1}/${total}</span>` : ""}
+</div>`;
+}
+
+function sticker(st) {
+  const t = st.type;
+  let body = "";
+  if (t === "sondage") body = `<p class="sq">${esc(st.question)}</p><div class="opts two">${st.options.map((o) => `<span>${esc(o)}</span>`).join("")}</div>`;
+  else if (t === "quiz") body = `<p class="sq">${esc(st.question)}</p><div class="opts">${st.options.map((o, i) => `<span${st.answer === i ? ' class="ok"' : ""}>${esc(o)}${st.answer === i ? " ✓" : ""}</span>`).join("")}</div>`;
+  else if (t === "compte à rebours") body = `<p class="sq">${esc(st.question)}</p><p class="cd">${esc(st.end)}</p>`;
+  return `<div class="stk" data-type="${esc(t)}"><span class="stk-t">Sticker ${esc(t)}</span>${body}</div>`;
+}
+
+function storyVis(p) {
+  const s = p.story;
+  return `<div class="vis story">
+  <div class="vis-top">${LOGO}<span class="kick">${esc(s.kicker)}</span></div>
+  <div class="ph">${photo(s, s.alt)}</div>
+  <div class="txt"><p class="ttl">${esc(s.title)}</p></div>
+  ${sticker(s.sticker)}
+  <div class="lnk"><span class="stk-t">Sticker lien</span>${esc(s.link)}</div>
+</div>`;
+}
+
+function article(p) {
+  const total = p.feed.slides.length;
+  const feedUrl = utm(p, "feed");
+  const storyUrl = utm(p, "story");
+  const capId = `cap-${p.n}`;
+  return `<article class="pub" id="pub-${p.n}" aria-labelledby="h-${p.n}">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">${String(p.n).padStart(2, "0")}</span>${esc(frDate(p.date))}${p.demo ? ` <span class="badge" title="Avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement">mode démo</span>` : ""}</p>
+    <h2 id="h-${p.n}">${esc(p.emailTitle)}</h2>
+    <p class="email-l">Email associé : <a href="../emails/${esc(p.email)}">${esc(p.email)}</a></p>
+  </header>
+  <div class="pub-g">
+    <section class="mock" aria-label="Maquette du post feed">
+      <div class="frame">
+        <div class="frame-h">${AVATAR}<span class="handle">@unis</span><span class="fmt">${esc(p.feed.format)}</span></div>
+        <div class="car${total > 1 ? " multi" : ""}" ${total > 1 ? `tabindex="0" aria-label="Carrousel de ${total} vignettes, défile horizontalement"` : ""}>
+          ${p.feed.slides.map((s, i) => feedSlide(s, i, total)).join("\n")}
+        </div>
+        ${total > 1 ? `<div class="car-nav"><button type="button" class="prev" aria-label="Vignette précédente">←</button><span class="car-pos" aria-live="polite">1 / ${total}</span><button type="button" class="next" aria-label="Vignette suivante">→</button></div>` : ""}
+        <p class="frame-cap"><b>@unis</b> ${esc(p.caption.split("\n")[0])} <span class="more">… voir la légende complète</span></p>
+      </div>
+    </section>
+    <section class="mock mock-story" aria-label="Maquette de la story">
+      <div class="frame">
+        <div class="frame-h">${AVATAR}<span class="handle">@unis</span><span class="fmt">Story 9:16</span></div>
+        ${storyVis(p)}
+      </div>
+    </section>
+    <section class="info" aria-label="Légende et réglages">
+      <div class="cap-h"><h3>Légende</h3><button type="button" class="copy" data-target="${capId}">Copier la légende</button><span class="copied" role="status" aria-live="polite"></span></div>
+      <pre class="cap" id="${capId}">${esc(p.caption)}</pre>
+      <dl>
+        <dt>Segment</dt><dd>${esc(p.segment)}</dd>
+        <dt>Heure conseillée</dt><dd>${esc(p.heure)} · ${esc(p.heureWhy)}</dd>
+        <dt>Lien bio (post)</dt><dd><code>${esc(feedUrl)}</code></dd>
+        <dt>Sticker lien (story)</dt><dd><code>${esc(storyUrl)}</code></dd>
+        <dt>Texte alternatif</dt><dd>${total > 1 ? `<ol class="alts">${p.feed.slides.map((s) => `<li>${esc(s.alt)}</li>`).join("")}</ol>` : esc(p.feed.slides[0].alt)}</dd>
+        <dt>Alt story</dt><dd>${esc(p.story.alt)}</dd>
+        <dt>Story, déroulé</dt><dd>${esc(p.story.sticker.script)}</dd>
+      </dl>
+      ${p.note ? `<p class="note">${esc(p.note)}</p>` : ""}
+    </section>
+  </div>
+</article>`;
+}
+
+const toc = PUBLICATIONS.map((p) => `<li><a href="#pub-${p.n}"><span class="num">${String(p.n).padStart(2, "0")}</span>${esc(frDate(p.date))} · ${esc(p.emailTitle)}</a></li>`).join("\n");
+
+const html = `<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Publications Instagram UNIS</title>
+<meta name="description" content="Aperçu des 16 publications Instagram UNIS alignées sur la stratégie emailing : visuels 4:5 et 9:16, légendes, textes alternatifs et liens UTM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;display=swap">
+<style>
+:root { --ink:#3E031B; --accent:#D42A6E; --bg:#FFE3EE; --soft:#FAB8D0; --logo:#FDD2E3; --paper:#FFFFFF; --muted:#6B2A44; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
+:root[data-theme="dark"] { --ink:#FFE3EE; --accent:#FF9CC3; --bg:#1A0510; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; }
+h1, h2, h3 { font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; line-height:1.1; margin:0; }
+a { color:var(--accent); font-weight:700; }
+a:focus-visible, button:focus-visible, .car:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
+.wrap { max-width:1320px; margin:0 auto; padding:32px 16px 64px; }
+.top { display:flex; flex-wrap:wrap; gap:16px 32px; align-items:center; justify-content:space-between; }
+.top .logo { width:180px; height:auto; }
+h1 { font-size:clamp(32px, 6vw, 54px); }
+.lead { max-width:65ch; }
+.toc { columns:2 300px; padding:0; list-style:none; font-size:15px; margin:24px 0 0; }
+.toc li { break-inside:avoid; margin:0 0 6px; }
+.toc a { text-decoration:none; color:var(--ink); }
+.toc a:hover { text-decoration:underline; }
+.num { display:inline-block; min-width:32px; padding:2px 8px; border-radius:999px; background:var(--accent); color:#fff; text-align:center; margin-right:8px; font-weight:700; font-size:14px; }
+.pub { background:var(--paper); border-radius:28px; padding:24px; margin:32px 0; }
+.pub-h .kicker { margin:0; font-weight:700; color:var(--muted); font-size:15px; }
+.pub-h h2 { font-size:30px; margin:8px 0 4px; }
+.email-l { margin:0 0 16px; font-size:15px; }
+.badge { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:999px; border:1.5px solid var(--ink); font-size:13px; color:var(--ink); }
+.pub-g { display:grid; grid-template-columns:minmax(0, 380px) minmax(0, 250px) minmax(0, 1fr); gap:24px; align-items:start; }
+@media (max-width:1100px) { .pub-g { grid-template-columns:minmax(0, 380px) minmax(0, 250px); } .info { grid-column:1 / -1; } }
+@media (max-width:680px) { .pub-g { grid-template-columns:minmax(0, 1fr); } .mock-story { max-width:300px; } }
+.frame { background:#FFFFFF; color:#3E031B; border-radius:28px; padding:12px; box-shadow:0 0 0 1.5px var(--soft); }
+.frame-h { display:flex; align-items:center; gap:8px; padding:2px 4px 10px; font-size:15px; }
+.avatar { width:32px; height:32px; flex:none; }
+.handle { font-weight:700; }
+.fmt { margin-left:auto; font-size:13px; color:#6B2A44; }
+.frame-cap { margin:10px 4px 2px; font-size:14px; line-height:1.45; }
+.frame-cap .more { color:#6B2A44; }
+.car { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; border-radius:18px; scrollbar-width:thin; }
+.car > .vis { flex:0 0 100%; scroll-snap-align:start; }
+.car-nav { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:8px; }
+.car-nav button { min-width:44px; min-height:44px; border-radius:999px; border:1.5px solid #3E031B; background:transparent; color:#3E031B; font:inherit; font-weight:700; cursor:pointer; }
+.car-pos { font-size:14px; min-width:48px; text-align:center; }
+
+/* ── Visuels (unités cqw : se mettent à l'échelle de leur largeur) ── */
+.vis { container-type:inline-size; position:relative; width:100%; background:#FDD2E3; color:#3E031B; overflow:hidden; border-radius:18px; font-family:'Atkinson Hyperlegible', Arial, sans-serif; }
+.vis.feed { aspect-ratio:4 / 5; }
+.vis.story { aspect-ratio:9 / 16; }
+.vis-top { position:absolute; left:5cqw; right:5cqw; top:4.5cqw; display:flex; align-items:center; justify-content:space-between; gap:3cqw; }
+.vis .logo { width:24cqw; height:auto; flex:none; }
+.kick { background:#FFFFFF; border-radius:999px; padding:1.2cqw 3cqw; font-weight:700; font-size:3.1cqw; line-height:1.2; text-align:right; max-width:62cqw; }
+.ph { position:absolute; left:5cqw; right:5cqw; top:15cqw; height:68cqw; }
+.ph img { display:block; width:100%; height:100%; border-radius:4cqw; }
+.pill { position:absolute; right:-1.5cqw; bottom:-7cqw; width:23cqw; height:23cqw; border-radius:50%; background:#D42A6E; color:#FFFFFF; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(-8deg); box-shadow:0 0 0 1.2cqw #FDD2E3; font-family:'Bricolage Grotesque', Arial, sans-serif; font-stretch:75%; line-height:1; text-align:center; }
+.pill b { font-size:7.4cqw; font-weight:800; white-space:nowrap; }
+.pill-s b { font-size:5cqw; }
+.pill s { font-size:3.6cqw; font-weight:700; opacity:.92; margin-bottom:.6cqw; }
+.pill-l { font-family:'Atkinson Hyperlegible', Arial, sans-serif; font-size:3cqw; font-weight:700; margin-bottom:.6cqw; }
+.txt { position:absolute; left:5cqw; right:27cqw; top:86cqw; }
+.ttl { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:8.2cqw; line-height:.98; letter-spacing:-.01em; }
+.sub { margin:1.8cqw 0 0; font-size:3.4cqw; line-height:1.3; font-weight:700; }
+.steps { margin:1.6cqw 0 0; padding-left:4.2cqw; font-size:3.1cqw; line-height:1.3; font-weight:700; }
+.omni { margin:1.6cqw 0 0; font-size:2.6cqw; line-height:1.3; }
+.count { position:absolute; right:5cqw; bottom:4cqw; font-size:2.8cqw; font-weight:700; background:#FFFFFF; border-radius:999px; padding:.6cqw 2cqw; }
+/* Story : même grammaire, plus haute */
+.story .ph { top:16cqw; height:84cqw; }
+.story .txt { top:104cqw; right:5cqw; }
+.story .ttl { font-size:9cqw; }
+.stk { position:absolute; left:10cqw; right:10cqw; bottom:19cqw; background:#FFFFFF; border:.6cqw dashed #D42A6E; border-radius:4cqw; padding:2.6cqw 3.4cqw; text-align:center; }
+.stk-t { display:block; font-size:2.5cqw; font-weight:700; color:#D42A6E; text-transform:uppercase; letter-spacing:.06em; margin-bottom:1cqw; }
+.sq { margin:0 0 1.6cqw; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:4.6cqw; line-height:1.05; }
+.opts { display:flex; flex-direction:column; gap:1cqw; }
+.opts.two { flex-direction:row; }
+.opts span { flex:1; border-radius:999px; background:#FFE3EE; padding:1.1cqw 2cqw; font-size:3.1cqw; font-weight:700; line-height:1.2; }
+.opts span.ok { background:#3E031B; color:#FFFFFF; }
+.cd { margin:0; font-family:'Bricolage Grotesque', Arial, sans-serif; font-weight:800; font-stretch:75%; font-size:5.4cqw; color:#D42A6E; line-height:1.05; }
+.lnk { position:absolute; left:22cqw; right:22cqw; bottom:5.5cqw; background:#D42A6E; color:#FFFFFF; border-radius:999px; padding:1.6cqw 3cqw; text-align:center; font-weight:700; font-size:3.4cqw; line-height:1.2; }
+.lnk .stk-t { color:#FFFFFF; margin-bottom:.3cqw; font-size:2.2cqw; }
+
+/* ── Colonne d'infos ── */
+.cap-h { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+.cap-h h3 { font-size:24px; }
+.copy { min-height:52px; padding:0 24px; border-radius:999px; border:0; background:#D42A6E; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; }
+.copied { font-size:14px; font-weight:700; color:var(--muted); }
+.cap { white-space:pre-wrap; font:16px/1.55 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); border-radius:10px; padding:14px 16px; margin:12px 0 16px; max-width:65ch; }
+dl { display:grid; grid-template-columns:max-content minmax(0, 1fr); gap:6px 14px; margin:0; font-size:15px; }
+dt { font-weight:700; } dd { margin:0; }
+@media (max-width:520px) { dl { grid-template-columns:minmax(0, 1fr); } dd { margin-bottom:6px; } }
+code { font-size:13px; word-break:break-all; }
+.alts { margin:0; padding-left:20px; }
+.note { background:var(--bg); border-left:4px solid var(--accent); padding:8px 12px; border-radius:10px; font-size:14px; margin:14px 0 0; }
+footer { margin-top:48px; font-size:14px; color:var(--muted); max-width:80ch; }
+
+/* ── Mode export (?export) : chaque visuel à 1080 px de large, sans maquette ni zone sticker ── */
+body.export .wrap > :not(main) , body.export .pub-h, body.export .info, body.export .frame-h, body.export .frame-cap, body.export .car-nav, body.export .count { display:none; }
+body.export .wrap { max-width:none; padding:0; }
+body.export .pub { background:none; padding:0; margin:0; }
+body.export .pub-g { display:block; }
+body.export .mock, body.export .mock-story { max-width:none; }
+body.export .frame { background:none; box-shadow:none; padding:0; border-radius:0; }
+body.export .car { display:block; overflow:visible; border-radius:0; }
+body.export .vis { width:1080px; border-radius:0; margin:0 0 40px; }
+body.export .stk, body.export .lnk { visibility:hidden; }
+@media (prefers-reduced-motion: no-preference) { .car { scroll-behavior:smooth; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Les publications Instagram UNIS</h1>
+      <p class="lead">16 publications, une par envoi de la stratégie emailing (docs/03), dans l'ordre du calendrier. Chacune : un post 4:5 (ou un carrousel) et une story 9:16 avec son sticker, la légende prête à copier, le texte alternatif, l'heure conseillée et les liens UTM. Maquettes UNIS, rien n'est publié.</p>
+    </div>
+    ${LOGO}
+  </header>
+  <nav aria-label="Calendrier des publications"><ol class="toc">${toc}</ol></nav>
+  <main>
+${PUBLICATIONS.map(article).join("\n")}
+  </main>
+  <footer>
+    <p>Heures conseillées : point de départ à ajuster avec les statistiques du compte (aucune donnée d'audience à ce jour). Les publications « mode démo » tombent avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement. Instagram ne rend pas les liens cliquables dans les légendes : le lien UTM du jour va dans la bio et dans le sticker lien. Exports : ouvrir cette page avec <code>?export</code> (voir insta/README.md). Versions NL, EN (« thong ») et DE à faire relire par une personne native.</p>
+    <p>Un fil. Tous les corps. Même les ours.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  if (/[?&]export\\b/.test(location.search)) document.body.classList.add("export");
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    return legacyCopy(text);
+  }
+  // Repli pour file:// et les navigateurs sans API presse-papiers
+  function legacyCopy(text) {
+    return new Promise(function (ok, ko) {
+      var t = document.createElement("textarea");
+      t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy") ? ok() : ko(); } catch (e) { ko(e); }
+      document.body.removeChild(t);
+    });
+  }
+  document.querySelectorAll("button.copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var pre = document.getElementById(b.dataset.target);
+      var status = b.parentNode.querySelector(".copied");
+      copyText(pre.textContent).then(function () { status.textContent = "Légende copiée."; }, function () { status.textContent = "Copie impossible : sélectionne le texte à la main."; });
+      setTimeout(function () { status.textContent = ""; }, 3000);
+    });
+  });
+  document.querySelectorAll(".frame").forEach(function (f) {
+    var car = f.querySelector(".car.multi"); if (!car) return;
+    var pos = f.querySelector(".car-pos"), n = car.children.length;
+    var cur = 0, timer;
+    function idx() { return Math.round(car.scrollLeft / car.clientWidth); }
+    function go(d) { cur = Math.max(0, Math.min(n - 1, cur + d)); pos.textContent = (cur + 1) + " / " + n; car.scrollTo({ left: car.children[cur].offsetLeft - car.children[0].offsetLeft }); }
+    car.addEventListener("scroll", function () { clearTimeout(timer); timer = setTimeout(function () { cur = idx(); }, 150); }, { passive: true });
+    f.querySelector(".prev").addEventListener("click", function () { go(-1); });
+    f.querySelector(".next").addEventListener("click", function () { go(1); });
+    car.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { e.preventDefault(); go(1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); } });
+    car.addEventListener("scrollend", function () { cur = idx(); pos.textContent = (cur + 1) + " / " + n; });
+  });
+})();
+</script>
+</body>
+</html>
+`;
+
+writeFileSync(join(here, "index.html"), html);
+console.log(`insta/index.html écrit : ${PUBLICATIONS.length} publications, ${PUBLICATIONS.reduce((a, p) => a + p.feed.slides.length, 0)} vignettes feed, ${PUBLICATIONS.length} stories.`);
+for (const p of PUBLICATIONS) console.log(`  #${String(p.n).padStart(2, "0")} ${frDate(p.date)} · ${p.campaign}`);

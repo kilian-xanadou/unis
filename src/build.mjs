@@ -193,6 +193,20 @@ const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden
 const shareBtn = (l, title, url) => `<p class="share-row"><button class="btn ghost share" type="button" data-share data-title="${esc(title)}" data-url="${url}">${VPC[l].share}</button></p>`;
 // Sous la photo d'accueil (et non par-dessus) : le string du drop posé à plat, avec son prix.
 const heroInset = (l) => { const p = seasonProducts(LIVE, l).find((x) => x.kind === "adult"), k = p && PLACEMENT.itemCard[p.sku]; return k ? `<p class="hero-strip">${photo(k, l, { sizes: "72px" })}<span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span></p>` : ""; };
+// Packs prêts à offrir (drop en cours) : uniquement des produits existants, au prix normal (pas de fausse remise).
+function packs(l, ps) {
+  const v = VPC[l], duo = ps.find((p) => p.kind === "duo"), adult = ps.find((p) => p.kind === "adult"), lot = lotProduct(l);
+  if (!duo || !adult) return "";
+  const item = (p, q, cut) => ({ sku: p.sku, name: p.name, price: p.price, color: p.color, q, sized: !!p.sized, cut });
+  const list = [
+    [v.pack1, fill(v.pack1d, { m: duo.name }), [item(duo, 3, true)]],
+    [v.pack2, fill(v.pack2d, { m: adult.name }), [item(lot, 1, false), item(adult, 2, true)]],
+  ];
+  return `<section class="band packs-wrap" aria-labelledby="hpacks"><div class="wrap"><h2 id="hpacks">${v.packsTitle}</h2><p class="intro">${v.packsIntro}</p><div class="packs">${list.map(([h, d, its], i) => {
+    const total = its.reduce((s, it) => s + it.price * it.q, 0);
+    return `<article class="pack"><h3>${h}</h3><p>${d}</p><p class="pack-price">${eur(total, l)}${total >= SHIPPING.freeFrom ? ` · <b>${T[l].shipFree}</b>` : ""}</p><label for="pk${i}-${l}">${T[l].size}</label> <select id="pk${i}-${l}" data-size>${SIZES.map((s) => `<option${s === "M" ? " selected" : ""}>${s}</option>`).join("")}</select><button type="button" class="btn primary" data-pack="${esc(JSON.stringify(its))}" data-total="${total}">${v.packAdd}</button></article>`;
+  }).join("")}</div></div></section>`;
+}
 const buyBar = (p, l) => p ? `<div class="buybar" id="buybar"><span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span><button type="button" class="btn primary" data-buybar="${p.sku}">${T[l].add}</button></div>` : "";
 const PAY = ["Bancontact", "Visa", "Mastercard", "Apple Pay", "Google Pay", "iDEAL"];
 const payBadges = () => `<ul class="pay">${PAY.map((p) => `<li>${p}</li>`).join("")}</ul>`;
@@ -255,9 +269,8 @@ ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="${palette.accent}">
 <link rel="icon" href="${here("assets/favicon.svg")}" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="${here("assets/fonts/bricolage-grotesque-latin-standard-normal.woff2")}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${here("assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${here("assets/style.css")}?v=${V.css}">
 <style>:root{--bg:${palette.bg};--ink:${palette.ink};--accent:${palette.accent};--soft:${palette.soft};--on-accent:${palette.on}}</style>
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph })}</script>
@@ -403,7 +416,7 @@ ${waitlist(l)}` }));
 ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationTitle}</h2><p>${roseFill(ROSE[l].donation, l)}</p><p class="note">${roseFill(ROSE[l].note, l)}</p></section>` : ""}
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${grid(ps, l)}</div></section>
-${live ? buyBar(ps.find((p) => p.kind === "duo"), l) : ""}
+${live ? packs(l, ps) + buyBar(ps.find((p) => p.kind === "duo"), l) : ""}
 ${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
 ${faqBlock(sfaq, t.faqTitle)}
@@ -591,6 +604,7 @@ mkdirSync(join(OUT, "assets"), { recursive: true });
 for (const f of ["style.css", "app.js", "favicon.svg", "logo-512.png"]) copyFileSync(join(ROOT, "src/static", f), join(OUT, "assets", f));
 copyFileSync(join(ROOT, "assets/bo.svg"), join(OUT, "assets/bo.svg"));
 // Visuels (photos WebP) : tout ce qui est dans assets/images/ est publié dans site/assets/images/
+cpSync(join(ROOT, "src/static/fonts"), join(OUT, "assets/fonts"), { recursive: true });
 if (existsSync(join(ROOT, "assets/video"))) cpSync(join(ROOT, "assets/video"), join(OUT, "assets/video"), { recursive: true });
 for (const d of ["emailing", "logo"]) if (existsSync(join(ROOT, "assets", d))) cpSync(join(ROOT, "assets", d), join(OUT, "assets", d), { recursive: true, filter: (f) => !f.endsWith(".md") });
 // Aperçus marketing (emails, publications Instagram, fiche Google) : publiés mais jamais indexés.

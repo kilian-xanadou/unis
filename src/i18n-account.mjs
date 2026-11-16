@@ -57,7 +57,7 @@ fr: {
     "Nécessaires (toujours actifs) : le cookie « unis_consent » garde ton choix pendant 6 mois ; le stockage local « unis-cart » garde ton panier ; si tu te connectes, le stockage local de Supabase garde ta session.",
     "Mesure d'audience (Google Analytics 4) et publicité (pixel Meta) : uniquement avec ton accord. Sur ce site de démonstration, ces outils ne sont pas encore installés : même si tu acceptes, rien n'est envoyé à Google ni à Meta.",
     "Ton choix est enregistré, sans donnée qui t'identifie, pour pouvoir prouver ton consentement. Tu peux le changer à tout moment avec le lien « Gérer les cookies » en bas de chaque page.",
-    "Les polices de caractères sont chargées depuis Google Fonts, ce qui transmet ton adresse IP à Google. Elles seront hébergées sur le site avant le vrai lancement.",
+    "Les polices de caractères sont hébergées sur le site lui-même : aucune donnée n'est envoyée à Google pour les afficher.",
   ],
 },
 nl: {
@@ -115,7 +115,7 @@ nl: {
     "Noodzakelijk (altijd actief): de cookie 'unis_consent' onthoudt je keuze 6 maanden lang; de lokale opslag 'unis-cart' bewaart je winkelmandje; als je inlogt, bewaart de lokale opslag van Supabase je sessie.",
     "Bezoekersstatistieken (Google Analytics 4) en reclame (Meta-pixel): alleen met je toestemming. Op deze demosite zijn die tools nog niet geïnstalleerd: ook als je accepteert, wordt er niets naar Google of Meta gestuurd.",
     "Je keuze wordt opgeslagen, zonder gegevens die jou identificeren, zodat we je toestemming kunnen bewijzen. Je kunt ze altijd wijzigen met de link 'Cookies beheren' onderaan elke pagina.",
-    "De lettertypes worden geladen via Google Fonts, waardoor je IP-adres naar Google gaat. Ze worden vóór de echte lancering op de site zelf gehost.",
+    "De lettertypes worden op de site zelf gehost: er gaan geen gegevens naar Google om ze te tonen.",
   ],
 },
 en: {
@@ -173,7 +173,7 @@ en: {
     "Necessary (always on): the 'unis_consent' cookie keeps your choice for 6 months; the 'unis-cart' local storage keeps your bag; if you log in, Supabase's local storage keeps your session.",
     "Analytics (Google Analytics 4) and advertising (Meta pixel): only with your consent. On this demo site, these tools aren't installed yet: even if you accept, nothing is sent to Google or Meta.",
     "Your choice is stored, with no data that identifies you, so we can prove your consent. You can change it at any time with the 'Manage cookies' link at the bottom of every page.",
-    "Fonts are loaded from Google Fonts, which sends your IP address to Google. They'll be hosted on the site itself before the real launch.",
+    "Fonts are hosted on the site itself: no data is sent to Google to display them.",
   ],
 },
 de: {
@@ -231,7 +231,7 @@ de: {
     "Notwendig (immer aktiv): Das Cookie „unis_consent“ speichert deine Auswahl 6 Monate lang; der lokale Speicher „unis-cart“ speichert deinen Warenkorb; wenn du dich anmeldest, speichert der lokale Speicher von Supabase deine Sitzung.",
     "Reichweitenmessung (Google Analytics 4) und Werbung (Meta-Pixel): nur mit deiner Zustimmung. Auf dieser Demo-Website sind diese Tools noch nicht installiert: Auch wenn du zustimmst, wird nichts an Google oder Meta gesendet.",
     "Deine Auswahl wird ohne Daten, die dich identifizieren, gespeichert, damit wir deine Einwilligung nachweisen können. Du kannst sie jederzeit über den Link „Cookies verwalten“ unten auf jeder Seite ändern.",
-    "Die Schriftarten werden von Google Fonts geladen, wodurch deine IP-Adresse an Google übermittelt wird. Vor dem echten Start werden sie direkt auf der Website gehostet.",
+    "Die Schriftarten liegen auf der Website selbst: Für ihre Anzeige werden keine Daten an Google übermittelt.",
   ],
 },
 };
