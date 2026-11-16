@@ -38,7 +38,7 @@
 | String unisexe Rennes disco | Drop Noël | 5 € | `string-unisexe-noel-rennes-plat` | Rennes, sapins et flocons sur fond rouge. Coupe Plat ou Poche, du XS au 4XL. Coton 95 %, élasthanne 5 %, OEKO-TEX. Série limitée. |
 | Duo assorti Rennes disco | Drop Noël | 7 € | `bo-ours-unis-noel-studio` | Un string adulte et un mini-string pour Bo, même motif. Le cadeau Secret Santa qui fait rire. |
 | Mini-string pour Bo | Drop Noël | 3 € | `string-unisexe-noel-rennes-plat` | Le motif de saison en taille unique, pour habiller Bo. Parfait quand tu ne connais pas la taille. |
-| Bo, l'ours UNIS | Bo | 49 € | `bo-ours-unis-noel-studio` | Peluche de collection de 35 cm, avec un mini-string, sa boîte et son certificat numéroté. Objet de collection, 14 ans et plus. Marquage CE (tests EN 71 prévus). |
+| Bo, l'ours UNIS | Bo | 49 € | `bo-ours-unis-noel-studio` | Peluche de collection de 35 cm, avec un mini-string, sa boîte et son certificat numéroté. |
 | String Essentiel | Essentiels | 5 € | `string-unisexe-essentiels-6-couleurs` | Uni, 6 couleurs, coupe Plat ou Poche, du XS au 4XL. Toute l'année. |
 | Lot de 5 Essentiels | Essentiels | 20 € | `string-unisexe-essentiels-lot-de-5` | 5 strings de la même taille, couleurs assorties. 4 € la pièce. |
 
@@ -70,7 +70,7 @@ Les posts suivent le calendrier emailing (docs/03) : un post Google le jour de c
 | Question | Réponse |
 | --- | --- |
 | C'est quoi, un string unisexe ? | Un string rangé par coupe et par taille, pas par genre : Plat (avant lisse) ou Poche (avant préformé), du XS au 4XL. |
-| Bo, c'est un jouet ? | Non. Bo est un objet de collection pour les 14 ans et plus. Marquage CE, tests EN 71 prévus. |
+| Bo, c'est un jouet ? | Non. Bo est un ours de collection, pensé pour les adultes qui aiment rire. |
 | Comment choisir la taille ? | Mesure ton tour de hanches au plus large et suis le guide des tailles sur le site. Entre deux tailles, prends la plus grande. |
 | Livraison ? | 2 à 4 jours ouvrables dans l'UE. 3,90 €, offerte dès 30 €. |
 | Retours ? | 14 jours, si le string n'a pas été porté et que l'étiquette d'hygiène est intacte. |

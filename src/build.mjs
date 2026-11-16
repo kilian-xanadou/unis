@@ -112,7 +112,7 @@ function card(p, l, ctx) {
   const action = p.buyable
     ? `<button type="button" class="add" data-add data-sku="${p.sku}" data-name="${esc(p.name)}" data-price="${p.price}" data-color="${p.color}">${t.add}</button>`
     : `<a class="add" href="#liste">${t.notify}</a>`;
-  const mention = p.bo ? `<p class="mention">${t.boMention}</p>` : (p.kind !== "bo" ? `<p class="compo">${t.composition}</p>` : "");
+  const mention = p.bo ? "" : `<p class="compo">${t.composition}</p>`;
   const giftAlt = p.giftAlt && p.buyable ? `<a class="nosize" href="${p.giftAlt}">${VPC[l].noSize}</a>` : "";
   return `<article class="card" id="p-${id}" data-cut="flat">
   <div class="art${p.photo ? " has-photo" : ""}" style="background:${bg}">${art(p, l)}<span class="badge">${esc(p.badge)}</span></div>
@@ -367,7 +367,7 @@ ${promise(l)}${waitlist(l)}${faqBlock(t.faq, t.faqTitle)}` }));
   add(l, "bo", null, layout({ l, key: "bo", title: t.bo.title, desc: t.bo.desc,
     ld: [crumbsLD([home, [t.boName, pathOf(l, "bo")]]), ...boPs.map((p) => productLD(p, l, boUrl))],
     body: (here) => `${pageHead(t.bo.h1, "", [home, [t.boName, pathOf(l, "bo")]], here)}
-<section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}${shareBtn(l, t.bo.title.split(" | ")[0], boUrl)}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul><h2 class="h3">${t.bo.safetyTitle}</h2><p>${t.bo.safety}</p><p class="mention">${t.boMention}</p></div>
+<section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}${shareBtn(l, t.bo.title.split(" | ")[0], boUrl)}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul></div>
 <div class="hero-art small photo">${photo(PLACEMENT.boPage, l, { eager: true })}</div></div></section>
 <section class="shop band" aria-labelledby="hbuy"><div class="wrap"><h2 id="hbuy">${t.bo.shopTitle}</h2>${grid(boPs, l)}</div></section>
 ${waitlist(l)}` }));

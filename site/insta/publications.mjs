@@ -345,7 +345,7 @@ Une bande à habiller pour la marche ? Tague-la.
       link: "Équiper la bande",
       alt: "String bleu à motif de vagues blanches, posé à plat sur fond blanc.",
     },
-    caption: `Festival, coloc, enterrement de vie de célibataire : il vous faut une tenue d'équipe. Elle tient dans une poche.
+    caption: `Festival, coloc, enterrement de vie de célibataire : ta bande a besoin d'une tenue d'équipe. Elle tient dans une poche.
 Les soldes commencent : −20 % sur le drop Été.
 String Été : 4 € au lieu de 5 €
 Duo Été : 5,60 € au lieu de 7 €

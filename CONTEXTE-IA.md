@@ -68,7 +68,7 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 - **Rôle :** mannequin (à la place d'un humain), égérie (visage de chaque campagne), mascotte (il peut « parler » à la première personne sur les réseaux).
 - **Il peut :** poser, faire des selfies, porter des accessoires de saison (bonnet, chapeau de sorcière…), être drôle et charmeur.
 - **Il ne peut jamais :** apparaître avec un enfant ou dans un décor d'enfant ; être montré dans une scène sexuelle ou explicite ; porter des marques, logos ou personnages d'autrui (jeux vidéo, films, événements, célébrités).
-- **Mention obligatoire** sur chaque fiche de Bo : « Objet de collection, 14 ans et plus. Marquage CE (tests EN 71 prévus). »
+- **Plus de mention d'âge ni de marquage CE sur les fiches de Bo** (décision de l'équipe du 16/11/2026). Bo reste un objet de collection pour adultes, jamais présenté comme un jouet ; la conformité (CE, EN 71) reste à vérifier avant la mise en vente réelle.
 
 ## 4. L'offre
 
