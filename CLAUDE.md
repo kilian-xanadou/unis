@@ -1,5 +1,7 @@
 # UNIS : contexte du projet pour Claude Code
 
+> **Lis d'abord [CONTEXTE-IA.md](CONTEXTE-IA.md)** : décisions de l'équipe (cible, personnalité, limites, objectifs). Il prime sur ce fichier en cas de conflit.
+
 UNIS est une marque e-commerce européenne (Belgique, SRL à créer) qui vend :
 
 - **Bo, l'ours UNIS** : un ours en peluche de collection de 35 cm, à 49 €. Il sert de mannequin à la marque et porte chaque nouveau string.
