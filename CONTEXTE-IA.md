@@ -80,8 +80,8 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 
 ## 5. Identité visuelle
 
-- **Charte complète :** [DESIGN.md](DESIGN.md).
-- **Couleurs :** Bordeaux `#3E031B`, Framboise `#D42A6E`, Rose dragée `#FFE3EE`, Rose bonbon `#FAB8D0`, Miel (Bo) `#C98B4B`. Chaque saison a sa palette (voir DESIGN.md).
+- **Charte complète :** [design.md](design.md).
+- **Couleurs :** Bordeaux `#3E031B`, Framboise `#D42A6E`, Rose dragée `#FFE3EE`, Rose bonbon `#FAB8D0`, Miel (Bo) `#C98B4B`. Chaque saison a sa palette (voir design.md).
 - **Typographies :** Bricolage Grotesque (titres, version étroite) et Atkinson Hyperlegible (textes).
 - **Logo :** le mot UNIS en bordeaux, un string framboise se faufile à travers les lettres (`assets/logo/`).
 - **Photos :** Bo sur fond clair ou dans un décor de saison adulte ; le string à plat pour les fiches produits. Formats WebP de moins de 150 Ko, avec un texte alternatif descriptif dans chaque langue.
@@ -122,6 +122,7 @@ Tout ce qui est produit (page, email, publication, publicité) doit servir l'un 
 | Charte de marque, palettes de saison | `docs/02-marque.md` |
 | Emailing, SEO, SEA, réseaux sociaux | `docs/03`, `docs/04`, `docs/06`, `docs/10`, `docs/11` |
 | Personas et parcours client | `docs/08-personas-customer-journey.md` |
+| Golden Circle et Value Proposition Canvas (5 clients prioritaires S1 à S5) | `docs/15-value-proposition-canvas.md` |
 | Fidélité (Club de Bo) | `docs/09-fidelisation-crm.md` |
 | Lien entre les cours et les livrables | `docs/00-cours-et-livrables.md` |
 | Lancement d'un nouveau drop | skill `.claude/skills/unis-lancer-collection/` |
