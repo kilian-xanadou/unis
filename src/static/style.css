@@ -537,3 +537,17 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 .polas img { width: 100%; height: auto; display: block; aspect-ratio: 600 / 745; object-fit: cover; }
 @media (prefers-reduced-motion: reduce) { .polas li, .quiz-photo { transform: none; } }
 .season-photo.portrait { max-width: 440px; }
+
+/* Vitrine « L'histoire de Bo » (17/11/2026) */
+.story-teaser { padding: 2.5rem 0; }
+.st-card { display: grid; gap: 1.5rem; align-items: center; text-decoration: none; color: var(--ink); background: var(--soft); border: 2px solid var(--ink); border-radius: 18px; padding: 1.5rem; box-shadow: 6px 6px 0 var(--ink); transition: transform .15s, box-shadow .15s; }
+@media (min-width: 700px) { .st-card { grid-template-columns: 260px 1fr; padding: 2rem 2.5rem; } }
+.st-card:hover, .st-card:focus-visible { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--ink); }
+.st-pola { display: block; background: #fff; padding: .55rem .55rem 1.4rem; transform: rotate(-3deg); box-shadow: 0 3px 12px rgba(62,3,27,.2); max-width: 260px; margin: 0 auto; }
+.st-pola img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; }
+.st-text { display: flex; flex-direction: column; gap: .7rem; align-items: flex-start; }
+.st-kicker { font-weight: 700; font-size: .9rem; text-transform: uppercase; letter-spacing: .06em; background: var(--ink); color: #fff; padding: .25rem .7rem; border-radius: 999px; }
+.st-h { font-family: "Bricolage Grotesque", sans-serif; font-variation-settings: "wdth" 75; font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.05; }
+.st-p { font-size: 1.1rem; max-width: 52ch; }
+.st-btn { font-size: 1.1rem; }
+@media (prefers-reduced-motion: reduce) { .st-card, .st-card:hover { transition: none; transform: none; } .st-pola { transform: none; } }

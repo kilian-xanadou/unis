@@ -40,6 +40,7 @@ fr: {
     ["Bo est-il un jouet ?", "Non. Bo est un ours de collection pour adultes, 18 ans et plus."],
   ],
   cta: "Adopter Bo, 49 €", read: "Lire l'histoire de Bo",
+  teaser: { kicker: "5 chapitres · 3 minutes", h: "Qui est Bo, au juste ?", p: "Un ours de collection qui pose en string à notre place. Comment il est arrivé là, pourquoi lui, et ce qu'il fait de ses journées : on te raconte tout.", note: "spoiler : il y a un selfie" },
 },
 nl: {
   slug: "het-verhaal-van-bo/", nav: "Het verhaal van Bo",
@@ -79,6 +80,7 @@ nl: {
     ["Is Bo speelgoed?", "Nee. Bo is een verzamelbeer voor volwassenen, vanaf 18 jaar."],
   ],
   cta: "Bo adopteren, 49 €", read: "Lees het verhaal van Bo",
+  teaser: { kicker: "5 hoofdstukken · 3 minuten", h: "Wie is Bo eigenlijk?", p: "Een verzamelbeer die in onze plaats in string poseert. Hoe hij hier belandde, waarom hij, en wat hij de hele dag doet: we vertellen je alles.", note: "spoiler: er is een selfie" },
 },
 en: {
   slug: "bos-story/", nav: "Bo's story",
@@ -118,6 +120,7 @@ en: {
     ["Is Bo a toy?", "No. Bo is a collectible bear for adults, 18 and over."],
   ],
   cta: "Adopt Bo, €49", read: "Read Bo's story",
+  teaser: { kicker: "5 chapters · 3 minutes", h: "So who is Bo, exactly?", p: "A collectible bear who models thongs so we don't have to. How he got here, why him, and what he does all day: we tell you everything.", note: "spoiler: there's a selfie" },
 },
 de: {
   slug: "bos-geschichte/", nav: "Bos Geschichte",
@@ -157,5 +160,6 @@ de: {
     ["Ist Bo ein Spielzeug?", "Nein. Bo ist ein Sammlerbär für Erwachsene ab 18 Jahren."],
   ],
   cta: "Bo adoptieren, 49 €", read: "Bos Geschichte lesen",
+  teaser: { kicker: "5 Kapitel · 3 Minuten", h: "Wer ist Bo eigentlich?", p: "Ein Sammlerbär, der an unserer Stelle im String posiert. Wie er dazu kam, warum gerade er und was er den ganzen Tag macht: Wir erzählen dir alles.", note: "Spoiler: Es gibt ein Selfie" },
 },
 };

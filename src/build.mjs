@@ -240,6 +240,8 @@ const reassure = (l) => `<ul class="reassure" aria-label="UNIS">${[...X[l].reass
 const xmasBar = (l) => `<p class="deadline"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>${VPC[l].xmasBar} <b class="cd" data-countdown="2026-12-25T00:00:00+01:00" aria-live="off"></b></span></p>`;
 const shareBtn = (l, title, url) => `<p class="share-row"><button class="btn ghost share" type="button" data-share data-title="${esc(title)}" data-url="${url}">${VPC[l].share}</button></p>`;
 // Sous la photo d'accueil (et non par-dessus) : le string du drop posé à plat, avec son prix.
+// Vitrine « L'histoire de Bo » : polaroïd, accroche et gros bouton (accueil, page Bo, fiche de Bo)
+const storyTeaser = (l, here) => { const st = STORY[l], z = st.teaser; return `<section class="story-teaser" aria-labelledby="hstory"><div class="wrap"><a class="st-card" href="${here(pathOf(l, "story"))}"><span class="st-pola">${photo("boSelfie", l, { sizes: "(max-width: 700px) 60vw, 300px" })}</span><span class="st-text"><span class="st-kicker">${z.kicker}</span><span class="st-h" id="hstory">${z.h}</span><span class="st-p">${z.p}</span><span class="btn primary go st-btn">${st.read} <span aria-hidden="true">→</span></span><span class="bo-note">${z.note}</span></span></a></div></section>`; };
 const heroInset = (l) => { const p = seasonProducts(LIVE, l).find((x) => x.kind === "adult"), k = p && PLACEMENT.itemCard[p.sku]; return k ? `<p class="hero-strip">${photo(k, l, { sizes: "72px" })}<span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span></p>` : ""; };
 // Packs prêts à offrir (drop en cours) : uniquement des produits existants, au prix normal (pas de fausse remise).
 function packs(l, ps) {
@@ -292,7 +294,7 @@ function layout({ l, key, sid, title, desc, body, ld = [], palette = BASE, noAlt
     consentVersion: CFG.consentVersion, ga4: CFG.ga4Id, pixel: CFG.metaPixelId,
     stamp: { season: LIVE.id, year: CFG.dropYear, name: sName(LIVE, l) },
     seasons: SEASONS.map((s) => ({ id: s.id, name: sName(s, l), color: s.c.accent })) };
-  const nav = [["shop", pathOf(l, "season", LIVE.id)], ["gifts", pathOf(l, "gifts")], ["bo", pathOf(l, "bo")], ["ess", pathOf(l, "ess")], ["seasons", pathOf(l, "seasons")], ["size", pathOf(l, "size")], ["help", pathOf(l, "help")]];
+  const nav = [["shop", pathOf(l, "season", LIVE.id)], ["gifts", pathOf(l, "gifts")], ["bo", pathOf(l, "bo")], ["story", pathOf(l, "story")], ["ess", pathOf(l, "ess")], ["seasons", pathOf(l, "seasons")], ["size", pathOf(l, "size")], ["help", pathOf(l, "help")]];
   const graph = [ORG, ...ld];
   if (title.length >= 60) warnings.push(`Title trop long (${title.length}) : ${self} « ${title} »`);
   if (desc && (desc.length < 120 || desc.length > 155)) warnings.push(`Meta description hors 120–155 (${desc.length}) : ${self}`);
@@ -333,7 +335,7 @@ ${desc ? `<meta property="og:description" content="${esc(desc)}">` : ""}
 <header class="top"><div class="wrap">
   <a class="logo" href="${here(pathOf(l, "home"))}" aria-label="UNIS">${logoMark()}</a>
   <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="${t.menu}"><svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true"><path d="M2 3h22M2 10h22M2 17h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
-  <nav class="main" id="nav" aria-label="${t.menu}">${nav.map(([k, p]) => `<a href="${here(p)}"${p === self ? ' aria-current="page"' : ""}>${t.nav[k] || PD[l].gifts.nav}</a>`).join("")}</nav>
+  <nav class="main" id="nav" aria-label="${t.menu}">${nav.map(([k, p]) => `<a href="${here(p)}"${p === self ? ' aria-current="page"' : ""}>${t.nav[k] || (k === "story" ? STORY[l].nav : PD[l].gifts.nav)}</a>`).join("")}</nav>
   <details class="lang"><summary aria-label="${t.langLabel}">${l.toUpperCase()}</summary><ul>${LANGS.map((x) => `<li><a href="${here(key === "404" ? pathOf(x, "home") : pathOf(x, key, sid))}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="true"' : ""}>${T[x].langName}</a></li>`).join("")}</ul></details>
   <a class="accbtn" href="${here(pathOf(l, "account"))}" aria-label="${a.navAccount}"${key === "account" ? ' aria-current="page"' : ""}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></a>
   <button class="cartbtn" id="openCart" type="button" aria-haspopup="dialog"><span>${t.cart}</span> <b id="count">0</b></button>
@@ -423,6 +425,7 @@ for (const l of LANGS) {
 </div><svg class="thread" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 60 C 150 10, 260 110, 420 60 S 700 10, 820 70 S 1080 110, 1210 40"/></svg></section>
 <div class="wrap">${LIVE.id === "noel" ? xmasBar(l) : ""}${reassure(l)}</div>
 <section class="forwho" aria-labelledby="hfor"><div class="wrap"><h2 id="hfor">${VPC[l].forTitle}</h2><p class="intro">${VPC[l].forIntro}</p><p class="bo-note right">${VPC[l].notes.forwho}</p><p class="go-row"><a class="btn primary go" href="${here(pathOf(l, "quiz"))}">${QUIZ[l].cta}</a></p><ul class="forwho-list">${VPC[l].for.map(([h, p, cta, k, sid]) => `<li><h3>${h}</h3><p>${p}</p><a href="${here(pathOf(l, k, sid === "live" ? LIVE.id : sid))}">${cta}</a></li>`).join("")}</ul></div></section>
+${storyTeaser(l, here)}
 <section class="seasons" aria-labelledby="hs"><div class="wrap"><header><h2 id="hs">${t.seasonsTitle}</h2><p>${t.seasonsText}</p></header>${seasonStrip(l, here, LIVE.id)}${goRow(here, [[pathOf(l, "seasons"), VPC[l].go.allSeasons], [pathOf(l, "season", "rose"), VPC[l].go.rose], [pathOf(l, "story"), VPC[l].go.story]])}</div></section>
 <section class="shop band" aria-labelledby="hshop"><div class="wrap"><h2 id="hshop">${fill(t.home.shopTitle, { s: liveName })}</h2><p class="intro">${t.home.shopIntro}</p>${grid(homeProducts, l)}<p class="more"><a class="btn ghost" href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.seeAll, { s: liveName })}</a></p></div></section>
 <section class="cuts band" aria-labelledby="hcuts"><div class="wrap"><h2 id="hcuts">${t.cutsTitle}</h2><div class="two"><div>${cuts(l)}</div><div>${sizeTable(l)}</div></div>${goRow(here, [[pathOf(l, "article", "unisexe"), VPC[l].go.unisex], [pathOf(l, "size"), VPC[l].go.sizeGuide], [pathOf(l, "article", "taille"), VPC[l].go.sizeArt]])}</div></section>
@@ -434,7 +437,7 @@ ${promise(l)}${waitlist(l)}${faqBlock(t.faq, t.faqTitle)}` }));
   add(l, "bo", null, layout({ l, key: "bo", title: t.bo.title, desc: t.bo.desc,
     ld: [crumbsLD([home, [t.boName, pathOf(l, "bo")]]), itemListLD(boPs, l)],
     body: (here) => `${pageHead(t.bo.h1, "", [home, [t.boName, pathOf(l, "bo")]], here)}
-<section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}<p><a href="${here(pathOf(l, "story"))}">${STORY[l].read}</a></p>${shareBtn(l, t.bo.title.split(" | ")[0], boUrl)}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul></div>
+<section class="band"><div class="wrap split"><div class="prose">${t.bo.p.map((p) => `<p>${p}</p>`).join("")}<p><a class="btn primary go" href="${here(pathOf(l, "story"))}">${STORY[l].read} <span aria-hidden="true">→</span></a></p>${shareBtn(l, t.bo.title.split(" | ")[0], boUrl)}<h2 class="h3">${t.bo.specsTitle}</h2><ul class="ticks">${t.bo.specs.map((s) => `<li>${s}</li>`).join("")}</ul></div>
 <div class="hero-art small photo">${photo(PLACEMENT.boPage, l, { eager: true })}</div></div></section>
 <section class="shop band" aria-labelledby="hbuy"><div class="wrap"><h2 id="hbuy">${t.bo.shopTitle}</h2>${grid(boPs, l)}</div></section>
 ${waitlist(l)}` }));
