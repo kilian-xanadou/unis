@@ -559,3 +559,6 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 .reel video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: #000; }
 .reel-band .st-kicker { display: inline-block; }
 @media (prefers-reduced-motion: reduce) { .reel { transform: none; } }
+
+/* Merch (17/11/2026) : illustrations provisoires */
+.merch-ico { width:70%; height:auto; display:block; margin:8% auto; }

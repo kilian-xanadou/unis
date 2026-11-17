@@ -19,6 +19,7 @@ import { thong, bear, logoMark, SHAPE } from "./art.mjs";
 import { V as VPC } from "./i18n-vpc.mjs";
 import { STORY } from "./i18n-story.mjs";
 import { QUIZ } from "./i18n-quiz.mjs";
+import { MERCH, MERCH_ITEMS } from "./i18n-merch.mjs";
 // Pages produits et idées cadeaux (FR de référence ; NL, EN, DE à faire relire par une personne native).
 import PD_FR from "./i18n-pdp/fr.mjs";
 import PD_NL from "./i18n-pdp/nl.mjs";
@@ -62,6 +63,7 @@ function pathOf(l, key, sid) {
   if (key === "product") return `${l}/${PD[l].base}${PSLUG[sid][l]}/`;
   if (key === "story") return `${l}/${STORY[l].slug}`;
   if (key === "quiz") return `${l}/${QUIZ[l].slug}`;
+  if (key === "merch") return `${l}/${MERCH[l].slug}`;
   if (key === "behind") return `${l}/${VPC[l].behind.slug}`;
   if (key === "gifts") return `${l}/${PD[l].gifts.hubPath}`;
   if (key === "gift") return `${l}/${PD[l].gifts.pages[sid].path}`;
@@ -170,7 +172,7 @@ const grid = (ps, l) => `<div class="grid">${ps.map((p) => card(p, l)).join("")}
 // ---------- JSON-LD ----------
 // Pages qui ne doivent jamais être indexées, même après le lancement.
 const PREVIEWS = ["emails", "insta", "fiche-google"];
-// Pages non répertoriées : copiées telles quelles, sans lien, hors sitemap et hors robots.txt (pour ne pas révéler leur adresse), noindex dans la page.
+// Pages autonomes copiées telles quelles (liées depuis le pied de page et les Coulisses).
 const UNLISTED = ["glandometre-3000"];
 const NOINDEX = new Set(["404", "behind", "account", "cookies", "terms", "privacy", "legal"]);
 const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "UNIS", alternateName: ["UNIS strings unisexes", "UNIS et Bo l'ours"], url: `${SITE}/`, logo: { "@type": "ImageObject", url: `${SITE}/assets/logo-512.png`, width: 512, height: 512 }, slogan: "Un fil. Tous les corps. Même les ours." };
@@ -352,7 +354,7 @@ ${body2}
     <div><p class="foot-logo">${logoMark()}<span class="sr">UNIS</span></p><p>${t.signature}</p></div>
     <div><p class="ft">${t.footShop}</p><ul><li><a href="${here(pathOf(l, "season", LIVE.id))}">${fill(t.home.shopTitle, { s: sName(LIVE, l) }).split(":")[1]?.trim() || t.nav.shop}</a></li><li><a href="${here(pathOf(l, "gifts"))}">${PD[l].gifts.nav}</a></li><li><a href="${here(pathOf(l, "bo"))}">${t.boName}</a></li><li><a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></li><li><a href="${here(pathOf(l, "seasons"))}">${t.nav.seasons}</a></li><li><a href="${here(pathOf(l, "club"))}">${x.nav.club}</a></li></ul></div>
     <div><p class="ft">${t.footHelp}</p><ul><li><a href="${here(pathOf(l, "size"))}">${t.sizeCap.split(" (")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}">${t.helpPage.shipTitle} · ${t.helpPage.retTitle.split(" ")[0]}</a></li><li><a href="${here(pathOf(l, "help"))}#faq">${t.faqLink}</a></li><li><a href="${here(pathOf(l, "contact"))}">${x.nav.contact}</a></li><li><a href="${here(pathOf(l, "account"))}">${a.navAccount}</a></li><li><button type="button" class="linkbtn" data-cookie-open>${a.cookie.manage}</button></li></ul></div>
-    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "quiz"))}">${QUIZ[l].nav}</a></li><li><a href="${here(pathOf(l, "behind"))}">${VPC[l].behind.nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
+    <div><p class="ft">${t.footInfo}</p><ul><li><a href="${here(pathOf(l, "about"))}">${x.nav.about}</a></li><li><a href="${here(pathOf(l, "story"))}">${STORY[l].nav}</a></li><li><a href="${here(pathOf(l, "quiz"))}">${QUIZ[l].nav}</a></li><li><a href="${here(pathOf(l, "merch"))}">${MERCH[l].nav}</a></li><li><a href="${BASE_PATH}glandometre-3000/">Glandomètre 3000</a></li><li><a href="${here(pathOf(l, "behind"))}">${VPC[l].behind.nav}</a></li><li><a href="${here(pathOf(l, "journal"))}">${x.nav.journal}</a></li>${["terms", "privacy", "legal"].map((k) => `<li><a href="${here(pathOf(l, k))}">${t.legalNav[k]}</a></li>`).join("")}<li><a href="${here(pathOf(l, "cookies"))}">${x.nav.cookies}</a></li></ul></div>
   </div>
   <div class="trust">
     <div><p class="ft">${x.payTitle}</p>${payBadges()}<p class="small">${x.payNote}</p></div>
@@ -586,6 +588,31 @@ ${faqCats(l, here)}` }));
     add(l, "behind", null, layout({ l, key: "behind", title: bh.title, desc: bh.desc,
       body: (here) => `${pageHead(bh.h1, bh.intro, [home, [bh.nav, pathOf(l, "behind")]], here)}
 <section class="band"><div class="wrap"><ul class="forwho-list">${bh.items.map(([h, p, href]) => `<li><h2 class="h3">${h}</h2><p>${p}</p><a href="${BASE_PATH}${href}" aria-label="${bh.open} : ${h}">${bh.open} →</a></li>`).join("")}</ul></div></section>` }));
+  }
+
+  // Merch : objets en édition limitée (prix dans i18n-merch.mjs), ajout au panier comme les autres produits.
+  {
+    const m = MERCH[l];
+    const icon = (k) => ({
+      sock: '<path d="M70 20 h40 v70 q0 20 20 25 l30 8 q20 6 14 28 q-6 20 -28 15 l-60 -14 q-30 -8 -26 -40 Z" fill="#3E031B"/><rect x="70" y="20" width="40" height="14" fill="#D42A6E"/>',
+      tape: '<circle cx="100" cy="95" r="55" fill="#3E031B"/><circle cx="100" cy="95" r="18" fill="#FAB8D0"/><rect x="100" y="130" width="80" height="22" fill="#FFE89A"/>' + [0, 1, 2, 3, 4, 5].map((i) => `<rect x="${108 + i * 12}" y="130" width="3" height="${i % 2 ? 8 : 13}" fill="#3E031B"/>`).join(""),
+      candle: '<rect x="62" y="70" width="76" height="90" rx="8" fill="#FFFFFF" stroke="#3E031B" stroke-width="6"/><rect x="62" y="100" width="76" height="26" fill="#D42A6E"/><path d="M100 30 q14 18 0 34 q-14 -16 0 -34 Z" fill="#FFB020"/><rect x="97" y="58" width="6" height="14" fill="#3E031B"/>',
+      scarf: '<path d="M40 40 h120 v40 h-120 Z" fill="#A8182A"/><path d="M120 80 h40 v90 h-40 Z" fill="#A8182A"/>' + [0, 1, 2, 3].map((i) => `<circle cx="${58 + i * 30}" cy="60" r="6" fill="#F6E7C8"/>`).join("") + '<path d="M120 170 v12 M132 170 v12 M144 170 v12 M156 170 v12" stroke="#F6E7C8" stroke-width="4"/>',
+      case: '<rect x="45" y="65" width="110" height="90" rx="12" fill="#3E031B"/><rect x="80" y="45" width="40" height="24" rx="6" fill="none" stroke="#3E031B" stroke-width="8"/><rect x="60" y="95" width="56" height="26" rx="4" fill="#FFE3EE"/><circle cx="65" cy="165" r="9" fill="#D42A6E"/><circle cx="135" cy="165" r="9" fill="#D42A6E"/>',
+      safe: '<rect x="45" y="40" width="110" height="120" rx="10" fill="#3E031B"/><circle cx="100" cy="100" r="30" fill="#FAB8D0"/><circle cx="100" cy="100" r="8" fill="#3E031B"/><rect x="96" y="70" width="8" height="14" fill="#3E031B"/><rect x="58" y="160" width="16" height="10" fill="#3E031B"/><rect x="126" y="160" width="16" height="10" fill="#3E031B"/>',
+    })[k];
+    const items = MERCH_ITEMS.map((it) => ({ ...it, name: m.items[it.sku][0], desc: m.items[it.sku][1] }));
+    const mcard = (p) => `<article class="card" id="p-${p.sku.toLowerCase()}">
+  <div class="art${p.img ? " has-photo" : ""}" style="background:var(--soft)">${p.img ? `<img src="${BASE_PATH}glandometre-3000/affiches/${p.img}-600.jpg" alt="${esc(p.name)}" loading="lazy" width="600" height="800">` : `<svg viewBox="0 0 200 200" role="img" aria-label="${esc(p.name)}" class="merch-ico">${icon(p.icon)}</svg>`}<span class="badge">${esc(m.badge)}</span></div>
+  <div class="meta"><h3>${esc(p.name)}</h3><span class="price">${eur(p.price, l)}</span></div>
+  <p class="desc">${esc(p.desc)}</p>
+  <button type="button" class="add" data-add data-sku="${p.sku}" data-name="${esc(p.name)}" data-price="${p.price}" data-color="#D42A6E">${T[l].add}</button>
+</article>`;
+    add(l, "merch", null, layout({ l, key: "merch", title: m.title, desc: m.desc,
+      ld: [crumbsLD([home, [m.nav, pathOf(l, "merch")]]), { "@type": "ItemList", name: m.title, itemListElement: items.map((p, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Product", name: p.name, sku: p.sku, description: p.desc, brand: { "@id": `${SITE}/#org` }, offers: { "@type": "Offer", price: p.price.toFixed(2), priceCurrency: "EUR", availability: "https://schema.org/PreOrder" } } })) }],
+      body: (here) => `${pageHead(m.h1, m.intro, [home, [m.nav, pathOf(l, "merch")]], here)}
+<section class="shop band" aria-labelledby="hmerch"><div class="wrap"><h2 id="hmerch" class="sr">${m.h1}</h2><p class="bo-note right">${m.note}</p><div class="grid">${items.map(mcard).join("")}</div>
+<p class="more">${m.more} <a href="${BASE_PATH}glandometre-3000/">${m.moreLink}</a>.</p></div></section>` }));
   }
 
   // Quiz « Quel UNIS pour qui ? » : Bo recommande un produit existant (logique dans app.js)
