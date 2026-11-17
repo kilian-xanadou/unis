@@ -1,6 +1,6 @@
-# UNIS : les visuels qui manquent encore (mise à jour du 17 novembre 2026)
+# UNIS : visuels (mise à jour du 17 novembre 2026)
 
-**8 images indispensables** pour qu'aucun produit ni aucune page n'affiche plus de dessin provisoire, puis **8 bonus** pour l'histoire de Bo, les emails et Instagram. Chaque prompt est complet : copie le bloc gris tel quel dans l'IA d'image (Midjourney, DALL·E, Firefly, Ideogram, Flux, Gemini…). Rien à remplacer.
+**✅ Les 16 images de cette liste sont en ligne depuis le 17 novembre 2026.** Plus aucun produit en vente n'affiche de dessin provisoire. Les prompts restent ici pour refaire une image ou préparer le prochain drop.
 
 Plus besoin des photos de Bo de face pour Printemps, Pride, Été et Halloween : le site réutilise maintenant les photos de Bo que tu as déjà faites pour ces saisons.
 

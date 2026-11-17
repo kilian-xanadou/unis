@@ -470,7 +470,7 @@ ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationT
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${live ? `<p class="bo-note right">${VPC[l].notes.drop}</p>` : ""}${grid(ps, l)}</div></section>
 ${live ? packs(l, ps) + buyBar(ps.find((p) => p.kind === "duo"), l) : ""}
-${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
+${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo${PHOTOS[PLACEMENT.season[s.id]].sizes[1][1] > PHOTOS[PLACEMENT.season[s.id]].sizes[1][0] ? " portrait" : ""}">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
 ${faqBlock(sfaq, t.faqTitle)}
 <section class="seasons band"><div class="wrap"><h2>${t.seasonsTitle}</h2>${seasonStrip(l, here, s.id)}</div></section>
@@ -544,7 +544,7 @@ ${waitlist(l)}` }));
     add(l, "gift", g, layout({ l, key: "gift", sid: g, title: a.title, desc: a.desc,
       ld: [crumbsLD(crumbs), { "@type": "BlogPosting", headline: a.h1, description: a.desc, datePublished: CFG.launchDate, inLanguage: l, mainEntityOfPage: url, image: `${SITE}/${photoUrl(prods[0].photo || prods[0].ldPhoto || PLACEMENT.boPage, 1200)}`, author: { "@id": `${SITE}/#org` }, publisher: { "@id": `${SITE}/#org` } }, faqLD(faq)],
       body: (here) => `${pageHead(a.h1, a.lead, crumbs, here, "long")}
-<section class="band"><div class="wrap prose article"><p class="note">${fill(X[l].journal.published, { d: fdate(CFG.launchDate, l) })}</p>${a.body.map(([h, p]) => `<h2 class="h3">${esc(gx(h))}</h2><p>${linkify(p, here)}</p>`).join("")}
+<section class="band"><div class="wrap prose article">${g === "secret-santa" && PLACEMENT.secret ? `<figure class="article-photo">${photo(PLACEMENT.secret, l, { sizes: "(max-width: 760px) 100vw, 760px", eager: true })}</figure>` : ""}<p class="note">${fill(X[l].journal.published, { d: fdate(CFG.launchDate, l) })}</p>${a.body.map(([h, p]) => `<h2 class="h3">${esc(gx(h))}</h2><p>${linkify(p, here)}</p>`).join("")}
 <p class="ctas"><a class="btn primary" href="${here(refPath(a.cta[1]))}">${esc(gx(a.cta[0]))}</a></p>${shareBtn(l, a.h1, url)}</div></section>
 <section class="shop band" aria-labelledby="hgp"><div class="wrap"><h2 id="hgp">${gd.productsTitle}</h2>${grid(prods, l)}</div></section>
 ${faqBlock(faq, T[l].faqTitle)}
@@ -557,7 +557,7 @@ ${waitlist(l)}` }));
     ld: [crumbsLD([home, [t.sizeCap.split(" (")[0], pathOf(l, "size")]])],
     body: (here) => `${pageHead(t.sizePage.h1, "", [home, [t.sizeCap.split(" (")[0], pathOf(l, "size")]], here)}
 <div class="wrap">${goRow(here, [[pathOf(l, "article", "taille"), VPC[l].go.sizeArt], [pathOf(l, "article", "unisexe"), VPC[l].go.unisex], [pathOf(l, "ess"), VPC[l].go.ess]])}</div>
-<section class="band"><div class="wrap two"><div><h2>${t.sizePage.howTitle}</h2><ol class="steps">${t.sizePage.how.map((x) => `<li>${x}</li>`).join("")}</ol>${sizeTable(l)}</div><div><h2>${t.cutsTitle}</h2>${cuts(l)}</div></div></section>` }));
+<section class="band"><div class="wrap two"><div><h2>${t.sizePage.howTitle}</h2>${PLACEMENT.size ? `<figure class="article-photo size-photo">${photo(PLACEMENT.size, l, { sizes: "(max-width: 820px) 100vw, 520px" })}</figure>` : ""}<ol class="steps">${t.sizePage.how.map((x) => `<li>${x}</li>`).join("")}</ol>${sizeTable(l)}</div><div><h2>${t.cutsTitle}</h2>${cuts(l)}</div></div></section>` }));
 
   // Aide
   add(l, "help", null, layout({ l, key: "help", title: t.helpPage.title, desc: t.helpPage.desc,
@@ -594,7 +594,7 @@ ${faqCats(l, here)}` }));
     add(l, "quiz", null, layout({ l, key: "quiz", title: qz.title, desc: qz.desc,
       ld: [crumbsLD([home, [qz.nav, pathOf(l, "quiz")]]), { "@type": "WebPage", name: qz.title, description: qz.desc, url: abs(pathOf(l, "quiz")) }],
       body: (here) => `${pageHead(qz.h1, qz.intro, [home, [qz.nav, pathOf(l, "quiz")]], here)}
-<section class="band quiz-wrap"><div class="wrap">
+<section class="band quiz-wrap"><div class="wrap">${PLACEMENT.quiz ? `<figure class="quiz-photo hero-art photo small">${photo(PLACEMENT.quiz, l, { sizes: "(max-width: 820px) 60vw, 280px", eager: true })}</figure>` : ""}
 <form class="quiz" id="quiz" data-results="${esc(JSON.stringify(results))}" data-step="${esc(qz.step)}" novalidate>
   <p class="quiz-progress" aria-live="polite"><span class="quiz-count"></span><span class="quiz-bar"><i></i></span></p>
   ${qz.q.map(([q, opts], i) => `<fieldset class="quiz-q" data-q="${i}">
@@ -620,14 +620,14 @@ ${waitlist(l)}`,
   {
     const st = STORY[l], url = abs(pathOf(l, "story"));
     const linkTo = { bo: pathOf(l, "product", "UNIS-BO"), seasons: pathOf(l, "seasons"), gifts: pathOf(l, "gifts"), club: pathOf(l, "club"), box: pathOf(l, "gift", "coffrets") };
-    const pics = [PLACEMENT.boPage, "printempsStudio", "eteHibiscus", "halloweenDos", "saintValentin"];
+    const pics = PLACEMENT.story;
     add(l, "story", null, layout({ l, key: "story", title: st.title, desc: st.desc,
       ld: [crumbsLD(crumb("story", st.nav)), { "@type": "Article", headline: st.h1, description: st.desc, inLanguage: l, mainEntityOfPage: url, datePublished: CFG.launchDate, image: `${SITE}/${photoUrl(PLACEMENT.boPage, 1200)}`, author: { "@id": `${SITE}/#org` }, publisher: { "@id": `${SITE}/#org` }, about: { "@type": "Thing", name: "Bo" } }, faqLD(st.faq)],
       body: (here) => {
         const fillLinks = (s) => s.replace(/\{(\w+)\}/g, (_, k) => `<a href="${here(linkTo[k])}">${st.links[k]}</a>`);
         return `${pageHead(st.h1, st.intro, crumb("story", st.nav), here, "long")}
 ${st.sections.map(([h, ps], i) => `<section class="band story"><div class="wrap split${i % 2 ? " rev" : ""}"><div class="prose"><h2>${h}</h2>${ps.map((p) => `<p>${fillLinks(p)}</p>`).join("")}${st.notes[i] ? `<p class="bo-note">${st.notes[i]}</p>` : ""}</div>${PHOTOS[pics[i]] ? `<figure class="hero-art photo small">${photo(pics[i], l)}</figure>` : ""}</div></section>`).join("")}
-<section class="band"><div class="wrap"><p class="ctas"><a class="btn primary" href="${here(linkTo.bo)}">${st.cta}</a><a class="btn ghost" href="${here(linkTo.seasons)}">${t.nav.seasons}</a></p></div></section>
+<section class="band"><div class="wrap"><ul class="polas">${PLACEMENT.storyExtra.map((k) => `<li>${photo(k, l, { sizes: "(max-width: 700px) 100vw, 33vw" })}</li>`).join("")}</ul><p class="ctas"><a class="btn primary" href="${here(linkTo.bo)}">${st.cta}</a><a class="btn ghost" href="${here(linkTo.seasons)}">${t.nav.seasons}</a></p></div></section>
 ${faqBlock(st.faq, st.faqTitle)}`;
       } }));
   }

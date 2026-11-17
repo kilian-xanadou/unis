@@ -525,3 +525,15 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 .quiz-alt{font-weight:700;max-width:none}
 .quiz-alt .quiz-card{grid-template-columns:90px 1fr;font-weight:400}
 @media (max-width:560px){.quiz-card,.quiz-card.big{grid-template-columns:110px 1fr}.quiz{padding:18px}.quiz-card b{font-size:1.15rem}}
+
+/* Photos ajoutées le 17/11/2026 : quiz, guide des tailles, polaroïds de l'histoire de Bo */
+.quiz-wrap .wrap { display: grid; gap: 1.5rem; }
+@media (min-width: 821px) { .quiz-wrap .wrap { grid-template-columns: 280px 1fr; align-items: start; } }
+.quiz-photo { max-width: 280px; margin: 0 auto; transform: rotate(-2deg); }
+.size-photo { max-width: 420px; margin: 0 0 1rem; }
+.polas { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.polas li { background: #fff; padding: .6rem .6rem 1.6rem; box-shadow: 0 2px 10px rgba(62,3,27,.15); }
+.polas li:nth-child(odd) { transform: rotate(-1.5deg); } .polas li:nth-child(even) { transform: rotate(1.5deg); }
+.polas img { width: 100%; height: auto; display: block; aspect-ratio: 600 / 745; object-fit: cover; }
+@media (prefers-reduced-motion: reduce) { .polas li, .quiz-photo { transform: none; } }
+.season-photo.portrait { max-width: 440px; }

@@ -298,20 +298,168 @@ export const PHOTOS = {
       de: "Hände öffnen den Kraftumschlag und entdecken einen Herz-String, unter Freunden",
     },
   },
+  stringPull: {
+    file: "string-unisexe-noel-pull-moche-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe rouge à motif de pull de Noël jacquard blanc, posé à plat",
+      nl: "Rode unisex string met wit kersttruimotief in jacquard, plat gelegd",
+      en: "Red unisex thong with a white ugly-Christmas-sweater knit print, laid flat",
+      de: "Roter Unisex-String mit weißem Weihnachtspulli-Strickmuster, flach gelegt",
+    },
+  },
+  duoNoel: {
+    file: "duo-noel-rennes-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "Le Duo Rennes disco à plat : un string adulte et le mini-string de Bo, même motif",
+      nl: "De Duo Disco-rendieren plat: een string voor volwassenen en de mini-string van Bo",
+      en: "The Disco reindeer Duo laid flat: an adult thong and Bo's mini thong, same print",
+      de: "Das Duo Disco-Rentiere flach: ein String für Erwachsene und Bos Mini-String",
+    },
+  },
+  miniNoel: {
+    file: "mini-string-bo-noel-rennes-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "Mini-string de Bo rouge imprimé de rennes et de sapins, avec un petit nœud rouge",
+      nl: "Rode mini-string van Bo met rendieren en kerstbomen, naast een rood strikje",
+      en: "Bo's red mini thong printed with reindeer and trees, next to a small red bow",
+      de: "Bos roter Mini-String mit Rentieren und Tannen, daneben eine kleine rote Schleife",
+    },
+  },
+  stringSanguine: {
+    file: "string-unisexe-ete-orange-sanguine-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe uni orange sanguine en coton, posé à plat sur fond blanc",
+      nl: "Effen unisex string in bloedsinaasappel, katoen, plat op een witte achtergrond",
+      en: "Plain blood orange unisex cotton thong, laid flat on a white background",
+      de: "Einfarbiger Unisex-String in Blutorange aus Baumwolle, flach auf Weiß",
+    },
+  },
+  stringCitron: {
+    file: "string-unisexe-ete-citron-plat", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "String unisexe uni jaune citron en coton, posé à plat sur fond blanc",
+      nl: "Effen unisex string in citroengeel, katoen, plat op een witte achtergrond",
+      en: "Plain lemon yellow unisex cotton thong, laid flat on a white background",
+      de: "Einfarbiger zitronengelber Unisex-String aus Baumwolle, flach auf Weiß",
+    },
+  },
+  boOctobreRose: {
+    file: "bo-ours-unis-octobre-rose-studio", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo, patte sur le cœur, avec un nœud framboise et le string rose aux petits rubans",
+      nl: "Bo met de poot op het hart, frambozen strik en roze string met lintjes",
+      en: "Bo with a paw on his heart, raspberry bow and the pink ribbon-print thong",
+      de: "Bo mit der Pfote auf dem Herzen, Himbeerschleife und rosa String mit Schleifchen",
+    },
+  },
+  boiteBo: {
+    file: "boite-bo-fenetre-rose", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo dans sa boîte rose à fenêtre, avec une carte vierge et un ruban rouge",
+      nl: "Bo in zijn roze doos met venster, met een blanco kaartje en een rood lint",
+      en: "Bo in his pink window box, with a blank card and a red ribbon",
+      de: "Bo in seiner rosa Fensterbox, mit einer leeren Karte und einem roten Band",
+    },
+  },
+  certificat: {
+    file: "certificat-bo-numerote", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Le certificat de Bo : papier crème, cadre bordeaux et patte d'ours gaufrée",
+      nl: "Het certificaat van Bo: crèmepapier, bordeauxkader en een berenpoot in reliëf",
+      en: "Bo's certificate: cream paper, burgundy frame and an embossed bear paw",
+      de: "Bos Zertifikat: cremefarbenes Papier, Bordeaux-Rahmen und geprägte Bärentatze",
+    },
+  },
+  mesureHanches: {
+    file: "mesurer-tour-de-hanches", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Des mains mesurent le tour de hanches avec un mètre ruban jaune, sur un legging gris",
+      nl: "Handen meten de heupomtrek met een geel meetlint, over een grijze legging",
+      en: "Hands measuring hip size with a yellow tape measure over grey leggings",
+      de: "Hände messen den Hüftumfang mit einem gelben Maßband über grauen Leggings",
+    },
+  },
+  secretSanta: {
+    file: "secret-santa-collegues-pochette", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Secret Santa au bureau : deux mains se passent une pochette kraft fermée d'un rond rose",
+      nl: "Secret Santa op kantoor: twee handen geven een kraftenvelop met een roze sticker door",
+      en: "Office Secret Santa: two hands passing a kraft envelope sealed with a pink sticker",
+      de: "Wichteln im Büro: zwei Hände reichen einen Kraftumschlag mit rosa Aufkleber weiter",
+    },
+  },
+  boCanape: {
+    file: "bo-ours-unis-canape-noel", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo sur le canapé avec un bonnet de Noël et le string Rennes, guirlande lumineuse derrière",
+      nl: "Bo op de bank met een kerstmuts en de rendierstring, lichtslinger erachter",
+      en: "Bo on the sofa in a Santa hat and the reindeer thong, fairy lights behind",
+      de: "Bo auf dem Sofa mit Weihnachtsmütze und Rentier-String, Lichterkette dahinter",
+    },
+  },
+  boSelfie: {
+    file: "bo-ours-unis-selfie-miroir", sizes: [[600, 1075], [1116, 2000]],
+    alt: {
+      fr: "Bo fait un selfie au flash devant le miroir de la salle de bain, en string Rennes",
+      nl: "Bo maakt een flitsselfie voor de badkamerspiegel, in zijn rendierstring",
+      en: "Bo taking a flash mirror selfie in the bathroom, wearing the reindeer thong",
+      de: "Bo macht ein Spiegel-Selfie mit Blitz im Bad, im Rentier-String",
+    },
+  },
+  boColis: {
+    file: "bo-ours-unis-prepare-colis", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo au milieu des pochettes kraft, du papier de soie rose et des stickers : il prépare les colis",
+      nl: "Bo tussen kraftenveloppen, roze zijdepapier en stickers: hij maakt de pakjes klaar",
+      en: "Bo among kraft mailers, pink tissue paper and stickers, packing the orders",
+      de: "Bo zwischen Kraftumschlägen, rosa Seidenpapier und Stickern: er packt die Pakete",
+    },
+  },
+  boFenetre: {
+    file: "bo-ours-unis-fenetre-neige", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo en bonnet de Noël sur le rebord de la fenêtre, il regarde tomber la neige",
+      nl: "Bo met kerstmuts op de vensterbank kijkt naar de vallende sneeuw",
+      en: "Bo in a Santa hat on the windowsill, watching the snow fall",
+      de: "Bo mit Weihnachtsmütze auf der Fensterbank schaut dem Schnee zu",
+    },
+  },
+  boBande: {
+    file: "bo-ours-unis-fete-bande", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo au milieu de la table de fête, la bande trinque au-dessus de lui sous les confettis",
+      nl: "Bo midden op de feesttafel, de bende klinkt boven hem tussen de confetti",
+      en: "Bo in the middle of the party table while the gang toasts above him in confetti",
+      de: "Bo mitten auf dem Festtisch, die Clique stößt über ihm an, im Konfettiregen",
+    },
+  },
+  boQuiz: {
+    file: "bo-ours-unis-quiz", sizes: [[600, 745], [1200, 1490]],
+    alt: {
+      fr: "Bo, crayon à la bouche, réfléchit au bon cadeau devant des paquets kraft et un post-it rose",
+      nl: "Bo denkt met een potlood aan het beste cadeau, naast kraftpakjes en een roze post-it",
+      en: "Bo, pencil in mouth, thinking about the right gift beside kraft parcels and a pink note",
+      de: "Bo überlegt mit Bleistift im Mund das richtige Geschenk, neben Kraftpäckchen und rosa Zettel",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
 export const PLACEMENT = {
   hero: { noel: "noelAllonge", halloween: "halloween" },
-  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRoseLarge", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
+  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "boOctobreRose", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
   boPage: "noelStudio",
   club: "halloweenDos",
-  boCard: { noel: "noelStudio", valentin: "saintValentin", printemps: "printemps", pride: "prideArcEnCiel", ete: "eteHibiscus", halloween: "halloween" },     // carte « Bo » et « Bo édition » de la saison
-  boxCard: { noel: "offrirBo", valentin: "saintValentin" },
-  article: { cadeau: "pochetteCadeau" },
+  boCard: { noel: "noelStudio", valentin: "saintValentin", printemps: "printemps", pride: "prideArcEnCiel", ete: "eteHibiscus", halloween: "halloween", rose: "boOctobreRose" },     // carte « Bo » et « Bo édition » de la saison
+  boxCard: { noel: "boiteBo", valentin: "saintValentin" },
+  article: { cadeau: "secretSanta", taille: "mesureHanches" },
+  size: "mesureHanches", quiz: "boQuiz", secret: "secretSanta",
+  story: ["boSelfie", "boCanape", "printempsStudio", "boColis", "boiteBo"], // une photo par section de « L'histoire de Bo »
+  storyExtra: ["boFenetre", "boBande", "certificat"], // polaroïds en fin de page
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
-  itemCard: { "UNIS-NOEL26-RENNES": "stringNoel", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
+  itemCard: { "UNIS-NOEL26-RENNES": "stringNoel", "UNIS-NOEL26-PULL": "stringPull", "UNIS-NOEL26-RENNES-DUO": "duoNoel", "UNIS-NOEL26-RENNES-MINI": "miniNoel",
+    "UNIS-ETE27-SANGUINE": "stringSanguine", "UNIS-ETE27-CITRON": "stringCitron", "UNIS-PRIDE27-TRANS": "stringTrans", "UNIS-PRIDE27-RAINBOW": "prideArcEnCiel",
     "UNIS-ETE27-HIBISCUS": "stringHibiscus", "UNIS-ETE27-HIBISCUS-DUO": "eteHibiscus", "UNIS-ESS": "essentiels6", "UNIS-ESS-LOT5": "essentielsLot",
     "UNIS-PRINTEMPS27-FLEURS": "stringFleurs", "UNIS-PRINTEMPS27-FLEURS-DUO": "printempsStudio",
     "UNIS-HALLOWEEN27-PHOSPHO": "stringPhospho", "UNIS-HALLOWEEN27-CITROUILLE": "stringCitrouille",
