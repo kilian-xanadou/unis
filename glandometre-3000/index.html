@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Page non répertoriée : aucun lien depuis le site, absente du sitemap et de robots.txt, interdite aux moteurs. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Le Glandomètre 3000 | UNIS</title>
+<meta name="description" content="Tu as du temps à perdre ? Bo aussi. Les campagnes les plus absurdes d'UNIS et le merch qu'on n'aurait jamais dû imaginer.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family:"Bricolage Grotesque"; font-weight:200 800; font-stretch:75% 100%; font-display:swap; src:url("../assets/fonts/bricolage-grotesque-latin-standard-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:400; font-display:swap; src:url("../assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:700; font-display:swap; src:url("../assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family:"Caveat"; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-700-normal.woff2") format("woff2"); }
+:root { --bg:#3E031B; --ink:#FFE3EE; --pink:#FAB8D0; --accent:#FF7FB0; --card:#2A0112; --paper:#FFE3EE; --paper-ink:#3E031B; --postit:#FFE89A; --line:#FAB8D044; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg:#FFE3EE; --ink:#3E031B; --pink:#D42A6E; --accent:#D42A6E; --card:#FFFFFF; --line:#3E031B33; } }
+:root[data-theme="light"] { --bg:#FFE3EE; --ink:#3E031B; --pink:#D42A6E; --accent:#D42A6E; --card:#FFFFFF; --line:#3E031B33; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.55 "Atkinson Hyperlegible", Arial, sans-serif; overflow-x:hidden; }
+h1, h2, h3 { font-family:"Bricolage Grotesque", Arial, sans-serif; font-stretch:75%; font-weight:800; line-height:1.02; margin:0; text-transform:uppercase; letter-spacing:.01em; }
+a { color:var(--accent); font-weight:700; }
+:focus-visible { outline:3px solid var(--postit); outline-offset:3px; }
+.wrap { max-width:1180px; margin:0 auto; padding:0 16px; }
+.top { display:flex; justify-content:space-between; align-items:center; padding:18px 16px; max-width:1180px; margin:0 auto; font-size:15px; }
+.top a { color:var(--ink); }
+.hand { font-family:"Caveat", cursive; font-weight:700; color:var(--accent); text-transform:none; letter-spacing:0; }
+/* En-tête */
+.hero { text-align:center; padding:48px 0 32px; }
+.hero .kick { display:inline-block; background:var(--postit); color:#3E031B; font-weight:700; padding:6px 14px; transform:rotate(-2deg); font-size:15px; }
+.hero h1 { font-size:clamp(56px, 14vw, 168px); margin:18px 0 6px; }
+.hero h1 span { display:block; color:var(--pink); }
+.hero p { font-size:clamp(19px, 2.6vw, 24px); max-width:36ch; margin:12px auto; }
+.hero .hand { font-size:30px; display:block; transform:rotate(-2deg); }
+/* Glandomètre */
+.meter { display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); margin:24px 0 56px; }
+.box { border:3px solid var(--ink); background:var(--card); padding:20px; box-shadow:8px 8px 0 var(--pink); }
+.box h2 { font-size:28px; }
+.clock { font:800 clamp(48px, 9vw, 84px)/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; font-variant-numeric:tabular-nums; margin:10px 0; color:var(--pink); }
+.box p { margin:6px 0; }
+.btn { appearance:none; border:3px solid var(--ink); background:var(--accent); color:#fff; font:800 22px/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; padding:16px 22px; min-height:56px; cursor:pointer; box-shadow:5px 5px 0 var(--ink); }
+.btn:active { transform:translate(3px,3px); box-shadow:2px 2px 0 var(--ink); }
+.out { min-height:3.2em; font-weight:700; }
+/* Sections */
+.sec-h { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 18px; border-top:3px solid var(--ink); padding-top:18px; margin:24px 0; }
+.sec-h h2 { font-size:clamp(40px, 7vw, 76px); }
+.sec-h p { margin:0; max-width:52ch; }
+.grid { display:grid; gap:28px; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); margin-bottom:64px; }
+.card { background:var(--card); border:2px solid var(--line); display:flex; flex-direction:column; }
+.card .ph { position:relative; aspect-ratio:4/3; overflow:hidden; background:#000; }
+.card .ph img { width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.05); }
+.card .ph .num { position:absolute; top:10px; left:10px; background:var(--postit); color:#3E031B; font:800 18px/1 "Bricolage Grotesque", sans-serif; padding:6px 10px; transform:rotate(-4deg); }
+.card .tx { padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.card h3 { font-size:30px; }
+.card .pitch { margin:0; flex:1; }
+details summary { list-style:none; cursor:pointer; display:inline-block; border:3px solid var(--ink); padding:10px 16px; font:800 18px/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; background:transparent; color:var(--ink); min-height:44px; }
+details summary::-webkit-details-marker { display:none; }
+details[open] summary { background:var(--ink); color:var(--bg); }
+details .more { margin-top:12px; font-size:16px; }
+details .more dt { font-weight:700; color:var(--pink); margin-top:8px; }
+details .more dd { margin:2px 0 0; }
+.tag { align-self:flex-start; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; border:2px solid var(--pink); color:var(--pink); padding:3px 8px; }
+.foot { border-top:3px solid var(--ink); padding:28px 0 48px; font-size:15px; }
+.foot p { max-width:70ch; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .btn:active { transform:none; } }
+</style>
+</head>
+<body>
+<div class="top"><a href="../fr/">← UNIS, le vrai site</a><span>Page non répertoriée · tu ne l'as pas trouvée ici</span></div>
+<main>
+<header class="hero wrap">
+  <span class="kick">Bienvenue dans le</span>
+  <h1>Glandomètre <span>3000</span></h1>
+  <p>Tu as du temps à perdre ? Bo aussi. Voici les campagnes qu'on a imaginées un vendredi à 16 h 50, et le merch qu'on n'aurait jamais dû dessiner.</p>
+  <span class="hand">attention, idées non validées par un adulte responsable — Bo</span>
+</header>
+
+<section class="wrap meter" aria-label="Outils pour perdre du temps">
+  <div class="box">
+    <h2>Temps perdu ici</h2>
+    <p class="clock" id="clock" aria-hidden="true">00:00</p>
+    <p class="out" id="clockMsg" aria-live="polite">Le compteur tourne. Personne ne te juge.</p>
+  </div>
+  <div class="box">
+    <h2>Le bouton qui ne sert à rien</h2>
+    <p>Développé pendant 6 mois par une équipe de zéro ingénieur.</p>
+    <p><button class="btn" id="useless" type="button">Appuyer quand même</button></p>
+    <p class="out" id="uselessMsg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-camp">
+  <div class="sec-h"><h2 id="h-camp">Campagnes</h2><p>12 idées de campagnes absurdes. Chacune sert un vrai message : prix, qualité, cadeau, unisexe ou Europe. Ouvre une carte pour voir le plan.</p></div>
+  <div class="grid">
+
+    <article class="card"><div class="ph"><img src="../assets/images/string-unisexe-noel-rennes-plat-600.webp" alt="String rouge à motif de rennes posé à plat" loading="lazy"><span class="num">01</span></div><div class="tx">
+      <span class="tag">Prix</span><h3>Le string à 5 € le plus cher du monde</h3>
+      <p class="pitch">Un string à 5 €, livré en fourgon blindé, escorté par deux agents de sécurité et un notaire. Pour une seule commande.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>On tire au sort une commande. Elle est livrée à Bruxelles dans une mallette menottée, avec gants blancs et discours officiel. Vidéo de 30 s façon publicité de joaillerie.</dd><dt>Ce que ça dit</dt><dd>Qualité de luxe, prix de 5 €. Le décalage fait le message.</dd><dt>Garde-fous</dt><dd>Accord écrit de la personne livrée, visage flouté si elle le demande. Location d'un véhicule de transport de fonds : devis à demander.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-fenetre-neige-600.webp" alt="Bo regarde par la fenêtre, comme devant une machine à laver" loading="lazy"><span class="num">02</span></div><div class="tx">
+      <span class="tag">Qualité</span><h3>Machine TV : 100 lavages en direct</h3>
+      <p class="pitch">Un live de 100 cycles de machine à laver. Un string dedans. Bo devant le hublot. 150 heures. Aucun commentaire audio.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Live YouTube et TikTok en continu, compteur de lavages à l'écran. Au 100e cycle, on sort le string : il est intact (sinon, on le dit aussi).</dd><dt>Ce que ça dit</dt><dd>Coton 95 %, élasthanne 5 %, OEKO-TEX : ça tient. Sans le dire une seule fois.</dd><dt>Garde-fous</dt><dd>Résultat publié tel quel, même s'il est moins bon que prévu. Pas de faux chiffre.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/ouverture-pochette-kraft-cadeau-600.webp" alt="Des mains ouvrent une pochette kraft" loading="lazy"><span class="num">03</span></div><div class="tx">
+      <span class="tag">Livraison</span><h3>10 heures d'ASMR de pochette kraft</h3>
+      <p class="pitch">La vidéo la plus ennuyeuse jamais produite par une marque. Dix heures d'ouverture de pochettes kraft. Pour t'endormir. Ou pas.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Une vidéo YouTube de 10 h, micro binaural, 1 200 pochettes ouvertes. Chapitres absurdes (« Pochette 714 : le scotch résiste »).</dd><dt>Ce que ça dit</dt><dd>La pochette passe dans la boîte aux lettres, pas besoin d'être chez soi.</dd><dt>Garde-fous</dt><dd>Les strings ouverts restent neufs et sont donnés à une association, pas revendus (hygiène).</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-quiz-600.webp" alt="Bo réfléchit, un crayon à la bouche" loading="lazy"><span class="num">04</span></div><div class="tx">
+      <span class="tag">Service client</span><h3>Tape 2 pour parler à un ours</h3>
+      <p class="pitch">Un vrai numéro de téléphone. Un vrai menu vocal. « Tape 1 pour une taille. Tape 2 pour parler à un ours. » Bo répond. Bo ne dit rien.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Ligne téléphonique avec menu enregistré : la touche 2 diffuse 20 secondes de silence suivies d'un « … » très digne. La touche 1 donne le vrai guide des tailles.</dd><dt>Ce que ça dit</dt><dd>On répond vraiment aux questions de taille, et avec humour.</dd><dt>Garde-fous</dt><dd>Numéro au tarif normal, jamais surtaxé. Les vraies questions passent toujours à une personne.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/boite-bo-fenetre-rose-600.webp" alt="Bo dans sa boîte rose à fenêtre" loading="lazy"><span class="num">05</span></div><div class="tx">
+      <span class="tag">Europe</span><h3>Bo demande la nationalité belge</h3>
+      <p class="pitch">Bo se présente à la commune avec son dossier : photo d'identité, preuve de résidence, test de connaissance des frites. On filme toute la démarche.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Mini-série de 5 épisodes : le formulaire, la photo (refusée : « pas de sourire »), le test frites, l'attente, la fin ouverte.</dd><dt>Ce que ça dit</dt><dd>Marque belge, fière de l'être, qui livre dans toute l'UE.</dd><dt>Garde-fous</dt><dd>Tournage dans un décor, pas dans une vraie administration. Aucune moquerie des agents publics ni des personnes réellement en démarche.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/secret-santa-collegues-pochette-600.webp" alt="Une pochette kraft passe de main en main à une fête de bureau" loading="lazy"><span class="num">06</span></div><div class="tx">
+      <span class="tag">Cadeau</span><h3>L'applaudimètre officiel du Secret Santa</h3>
+      <p class="pitch">Un sonomètre certifié, prêté aux entreprises. Si le fou rire dépasse 85 décibels à l'ouverture du cadeau, le bureau gagne le droit de s'appeler « Bureau le plus UNIS de Belgique ».</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>On envoie 20 kits (sonomètre + pochette) à des entreprises inscrites. Les mesures sont publiées en direct sur une carte.</dd><dt>Ce que ça dit</dt><dd>Le cadeau à 5 € qui fait le plus de bruit.</dd><dt>Garde-fous</dt><dd>Participation des collègues volontaire, vidéos publiées uniquement avec accord. Le titre est honorifique, aucun prix en argent.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/string-unisexe-essentiels-6-couleurs-600.webp" alt="Six strings unis empilés à plat" loading="lazy"><span class="num">07</span></div><div class="tx">
+      <span class="tag">Unisexe</span><h3>La cabine d'essayage de 1 m²</h3>
+      <p class="pitch">La fashion week la plus serrée du monde : un défilé complet, 6 looks, 1 mannequin de 35 cm, dans une cabine d'essayage d'un mètre carré.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Pop-up d'un jour dans une galerie commerçante : une cabine, un rideau, des projecteurs, un tapis rouge de 1 m. Le public regarde par l'interstice du rideau.</dd><dt>Ce que ça dit</dt><dd>Toutes les tailles du XS au 4XL, une seule cabine, aucune étiquette « homme » ou « femme ».</dd><dt>Garde-fous</dt><dd>Autorisation du centre commercial. Bo défile, personne ne se déshabille.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-octobre-rose-studio-600.webp" alt="Bo, patte sur le cœur, nœud framboise" loading="lazy"><span class="num">08</span></div><div class="tx">
+      <span class="tag">Cause</span><h3>Le cours le plus sérieux de Bo</h3>
+      <p class="pitch">En octobre, Bo enseigne l'autopalpation avec un sérieux absolu et un tableau en carton. Le seul cours où l'élève a 35 cm et le message est vital.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Vidéo pédagogique de 60 s : Bo pointe chaque étape au bâton, une voix calme explique. Fin : « 1 € par article de la capsule prévu pour Think Pink (partenariat en cours de discussion). »</dd><dt>Ce que ça dit</dt><dd>L'humour fait regarder, le geste est expliqué correctement.</dd><dt>Garde-fous</dt><dd>Script relu par l'association ou un professionnel de santé. Humour sur Bo, jamais sur la maladie. Don présenté comme prévu tant qu'il n'est pas signé.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-prepare-colis-600.webp" alt="Bo au milieu de pochettes kraft et de papier de soie" loading="lazy"><span class="num">09</span></div><div class="tx">
+      <span class="tag">Drop</span><h3>Le musée des strings jamais réédités</h3>
+      <p class="pitch">Un musée national dans une cabine téléphonique. Chaque drop passé exposé sous vitrine. Conservateur : Bo. Entrée gratuite. Visite : 40 secondes.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Une cabine (ou une vitrine de 1 m) dans une rue de Bruxelles pendant une semaine, cartels de musée très sérieux, audioguide par QR code lu par Bo.</dd><dt>Ce que ça dit</dt><dd>Série limitée, jamais rééditée : si tu l'as raté, c'est au musée.</dd><dt>Garde-fous</dt><dd>Autorisation de la commune pour l'espace public. Aucun faux « stock épuisé ».</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-canape-noel-600.webp" alt="Bo sur le canapé en bonnet de Noël" loading="lazy"><span class="num">10</span></div><div class="tx">
+      <span class="tag">Fidélité</span><h3>UNIS Assurances</h3>
+      <p class="pitch">La première compagnie d'assurance contre la honte. Couverture tous risques du fou rire, franchise de 0 €, contrat de 47 pages que personne ne lira.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Fausse pub d'assurance façon années 90 (voix off rassurante, famille d'adultes souriants, Bo en costume). Le « contrat » est en fait l'inscription au Club de Bo.</dd><dt>Ce que ça dit</dt><dd>Le Club de Bo : avantages, accès avant tout le monde aux drops.</dd><dt>Garde-fous</dt><dd>Écrire clairement « parodie, ceci n'est pas une assurance ». Ne jamais imiter une vraie compagnie (nom, logo, couleurs).</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-selfie-miroir-600.webp" alt="Bo fait un selfie dans le miroir" loading="lazy"><span class="num">11</span></div><div class="tx">
+      <span class="tag">Réseaux</span><h3>Bo quitte les réseaux (pendant 4 minutes)</h3>
+      <p class="pitch">Un long message très sérieux : « J'ai besoin de me retrouver. » Quatre minutes plus tard : « Bon, je suis revenu, il y a un drop. »</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Post texte noir sur blanc, ton de célébrité qui fait une pause. Story 4 minutes plus tard avec le nouveau drop. Le timing est la blague.</dd><dt>Ce que ça dit</dt><dd>Lancement d'un drop avec un pic d'attention.</dd><dt>Garde-fous</dt><dd>Ne jamais parodier une vraie détresse ni la santé mentale : la pause dure 4 minutes et c'est assumé comme une blague dès le départ.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-fete-bande-600.webp" alt="Bo au milieu d'une table de fête, la bande trinque" loading="lazy"><span class="num">12</span></div><div class="tx">
+      <span class="tag">Bande</span><h3>Le lot de 5 en mode braquage</h3>
+      <p class="pitch">Cinq personnes. Cinq strings assortis. Un plan. Un film de casse de 45 secondes pour « récupérer » le lot de 5 dans un coffre-fort de cuisine.</p>
+      <details><summary>Voir la campagne</summary><dl class="more"><dt>Le plan</dt><dd>Parodie de film de braquage : présentation de l'équipe en arrêt sur image, plan dessiné sur une nappe, Bo en cerveau de l'opération. Chute : le coffre n'était pas fermé.</dd><dt>Ce que ça dit</dt><dd>Le lot de 5 à 20 €, soit 4 € par personne, pour une bande assortie.</dd><dt>Garde-fous</dt><dd>Aucune arme, même factice. Aucune image de vrai lieu ou de vraie enseigne.</dd></dl></details>
+    </div></article>
+
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-merch">
+  <div class="sec-h"><h2 id="h-merch">Merch interdit</h2><p>8 objets qu'on n'aurait jamais dû imaginer. Certains pourraient vraiment exister en série ultra-limitée, pour la presse et les collectionneurs. Aucun n'est en vente.</p></div>
+  <div class="grid">
+
+    <article class="card"><div class="ph"><img src="../assets/images/certificat-bo-numerote-600.webp" alt="Un certificat crème au cadre bordeaux" loading="lazy"><span class="num">M1</span></div><div class="tx">
+      <span class="tag">Idée · faisable</span><h3>Le coffre-fort à strings</h3>
+      <p class="pitch">Un mini coffre-fort à code pour ranger tes strings en série limitée. Parce qu'ils ne seront jamais réédités. Code par défaut : 0000. Change-le.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Objet de presse et de collection (100 exemplaires numérotés) : il raconte la rareté des drops mieux qu'un texte.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/string-unisexe-noel-pull-moche-plat-600.webp" alt="String rouge au motif de pull de Noël" loading="lazy"><span class="num">M2</span></div><div class="tx">
+      <span class="tag">Idée · faisable</span><h3>La chaussette seule officielle</h3>
+      <p class="pitch">Une seule chaussette. Pas de paire. Brodée « Pas des chaussettes ». Le pire cadeau de Secret Santa, vendu par la marque qui le combat.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Prolonge la campagne « Pas des chaussettes ». Offerte avec les 100 premières commandes de décembre, comme blague dans la pochette.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/mesurer-tour-de-hanches-600.webp" alt="Un mètre ruban jaune autour des hanches" loading="lazy"><span class="num">M3</span></div><div class="tx">
+      <span class="tag">Idée · faisable</span><h3>Le mètre ruban de 35 cm</h3>
+      <p class="pitch">Le seul mètre ruban qui s'arrête à 35 cm. Parfait pour mesurer Bo. Totalement inutile pour ton tour de hanches. On fournit aussi le vrai guide.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Goodies de salon ou de pop-up : la blague pousse vers le vrai guide des tailles (QR code imprimé au dos).</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-600.webp" alt="Bo debout sur fond blanc" loading="lazy"><span class="num">M4</span></div><div class="tx">
+      <span class="tag">Idée · absurde</span><h3>Bo grandeur nature</h3>
+      <p class="pitch">Bo, mais 1,80 m. Livré sur palette. Ne passe par aucune porte connue. Porte un string 4XL. Exemplaire unique.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Mascotte d'événements et de pop-ups, photo garantie. Mis aux enchères pour l'association partenaire après la saison.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/pochette-kraft-unis-600.webp" alt="La pochette kraft UNIS" loading="lazy"><span class="num">M5</span></div><div class="tx">
+      <span class="tag">Idée · faisable</span><h3>Bougie « Tiroir propre »</h3>
+      <p class="pitch">Une bougie qui sent le linge propre, le coton neuf et la décision assumée. Durée de combustion : un drop entier.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Produit d'appoint pour le coffret cadeau, fabriqué avec une petite marque belge de bougies (co-branding).</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/bo-ours-unis-printemps-studio-600.webp" alt="Bo en tenue de printemps" loading="lazy"><span class="num">M6</span></div><div class="tx">
+      <span class="tag">Idée · absurde</span><h3>Eau de Bo</h3>
+      <p class="pitch">Le parfum officiel de Bo. Notes de tête : peluche neuve. Notes de cœur : miel. Notes de fond : décision discutable. Flacon de 35 ml, évidemment.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Fausse pub de parfum en noir et blanc (Bo face au vent) : contenu viral pour la Saint-Valentin. Le flacon peut exister en 50 exemplaires pour la presse.</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/duo-noel-rennes-plat-600.webp" alt="Le Duo assorti Rennes disco" loading="lazy"><span class="num">M7</span></div><div class="tx">
+      <span class="tag">Idée · faisable</span><h3>Le string-écharpe</h3>
+      <p class="pitch">Le motif du drop de Noël, tricoté en écharpe. Le seul produit UNIS qui se porte autour du cou. Oui, le motif est le même. Non, ce n'est pas le même produit.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Merch d'hiver qui se montre en public : le motif du drop devient visible dans la rue (publicité portée).</dd></dl></details>
+    </div></article>
+
+    <article class="card"><div class="ph"><img src="../assets/images/offrir-bo-coffret-cadeau-600.webp" alt="Des mains offrent Bo dans sa boîte" loading="lazy"><span class="num">M8</span></div><div class="tx">
+      <span class="tag">Idée · absurde</span><h3>La valise de Bo</h3>
+      <p class="pitch">Une valise cabine de 35 cm, avec roulettes, cadenas et étiquette « Fragile : ours ». Contient trois strings et aucune autre affaire.</p>
+      <details><summary>Pourquoi</summary><dl class="more"><dt>Le rôle</dt><dd>Accessoire de la série « Bo en Europe » et lot à gagner pour les créateurs ambassadeurs.</dd></dl></details>
+    </div></article>
+
+  </div>
+</section>
+</main>
+<footer class="wrap foot">
+  <p><b>Page non répertoriée.</b> Ces idées sont des propositions de campagnes et de merch pour le projet étudiant UNIS : rien n'est réalisé, rien n'est en vente. Chaque campagne garde les règles de la marque : adultes uniquement, jamais de genre, humour sans vulgarité, aucun faux chiffre ni faux avis, accords écrits pour toute personne filmée.</p>
+  <p class="hand" style="font-size:26px">si tu es arrivé jusqu'ici, tu as officiellement perdu ton temps. bravo. — Bo</p>
+</footer>
+<script>
+(function () {
+  var start = Date.now(), clock = document.getElementById("clock"), msg = document.getElementById("clockMsg");
+  var steps = [[15, "15 secondes. Tu pourrais déjà avoir commandé un string."], [45, "45 secondes. Ton café refroidit, Bo aussi."], [90, "1 min 30. Ton manager pense que tu lis un rapport."], [180, "3 minutes. Tu viens de battre le record de Bo (il s'est endormi)."], [300, "5 minutes. À ce stade, adopte Bo, vous avez des choses en commun."], [600, "10 minutes. On n'a plus rien à te dire. Vraiment. Rien."]];
+  var shown = 0;
+  setInterval(function () {
+    var s = Math.floor((Date.now() - start) / 1000), m = Math.floor(s / 60);
+    clock.textContent = String(m).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+    while (shown < steps.length && s >= steps[shown][0]) { msg.textContent = steps[shown][1]; shown++; }
+  }, 1000);
+  var lines = ["Rien ne s'est passé. Comme prévu.", "Bo a cligné des yeux. Ah non, il n'a pas de paupières.", "Tu viens de produire 0,0001 watt. Merci pour la planète.", "Ce bouton a coûté 5 €. Comme un string, mais en moins utile.", "Un ours quelque part a ressenti quelque chose.", "Erreur 35 : bouton trop appuyé. Continue.", "Si tu appuies 50 fois, il ne se passera rien non plus.", "Ce clic a été transmis à notre service de rien.", "Bo valide ce clic. Bo valide tout, il est en peluche."];
+  var n = 0, out = document.getElementById("uselessMsg");
+  document.getElementById("useless").addEventListener("click", function () {
+    n++;
+    out.textContent = n === 50 ? "50 clics. Comme promis : rien. On t'aime quand même." : n + (n > 1 ? " clics. " : " clic. ") + lines[(n - 1) % lines.length];
+  });
+})();
+</script>
+</body>
+</html>
