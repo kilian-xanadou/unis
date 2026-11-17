@@ -8,7 +8,7 @@ export default {
   // Version de démonstration : les pages portent "noindex" pour que Google
   // n'indexe pas une boutique dont les produits n'existent pas encore.
   // Passe à true le jour du vrai lancement.
-  indexable: false,
+  indexable: true, // activé le 17/11/2026 à la demande de l'équipe (site de démo visible sur Google)
 
   // Saison en cours : valentin, printemps, pride, ete, halloween, noel.
   // Elle donne les couleurs du site et le drop mis en avant sur l'accueil.

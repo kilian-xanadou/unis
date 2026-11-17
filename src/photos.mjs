@@ -442,12 +442,39 @@ export const PHOTOS = {
       de: "Bo überlegt mit Bleistift im Mund das richtige Geschenk, neben Kraftpäckchen und rosa Zettel",
     },
   },
+  halloweenAffiche: {
+    file: "affiche-halloween-meme-pas-peur", sizes: [[600, 750], [1200, 1499]],
+    alt: {
+      fr: "Bo en chapeau de sorcière et string citrouilles fait semblant d'avoir très peur, « Cette année, même pas peur »",
+      nl: "Bo met heksenhoed en pompoenstring doet alsof hij heel bang is, « Dit jaar niet eens bang »",
+      en: "Bo in a witch hat and pumpkin thong pretends to be terrified, « This year, not even scared »",
+      de: "Bo mit Hexenhut und Kürbis-String tut so, als hätte er große Angst, « Dieses Jahr keine Angst »",
+    },
+  },
+  boTrinque: {
+    file: "bo-ours-unis-trinque-fete", sizes: [[600, 750], [1200, 1499]],
+    alt: {
+      fr: "Bo de dos en string Rennes sur la table de fête, la bande trinque au-dessus de lui",
+      nl: "Bo op zijn rug gezien in rendierstring op de feesttafel, de bende klinkt boven hem",
+      en: "Bo from behind in the reindeer thong on the party table, the gang toasting above him",
+      de: "Bo von hinten im Rentier-String auf dem Festtisch, die Clique stößt über ihm an",
+    },
+  },
+  boConfettis: {
+    file: "bo-ours-unis-fete-confettis", sizes: [[600, 804], [1200, 1607]],
+    alt: {
+      fr: "Bo à quatre pattes sur le parquet au milieu des confettis, en string rose, pendant une fête",
+      nl: "Bo op handen en voeten op het parket tussen de confetti, in roze string, tijdens een feestje",
+      en: "Bo on all fours on the parquet among confetti, in a pink thong, during a party",
+      de: "Bo auf allen vieren auf dem Parkett im Konfetti, im rosa String, während einer Party",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
 export const PLACEMENT = {
   hero: { noel: "noelAllonge", halloween: "halloween" },
-  season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "boOctobreRose", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
+  season: { noel: "noelAllonge", halloween: "halloweenAffiche", valentin: "saintValentin", rose: "boOctobreRose", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
   boPage: "noelStudio",
   club: "halloweenDos",
   boCard: { noel: "noelStudio", valentin: "saintValentin", printemps: "printemps", pride: "prideArcEnCiel", ete: "eteHibiscus", halloween: "halloween", rose: "boOctobreRose" },     // carte « Bo » et « Bo édition » de la saison
@@ -455,7 +482,7 @@ export const PLACEMENT = {
   article: { cadeau: "secretSanta", taille: "mesureHanches" },
   size: "mesureHanches", quiz: "boQuiz", secret: "secretSanta",
   story: ["boSelfie", "boCanape", "printempsStudio", "boColis", "boiteBo"], // une photo par section de « L'histoire de Bo »
-  storyExtra: ["boFenetre", "boBande", "certificat"], // polaroïds en fin de page
+  storyExtra: ["boFenetre", "boTrinque", "boConfettis", "boBande", "certificat"], // polaroïds en fin de page
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
   itemCard: { "UNIS-NOEL26-RENNES": "stringNoel", "UNIS-NOEL26-PULL": "stringPull", "UNIS-NOEL26-RENNES-DUO": "duoNoel", "UNIS-NOEL26-RENNES-MINI": "miniNoel",
