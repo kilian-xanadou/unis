@@ -8,7 +8,7 @@ import { T } from "./i18n.mjs";
 import { X } from "./i18n-extra.mjs";
 import { A } from "./i18n-account.mjs";
 import { L } from "./legal.mjs";
-import { PHOTOS, PLACEMENT, OG_IMAGE, VIDEOS } from "./photos.mjs";
+import { PHOTOS, PLACEMENT, OG_IMAGE, VIDEOS, REELS } from "./photos.mjs";
 import { ROSE } from "./i18n-rose.mjs";
 
 // Base Supabase branchée ? Sinon le site reste en mode démo (rien n'est enregistré).
@@ -242,6 +242,8 @@ const shareBtn = (l, title, url) => `<p class="share-row"><button class="btn gho
 // Sous la photo d'accueil (et non par-dessus) : le string du drop posé à plat, avec son prix.
 // Vitrine « L'histoire de Bo » : polaroïd, accroche et gros bouton (accueil, page Bo, fiche de Bo)
 const storyTeaser = (l, here) => { const st = STORY[l], z = st.teaser; return `<section class="story-teaser" aria-labelledby="hstory"><div class="wrap"><a class="st-card" href="${here(pathOf(l, "story"))}"><span class="st-pola">${photo("boSelfie", l, { sizes: "(max-width: 700px) 60vw, 300px" })}</span><span class="st-text"><span class="st-kicker">${z.kicker}</span><span class="st-h" id="hstory">${z.h}</span><span class="st-p">${z.p}</span><span class="btn primary go st-btn">${st.read} <span aria-hidden="true">→</span></span><span class="bo-note">${z.note}</span></span></a></div></section>`; };
+// Reel vertical (lecture auto en muet quand il est visible, via app.js), pages FR seulement : le texte de la vidéo est en français.
+const reelBlock = (k, l) => { const r = REELS[k]; if (!r || l !== "fr") return ""; return `<section class="band reel-band" aria-labelledby="hreel-${k}"><div class="wrap reel-wrap"><figure class="reel"><video data-autoplay muted loop playsinline controls preload="none" width="720" height="1280" poster="${BASE_PATH}assets/video/${r.file}-poster.jpg" aria-label="${esc(r.label)}"><source src="${BASE_PATH}assets/video/${r.file}-720.mp4" type="video/mp4"></video></figure><div class="prose"><p class="st-kicker">Reel · sans son</p><h2 id="hreel-${k}">${r.title}</h2><p>${r.text}</p><p class="bo-note">à regarder en boucle, j'assume</p></div></div></section>`; };
 const heroInset = (l) => { const p = seasonProducts(LIVE, l).find((x) => x.kind === "adult"), k = p && PLACEMENT.itemCard[p.sku]; return k ? `<p class="hero-strip">${photo(k, l, { sizes: "72px" })}<span><b>${esc(p.name)}</b> ${eur(p.price, l)}</span></p>` : ""; };
 // Packs prêts à offrir (drop en cours) : uniquement des produits existants, au prix normal (pas de fausse remise).
 function packs(l, ps) {
@@ -473,6 +475,7 @@ ${s.capsule ? `<section class="wrap donation"><h2 class="h3">${ROSE[l].donationT
 ${live ? "" : `<div class="wrap"><p class="soon-box"><b>${t.soon}</b> ${fill(t.seasonSoon, { d: fdate(s.next, l) })} <a href="#liste">${t.join}</a></p></div>`}
 <section class="shop band" id="produits" aria-labelledby="hdrop"><div class="wrap"><h2 id="hdrop" class="sr">${VPC[l].productsTitle}</h2>${live ? `<p class="bo-note right">${VPC[l].notes.drop}</p>` : ""}${grid(ps, l)}</div></section>
 ${live ? packs(l, ps) + buyBar(ps.find((p) => p.kind === "duo"), l) : ""}
+${live ? reelBlock(s.id, l) : ""}
 ${VIDEOS[s.id] ? `<figure class="wrap season-photo season-video"><video data-autoplay muted loop playsinline controls preload="none" width="${VIDEOS[s.id].width}" height="${VIDEOS[s.id].height}" poster="${BASE_PATH}assets/images/${VIDEOS[s.id].poster}" aria-label="${esc(VIDEOS[s.id].label[l])}"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}-640.mp4" type="video/mp4" media="(max-width: 700px)"><source src="${BASE_PATH}assets/video/${VIDEOS[s.id].file}.mp4" type="video/mp4"></video></figure>` : PLACEMENT.season[s.id] ? `<figure class="wrap season-photo${PHOTOS[PLACEMENT.season[s.id]].sizes[1][1] > PHOTOS[PLACEMENT.season[s.id]].sizes[1][0] ? " portrait" : ""}">${photo(PLACEMENT.season[s.id], l, { sizes: "(max-width: 1180px) 100vw, 1180px", eager: true })}</figure>` : ""}
 <section class="band"><div class="wrap two"><div class="prose"><h2>${t.chooseTitle}</h2><ul class="ticks">${t.choose.map((c) => `<li>${c}</li>`).join("")}</ul><p><a href="${here(pathOf(l, "size"))}">${t.sizeLink}</a> · <a href="${here(pathOf(l, "ess"))}">${t.nav.ess}</a></p></div><div class="prose"><h2>${t.helpPage.shipTitle}</h2><p>${t.helpPage.ship}</p></div></div></section>
 ${faqBlock(sfaq, t.faqTitle)}
@@ -580,7 +583,7 @@ ${faqCats(l, here)}` }));
     const bh = VPC[l].behind;
     add(l, "behind", null, layout({ l, key: "behind", title: bh.title, desc: bh.desc,
       body: (here) => `${pageHead(bh.h1, bh.intro, [home, [bh.nav, pathOf(l, "behind")]], here)}
-<section class="band"><div class="wrap"><ul class="forwho-list">${bh.items.map(([h, p, href]) => `<li><h3>${h}</h3><p>${p}</p><a href="${BASE_PATH}${href}" aria-label="${bh.open} : ${h}">${bh.open} →</a></li>`).join("")}</ul></div></section>` }));
+<section class="band"><div class="wrap"><ul class="forwho-list">${bh.items.map(([h, p, href]) => `<li><h2 class="h3">${h}</h2><p>${p}</p><a href="${BASE_PATH}${href}" aria-label="${bh.open} : ${h}">${bh.open} →</a></li>`).join("")}</ul></div></section>` }));
   }
 
   // Quiz « Quel UNIS pour qui ? » : Bo recommande un produit existant (logique dans app.js)
@@ -630,6 +633,7 @@ ${waitlist(l)}`,
         const fillLinks = (s) => s.replace(/\{(\w+)\}/g, (_, k) => `<a href="${here(linkTo[k])}">${st.links[k]}</a>`);
         return `${pageHead(st.h1, st.intro, crumb("story", st.nav), here, "long")}
 ${st.sections.map(([h, ps], i) => `<section class="band story"><div class="wrap split${i % 2 ? " rev" : ""}"><div class="prose"><h2>${h}</h2>${ps.map((p) => `<p>${fillLinks(p)}</p>`).join("")}${st.notes[i] ? `<p class="bo-note">${st.notes[i]}</p>` : ""}</div>${PHOTOS[pics[i]] ? `<figure class="hero-art photo small">${photo(pics[i], l)}</figure>` : ""}</div></section>`).join("")}
+${reelBlock("story", l)}
 <section class="band"><div class="wrap"><ul class="polas">${PLACEMENT.storyExtra.map((k) => `<li>${photo(k, l, { sizes: "(max-width: 700px) 100vw, 33vw" })}</li>`).join("")}</ul><p class="ctas"><a class="btn primary" href="${here(linkTo.bo)}">${st.cta}</a><a class="btn ghost" href="${here(linkTo.seasons)}">${t.nav.seasons}</a></p></div></section>
 ${faqBlock(st.faq, st.faqTitle)}`;
       } }));

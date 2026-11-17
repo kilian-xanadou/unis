@@ -7,6 +7,8 @@
 | `index.html` | Page d'aperçu, à ouvrir dans un navigateur (images en `../assets/...`) |
 | `publications.mjs` | Les données : textes, images, stickers. **C'est ici qu'on modifie** |
 | `bonus.mjs` | Les 9 **contenus bonus** (Reels et TikTok) inspirés de la veille réseaux sociaux du 17/11/2026 : Bo répond, Le défilé de 35 cm, Matche ta moitié, Ambassadeurs, Compteur Octobre Rose, L’étagère des drops, Pas des chaussettes, #TuAsÉtéUNIS, Bo en Europe. Affichés en bas de `index.html` |
+| `reels/` | Les 9 Reels MP4 1080×1920 sans son (+ affiches), lisibles et téléchargeables sur la page. Ajouter un son de la bibliothèque commerciale au moment de publier |
+| `extras.mjs`, `a-la-une/`, `pinterest/` | Les 5 couvertures de stories à la une et les 5 épingles Pinterest (titre, description, lien UTM, texte alternatif) |
 | `build.mjs` | Régénère `index.html` et bloque les erreurs (prix, « pour homme/femme », don sans « en cours de discussion », réduction sans prix des 30 jours, hashtags, images interdites) |
 | `check.mjs` | Vérifie le HTML (balises, id), les images, les liens vers les emails et les UTM |
 

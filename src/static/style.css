@@ -551,3 +551,11 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 .st-p { font-size: 1.1rem; max-width: 52ch; }
 .st-btn { font-size: 1.1rem; }
 @media (prefers-reduced-motion: reduce) { .st-card, .st-card:hover { transition: none; transform: none; } .st-pola { transform: none; } }
+
+/* Reels verticaux sur la boutique (17/11/2026) */
+.reel-wrap { display: grid; gap: 1.5rem; align-items: center; }
+@media (min-width: 760px) { .reel-wrap { grid-template-columns: 340px 1fr; gap: 3rem; } }
+.reel { margin: 0 auto; max-width: 340px; width: 100%; background: #fff; padding: .6rem .6rem 1.6rem; box-shadow: 0 4px 16px rgba(62,3,27,.2); transform: rotate(-1.5deg); }
+.reel video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: #000; }
+.reel-band .st-kicker { display: inline-block; }
+@media (prefers-reduced-motion: reduce) { .reel { transform: none; } }

@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { PUBLICATIONS, SITE } from "./publications.mjs";
 import { BONUS } from "./bonus.mjs";
+import { A_LA_UNE, PINS } from "./extras.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -70,6 +71,14 @@ for (const b of BONUS) {
   if (INTERDITES.some((x) => b.img.includes(x))) errors.push(`${where} : image interdite`);
   if (!b.alt || b.alt.length < 30) errors.push(`${where} : texte alternatif trop court`);
   if (!b.inspi.length || b.inspi.some(([, u]) => !/^https:\/\/www\.(tiktok|instagram)\.com\//.test(u))) errors.push(`${where} : lien d'inspiration manquant ou invalide`);
+}
+for (const p of PINS) {
+  const t = p.titre + "\n" + p.desc;
+  if (/pour (homme|femme)s?\b/i.test(t) || /\b(enfant|bébé|jouet)/i.test(t)) errors.push(`épingle ${p.id} : terme interdit`);
+  if (p.titre.length > 100) errors.push(`épingle ${p.id} : titre > 100 caractères`);
+  if (p.desc.length > 500) errors.push(`épingle ${p.id} : description > 500 caractères`);
+  if (!/utm_source=pinterest/.test(p.lien)) errors.push(`épingle ${p.id} : UTM manquant`);
+  for (const m of t.matchAll(/(\d+(?:,\d+)?)\s?€/g)) if (!PRIX_OK.has(m[1])) errors.push(`épingle ${p.id} : montant non prévu « ${m[0]} »`);
 }
 if (BONUS.length !== 9) errors.push(`${BONUS.length} contenus bonus au lieu de 9`);
 if (errors.length) { console.error("Contrôles en échec :\n- " + errors.join("\n- ")); process.exit(1); }
@@ -327,6 +336,14 @@ body.export .pub::before { display:none; }
 @media (prefers-reduced-motion: reduce) { .copy { transition:none; } }
 body.export .stk, body.export .lnk { visibility:hidden; }
 @media (prefers-reduced-motion: no-preference) { .car { scroll-behavior:smooth; } }
+/* Stories à la une et Pinterest */
+.une, .pins { list-style:none; padding:0; display:grid; gap:24px; margin:24px 0 0; }
+.une { grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); }
+.pins { grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); }
+.une li, .pins li { background:var(--paper); padding:12px; border-radius:6px; box-shadow:0 4px 14px #3E031B1f; font-size:15px; }
+.une img, .pins img { display:block; width:100%; height:auto; border-radius:4px; }
+.une img { aspect-ratio:9/16; object-fit:cover; } .pins img { aspect-ratio:2/3; }
+.une h3, .pins h3 { font-size:22px; margin:10px 0 4px; } .pin-l { margin:6px 0; } .pin-l code { font-size:12px; word-break:break-all; }
 /* Contenus bonus */
 .to-bonus { margin:16px 0 0; font-weight:700; }
 .bonus-s { margin-top:64px; }
@@ -362,7 +379,7 @@ body.export .stk, body.export .lnk { visibility:hidden; }
     </div>
     ${LOGO}
   </header>
-  <nav aria-label="Calendrier des publications"><ol class="toc">${toc}</ol><p class="to-bonus"><a href="#contenus-bonus">Contenus bonus : 9 formats vidéo inspirés de la veille réseaux sociaux ↓</a></p></nav>
+  <nav aria-label="Calendrier des publications"><ol class="toc">${toc}</ol><p class="to-bonus"><a href="#contenus-bonus">Contenus bonus : 9 Reels inspirés de la veille réseaux sociaux ↓</a> · <a href="#a-la-une">Stories à la une ↓</a> · <a href="#pinterest">Épingles Pinterest ↓</a></p></nav>
   <main>
 ${PUBLICATIONS.map(article).join("\n")}
     <section class="bonus-s" id="contenus-bonus" aria-labelledby="h-bonus">
@@ -370,6 +387,16 @@ ${PUBLICATIONS.map(article).join("\n")}
       <p class="lead">9 formats vidéo courts (Reels Instagram et TikTok, 9:16), en plus du calendrier emailing. Chacun reprend la mécanique d'exemples repérés dans la veille du 17 novembre 2026 (Duolingo, Ryanair, MeUndies, Parade, Who Gives A Crap, collectionneurs Jellycat, sketchs Secret Santa, ours voyageurs), adaptée à Bo et aux règles de la marque. Rien n'est publié ; les commentaires et réactions montrés en démo seront remplacés par de vrais une fois le compte lancé.</p>
       <ol class="toc bonus-toc">${BONUS.map((b, i) => `<li><a href="#bonus-${b.id}"><span class="num">B${i + 1}</span>${esc(b.format)}</a></li>`).join("")}</ol>
 ${BONUS.map(bonusCard).join("\n")}
+    </section>
+    <section class="bonus-s" id="a-la-une" aria-labelledby="h-une">
+      <h2 id="h-une"><span class="hl">Stories à la une</span></h2>
+      <p class="lead">Les 5 cercles sous la bio du profil. Couverture 1080×1920 (Instagram la rogne en rond autour de l'icône) et ce qu'on range dans chaque cercle.</p>
+      <ul class="une">${A_LA_UNE.map((a) => `<li><img src="a-la-une/${a.id}.jpg" alt="Couverture à la une « ${esc(a.label)} » : icône bordeaux sur cercle rose" loading="lazy" width="1080" height="1920"><h3>${esc(a.label)}</h3><p>${esc(a.contenu)}</p><a href="a-la-une/${a.id}.jpg" download>Télécharger</a></li>`).join("")}</ul>
+    </section>
+    <section class="bonus-s" id="pinterest" aria-labelledby="h-pin">
+      <h2 id="h-pin"><span class="hl">Épingles Pinterest</span></h2>
+      <p class="lead">5 épingles 1000×1500 pour un tableau « Idées cadeaux drôles ». Pinterest est un moteur de recherche : le titre et la description reprennent les mots que les gens tapent pour chercher un cadeau. Lien avec UTM vers la page qui répond.</p>
+      <ul class="pins">${PINS.map((p) => `<li><img src="pinterest/${p.id}.jpg" alt="${esc(p.alt)}" loading="lazy" width="1000" height="1500"><h3>${esc(p.titre)}</h3><p>${esc(p.desc)}</p><p class="pin-l"><b>Lien :</b> <code>${esc(p.lien)}</code></p><p class="pin-l"><b>Texte alternatif :</b> ${esc(p.alt)}</p><a href="pinterest/${p.id}.jpg" download>Télécharger l'image</a></li>`).join("")}</ul>
     </section>
   </main>
   <footer>

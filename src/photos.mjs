@@ -484,3 +484,9 @@ export const VIDEOS = {
 };
 
 export const OG_IMAGE = { file: "og-unis.jpg", width: 1200, height: 630 };
+
+// Reels verticaux (texte incrusté en français : affichés sur les pages FR seulement). Fichiers dans assets/video/.
+export const REELS = {
+  noel: { file: "reel-defile-35cm-noel", title: "Le défilé de 35 cm", text: "Cinq looks de Noël, un seul mannequin. Bo a répété toute la semaine (il a refusé le Pull moche, pas toi).", label: "Reel : Bo défile dans cinq looks de Noël, du string Rennes disco à l'after-party" },
+  story: { file: "reel-bo-repond-episode-1", title: "Bo répond", text: "Chaque mardi, Bo répond à une question, avec tout le sérieux d'un ours de 35 cm.", label: "Reel : Bo répond à la question « Un ours en string ? Mais qui achète ça »" },
+};
