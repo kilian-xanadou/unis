@@ -4,13 +4,14 @@ import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { PUBLICATIONS, SITE } from "./publications.mjs";
+import { BONUS } from "./bonus.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
 // ── Contrôles de contenu (échouent bruyamment) ──────────────────────
 const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-const INTERDITES = ["email-octobre-rose-bo.jpg", "bo-ours-unis-octobre-rose-", "email-halloween-bo-dos-a.jpg", "email-noel-bo-dos-a.jpg", "email-noel-bo-dos-b.jpg", "email-je-taime-mon-nounours.jpg"];
+const INTERDITES = ["email-octobre-rose-bo.jpg", "bo-ours-unis-octobre-rose-600", "bo-ours-unis-octobre-rose-1200", "email-halloween-bo-dos-a.jpg", "email-noel-bo-dos-a.jpg", "email-noel-bo-dos-b.jpg", "email-je-taime-mon-nounours.jpg"];
 const PRIX_OK = new Set(["3", "5", "7", "20", "49", "55", "3,90", "30", "4", "17", "3,50", "5,60", "14", "10", "1"]); // 1 € = projet de don par article
 const errors = [];
 
@@ -55,6 +56,22 @@ for (const p of PUBLICATIONS) {
 if (PUBLICATIONS.length !== 16) errors.push(`${PUBLICATIONS.length} publications au lieu de 16`);
 const dates = PUBLICATIONS.map((p) => p.date);
 if (dates.join() !== [...dates].sort().join()) errors.push("publications hors de l'ordre du calendrier");
+// Contenus bonus : mêmes règles de marque (textes publics seulement : concept, plans, légende)
+for (const b of BONUS) {
+  const where = `bonus « ${b.format} »`;
+  const t = [b.concept, b.caption, ...b.plans.flat()].join("\n");
+  if (/pour (homme|femme)s?\b/i.test(t)) errors.push(`${where} : « pour homme/femme »`);
+  if (/\b(enfant|bébé|gamin|jouet)/i.test(t)) errors.push(`${where} : référence à l'enfance`);
+  for (const m of t.matchAll(/(\d+(?:,\d+)?)\s?€/g)) if (!PRIX_OK.has(m[1])) errors.push(`${where} : montant non prévu « ${m[0]} »`);
+  if (/(reversé|don)/i.test(t) && /Think Pink/.test(t) && !/en cours de discussion/.test(t)) errors.push(`${where} : don sans « en cours de discussion »`);
+  const tags = b.caption.match(/#[\wÀ-ÿ]+/g) || [];
+  if (tags.length < 5 || tags.length > 10) errors.push(`${where} : ${tags.length} hashtags`);
+  if (!tags.includes("#BoPorte") || !tags.includes("#UNIS")) errors.push(`${where} : #BoPorte ou #UNIS manquant`);
+  if (INTERDITES.some((x) => b.img.includes(x))) errors.push(`${where} : image interdite`);
+  if (!b.alt || b.alt.length < 30) errors.push(`${where} : texte alternatif trop court`);
+  if (!b.inspi.length || b.inspi.some(([, u]) => !/^https:\/\/www\.(tiktok|instagram)\.com\//.test(u))) errors.push(`${where} : lien d'inspiration manquant ou invalide`);
+}
+if (BONUS.length !== 9) errors.push(`${BONUS.length} contenus bonus au lieu de 9`);
 if (errors.length) { console.error("Contrôles en échec :\n- " + errors.join("\n- ")); process.exit(1); }
 
 // ── Rendu ───────────────────────────────────────────────────────────
@@ -109,6 +126,27 @@ function storyVis(p) {
   ${sticker(s.sticker)}
   <div class="lnk"><span class="stk-t">Sticker lien</span>${esc(s.link)}</div>
 </div>`;
+}
+
+function bonusCard(b, i) {
+  return `<article class="pub bonus" id="bonus-${b.id}" aria-labelledby="hb-${b.id}">
+  <header class="pub-h">
+    <p class="kicker"><span class="num">B${i + 1}</span>${esc(b.type)}</p>
+    <h3 id="hb-${b.id}"><span class="hl">${esc(b.format)}</span></h3>
+  </header>
+  <div class="bonus-g">
+    <figure class="bonus-ph">${photo(b, b.alt)}</figure>
+    <div class="bonus-t">
+      <p><b>La mécanique qu'on reprend :</b> ${esc(b.mecanique)}</p>
+      <p><b>Version UNIS :</b> ${esc(b.concept)}</p>
+      <table class="plans"><caption>Déroulé</caption><thead><tr><th scope="col">Moment</th><th scope="col">À l'écran</th><th scope="col">Texte, son ou consigne</th></tr></thead><tbody>${b.plans.map(([a, c, d]) => `<tr><th scope="row">${esc(a)}</th><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join("")}</tbody></table>
+      <div class="capbox"><p class="cap-h">Légende</p><pre id="capb-${b.id}" class="cap">${esc(b.caption)}</pre><button type="button" class="copy" data-target="capb-${b.id}">Copier la légende</button> <span class="copied" role="status"></span></div>
+      <dl class="meta"><dt>Quand</dt><dd>${esc(b.quand)}</dd><dt>À mesurer</dt><dd>${esc(b.kpi)}</dd><dt>Garde-fous</dt><dd>${esc(b.garde)}</dd>${b.prompt ? `<dt>Prompt visuel</dt><dd><code>${esc(b.prompt)}</code></dd>` : ""}</dl>
+      <p class="inspi"><b>Inspirations</b> (à regarder pour la mécanique, ne rien copier ni repartager) :</p>
+      <ul class="inspi-l">${b.inspi.map(([l, u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(l)}</a></li>`).join("")}</ul>
+    </div>
+  </div>
+</article>`;
 }
 
 function article(p) {
@@ -289,6 +327,27 @@ body.export .pub::before { display:none; }
 @media (prefers-reduced-motion: reduce) { .copy { transition:none; } }
 body.export .stk, body.export .lnk { visibility:hidden; }
 @media (prefers-reduced-motion: no-preference) { .car { scroll-behavior:smooth; } }
+/* Contenus bonus */
+.to-bonus { margin:16px 0 0; font-weight:700; }
+.bonus-s { margin-top:64px; }
+.bonus-s > h2 { font-size:clamp(30px, 5vw, 46px); }
+.bonus-s .pub-h h3 { font-size:28px; margin:8px 0 4px; }
+.bonus-s .pub-h h3 .hl { background-image:linear-gradient(176deg, transparent 56%, var(--soft) 56%, var(--soft) 90%, transparent 90%); }
+.bonus-g { display:grid; gap:24px; margin-top:16px; }
+@media (min-width:860px) { .bonus-g { grid-template-columns:300px 1fr; align-items:start; } }
+.bonus-ph { margin:0; background:#fff; padding:10px 10px 28px; box-shadow:0 4px 14px #3E031B26; transform:rotate(-1.5deg); max-width:300px; }
+.bonus-ph img { display:block; width:100%; aspect-ratio:9/16; height:auto; }
+.plans { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0 16px; }
+.plans caption { text-align:left; font-weight:700; margin-bottom:6px; }
+.plans th, .plans td { border-top:1px solid #3E031B33; padding:8px 10px 8px 0; text-align:left; vertical-align:top; }
+.plans thead th { border-top:0; color:var(--muted); font-size:14px; }
+.capbox .cap-h { font-weight:700; margin:0 0 4px; }
+.bonus .cap { white-space:pre-wrap; font:15px/1.5 'Atkinson Hyperlegible', Arial, sans-serif; background:var(--bg); padding:12px; border-radius:6px; margin:0 0 8px; }
+.meta { display:grid; grid-template-columns:max-content 1fr; gap:6px 14px; font-size:15px; margin:16px 0; }
+.meta dt { font-weight:700; } .meta dd { margin:0; } .meta code { font-size:13px; word-break:break-word; }
+.inspi { margin:8px 0 4px; font-size:15px; } .inspi-l { margin:0; padding-left:20px; font-size:15px; }
+@media (max-width:600px) { .meta { grid-template-columns:1fr; } .plans { font-size:14px; } }
+@media (prefers-reduced-motion: reduce) { .bonus-ph { transform:none; } }
 </style>
 </head>
 <body>
@@ -301,9 +360,15 @@ body.export .stk, body.export .lnk { visibility:hidden; }
     </div>
     ${LOGO}
   </header>
-  <nav aria-label="Calendrier des publications"><ol class="toc">${toc}</ol></nav>
+  <nav aria-label="Calendrier des publications"><ol class="toc">${toc}</ol><p class="to-bonus"><a href="#contenus-bonus">Contenus bonus : 9 formats vidéo inspirés de la veille réseaux sociaux ↓</a></p></nav>
   <main>
 ${PUBLICATIONS.map(article).join("\n")}
+    <section class="bonus-s" id="contenus-bonus" aria-labelledby="h-bonus">
+      <h2 id="h-bonus"><span class="hl">Contenus bonus</span></h2>
+      <p class="lead">9 formats vidéo courts (Reels Instagram et TikTok, 9:16), en plus du calendrier emailing. Chacun reprend la mécanique d'exemples repérés dans la veille du 17 novembre 2026 (Duolingo, Ryanair, MeUndies, Parade, Who Gives A Crap, collectionneurs Jellycat, sketchs Secret Santa, ours voyageurs), adaptée à Bo et aux règles de la marque. Rien n'est publié ; les commentaires et réactions montrés en démo seront remplacés par de vrais une fois le compte lancé.</p>
+      <ol class="toc bonus-toc">${BONUS.map((b, i) => `<li><a href="#bonus-${b.id}"><span class="num">B${i + 1}</span>${esc(b.format)}</a></li>`).join("")}</ol>
+${BONUS.map(bonusCard).join("\n")}
+    </section>
   </main>
   <footer>
     <p>Heures conseillées : point de départ à ajuster avec les statistiques du compte (aucune donnée d'audience à ce jour). Les publications « mode démo » tombent avant le lancement commercial d'avril 2027 : démonstration ou liste d'attente seulement. Instagram ne rend pas les liens cliquables dans les légendes : le lien UTM du jour va dans la bio et dans le sticker lien. Exports : ouvrir cette page avec <code>?export</code> (voir insta/README.md). Versions NL, EN (« thong ») et DE à faire relire par une personne native.</p>
@@ -354,5 +419,5 @@ ${PUBLICATIONS.map(article).join("\n")}
 `;
 
 writeFileSync(join(here, "index.html"), html);
-console.log(`insta/index.html écrit : ${PUBLICATIONS.length} publications, ${PUBLICATIONS.reduce((a, p) => a + p.feed.slides.length, 0)} vignettes feed, ${PUBLICATIONS.length} stories.`);
+console.log(`insta/index.html écrit : ${PUBLICATIONS.length} publications + ${BONUS.length} contenus bonus, ${PUBLICATIONS.reduce((a, p) => a + p.feed.slides.length, 0)} vignettes feed, ${PUBLICATIONS.length} stories.`);
 for (const p of PUBLICATIONS) console.log(`  #${String(p.n).padStart(2, "0")} ${frDate(p.date)} · ${p.campaign}`);

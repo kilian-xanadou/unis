@@ -40,7 +40,7 @@ const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
 for (const tag of imgs) if (!/\salt="[^"]{10,}"/.test(tag)) errors.push(`image sans texte alternatif : ${tag.slice(0, 80)}`);
 const locals = [...new Set([...srcs, ...[...html.matchAll(/href="(\.\.\/[^"#?]+)"/g)].map((m) => m[1])])];
 for (const p of locals) if (!p.startsWith("../fr/") && !existsSync(resolve(here, p))) errors.push(`fichier introuvable : ${p}`);
-const forbidden = ["email-octobre-rose-bo.jpg", "bo-ours-unis-octobre-rose-", "email-halloween-bo-dos-a.jpg"];
+const forbidden = ["email-octobre-rose-bo.jpg", "bo-ours-unis-octobre-rose-600", "bo-ours-unis-octobre-rose-1200", "email-halloween-bo-dos-a.jpg"]; // photo au trophée interdite, photo studio autorisée;
 for (const p of srcs) if (forbidden.some((f) => p.includes(f))) errors.push(`image interdite : ${p}`);
 
 // 4. utm_campaign = celui de l'email associé
