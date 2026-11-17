@@ -60,3 +60,36 @@ Remplace les phrases entre guillemets par :
 2. Ajoute le texte de chaque plan (voir le tableau du storyboard), dans la zone sûre.
 3. Remplace les 2 dernières secondes par le carton final : logo UNIS, « Un fil. Tous les corps. Même les ours. » et « Lien en bio ».
 4. Exporte en 1080 × 1920, H.264, sous-titres incrustés.
+
+---
+
+# Version courte · 10 s · conforme aux règles des IA et des régies
+
+Pour éviter les refus de Veo (et des régies Meta, TikTok, Google), cette version respecte trois règles :
+
+- **Bo ne porte pas le string à l'écran** : il porte seulement son nœud et un bonnet de Noël. Le string est montré **à plat, comme un produit**, jamais sur un corps.
+- **Aucun mot sensible dans le prompt** : on écrit `underwear`, `cotton briefs`, `product`, jamais `sexy`, `lingerie`, `nude`, `sensual`.
+- **Aucun corps humain**, seulement des mains d'adultes.
+
+## Le script (10 s)
+
+| Temps | Image | Texte (au montage) | Son |
+| --- | --- | --- | --- |
+| 0:00–0:03 | Bo assis sur une chaise, flash | Casting mannequin. | Silence, clic de flash |
+| 0:03–0:06 | Le string Rennes disco posé à plat, des mains le présentent | 5 €. Du XS au 4XL. | Le beat démarre |
+| 0:06–0:08 | La pochette kraft s'ouvre | Livré dans ta boîte aux lettres. | Papier kraft |
+| 0:08–0:10 | Carton final | UNIS · Un fil. Tous les corps. Même les ours. | « UNIS. Même les ours. » |
+
+## Clip unique · 8 s
+
+```
+Vertical 9:16 video, 8 seconds, cozy smartphone footage with soft film grain, warm adult living room decorated for Christmas. Shot 1 (0-3s): a 35 cm honey-brown plush teddy bear with round black button eyes, a stitched nose, no eyebrows, a red satin bow and a small Santa hat sits perfectly still on a wooden chair under a warm lamp, a single camera flash goes off. Shot 2 (3-6s): top-down product shot on a pale pink table, adult hands present a pair of red cotton underwear briefs printed with cream reindeer and small Christmas trees, neatly folded flat, like an e-commerce product photo. Shot 3 (6-8s): close-up of adult hands opening a kraft paper mailer envelope sealed with a round pink sticker, pink tissue paper inside. Audio: a camera shutter click, then a cheerful minimal electronic beat, the crisp sound of kraft paper, and a calm French voice-over says "Un cadeau à cinq euros qu'on n'oublie pas." Family-friendly cozy holiday mood. No text, no logos, no people's faces.
+```
+
+## Carton final · 2 s (au montage, pas besoin de Veo)
+
+Fond rose dragée `#FFE3EE`, logo UNIS au centre, « Un fil. Tous les corps. Même les ours. », « Lien en bio ».
+
+## Ciblage de la pub
+
+Même si la vidéo est sage, la publicité reste **ciblée 18+** dans Meta Ads et TikTok Ads : la marque vend des sous-vêtements et ne vise pas les mineurs.
