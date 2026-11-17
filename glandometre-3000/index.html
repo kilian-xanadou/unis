@@ -64,16 +64,67 @@ details .more dd { margin:2px 0 0; }
 .foot { border-top:3px solid var(--ink); padding:28px 0 48px; font-size:15px; }
 .foot p { max-width:70ch; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .btn:active { transform:none; } }
+
+/* ── Faux mode 18+ « Bo après minuit » : parodie de chaîne de nuit, contenu 100 % sage ── */
+.btn-x { background:#0B0B0B; color:#FF2D55; border-color:#FF2D55; box-shadow:5px 5px 0 #FF2D55; margin-top:22px; }
+.btn-x b { background:#FF2D55; color:#0B0B0B; padding:2px 8px; margin-right:8px; }
+#adult { display:none; }
+body.x { background:#070707; color:#F5F5F5; }
+body.x #normal, body.x .top, body.x .foot { display:none; }
+body.x #adult { display:block; }
+.x-bar { position:sticky; top:0; z-index:5; background:#0B0B0B; border-bottom:1px solid #FF2D5566; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; justify-content:space-between; padding:12px 16px; }
+.x-logo { font:800 30px/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; color:#FF2D55; text-shadow:0 0 8px #FF2D55, 0 0 22px #FF2D5599; letter-spacing:.04em; }
+.x-logo span { color:#F5F5F5; text-shadow:none; }
+.x-nav { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:14px; color:#BDBDBD; text-transform:uppercase; letter-spacing:.06em; }
+.btn-out { appearance:none; background:#F5F5F5; color:#0B0B0B; border:0; font:700 15px/1 "Atkinson Hyperlegible", sans-serif; padding:12px 16px; min-height:44px; cursor:pointer; border-radius:2px; }
+.x-hero { text-align:center; padding:40px 16px 20px; }
+.x-hero h1 { font-size:clamp(48px, 11vw, 120px); color:#F5F5F5; }
+.x-hero h1 em { font-style:normal; color:#FF2D55; text-shadow:0 0 10px #FF2D55, 0 0 30px #FF2D5588; }
+.x-hero p { color:#BDBDBD; max-width:46ch; margin:12px auto; }
+.x-warn { display:inline-block; border:2px solid #FF2D55; color:#FF2D55; padding:6px 12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:14px; }
+.x-sec { max-width:1180px; margin:0 auto; padding:16px 16px 48px; }
+.x-sec > h2 { font-size:clamp(30px, 5vw, 52px); color:#F5F5F5; border-left:6px solid #FF2D55; padding-left:14px; margin:24px 0 18px; }
+.x-grid { display:grid; gap:20px; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); }
+.x-card { background:#121212; border:1px solid #2A2A2A; }
+.x-thumb { position:relative; display:block; width:100%; aspect-ratio:16/10; overflow:hidden; border:0; padding:0; background:#000; cursor:pointer; }
+.x-thumb img { width:100%; height:100%; object-fit:cover; display:block; filter:blur(18px) brightness(.55) saturate(1.4); transform:scale(1.15); transition:filter .5s, transform .5s; }
+.x-thumb .lock { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:#F5F5F5; font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:14px; }
+.x-thumb .lock b { background:#FF2D55; color:#0B0B0B; padding:4px 10px; font-size:13px; }
+.x-thumb .dur { position:absolute; right:8px; bottom:8px; background:#000c; color:#fff; font-size:13px; padding:2px 6px; }
+.x-card.open .x-thumb img { filter:none; transform:none; }
+.x-card.open .x-thumb .lock { display:none; }
+.x-card .x-tx { padding:14px 16px 18px; }
+.x-card h3 { font-size:26px; color:#F5F5F5; }
+.x-card .x-meta { color:#8F8F8F; font-size:13px; margin:4px 0 8px; }
+.x-card .x-reveal { display:none; margin:0; color:#FFD1DC; }
+.x-card.open .x-reveal { display:block; }
+.x-card.open .x-tease { display:none; }
+.x-tease { margin:0; color:#BDBDBD; }
+.x-camp details summary { border-color:#FF2D55; color:#FF2D55; }
+.x-camp details[open] summary { background:#FF2D55; color:#0B0B0B; }
+.x-camp details .more dt { color:#FF2D55; }
+.x-foot { max-width:1180px; margin:0 auto; padding:24px 16px 56px; color:#8F8F8F; font-size:15px; border-top:1px solid #2A2A2A; }
+/* Écran d'âge */
+.gate { border:2px solid #FF2D55; background:#0B0B0B; color:#F5F5F5; max-width:520px; width:calc(100% - 32px); padding:28px; text-align:center; }
+.gate::backdrop { background:#000000e6; }
+.gate h2 { color:#FF2D55; font-size:40px; }
+.gate p { color:#D0D0D0; }
+.gate .row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:18px; }
+.gate .yes { appearance:none; background:#FF2D55; color:#0B0B0B; border:0; font:800 20px/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; padding:14px 20px; min-height:48px; cursor:pointer; }
+.gate .no { appearance:none; background:transparent; color:#F5F5F5; border:2px solid #555; font:700 16px/1 "Atkinson Hyperlegible", sans-serif; padding:12px 18px; min-height:48px; cursor:pointer; }
+@media (prefers-reduced-motion: no-preference) { .x-logo { animation:neon 4s infinite; } @keyframes neon { 0%, 92%, 100% { opacity:1 } 94% { opacity:.55 } 96% { opacity:1 } 97% { opacity:.7 } } }
+@media (prefers-reduced-motion: reduce) { .x-thumb img { transition:none; } }
 </style>
 </head>
 <body>
 <div class="top"><a href="../fr/">← UNIS, le vrai site</a><span>Page non répertoriée · tu ne l'as pas trouvée ici</span></div>
-<main>
+<main id="normal">
 <header class="hero wrap">
   <span class="kick">Bienvenue dans le</span>
   <h1>Glandomètre <span>3000</span></h1>
   <p>Tu as du temps à perdre ? Bo aussi. Voici les campagnes qu'on a imaginées un vendredi à 16 h 50, et le merch qu'on n'aurait jamais dû dessiner.</p>
   <span class="hand">attention, idées non validées par un adulte responsable — Bo</span>
+  <p><button class="btn btn-x" id="enterX" type="button" aria-haspopup="dialog"><b>18+</b>Contenu réservé aux adultes</button></p>
 </header>
 
 <section class="wrap meter" aria-label="Outils pour perdre du temps">
@@ -224,6 +275,56 @@ details .more dd { margin:2px 0 0; }
   </div>
 </section>
 </main>
+
+<dialog class="gate" id="gate" aria-labelledby="gate-h">
+  <h2 id="gate-h">Avertissement</h2>
+  <p>La suite contient des scènes d'une rare intensité, réservées à un public averti. Des images que tu ne pourras pas oublier.</p>
+  <p><b>As-tu 18 ans ou plus ?</b></p>
+  <div class="row"><button class="yes" id="gateYes" type="button">Oui, j'ai 18 ans</button><button class="no" id="gateNo" type="button">Non, ramène-moi</button></div>
+</dialog>
+
+<div id="adult" aria-label="Mode Bo après minuit (parodie)">
+  <div class="x-bar">
+    <span class="x-logo">Bo <span>après minuit</span></span>
+    <nav class="x-nav" aria-label="Catégories (fausses)"><span>Tendances</span><span>Interdit</span><span>Très chaud</span><span>Amateur</span><span>En groupe</span></nav>
+    <button class="btn-out" id="exitX" type="button">Quitter le mode adulte</button>
+  </div>
+  <header class="x-hero">
+    <span class="x-warn">Réservé aux adultes · 18+</span>
+    <h1>Contenu <em>adulte</em></h1>
+    <p>Des vidéos jamais vues. Des scènes que la morale réprouve. Clique sur une vignette floutée si tu l'oses.</p>
+  </header>
+
+  <section class="x-sec" aria-labelledby="hx-vid">
+    <h2 id="hx-vid">Les plus vues cette nuit</h2>
+    <div class="x-grid">
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-quiz-600.webp" alt="Bo assis à un bureau couvert de papiers, crayon à la bouche" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">47:12</span></button><div class="x-tx"><h3>Il se dévoile enfin</h3><p class="x-meta">2,1 M de vues (non) · ajoutée à 0 h 03</p><p class="x-tease">Tout. Sans filtre. Sans retenue.</p><p class="x-reveal">Sa déclaration d'impôts. Case par case. Elle est vide : il mesure 35 cm et n'a aucun revenu.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-fenetre-neige-600.webp" alt="Bo assis sur le rebord de la fenêtre, au-dessus du radiateur" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">1:58:00</span></button><div class="x-tx"><h3>Scènes très chaudes</h3><p class="x-meta">Catégorie : très chaud</p><p class="x-tease">Ça monte. Ça monte encore.</p><p class="x-reveal">Bo, juste au-dessus du radiateur. Thermostat réglé sur 19 °C, comme recommandé. Deux heures. Rien d'autre.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/string-unisexe-noel-pull-moche-plat-600.webp" alt="String rouge au motif de pull de Noël, posé à plat" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">0:30</span></button><div class="x-tx"><h3>Contenu explicite</h3><p class="x-meta">Catégorie : interdit</p><p class="x-tease">Tout est montré. Absolument tout.</p><p class="x-reveal">Explicitement : 5 € le string, TVA comprise. Livraison 3,90 €, offerte dès 30 €. Aucun frais caché. On t'avait prévenu.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-prepare-colis-600.webp" alt="Bo au milieu de pochettes kraft, de papier et de scotch en désordre" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">12:40</span></button><div class="x-tx"><h3>Ce que ta mère ne doit pas voir</h3><p class="x-meta">Signalée 0 fois</p><p class="x-tease">Le scandale qui secoue la famille.</p><p class="x-reveal">Bo n'a pas trié le papier et le carton. Et il a lavé le blanc avec la couleur. La honte.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/certificat-bo-numerote-600.webp" alt="Un certificat crème encadré de bordeaux" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">3:40:00</span></button><div class="x-tx"><h3>Hard</h3><p class="x-meta">Catégorie : extrême</p><p class="x-tease">Trois heures quarante. Aucune pause. Les nerfs à vif.</p><p class="x-reveal">Bo monte l'étagère de sa collection sans la notice. À la fin, il reste une vis. Personne ne sait d'où elle vient.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-selfie-miroir-600.webp" alt="Bo fait un selfie au flash dans la salle de bain" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">0:08</span></button><div class="x-tx"><h3>Amateur</h3><p class="x-meta">Catégorie : amateur · fait maison</p><p class="x-tease">Tourné chez lui. Lumière crue. Aucun filtre.</p><p class="x-reveal">Un selfie au flash, mal cadré, avec le miroir pas nettoyé. Le contenu le plus brut d'Internet.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-fete-bande-600.webp" alt="Bo au milieu de la table de fête, la bande trinque" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">24:00</span></button><div class="x-tx"><h3>En groupe</h3><p class="x-meta">Catégorie : en groupe</p><p class="x-tease">Ils étaient nombreux. Ça a duré toute la soirée.</p><p class="x-reveal">Un quiz de culture générale. Bo a perdu à la question sur les capitales. La bande a pris le lot de 5 strings assortis à 20 €.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-canape-noel-600.webp" alt="Bo sur le canapé, bonnet de Noël et tasse à côté" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">8:00:00</span></button><div class="x-tx"><h3>Toute la nuit</h3><p class="x-meta">Catégorie : après minuit</p><p class="x-tease">Huit heures d'affilée. Sans s'arrêter.</p><p class="x-reveal">Il a dormi. Huit heures. Couché à 21 h 30. C'est ça, la vraie vie d'adulte.</p></div></article>
+      <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/boite-bo-fenetre-rose-600.webp" alt="Bo dans sa boîte rose à fenêtre" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">0:18</span></button><div class="x-tx"><h3>Interdit aux moins de 18 ans</h3><p class="x-meta">La seule info vraie de cette page</p><p class="x-tease">La vérité qu'on t'a cachée.</p><p class="x-reveal">C'est vrai : Bo est un objet de collection pour adultes. C'est écrit sur sa fiche. Voilà. C'était ça, le secret.</p></div></article>
+    </div>
+  </section>
+
+  <section class="x-sec x-camp" aria-labelledby="hx-camp">
+    <h2 id="hx-camp">Les campagnes « après minuit »</h2>
+    <p style="color:#BDBDBD;max-width:70ch">Une seule mécanique : promettre du sulfureux, livrer de l'absurde. Bo n'est jamais montré dans une situation sexuelle ; le « contenu adulte », c'est la vie d'adulte.</p>
+    <div class="x-grid">
+      <article class="x-card"><div class="x-tx"><h3>La chaîne de nuit</h3><p class="x-tease">Une fausse pub de 2 h du matin, néons et voix grave : « Appelle maintenant, on t'attend. »</p><details><summary>Voir le plan</summary><dl class="more"><dt>Le plan</dt><dd>Spot de 20 s façon télé de nuit. Le numéro lit le guide des tailles d'une voix grave et très lente : « Mesure… ton… tour… de hanches. »</dd><dt>Ce que ça dit</dt><dd>Le guide des tailles, du XS au 4XL, sans jamais parler de genre.</dd><dt>Garde-fous</dt><dd>Numéro au tarif normal. Aucune image de corps, aucun sous-entendu sexuel : la blague, c'est la voix.</dd></dl></details></div></article>
+      <article class="x-card"><div class="x-tx"><h3>Effeuillage tarifaire</h3><p class="x-tease">On retire les couches une par une. Lentement. Jusqu'à ce qu'il ne reste que la vérité.</p><details><summary>Voir le plan</summary><dl class="more"><dt>Le plan</dt><dd>Vidéo où l'on enlève une à une les étiquettes d'un prix gonflé (« frais de dossier », « frais de rien ») jusqu'au vrai prix : 5 €, TVA comprise.</dd><dt>Ce que ça dit</dt><dd>Prix honnêtes, aucun frais caché, livraison offerte dès 30 €.</dd><dt>Garde-fous</dt><dd>On effeuille des étiquettes, pas Bo. Aucune comparaison avec un concurrent nommé.</dd></dl></details></div></article>
+      <article class="x-card"><div class="x-tx"><h3>Contenu pour adultes, le vrai</h3><p class="x-tease">Une série TikTok avec écran « 18+ ». Derrière : les épreuves de la vie d'adulte.</p><details><summary>Voir le plan</summary><dl class="more"><dt>Le plan</dt><dd>Un épisode par semaine : Bo et sa déclaration d'impôts, Bo et la machine à laver, Bo et l'étagère en kit, Bo et la mutuelle. Vignette floutée, titre racoleur, contenu d'une banalité totale.</dd><dt>Ce que ça dit</dt><dd>Bo est vraiment un objet pour adultes : des adultes qui rient de leur propre vie.</dd><dt>Garde-fous</dt><dd>Aucune marque citée (meubles, banques). Titres racoleurs mais jamais sexuels pour rester diffusables.</dd></dl></details></div></article>
+      <article class="x-card"><div class="x-tx"><h3>Le contrôle d'âge le plus inutile</h3><p class="x-tease">« As-tu 18 ans ? » Puis : « As-tu déjà payé une facture d'énergie ? » « Sais-tu ce qu'est une franchise ? »</p><details><summary>Voir le plan</summary><dl class="more"><dt>Le plan</dt><dd>Un mini-quiz « es-tu vraiment adulte ? » de 5 questions de vie quotidienne. Résultat : « Adulte confirmé. Tu mérites un string à 5 €. »</dd><dt>Ce que ça dit</dt><dd>La cible 18+ assumée, avec humour, et un lien vers le quiz cadeau.</dd><dt>Garde-fous</dt><dd>Aucune donnée personnelle demandée ni enregistrée.</dd></dl></details></div></article>
+      <article class="x-card"><div class="x-tx"><h3>Après minuit</h3><p class="x-tease">« Le drop tombe à minuit pile. Bo t'attend. » Bo, en vrai, dort depuis 21 h 30.</p><details><summary>Voir le plan</summary><dl class="more"><dt>Le plan</dt><dd>Teasing en néon rouge les 3 jours avant un drop. À minuit, la story montre Bo endormi sous la couette avec un masque de nuit : « Le drop est en ligne. Moi, je dors. »</dd><dt>Ce que ça dit</dt><dd>La date et l'heure du drop, en série limitée.</dd><dt>Garde-fous</dt><dd>Bo dort seul, dans une chambre d'adulte, rien d'autre. Pas de décor de chambre d'enfant.</dd></dl></details></div></article>
+      <article class="x-card"><div class="x-tx"><h3>Abonnement premium</h3><p class="x-tease">Contenu exclusif. Accès privé. Abonne-toi pour tout voir. 0 € par mois.</p><details><summary>Voir le plan</summary><dl class="more"><dt>Le plan</dt><dd>Page d'abonnement très « exclusive ». Le contenu premium : la newsletter du Club de Bo, avec l'accès aux drops avant tout le monde et des photos de Bo qui plie du linge.</dd><dt>Ce que ça dit</dt><dd>Inscription au Club de Bo (fidélité).</dd><dt>Garde-fous</dt><dd>Gratuit pour de vrai, désinscription en un clic, aucune imitation du nom ou du logo d'une vraie plateforme.</dd></dl></details></div></article>
+    </div>
+  </section>
+  <p class="x-foot"><b>Parodie.</b> Ce mode imite l'habillage d'une chaîne de nuit pour faire rire : il ne contient aucune image ni aucun propos sexuel. Bo est un objet de collection pour adultes et n'est jamais montré dans une situation sexuelle. <button class="btn-out" id="exitX2" type="button">Quitter le mode adulte</button></p>
+</div>
+
 <footer class="wrap foot">
   <p><b>Page non répertoriée.</b> Ces idées sont des propositions de campagnes et de merch pour le projet étudiant UNIS : rien n'est réalisé, rien n'est en vente. Chaque campagne garde les règles de la marque : adultes uniquement, jamais de genre, humour sans vulgarité, aucun faux chiffre ni faux avis, accords écrits pour toute personne filmée.</p>
   <p class="hand" style="font-size:26px">si tu es arrivé jusqu'ici, tu as officiellement perdu ton temps. bravo. — Bo</p>
@@ -243,6 +344,25 @@ details .more dd { margin:2px 0 0; }
   document.getElementById("useless").addEventListener("click", function () {
     n++;
     out.textContent = n === 50 ? "50 clics. Comme promis : rien. On t'aime quand même." : n + (n > 1 ? " clics. " : " clic. ") + lines[(n - 1) % lines.length];
+  });
+
+  // Faux mode 18+ : écran d'âge, puis habillage « Bo après minuit ».
+  var gate = document.getElementById("gate"), enter = document.getElementById("enterX");
+  function setX(on) {
+    document.body.classList.toggle("x", on);
+    document.title = on ? "Bo après minuit · 18+ | UNIS" : "Le Glandomètre 3000 | UNIS";
+    window.scrollTo(0, 0);
+    (on ? document.getElementById("exitX") : enter).focus();
+  }
+  enter.addEventListener("click", function () { if (gate.showModal) gate.showModal(); else setX(true); });
+  document.getElementById("gateYes").addEventListener("click", function () { gate.close(); setX(true); });
+  document.getElementById("gateNo").addEventListener("click", function () { gate.close(); enter.focus(); });
+  ["exitX", "exitX2"].forEach(function (id) { document.getElementById(id).addEventListener("click", function () { setX(false); }); });
+  document.querySelectorAll(".x-thumb").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var card = b.closest(".x-card"), open = card.classList.toggle("open");
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   });
 })();
 </script>
