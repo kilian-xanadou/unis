@@ -562,3 +562,5 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 
 /* Merch (17/11/2026) : illustrations provisoires */
 .merch-ico { width:70%; height:auto; display:block; margin:8% auto; }
+
+.merch-hero { margin:0 0 1.5rem; } .merch-hero img { display:block; width:100%; height:auto; border-radius:14px; }
