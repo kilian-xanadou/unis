@@ -104,6 +104,15 @@ body.x #adult { display:block; }
 .x-camp details[open] summary { background:#FF2D55; color:#0B0B0B; }
 .x-camp details .more dt { color:#FF2D55; }
 .x-foot { max-width:1180px; margin:0 auto; padding:24px 16px 56px; color:#8F8F8F; font-size:15px; border-top:1px solid #2A2A2A; }
+/* Affiches */
+.aff { list-style:none; padding:0; margin:0 0 16px; display:grid; gap:24px; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); align-items:start; }
+.aff li { background:var(--card); padding:10px 10px 6px; box-shadow:6px 6px 0 var(--pink); border:2px solid var(--ink); }
+.aff img { display:block; width:100%; height:auto; }
+.aff p { font-size:15px; margin:8px 2px; }
+.aff-note { font-size:15px; max-width:70ch; margin:0 0 56px; opacity:.85; }
+.x-aff { display:grid; gap:24px; align-items:start; }
+@media (min-width:760px) { .x-aff { grid-template-columns:380px 1fr; } }
+.x-aff img { display:block; width:100%; height:auto; border:1px solid #2A2A2A; }
 /* Écran d'âge */
 .gate { border:2px solid #FF2D55; background:#0B0B0B; color:#F5F5F5; max-width:520px; width:calc(100% - 32px); padding:28px; text-align:center; }
 .gate::backdrop { background:#000000e6; }
@@ -220,6 +229,19 @@ body.x #adult { display:block; }
   </div>
 </section>
 
+<section class="wrap" aria-labelledby="h-aff">
+  <div class="sec-h"><h2 id="h-aff">Affiches</h2><p>6 affiches de campagne, format rue et réseaux. Le QR code est le vrai (il mène au site). Clique pour ouvrir en grand.</p></div>
+  <ul class="aff">
+    <li><a href="affiches/noel-culotte.jpg"><img src="affiches/noel-culotte-600.jpg" alt="Affiche : Bo en bonnet de Noël et string Rennes près du sapin, « Cette année, Noël sera un peu plus culotté. Le cadeau à 5 € qu'on n'oublie pas. »" loading="lazy"></a><p><b>Noël culotté</b> · drop de Noël, cadeau à 5 €.</p></li>
+    <li><a href="affiches/bo-europe.jpg"><img src="affiches/bo-europe-600.jpg" alt="Affiche : Bo en lunettes noires assis sur le globe, valise UNIS, avions et étoiles européennes, « Bo is taking over Europe. »" loading="lazy"></a><p><b>Bo is taking over Europe</b> · livraison dans toute l'UE, série « Bo en Europe ».</p></li>
+    <li><a href="affiches/black-friday.jpg"><img src="affiches/black-friday-600.jpg" alt="Affiche : Bo allongé sur des billets, « Black Friday? Black nothing. »" loading="lazy"></a><p><b>Black Friday? Black nothing.</b> · pas de fausse promo : 5 € toute l'année.</p></li>
+    <li><a href="affiches/pass-the-string.jpg"><img src="affiches/pass-the-string-600.jpg" alt="Affiche rouge : Bo emmêlé dans un fil rouge, lunettes cœur, « Don't break the string. Pass it. »" loading="lazy"></a><p><b>Pass the string</b> · parrainage : fais passer le fil.</p></li>
+    <li><a href="affiches/bad-ideas.jpg"><img src="affiches/bad-ideas-600.jpg" alt="Affiche : Bo tient un dessin de string, « We need your bad ideas. Design the next string. »" loading="lazy"></a><p><b>We need your bad ideas</b> · concours de motif pour le prochain drop.</p></li>
+    <li><a href="affiches/single-bo-too.jpg"><img src="affiches/single-bo-too-600.jpg" alt="Affiche rose : Bo avec une rose et des lunettes cœur, « Single? Bo too. Looking for love. And a new string. »" loading="lazy"></a><p><b>Single? Bo too.</b> · Saint-Valentin pour les célibataires.</p></li>
+  </ul>
+  <p class="aff-note">Avant impression : les textes sont en anglais (à décliner en FR, NL et DE) et le logo « Louise » des trois affiches de la série a été recouvert d'un autocollant UNIS : idéalement, les régénérer avec le bon logo.</p>
+</section>
+
 <section class="wrap" aria-labelledby="h-merch">
   <div class="sec-h"><h2 id="h-merch">Merch interdit</h2><p>8 objets qu'on n'aurait jamais dû imaginer. Certains pourraient vraiment exister en série ultra-limitée, pour la presse et les collectionneurs. Aucun n'est en vente.</p></div>
   <div class="grid">
@@ -308,6 +330,12 @@ body.x #adult { display:block; }
       <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/bo-ours-unis-canape-noel-600.webp" alt="Bo sur le canapé, bonnet de Noël et tasse à côté" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">8:00:00</span></button><div class="x-tx"><h3>Toute la nuit</h3><p class="x-meta">Catégorie : après minuit</p><p class="x-tease">Huit heures d'affilée. Sans s'arrêter.</p><p class="x-reveal">Il a dormi. Huit heures. Couché à 21 h 30. C'est ça, la vraie vie d'adulte.</p></div></article>
       <article class="x-card"><button class="x-thumb" type="button" aria-expanded="false"><img src="../assets/images/boite-bo-fenetre-rose-600.webp" alt="Bo dans sa boîte rose à fenêtre" loading="lazy"><span class="lock"><b>18+</b>Cliquer pour voir</span><span class="dur">0:18</span></button><div class="x-tx"><h3>Interdit aux moins de 18 ans</h3><p class="x-meta">La seule info vraie de cette page</p><p class="x-tease">La vérité qu'on t'a cachée.</p><p class="x-reveal">C'est vrai : Bo est un objet de collection pour adultes. C'est écrit sur sa fiche. Voilà. C'était ça, le secret.</p></div></article>
     </div>
+  </section>
+
+  <section class="x-sec" aria-labelledby="hx-aff">
+    <h2 id="hx-aff">L'affiche de minuit</h2>
+    <div class="x-aff"><a href="affiches/happy-new-year.jpg"><img src="affiches/happy-new-year-600.jpg" alt="Affiche rétro : Bo en lunettes noires et chapeau de fête doré lève une coupe, « Happy New Year! To all our customers », pastille « -5 € sur toute la boutique* »" loading="lazy"></a>
+    <div><p style="color:#F5F5F5"><b>Happy New Year</b> · la seule affiche de la page qui sort vraiment après minuit : le 31 décembre, pour remercier les clients.</p><p style="color:#BDBDBD">À cadrer avant publication : « -5 € sur toute la boutique » rendrait un string à 5 € gratuit. Préciser la condition derrière l'astérisque (par exemple dès 30 € d'achat), afficher le prix de référence des 30 derniers jours (Omnibus), et garder l'alcool discret (public adulte uniquement, pas de ciblage des moins de 18 ans).</p></div></div>
   </section>
 
   <section class="x-sec x-camp" aria-labelledby="hx-camp">
