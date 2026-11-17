@@ -469,6 +469,15 @@ export const PHOTOS = {
       de: "Bo auf allen vieren auf dem Parkett im Konfetti, im rosa String, während einer Party",
     },
   },
+  boLapin: {
+    file: "bo-ours-unis-deguise-lapin", sizes: [[600, 600], [1200, 1200]],
+    alt: {
+      fr: "Bo déguisé en lapin, oreilles et body noirs vernis avec nœud papillon, allongé sur fond blanc",
+      nl: "Bo verkleed als konijn, met zwarte lakoren en body met strikje, liggend op een witte achtergrond",
+      en: "Bo dressed as a bunny, black patent ears and bodysuit with a bow tie, lying on a white background",
+      de: "Bo als Hase verkleidet, schwarze Lackohren und Body mit Fliege, liegend vor weißem Hintergrund",
+    },
+  },
 };
 
 // Quelle photo va où. null = on garde l'illustration SVG.
@@ -482,7 +491,7 @@ export const PLACEMENT = {
   article: { cadeau: "secretSanta", taille: "mesureHanches" },
   size: "mesureHanches", quiz: "boQuiz", secret: "secretSanta",
   story: ["boSelfie", "boCanape", "printempsStudio", "boColis", "boiteBo"], // une photo par section de « L'histoire de Bo »
-  storyExtra: ["boFenetre", "boTrinque", "boConfettis", "boBande", "certificat"], // polaroïds en fin de page
+  storyExtra: ["boFenetre", "boLapin", "boTrinque", "boConfettis", "boBande", "certificat"], // polaroïds en fin de page
   help: "pochette",
   // Photo d'un produit précis, par SKU (strings à plat).
   itemCard: { "UNIS-NOEL26-RENNES": "stringNoel", "UNIS-NOEL26-PULL": "stringPull", "UNIS-NOEL26-RENNES-DUO": "duoNoel", "UNIS-NOEL26-RENNES-MINI": "miniNoel",
