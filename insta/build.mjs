@@ -135,7 +135,7 @@ function bonusCard(b, i) {
     <h3 id="hb-${b.id}"><span class="hl">${esc(b.format)}</span></h3>
   </header>
   <div class="bonus-g">
-    <figure class="bonus-ph">${photo(b, b.alt)}</figure>
+    <figure class="bonus-ph">${b.video ? `<video controls muted playsinline preload="none" width="1080" height="1920" poster="${esc(b.poster)}" aria-label="Reel ${esc(b.format)}, épisode 1 (18 s, sans son)"><source src="${esc(b.video)}" type="video/mp4"></video><figcaption><a href="${esc(b.video)}" download>Télécharger le Reel (MP4 1080×1920)</a></figcaption>` : photo(b, b.alt)}</figure>
     <div class="bonus-t">
       <p><b>La mécanique qu'on reprend :</b> ${esc(b.mecanique)}</p>
       <p><b>Version UNIS :</b> ${esc(b.concept)}</p>
@@ -336,6 +336,8 @@ body.export .stk, body.export .lnk { visibility:hidden; }
 .bonus-g { display:grid; gap:24px; margin-top:16px; }
 @media (min-width:860px) { .bonus-g { grid-template-columns:300px 1fr; align-items:start; } }
 .bonus-ph { margin:0; background:#fff; padding:10px 10px 28px; box-shadow:0 4px 14px #3E031B26; transform:rotate(-1.5deg); max-width:300px; }
+.bonus-ph video { display:block; width:100%; height:auto; aspect-ratio:9/16; background:#000; }
+.bonus-ph figcaption { font-size:14px; margin-top:8px; text-align:center; }
 .bonus-ph img { display:block; width:100%; aspect-ratio:9/16; height:auto; }
 .plans { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0 16px; }
 .plans caption { text-align:left; font-weight:700; margin-bottom:6px; }

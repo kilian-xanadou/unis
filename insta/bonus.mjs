@@ -12,7 +12,7 @@ export const BONUS = [
     inspi: [["Compte TikTok Duolingo", "https://www.tiktok.com/@duolingo"], ["Duolingo On Ice (faux spectacle du 1er avril)", "https://www.tiktok.com/@duolingo/video/7352882489259511086"], ["La « mort » de Duo, relayée par Metro", "https://www.tiktok.com/@metrouk/video/7470572269333499168"], ["Ryanair · « works both ways »", "https://www.tiktok.com/@ryanair/video/7596006116971089175"]],
     mecanique: "La mascotte a sa propre voix, pince-sans-rire, et répond aux commentaires comme une vraie personne. Le compte ne parle pas comme une marque : il parle comme le personnage.",
     concept: "Chaque mardi, Bo répond à un commentaire en vidéo. La bulle du commentaire s'affiche (fonction « répondre en vidéo »), puis Bo, immobile et très sérieux, « répond » en texte à l'écran avec une voix de synthèse. Plus la question est absurde, plus la réponse est calme.",
-    img: I("bo-ours-unis-selfie-miroir-1200.webp"), pos: "50% 35%", alt: "Bo fait un selfie au flash devant le miroir de la salle de bain, en string Rennes.",
+    img: I("bo-ours-unis-selfie-miroir-1200.webp"), pos: "50% 35%", video: "reels/bo-repond-episode-1.mp4", poster: "reels/bo-repond-episode-1-poster.jpg", alt: "Bo fait un selfie au flash devant le miroir de la salle de bain, en string Rennes.",
     plans: [
       ["0–2 s", "Bulle de commentaire (démo) : « Un ours en string ?? Mais qui achète ça »", "Zoom lent sur Bo, silence."],
       ["2–8 s", "Bo face caméra, selfie miroir", "Texte : « Toi, dans 3 semaines, au Secret Santa. »"],
