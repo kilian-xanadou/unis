@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>Moodboard vidéo UNIS</title>
+<meta name="description" content="Moodboard du projet vidéo publicitaire UNIS pour les réseaux sociaux : ton, palette, images, cadrage, montage, son et trois concepts de pub.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family:"Bricolage Grotesque"; font-weight:200 800; font-stretch:75% 100%; font-display:swap; src:url("../assets/fonts/bricolage-grotesque-latin-standard-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:400; font-display:swap; src:url("../assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:700; font-display:swap; src:url("../assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family:"Caveat"; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-700-normal.woff2") format("woff2"); }
+:root { --bg:#FFE3EE; --ink:#3E031B; --acc:#D42A6E; --soft:#FAB8D0; --honey:#C98B4B; --paper:#FFFFFF; --postit:#FFE89A; --muted:#6B2A44; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1A0510; --ink:#FFE3EE; --acc:#FF7FB0; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
+:root[data-theme="dark"] { --bg:#1A0510; --ink:#FFE3EE; --acc:#FF7FB0; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 "Atkinson Hyperlegible", Arial, sans-serif; }
+h1, h2, h3 { font-family:"Bricolage Grotesque", Arial, sans-serif; font-stretch:75%; font-weight:800; line-height:1.02; margin:0; }
+a { color:var(--acc); font-weight:700; }
+:focus-visible { outline:3px solid var(--acc); outline-offset:3px; }
+.wrap { max-width:1240px; margin:0 auto; padding:0 16px; }
+.top { padding:18px 16px; max-width:1240px; margin:0 auto; font-size:15px; }
+.hand { font-family:"Caveat", cursive; font-weight:700; color:var(--acc); }
+header.hero { padding:24px 0 8px; }
+.hero h1 { font-size:clamp(52px, 11vw, 128px); text-transform:uppercase; }
+.hero h1 span { color:var(--acc); }
+.hero p { max-width:62ch; font-size:19px; }
+.kick { display:inline-block; background:var(--postit); color:#3E031B; font-weight:700; padding:5px 12px; transform:rotate(-2deg); font-size:14px; }
+section { margin:48px 0; }
+.sec-h { display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; border-top:3px solid var(--ink); padding-top:14px; margin-bottom:18px; }
+.sec-h h2 { font-size:clamp(34px, 6vw, 60px); text-transform:uppercase; }
+.sec-h .n { font:800 18px/1 "Bricolage Grotesque", sans-serif; background:var(--ink); color:var(--bg); padding:6px 10px; }
+.sec-h p { margin:0; max-width:60ch; color:var(--muted); }
+/* Collage */
+.collage { columns:4 220px; column-gap:16px; }
+.pola { break-inside:avoid; background:var(--paper); padding:10px 10px 34px; margin:0 0 16px; box-shadow:0 4px 16px #3E031B26; position:relative; }
+.pola:nth-child(3n+1) { transform:rotate(-1.6deg); } .pola:nth-child(3n+2) { transform:rotate(1.2deg); }
+.pola img, .pola video { display:block; width:100%; height:auto; }
+.pola figcaption { position:absolute; left:12px; right:12px; bottom:6px; font-family:"Caveat", cursive; font-weight:700; font-size:20px; color:var(--acc); }
+.pola::before { content:""; position:absolute; top:-10px; left:50%; width:70px; height:20px; background:#F6E7B8cc; transform:translateX(-50%) rotate(-4deg); }
+/* Mots */
+.words { display:flex; flex-wrap:wrap; gap:12px; }
+.words span { font:800 clamp(22px, 3.4vw, 34px)/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; padding:10px 16px; border:3px solid var(--ink); background:var(--paper); box-shadow:5px 5px 0 var(--acc); }
+.words span:nth-child(even) { background:var(--soft); transform:rotate(-1deg); }
+.no { margin-top:18px; color:var(--muted); }
+.no b { color:var(--ink); }
+/* Palette */
+.pal { display:grid; gap:14px; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); }
+.sw { border:2px solid var(--ink); background:var(--paper); }
+.sw i { display:block; height:110px; }
+.sw p { margin:0; padding:8px 10px; font-size:14px; } .sw b { display:block; font-size:16px; }
+/* Typo */
+.typo { display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); }
+.typo div { background:var(--paper); border:2px solid var(--ink); padding:18px; }
+.t1 { font:800 54px/1 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; }
+.t2 { font:400 22px/1.4 "Atkinson Hyperlegible", sans-serif; }
+.t3 { font:700 40px/1.1 "Caveat", cursive; color:var(--acc); }
+.typo small { display:block; color:var(--muted); margin-top:8px; }
+/* Grilles de fiches */
+.cards { display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); }
+.card { background:var(--paper); border:2px solid var(--ink); padding:18px; box-shadow:6px 6px 0 var(--soft); }
+.card h3 { font-size:26px; text-transform:uppercase; margin-bottom:6px; }
+.card ul { margin:8px 0 0; padding-left:20px; }
+.card .tag { display:inline-block; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--acc); }
+/* Concepts */
+.concept { display:grid; gap:20px; background:var(--paper); border:3px solid var(--ink); padding:20px; margin-bottom:22px; }
+@media (min-width:860px) { .concept { grid-template-columns:260px 1fr; } }
+.concept video, .concept img { width:100%; height:auto; display:block; aspect-ratio:9/16; object-fit:cover; background:#000; }
+.concept h3 { font-size:38px; text-transform:uppercase; }
+.concept .pitch { font-size:19px; }
+.beats { display:grid; gap:8px; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); margin:12px 0; padding:0; list-style:none; }
+.beats li { background:var(--bg); border-left:5px solid var(--acc); padding:8px 10px; font-size:15px; }
+.beats b { display:block; font-size:13px; color:var(--muted); }
+.meta { font-size:15px; color:var(--muted); }
+.foot { border-top:3px solid var(--ink); padding:24px 0 48px; font-size:15px; }
+@media (prefers-reduced-motion: reduce) { .pola, .words span { transform:none !important; } }
+</style>
+</head>
+<body>
+<div class="top"><a href="../fr/coulisses/">← Coulisses du projet</a> · <a href="../fr/">Site UNIS</a></div>
+<main class="wrap">
+<header class="hero">
+  <span class="kick">Projet vidéo · publicité réseaux sociaux</span>
+  <h1>Mood<span>board</span></h1>
+  <p>La direction des vidéos publicitaires UNIS pour Instagram, TikTok et YouTube Shorts. Une seule idée à retenir : <b>Bo, ours de 35 cm, joue très sérieusement des situations absurdes, filmé comme un vrai téléphone dans un vrai appartement.</b></p>
+  <p class="hand" style="font-size:28px;transform:rotate(-2deg)">pas de pub qui a l'air d'une pub — Bo</p>
+</header>
+
+<section aria-labelledby="h1s">
+  <div class="sec-h"><span class="n">01</span><h2 id="h1s">L'ambiance</h2><p>Photo de téléphone, grain, flash direct, lumière de fenêtre ou guirlande. Appartement d'adulte un peu en désordre. Cadrage imparfait.</p></div>
+  <div class="collage">
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-selfie-miroir-600.webp" alt="Bo fait un selfie au flash dans la salle de bain" loading="lazy"><figcaption>flash direct, miroir sale</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-canape-noel-600.webp" alt="Bo sur le canapé, bonnet de Noël, guirlande derrière" loading="lazy"><figcaption>lumière chaude du soir</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-trinque-fete-600.webp" alt="Bo de dos sur la table de fête pendant que la bande trinque" loading="lazy"><figcaption>la bande, sans visages</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/string-unisexe-noel-rennes-plat-600.webp" alt="String Rennes disco posé à plat" loading="lazy"><figcaption>le produit, net, à plat</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-fenetre-neige-600.webp" alt="Bo à la fenêtre sous la neige" loading="lazy"><figcaption>plans calmes, contemplatifs</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/ouverture-pochette-kraft-cadeau-600.webp" alt="Des mains ouvrent la pochette kraft" loading="lazy"><figcaption>le déballage, en gros plan</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-prepare-colis-600.webp" alt="Bo au milieu des pochettes kraft" loading="lazy"><figcaption>coulisses fait main</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-quiz-600.webp" alt="Bo réfléchit, crayon à la bouche" loading="lazy"><figcaption>Bo très sérieux</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/merch/collection.jpg" alt="La collection de merch UNIS sur fond rose" loading="lazy"><figcaption>packshots sur fond rose</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-fete-confettis-600.webp" alt="Bo dans les confettis au milieu d'une fête" loading="lazy"><figcaption>confettis, fin de soirée</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/bo-ours-unis-octobre-rose-studio-600.webp" alt="Bo patte sur le cœur pour Octobre Rose" loading="lazy"><figcaption>sincère quand il le faut</figcaption></figure>
+    <figure class="pola"><img src="../assets/images/secret-santa-collegues-pochette-600.webp" alt="Secret Santa au bureau, pochette kraft" loading="lazy"><figcaption>le bureau, Secret Santa</figcaption></figure>
+  </div>
+</section>
+
+<section aria-labelledby="h2s">
+  <div class="sec-h"><span class="n">02</span><h2 id="h2s">Le ton en 8 mots</h2></div>
+  <div class="words"><span>Pince-sans-rire</span><span>Culotté</span><span>Chaleureux</span><span>Fait main</span><span>Inclusif</span><span>Absurde</span><span>Honnête</span><span>Européen</span></div>
+  <p class="no"><b>Jamais :</b> vulgaire, sexuel, « pour homme / pour femme », corps retouchés, enfants ou décor d'enfant, fausse promo, faux avis, ton de pub télé lisse.</p>
+</section>
+
+<section aria-labelledby="h3s">
+  <div class="sec-h"><span class="n">03</span><h2 id="h3s">Palette</h2><p>Rose et bordeaux partout ; le miel de Bo fait le lien. Chaque drop ajoute la couleur de son motif.</p></div>
+  <div class="pal">
+    <div class="sw"><i style="background:#3E031B"></i><p><b>Bordeaux</b>#3E031B · textes, fonds sombres</p></div>
+    <div class="sw"><i style="background:#D42A6E"></i><p><b>Framboise</b>#D42A6E · accents, boutons</p></div>
+    <div class="sw"><i style="background:#FFE3EE"></i><p><b>Rose dragée</b>#FFE3EE · fonds clairs</p></div>
+    <div class="sw"><i style="background:#FAB8D0"></i><p><b>Rose bonbon</b>#FAB8D0 · surlignage des titres</p></div>
+    <div class="sw"><i style="background:#C98B4B"></i><p><b>Miel</b>#C98B4B · Bo</p></div>
+    <div class="sw"><i style="background:#FFE89A"></i><p><b>Post-it</b>#FFE89A · notes de Bo, scotch</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h4s">
+  <div class="sec-h"><span class="n">04</span><h2 id="h4s">Typographie à l'écran</h2><p>Texte toujours dans la zone sûre (pas sous les boutons Instagram à droite ni sous la légende en bas).</p></div>
+  <div class="typo">
+    <div><p class="t1">5 €. Du XS au 4XL.</p><small>Bricolage Grotesque étroite · titres, chiffres, chutes</small></div>
+    <div><p class="t2">Coupe Plat ou Poche, coton 95 %, livré en pochette kraft.</p><small>Atkinson Hyperlegible · sous-titres et infos</small></div>
+    <div><p class="t3">je ne juge pas. — Bo</p><small>Caveat · les notes manuscrites de Bo, jamais une info clé</small></div>
+  </div>
+</section>
+
+<section aria-labelledby="h5s">
+  <div class="sec-h"><span class="n">05</span><h2 id="h5s">Caméra, montage, son</h2></div>
+  <div class="cards">
+    <div class="card"><span class="tag">Caméra</span><h3>Comme un téléphone</h3><ul><li>Vertical 9:16, 1080 × 1920</li><li>Téléphone à hauteur de Bo (35 cm), pas de drone, pas de travelling de pub</li><li>Flash direct ou lumière naturelle, grain léger</li><li>Bo toujours immobile : c'est le montage qui le fait « jouer »</li></ul></div>
+    <div class="card"><span class="tag">Montage</span><h3>Rapide puis une pause</h3><ul><li>Accroche lisible en 1,5 s, sans le son</li><li>Coupe sur le rythme, puis un plan fixe de 2 s pour la chute</li><li>12 à 25 s au total</li><li>Carton final : logo, prix, « Lien en bio »</li></ul></div>
+    <div class="card"><span class="tag">Son</span><h3>Silence, puis le beat</h3><ul><li>Uniquement la bibliothèque commerciale d'Instagram et TikTok</li><li>Bruitages réels : papier kraft, scotch, verres qui trinquent</li><li>Voix off rare, calme, presque solennelle</li><li>Sous-titres incrustés sur chaque mot dit</li></ul></div>
+    <div class="card"><span class="tag">Accessibilité</span><h3>Pour tout le monde</h3><ul><li>Sous-titres en dur, contraste ≥ 4,5:1</li><li>Pas de flash stroboscopique</li><li>Texte alternatif dans la légende</li><li>Version FR d'abord, puis NL, EN, DE relues par des natifs</li></ul></div>
+  </div>
+</section>
+
+<section aria-labelledby="h6s">
+  <div class="sec-h"><span class="n">06</span><h2 id="h6s">3 concepts de pub</h2><p>Les Reels existent déjà en version maquette, montés avec les vraies photos. Ils servent de référence de rythme pour le tournage.</p></div>
+
+  <article class="concept">
+    <video controls muted playsinline preload="none" poster="../insta/reels/defile-35cm-noel-poster.jpg" aria-label="Reel maquette : le défilé de 35 cm"><source src="../insta/reels/defile-35cm-noel.mp4" type="video/mp4"></video>
+    <div><span class="kick">Lancement de drop · 16 s</span><h3>Le défilé de 35 cm</h3><p class="pitch">Une fashion week en entier, sur une table de salon. À chaque temps fort du son, Bo porte un nouveau motif.</p>
+    <ul class="beats"><li><b>0–2 s</b>« Fashion week, version 35 cm »</li><li><b>2–12 s</b>5 looks, un par beat, effet flash</li><li><b>12–14 s</b>Pose finale + prix</li><li><b>14–16 s</b>Logo, date limite</li></ul>
+    <p class="meta">Objectif : ventes du drop · KPI : visionnage complet, clics · Diffusion : Reels + TikTok, sponsorisé en 18+</p></div>
+  </article>
+
+  <article class="concept">
+    <video controls muted playsinline preload="none" poster="../insta/reels/bo-repond-episode-1-poster.jpg" aria-label="Reel maquette : Bo répond"><source src="../insta/reels/bo-repond-episode-1.mp4" type="video/mp4"></video>
+    <div><span class="kick">Série hebdo · 18 s</span><h3>Bo répond</h3><p class="pitch">Bo répond à un commentaire avec un sérieux absolu. Plus la question est absurde, plus la réponse est calme.</p>
+    <ul class="beats"><li><b>0–3 s</b>Bulle de commentaire</li><li><b>3–8 s</b>Bo face caméra, texte</li><li><b>8–12 s</b>Le produit, le prix</li><li><b>12–18 s</b>« Prochaine question en commentaire »</li></ul>
+    <p class="meta">Objectif : communauté · KPI : commentaires, abonnés · Diffusion : organique, chaque mardi</p></div>
+  </article>
+
+  <article class="concept">
+    <video controls muted playsinline preload="none" poster="../insta/reels/pas-des-chaussettes-poster.jpg" aria-label="Reel maquette : Pas des chaussettes"><source src="../insta/reels/pas-des-chaussettes.mp4" type="video/mp4"></video>
+    <div><span class="kick">Secret Santa · 15 s</span><h3>Pas des chaussettes</h3><p class="pitch">Les quatre cadeaux ratés de chaque Secret Santa, puis la pochette kraft UNIS qui fait rire toute la salle.</p>
+    <ul class="beats"><li><b>0–3 s</b>« Les 5 cadeaux de chaque Secret Santa »</li><li><b>3–9 s</b>Chaussettes, bougie, mug, chaussettes</li><li><b>9–12 s</b>La pochette UNIS, fou rire</li><li><b>12–15 s</b>« 5 €. Budget respecté. »</li></ul>
+    <p class="meta">Objectif : ventes de décembre · KPI : partages en privé · Diffusion : Reels sponsorisé, fin novembre</p></div>
+  </article>
+</section>
+
+<section aria-labelledby="h7s">
+  <div class="sec-h"><span class="n">07</span><h2 id="h7s">Références (la mécanique, pas la copie)</h2></div>
+  <div class="cards">
+    <div class="card"><h3>Duolingo</h3><p>Une mascotte avec sa propre voix, qui répond aux commentaires comme une personne.</p></div>
+    <div class="card"><h3>Ryanair</h3><p>Reprendre une tendance avec un « acteur » qui ne devrait pas pouvoir la faire.</p></div>
+    <div class="card"><h3>Liquid Death</h3><p>Un produit banal raconté avec un sérieux disproportionné.</p></div>
+    <div class="card"><h3>Who Gives A Crap</h3><p>L'humour fait regarder, la cause fait partager (Octobre Rose).</p></div>
+  </div>
+  <p class="no">Liens complets dans les <a href="../insta/#contenus-bonus">contenus bonus Instagram</a>.</p>
+</section>
+
+<section aria-labelledby="h8s">
+  <div class="sec-h"><span class="n">08</span><h2 id="h8s">Checklist de tournage</h2></div>
+  <div class="cards">
+    <div class="card"><h3>À prévoir</h3><ul><li>Bo + les strings du drop</li><li>Pochettes kraft, stickers roses, papier de soie</li><li>Guirlande lumineuse, confettis</li><li>Trépied de téléphone bas</li></ul></div>
+    <div class="card"><h3>À vérifier</h3><ul><li>Aucun logo d'autre marque dans le champ</li><li>Aucun enfant, aucun visage sans accord écrit</li><li>Prix et dates exacts à l'écran</li><li>Mention « Partenariat rémunéré » si un créateur tourne</li></ul></div>
+  </div>
+</section>
+</main>
+<footer class="wrap foot"><p>Moodboard du projet étudiant UNIS. Toutes les images viennent du site ; les Reels sont des maquettes sans son.</p><p class="hand" style="font-size:24px">un fil. tous les corps. même les ours.</p></footer>
+</body>
+</html>

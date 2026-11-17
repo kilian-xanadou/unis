@@ -3,5 +3,6 @@ Allow: /
 Disallow: /emails/
 Disallow: /insta/
 Disallow: /fiche-google/
+Disallow: /moodboard/
 
 Sitemap: https://unis-demo.onrender.com/sitemap.xml
