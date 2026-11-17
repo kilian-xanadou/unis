@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>Storyboard « Le casting » | UNIS</title>
+<meta name="description" content="Script et storyboard de la publicité vidéo UNIS « Le casting » : 30 secondes en 9 plans, avec déclinaisons 15 s et 6 s pour les réseaux sociaux.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family:"Bricolage Grotesque"; font-weight:200 800; font-stretch:75% 100%; font-display:swap; src:url("../../assets/fonts/bricolage-grotesque-latin-standard-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:400; font-display:swap; src:url("../../assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:700; font-display:swap; src:url("../../assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family:"Caveat"; font-weight:700; font-display:swap; src:url("../../assets/fonts/caveat-latin-700-normal.woff2") format("woff2"); }
+:root { --bg:#FFE3EE; --ink:#3E031B; --acc:#D42A6E; --soft:#FAB8D0; --paper:#FFFFFF; --muted:#6B2A44; --postit:#FFE89A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1A0510; --ink:#FFE3EE; --acc:#FF7FB0; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; } }
+:root[data-theme="dark"] { --bg:#1A0510; --ink:#FFE3EE; --acc:#FF7FB0; --soft:#45122A; --paper:#2A0917; --muted:#F6C3D7; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 "Atkinson Hyperlegible", Arial, sans-serif; }
+h1, h2, h3 { font-family:"Bricolage Grotesque", Arial, sans-serif; font-stretch:75%; font-weight:800; line-height:1.02; margin:0; }
+a { color:var(--acc); font-weight:700; }
+:focus-visible { outline:3px solid var(--acc); outline-offset:3px; }
+.wrap { max-width:1240px; margin:0 auto; padding:0 16px; }
+.top { padding:18px 16px; max-width:1240px; margin:0 auto; font-size:15px; }
+.kick { display:inline-block; background:var(--postit); color:#3E031B; font-weight:700; padding:5px 12px; transform:rotate(-2deg); font-size:14px; }
+.hero h1 { font-size:clamp(48px, 10vw, 112px); text-transform:uppercase; margin:12px 0 8px; }
+.hero h1 span { color:var(--acc); }
+.hero p { max-width:66ch; font-size:19px; }
+.facts { display:flex; flex-wrap:wrap; gap:10px; padding:0; list-style:none; margin:16px 0 0; }
+.facts li { border:2px solid var(--ink); background:var(--paper); padding:6px 12px; font-weight:700; font-size:15px; }
+section { margin:44px 0; }
+.sec-h { border-top:3px solid var(--ink); padding-top:14px; margin-bottom:18px; display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; }
+.sec-h h2 { font-size:clamp(32px, 5.5vw, 56px); text-transform:uppercase; }
+.sec-h p { margin:0; color:var(--muted); max-width:60ch; }
+/* Storyboard */
+.board { display:grid; gap:20px; grid-template-columns:repeat(auto-fill, minmax(270px, 1fr)); }
+.frame { background:var(--paper); border:2px solid var(--ink); display:flex; flex-direction:column; }
+.frame .shot { position:relative; aspect-ratio:9/16; overflow:hidden; background:#000; border-bottom:2px solid var(--ink); }
+.frame .shot img { width:100%; height:100%; object-fit:cover; display:block; }
+.frame .n { position:absolute; top:10px; left:10px; background:var(--postit); color:#3E031B; font:800 20px/1 "Bricolage Grotesque", sans-serif; padding:6px 9px; transform:rotate(-4deg); }
+.frame .t { position:absolute; top:10px; right:10px; background:#3E031BE6; color:#fff; font-weight:700; font-size:14px; padding:4px 8px; }
+.frame .ost { position:absolute; left:12px; right:56px; bottom:70px; font:800 26px/1.05 "Bricolage Grotesque", sans-serif; font-stretch:75%; text-transform:uppercase; }
+.frame .ost span { background:#FFE3EE; color:#3E031B; padding:2px 8px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.frame .safe { position:absolute; right:0; top:30%; bottom:0; width:48px; background:repeating-linear-gradient(45deg, #ffffff22 0 6px, transparent 6px 12px); }
+.frame dl { margin:0; padding:12px 14px 16px; font-size:15px; display:grid; grid-template-columns:max-content 1fr; gap:4px 10px; }
+.frame dt { font-weight:700; color:var(--acc); }
+.frame dd { margin:0; }
+/* Script */
+table { width:100%; border-collapse:collapse; background:var(--paper); font-size:15px; }
+caption { text-align:left; font-weight:700; padding:8px 0; }
+th, td { border:1px solid #3E031B33; padding:9px 10px; text-align:left; vertical-align:top; }
+thead th { background:var(--ink); color:var(--bg); }
+.scroll { overflow-x:auto; }
+.cards { display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); }
+.card { background:var(--paper); border:2px solid var(--ink); padding:18px; box-shadow:6px 6px 0 var(--soft); }
+.card h3 { font-size:26px; text-transform:uppercase; margin-bottom:6px; }
+.card ul, .card ol { margin:8px 0 0; padding-left:20px; }
+.vo { font-family:"Caveat", cursive; font-weight:700; font-size:22px; color:var(--acc); }
+.foot { border-top:3px solid var(--ink); padding:24px 0 48px; font-size:15px; }
+</style>
+</head>
+<body>
+<div class="top"><a href="../">← Moodboard</a> · <a href="../../fr/coulisses/">Coulisses</a> · <a href="../../fr/">Site UNIS</a></div>
+<main class="wrap">
+<header class="hero">
+  <span class="kick">Script + storyboard · publicité réseaux sociaux</span>
+  <h1>Le <span>casting</span></h1>
+  <p><b>Pitch :</b> UNIS cherchait un mannequin pour ses strings unisexes. Tous les corps ont défilé, du XS au 4XL. Et puis un candidat de 35 cm est entré. Il n'a rien dit. Il a eu le rôle.</p>
+  <ul class="facts"><li>30 s (+ 15 s et 6 s)</li><li>9:16 · 1080 × 1920</li><li>Instagram Reels, TikTok, Shorts</li><li>Cible : adultes 18+, BE, FR, NL, DE</li><li>Objectif : notoriété + clics vers le drop</li></ul>
+</header>
+
+<section aria-labelledby="h-sb">
+  <div class="sec-h"><h2 id="h-sb">Storyboard</h2><p>9 plans. Les images sont les photos existantes du site, utilisées comme repères de cadrage. La zone hachurée à droite = boutons Instagram, rien d'important dessous.</p></div>
+  <div class="board">
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/bo-ours-unis-quiz-600.webp" alt="Repère : bureau avec paperasse, lumière de lampe"><span class="n">1</span><span class="t">0:00–0:03</span><p class="ost"><span>Casting UNIS.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Plan large fixe, téléphone posé sur la table du jury</dd><dt>Action</dt><dd>Une chaise vide sous une lampe. Une feuille « Casting mannequin » scotchée au mur.</dd><dt>Son</dt><dd>Silence, néon qui grésille</dd><dt>Voix off</dt><dd class="vo">« On cherchait un mannequin. »</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/string-unisexe-essentiels-6-couleurs-600.webp" alt="Repère : les strings Essentiels en 6 couleurs"><span class="n">2</span><span class="t">0:03–0:06</span><p class="ost"><span>Tous les corps.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Vue de dessus, cut rapide sur 6 couleurs</dd><dt>Action</dt><dd>Des mains posent un string de chaque couleur sur la table, un par temps du beat.</dd><dt>Son</dt><dd>Le beat démarre</dd><dt>Voix off</dt><dd class="vo">« Tous les corps. »</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/mesurer-tour-de-hanches-600.webp" alt="Repère : mètre ruban autour des hanches"><span class="n">3</span><span class="t">0:06–0:09</span><p class="ost"><span>Du XS au 4XL.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Gros plans enchaînés, cadrés taille-cuisse, aucun visage</dd><dt>Action</dt><dd>Plusieurs morphologies mesurent leur tour de hanches (legging, t-shirt). Corps non retouchés.</dd><dt>Son</dt><dd>Beat + bruit du mètre ruban qui se rembobine</dd><dt>Voix off</dt><dd class="vo">« Du XS au 4XL. »</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/bo-ours-unis-noel-studio-600.webp" alt="Repère : Bo debout sur fond blanc"><span class="n">4</span><span class="t">0:09–0:13</span><p class="ost"><span>Et puis il est entré.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Plan fixe sur la chaise vide… coupe : Bo est assis dessus</dd><dt>Action</dt><dd>Le beat s'arrête net. Bo, immobile, regarde la caméra. Flash d'appareil photo.</dd><dt>Son</dt><dd>Coupure du son, un seul « clic » de flash</dd><dt>Voix off</dt><dd class="vo">« Et puis… lui. »</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/bo-ours-unis-selfie-miroir-600.webp" alt="Repère : Bo selfie miroir au flash"><span class="n">5</span><span class="t">0:13–0:16</span><p class="ost"><span>35 cm. Zéro complexe.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Selfie miroir au flash, cadrage de travers</dd><dt>Action</dt><dd>Bo « pose » en string Rennes disco. Note manuscrite : « je ne juge pas ».</dd><dt>Son</dt><dd>Le beat repart, plus fort</dd><dt>Voix off</dt><dd>—</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/bo-ours-unis-trinque-fete-600.webp" alt="Repère : Bo sur la table pendant que la bande trinque"><span class="n">6</span><span class="t">0:16–0:20</span><p class="ost"><span>Il porte chaque motif avant tout le monde.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Plongée sur la table de fête, mains qui trinquent au-dessus de Bo</dd><dt>Action</dt><dd>Confettis, verres, rires hors champ. Visages hors cadre.</dd><dt>Son</dt><dd>Beat + verres qui trinquent</dd><dt>Voix off</dt><dd class="vo">« Il a eu le rôle. »</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/string-unisexe-noel-rennes-plat-600.webp" alt="Repère : string Rennes disco à plat"><span class="n">7</span><span class="t">0:20–0:23</span><p class="ost"><span>5 €. Toi aussi.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Packshot à plat, zoom lent</dd><dt>Action</dt><dd>Le string Rennes disco du drop. À côté apparaît le mini-string de Bo (3 €).</dd><dt>Son</dt><dd>Beat</dd><dt>Voix off</dt><dd class="vo">« Le string unisexe à 5 €. Et le sien, à 3. »</dd></dl></article>
+
+    <article class="frame"><div class="shot"><img src="../../assets/images/ouverture-pochette-kraft-cadeau-600.webp" alt="Repère : ouverture de la pochette kraft"><span class="n">8</span><span class="t">0:23–0:27</span><p class="ost"><span>Livré dans ta boîte aux lettres.</span></p><span class="safe" aria-hidden="true"></span></div>
+      <dl><dt>Plan</dt><dd>Gros plan, mains, lumière de fenêtre</dd><dt>Action</dt><dd>On décolle le sticker rose, on ouvre la pochette kraft, papier de soie.</dd><dt>Son</dt><dd>Beat baissé, bruit du papier en avant (ASMR)</dd><dt>Voix off</dt><dd>—</dd></dl></article>
+
+    <article class="frame"><div class="shot" style="background:#FFE3EE;display:flex;align-items:center;justify-content:center"><img src="../../assets/logo-512.png" alt="Repère : logo UNIS" style="width:70%;height:auto;object-fit:contain"><span class="n">9</span><span class="t">0:27–0:30</span><p class="ost" style="bottom:90px"><span>Un fil. Tous les corps. Même les ours.</span></p></div>
+      <dl><dt>Plan</dt><dd>Carton final fixe, fond rose dragée</dd><dt>Action</dt><dd>Logo UNIS, signature, « Lien en bio ». Date limite si drop de Noël : « Commande avant le jeudi 17 décembre ».</dd><dt>Son</dt><dd>Dernier temps du beat, silence</dd><dt>Voix off</dt><dd class="vo">« UNIS. Même les ours. »</dd></dl></article>
+  </div>
+</section>
+
+<section aria-labelledby="h-sc">
+  <div class="sec-h"><h2 id="h-sc">Le script</h2><p>À imprimer pour le tournage. Le texte à l'écran est en français ; les versions NL, EN (« thong ») et DE seront relues par des natifs.</p></div>
+  <div class="scroll"><table>
+    <caption>« Le casting » · 30 s · version FR</caption>
+    <thead><tr><th scope="col">#</th><th scope="col">Temps</th><th scope="col">Image</th><th scope="col">Texte à l'écran</th><th scope="col">Voix off</th><th scope="col">Son</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">1</th><td>0:00–0:03</td><td>Chaise vide, lampe, feuille « Casting mannequin »</td><td>CASTING UNIS.</td><td>On cherchait un mannequin.</td><td>Silence, néon</td></tr>
+      <tr><th scope="row">2</th><td>0:03–0:06</td><td>6 strings posés un par un, vue de dessus</td><td>TOUS LES CORPS.</td><td>Tous les corps.</td><td>Le beat démarre</td></tr>
+      <tr><th scope="row">3</th><td>0:06–0:09</td><td>Tours de hanches mesurés, plusieurs morphologies</td><td>DU XS AU 4XL.</td><td>Du XS au 4XL.</td><td>Mètre ruban</td></tr>
+      <tr><th scope="row">4</th><td>0:09–0:13</td><td>Chaise vide → Bo assis, flash</td><td>ET PUIS IL EST ENTRÉ.</td><td>Et puis… lui.</td><td>Coupure, clic de flash</td></tr>
+      <tr><th scope="row">5</th><td>0:13–0:16</td><td>Selfie miroir de Bo</td><td>35 CM. ZÉRO COMPLEXE.</td><td>—</td><td>Le beat repart</td></tr>
+      <tr><th scope="row">6</th><td>0:16–0:20</td><td>Bo sur la table, la bande trinque</td><td>IL PORTE CHAQUE MOTIF AVANT TOUT LE MONDE.</td><td>Il a eu le rôle.</td><td>Verres qui trinquent</td></tr>
+      <tr><th scope="row">7</th><td>0:20–0:23</td><td>String Rennes disco + mini-string</td><td>5 €. TOI AUSSI.</td><td>Le string unisexe à 5 €. Et le sien, à 3.</td><td>Beat</td></tr>
+      <tr><th scope="row">8</th><td>0:23–0:27</td><td>Ouverture de la pochette kraft</td><td>LIVRÉ DANS TA BOÎTE AUX LETTRES.</td><td>—</td><td>Papier kraft (ASMR)</td></tr>
+      <tr><th scope="row">9</th><td>0:27–0:30</td><td>Carton final, logo</td><td>UN FIL. TOUS LES CORPS. MÊME LES OURS. · Lien en bio</td><td>UNIS. Même les ours.</td><td>Dernier temps, silence</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="h-dec">
+  <div class="sec-h"><h2 id="h-dec">Déclinaisons</h2></div>
+  <div class="cards">
+    <div class="card"><h3>15 s · Reels sponsorisé</h3><ol><li>Plan 1 (2 s)</li><li>Plans 2 + 3 fusionnés (3 s)</li><li>Plan 4 (3 s)</li><li>Plan 5 (3 s)</li><li>Plan 7 (2 s)</li><li>Plan 9 (2 s)</li></ol></div>
+    <div class="card"><h3>6 s · bumper</h3><ol><li>Plan 4 : chaise vide → Bo (2 s)</li><li>Plan 7 : « 5 €. » (2 s)</li><li>Plan 9 : logo (2 s)</li></ol></div>
+    <div class="card"><h3>Story 9:16</h3><p>La version 15 s + sticker lien « Voir le drop » sur le carton final, et un sondage « Il méritait le rôle ? Oui / Évidemment ».</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-prod">
+  <div class="sec-h"><h2 id="h-prod">Production</h2></div>
+  <div class="cards">
+    <div class="card"><h3>Décors</h3><ul><li>Une table + une chaise + une lampe (plan 1 et 4)</li><li>Une table de fête avec confettis (plan 6)</li><li>Un fond rose uni (plans 2, 7, 9)</li><li>Une fenêtre lumineuse (plan 8)</li></ul></div>
+    <div class="card"><h3>Accessoires</h3><ul><li>Bo + string Rennes disco + mini-string</li><li>6 strings Essentiels</li><li>Mètre ruban jaune</li><li>Pochette kraft, sticker rose, papier de soie</li><li>Feuille « Casting mannequin »</li></ul></div>
+    <div class="card"><h3>Personnes</h3><ul><li>3 à 5 adultes volontaires pour le plan 3 (corps, sans visage)</li><li>4 à 6 mains pour le plan 6</li><li>Accord écrit de droit à l'image pour chacun</li><li>Une voix off calme, presque solennelle</li></ul></div>
+    <div class="card"><h3>Matériel et planning</h3><ul><li>Un téléphone récent, trépied bas, lampe LED douce</li><li>Montage : CapCut ou Premiere, sous-titres incrustés</li><li>Musique : bibliothèque commerciale Instagram / TikTok</li><li>Tournage : une demi-journée ; montage : une journée</li></ul></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-chk">
+  <div class="sec-h"><h2 id="h-chk">Avant de publier</h2></div>
+  <div class="cards">
+    <div class="card"><ul><li>Prix exacts : string 5 €, mini-string 3 €</li><li>Date limite vérifiée (jeudi 17 décembre)</li><li>Aucun « pour homme / pour femme »</li><li>Aucun enfant, aucun visage sans accord</li></ul></div>
+    <div class="card"><ul><li>Aucun logo d'autre marque dans le champ</li><li>Sous-titres lisibles, contraste ≥ 4,5:1</li><li>Ciblage publicitaire 18+, sans ciblage par genre</li><li>Lien UTM : utm_source=instagram&amp;utm_medium=paid_social&amp;utm_campaign=2026-12-le-casting</li></ul></div>
+  </div>
+</section>
+</main>
+<footer class="wrap foot"><p>Script et storyboard du projet étudiant UNIS. Les photos servent de repères de cadrage ; le tournage réel les remplacera.</p></footer>
+</body>
+</html>
