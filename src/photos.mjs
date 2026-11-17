@@ -306,7 +306,7 @@ export const PLACEMENT = {
   season: { noel: "noelAllonge", halloween: "halloween", valentin: "saintValentin", rose: "octobreRoseLarge", pride: "prideArcEnCiel", printemps: "printemps", ete: "eteHibiscus" },
   boPage: "noelStudio",
   club: "halloweenDos",
-  boCard: { noel: "noelStudio", valentin: "saintValentin" },     // carte « Bo » et « Bo édition » de la saison
+  boCard: { noel: "noelStudio", valentin: "saintValentin", printemps: "printemps", pride: "prideArcEnCiel", ete: "eteHibiscus", halloween: "halloween" },     // carte « Bo » et « Bo édition » de la saison
   boxCard: { noel: "offrirBo", valentin: "saintValentin" },
   article: { cadeau: "pochetteCadeau" },
   help: "pochette",
