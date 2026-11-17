@@ -135,7 +135,7 @@ function bonusCard(b, i) {
     <h3 id="hb-${b.id}"><span class="hl">${esc(b.format)}</span></h3>
   </header>
   <div class="bonus-g">
-    <figure class="bonus-ph">${b.video ? `<video controls muted playsinline preload="none" width="1080" height="1920" poster="${esc(b.poster)}" aria-label="Reel ${esc(b.format)}, épisode 1 (18 s, sans son)"><source src="${esc(b.video)}" type="video/mp4"></video><figcaption><a href="${esc(b.video)}" download>Télécharger le Reel (MP4 1080×1920)</a></figcaption>` : photo(b, b.alt)}</figure>
+    <figure class="bonus-ph">${b.video ? `<video controls muted playsinline preload="none" width="1080" height="1920" poster="${esc(b.poster)}" aria-label="Reel ${esc(b.format)} (sans son)"><source src="${esc(b.video)}" type="video/mp4"></video><figcaption><a href="${esc(b.video)}" download>Télécharger le Reel (MP4 1080×1920)</a></figcaption>` : photo(b, b.alt)}</figure>
     <div class="bonus-t">
       <p><b>La mécanique qu'on reprend :</b> ${esc(b.mecanique)}</p>
       <p><b>Version UNIS :</b> ${esc(b.concept)}</p>

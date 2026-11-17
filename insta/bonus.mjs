@@ -28,7 +28,7 @@ export const BONUS = [
     inspi: [["Ryanair · « plane version »", "https://www.tiktok.com/@ryanair/video/7561105671903563030"], ["Ryanair · danse tendance", "https://www.tiktok.com/@ryanair/video/6994469935699332358"], ["Coulisses de Plane Face (ex-community manager)", "https://www.tiktok.com/@mycollegelife/video/7505018027126099222"]],
     mecanique: "Reprendre une tendance du moment (un son, un mouvement de caméra) avec un « acteur » qui ne devrait pas pouvoir la faire. Le décalage fait le gag, la tendance fait la portée.",
     concept: "Bo défile sur une table transformée en podium (chemin de table, guirlande en bord de piste). À chaque temps fort du son, coupe : il porte un nouveau motif du drop. Fin sur la pose finale et le prix.",
-    img: I("bo-ours-unis-noel-studio-1200.webp"), pos: "50% 40%", alt: "Bo debout sur fond blanc, avec un grand nœud rouge et son mini-string de Noël à rennes.",
+    img: I("bo-ours-unis-noel-studio-1200.webp"), pos: "50% 40%", video: "reels/defile-35cm-noel.mp4", poster: "reels/defile-35cm-noel-poster.jpg", alt: "Bo debout sur fond blanc, avec un grand nœud rouge et son mini-string de Noël à rennes.",
     plans: [
       ["0–2 s", "Table vide, lumière qui s'allume", "Texte : « Fashion week, version 35 cm »"],
       ["2–9 s", "Bo apparaît à chaque temps : Rennes disco, Pull moche, bonnet de Noël", "Une coupe par temps fort du son"],
