@@ -216,3 +216,7 @@ img, svg { max-width: 100%; }
 .site-switch { position: fixed; left: 16px; bottom: 16px; z-index: 70; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #3E031B; color: #FFE3EE; font: 700 14px/1 Arial, sans-serif; text-decoration: none; box-shadow: 0 6px 18px #0004; border: 2px solid #FAB8D0; }
 .site-switch:hover { transform: translateY(-2px); } .site-switch:focus-visible { outline: 3px solid #FAB8D0; outline-offset: 3px; }
 @media print { .site-switch { display: none; } }
+
+/* Canettes sur fond sombre : carte claire pour garder le détourage */
+.promo .duo { background: #F6F3FF; border-radius: 28px; padding: 18px 22px; display: flex; gap: 12px; justify-content: center; }
+.promo .duo { width: fit-content; justify-self: center; margin: 0 auto; }
