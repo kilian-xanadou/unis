@@ -171,7 +171,7 @@ const grid = (ps, l) => `<div class="grid">${ps.map((p) => card(p, l)).join("")}
 
 // ---------- JSON-LD ----------
 // Pages qui ne doivent jamais être indexées, même après le lancement.
-const PREVIEWS = ["emails", "insta", "fiche-google", "moodboard"];
+const PREVIEWS = ["emails", "insta", "fiche-google", "moodboard", "presentations"];
 // Pages autonomes copiées telles quelles (liées depuis le pied de page et les Coulisses).
 const UNLISTED = ["glandometre-3000", "portfolio-ebusiness-ia"]; // portfolio : non répertorié (aucun lien, hors sitemap et robots, noindex)
 const NOINDEX = new Set(["404", "behind", "account", "cookies", "terms", "privacy", "legal"]);
