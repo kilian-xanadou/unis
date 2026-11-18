@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Page non répertoriée : aucun lien depuis le site, absente du sitemap et de robots.txt, interdite aux moteurs. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Portfolio e-business et IA</title>
+<meta name="description" content="Portfolio e-business et intelligence artificielle : création d'une marque e-commerce européenne de A à Z, pilotée depuis une seule interface IA.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family:"Bricolage Grotesque"; font-weight:200 800; font-stretch:75% 100%; font-display:swap; src:url("../assets/fonts/bricolage-grotesque-latin-standard-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:400; font-display:swap; src:url("../assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family:"Atkinson Hyperlegible"; font-weight:700; font-display:swap; src:url("../assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family:"Caveat"; font-weight:700; font-display:swap; src:url("../assets/fonts/caveat-latin-700-normal.woff2") format("woff2"); }
+:root { --bg:#FBF7F4; --ink:#1E0A12; --acc:#D42A6E; --soft:#FFE3EE; --line:#1E0A121F; --card:#FFFFFF; --muted:#5E4651; --dark:#3E031B; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#120509; --ink:#F7EDF1; --acc:#FF7FB0; --soft:#2A0A17; --line:#F7EDF124; --card:#1C0810; --muted:#CDB3BE; --dark:#2A0A17; } }
+:root[data-theme="dark"] { --bg:#120509; --ink:#F7EDF1; --acc:#FF7FB0; --soft:#2A0A17; --line:#F7EDF124; --card:#1C0810; --muted:#CDB3BE; --dark:#2A0A17; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.6 "Atkinson Hyperlegible", Arial, sans-serif; }
+h1, h2, h3 { font-family:"Bricolage Grotesque", Arial, sans-serif; font-weight:800; line-height:1.05; margin:0; }
+a { color:var(--acc); font-weight:700; }
+:focus-visible { outline:3px solid var(--acc); outline-offset:3px; }
+.wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
+nav.top { position:sticky; top:0; z-index:5; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+nav.top .wrap { display:flex; flex-wrap:wrap; gap:6px 22px; align-items:center; justify-content:space-between; padding-top:12px; padding-bottom:12px; }
+nav.top b { font-family:"Bricolage Grotesque", sans-serif; font-stretch:75%; font-size:22px; }
+nav.top ul { display:flex; flex-wrap:wrap; gap:4px 18px; list-style:none; margin:0; padding:0; font-size:15px; }
+nav.top a { color:var(--ink); text-decoration:none; font-weight:700; padding:10px 0; display:inline-block; }
+nav.top a:hover { color:var(--acc); }
+/* Hero */
+.hero { padding:72px 0 48px; }
+.hero .eyebrow { font-weight:700; color:var(--acc); text-transform:uppercase; letter-spacing:.1em; font-size:14px; }
+.hero h1 { font-size:clamp(44px, 8vw, 92px); font-stretch:80%; margin:12px 0 18px; }
+.hero h1 em { font-style:normal; color:var(--acc); }
+.hero p.lead { font-size:clamp(19px, 2.2vw, 23px); max-width:58ch; color:var(--muted); }
+.hand { font-family:"Caveat", cursive; font-size:28px; color:var(--acc); display:inline-block; transform:rotate(-2deg); }
+.cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+.btn { display:inline-flex; align-items:center; min-height:48px; padding:12px 22px; border-radius:999px; text-decoration:none; font-weight:700; border:2px solid var(--ink); color:var(--ink); }
+.btn.pri { background:var(--ink); color:var(--bg); }
+/* Chiffres */
+.stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px; margin:8px 0 0; padding:0; list-style:none; }
+.stats li { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; }
+.stats b { display:block; font:800 42px/1 "Bricolage Grotesque", sans-serif; font-stretch:80%; color:var(--acc); }
+.stats span { font-size:15px; color:var(--muted); }
+section { padding:56px 0; border-top:1px solid var(--line); }
+.sec-h { display:grid; gap:10px; margin-bottom:28px; }
+.sec-h .num { font-weight:700; color:var(--acc); font-size:15px; }
+.sec-h h2 { font-size:clamp(32px, 5vw, 52px); font-stretch:80%; }
+.sec-h p { margin:0; color:var(--muted); max-width:62ch; }
+/* Projet vedette */
+.feature { display:grid; gap:28px; align-items:center; }
+@media (min-width:860px) { .feature { grid-template-columns:1.1fr 1fr; } }
+.feature img { width:100%; height:auto; border-radius:16px; display:block; border:1px solid var(--line); }
+.tags { display:flex; flex-wrap:wrap; gap:8px; padding:0; list-style:none; margin:14px 0; }
+.tags li { background:var(--soft); color:var(--ink); border-radius:999px; padding:5px 12px; font-size:14px; font-weight:700; }
+/* Réalisations */
+.grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); }
+.work { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
+.work .ph { aspect-ratio:4/3; background:var(--soft); overflow:hidden; }
+.work .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+.work .tx { padding:16px 18px 20px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.work h3 { font-size:24px; font-stretch:85%; }
+.work p { margin:0; font-size:16px; color:var(--muted); flex:1; }
+.work .k { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--acc); }
+/* Méthode */
+.steps { counter-reset:s; display:grid; gap:14px; padding:0; list-style:none; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); }
+.steps li { counter-increment:s; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; }
+.steps li::before { content:counter(s, decimal-leading-zero); display:block; font:800 30px/1 "Bricolage Grotesque", sans-serif; color:var(--acc); margin-bottom:8px; }
+.steps b { display:block; margin-bottom:4px; }
+.steps span { font-size:16px; color:var(--muted); }
+.quote { background:var(--dark); color:#FFE3EE; border-radius:18px; padding:28px; margin-top:26px; }
+.quote p { font:700 clamp(22px, 3vw, 30px)/1.25 "Bricolage Grotesque", sans-serif; font-stretch:85%; margin:0; }
+.quote small { display:block; margin-top:10px; color:#FAB8D0; font-size:15px; }
+/* Compétences */
+.skills { display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); }
+.skills div { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; }
+.skills h3 { font-size:22px; font-stretch:85%; margin-bottom:8px; }
+.skills ul { margin:0; padding-left:18px; font-size:16px; }
+/* Contact */
+.contact { text-align:center; }
+.contact h2 { font-size:clamp(36px, 6vw, 64px); font-stretch:80%; }
+.contact p { color:var(--muted); max-width:52ch; margin:12px auto 20px; }
+.contact .cta { justify-content:center; }
+footer { border-top:1px solid var(--line); padding:24px 0 40px; font-size:14px; color:var(--muted); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .hand { transform:none; } }
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap"><b>Portfolio</b><ul><li><a href="#projet">Projet</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#methode">Méthode IA</a></li><li><a href="#competences">Compétences</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+<main>
+<header class="hero wrap">
+  <p class="eyebrow">E-business · Marketing digital · Intelligence artificielle</p>
+  <h1>Une marque e-commerce, de l'idée au site en ligne, <em>pilotée par l'IA</em>.</h1>
+  <p class="lead">Étudiant·e en e-business, j'ai conçu UNIS, une marque européenne de strings unisexes et son ours mascotte, en orchestrant toute la chaîne (stratégie, site, SEO, publicité, emailing, réseaux sociaux, vidéo) depuis une seule interface d'IA connectée à mes outils.</p>
+  <span class="hand">une interface, toute l'entreprise</span>
+  <div class="cta"><a class="btn pri" href="#realisations">Voir les réalisations</a><a class="btn" href="../fr/">Visiter le site UNIS</a></div>
+</header>
+
+<div class="wrap">
+  <ul class="stats" aria-label="Le projet en chiffres">
+    <li><b>200</b><span>pages générées, 4 langues</span></li>
+    <li><b>0</b><span>lien cassé à la dernière vérification</span></li>
+    <li><b>21</b><span>emails marketing mis en forme</span></li>
+    <li><b>9</b><span>Reels montés automatiquement</span></li>
+    <li><b>7</b><span>skills IA réutilisables créés</span></li>
+  </ul>
+</div>
+
+<section id="projet" aria-labelledby="h-projet">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">01 · Projet vedette</span><h2 id="h-projet">UNIS : un fil, tous les corps, même les ours</h2><p>Une marque e-commerce européenne fictive mais complète : strings unisexes à 5 €, drops saisonniers en série limitée et Bo, un ours de collection qui sert de mannequin.</p></div>
+    <div class="feature">
+      <img src="../assets/images/merch/collection.jpg" alt="La collection UNIS : sweat, mug, tote bag, bougie et Bo l'ours sur fond rose" loading="lazy" width="1200" height="800">
+      <div>
+        <h3 style="font-size:28px;font-stretch:85%">Ce que j'ai construit</h3>
+        <ul>
+          <li>Positionnement, personas, business plan et Value Proposition Canvas</li>
+          <li>Site statique multilingue (FR, NL, EN, DE), panier, quiz cadeau, compte client</li>
+          <li>Charte graphique, logo, direction artistique « fanzine »</li>
+          <li>Stratégie SEO, SEA (Google et Meta Ads), emailing et social media</li>
+          <li>Visuels générés par IA, vérifiés et intégrés automatiquement</li>
+        </ul>
+        <ul class="tags"><li>E-commerce</li><li>SEO</li><li>SEA</li><li>CRM</li><li>Branding</li><li>IA générative</li><li>Accessibilité</li></ul>
+        <a class="btn pri" href="../fr/">Voir le site en ligne</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="realisations" aria-labelledby="h-real">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">02 · Réalisations</span><h2 id="h-real">Ce qui est en ligne</h2><p>Chaque carte mène à une page réelle du projet.</p></div>
+    <div class="grid">
+      <article class="work"><div class="ph"><img src="../assets/images/bo-ours-unis-noel-studio-600.webp" alt="Bo, l'ours UNIS, en tenue de Noël" loading="lazy"></div><div class="tx"><span class="k">Site e-commerce</span><h3>Boutique multilingue</h3><p>200 pages en 4 langues, fiches produits, panier, packs cadeaux, données structurées et contrôles automatiques (titres, contrastes, liens).</p><a href="../fr/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/bo-ours-unis-quiz-600.webp" alt="Bo réfléchit au bon cadeau" loading="lazy"></div><div class="tx"><span class="k">UX et conversion</span><h3>Quiz « Quel UNIS pour qui ? »</h3><p>6 questions, une recommandation de produit réel et une alternative. Pensé pour réduire l'hésitation au moment du cadeau.</p><a href="../fr/quiz/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/secret-santa-collegues-pochette-600.webp" alt="Pochette kraft échangée entre collègues" loading="lazy"></div><div class="tx"><span class="k">Emailing et CRM</span><h3>21 emails marketing</h3><p>Campagnes saisonnières, newsletters et relances automatiques (bienvenue, panier abandonné, avis), en HTML compatible Gmail et Outlook.</p><a href="../emails/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/bo-ours-unis-selfie-miroir-600.webp" alt="Bo fait un selfie miroir" loading="lazy"></div><div class="tx"><span class="k">Social media</span><h3>Instagram, Reels et Pinterest</h3><p>16 publications alignées sur les emails, 9 Reels montés par script, stories à la une et épingles Pinterest.</p><a href="../insta/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/bo-ours-unis-trinque-fete-600.webp" alt="Bo sur une table de fête" loading="lazy"></div><div class="tx"><span class="k">Vidéo publicitaire</span><h3>Moodboard et storyboard</h3><p>Direction artistique, script de 30 s en 9 plans, déclinaisons 15 s et 6 s, et prompts de génération vidéo.</p><a href="../moodboard/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/merch/sweat.jpg" alt="Sweat UNIS bordeaux" loading="lazy"></div><div class="tx"><span class="k">Offre produit</span><h3>Merch et extension de gamme</h3><p>17 objets avec prix, visuels découpés automatiquement à partir d'une photo de collection et ajout au panier.</p><a href="../fr/merch/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/bo-ours-unis-octobre-rose-studio-600.webp" alt="Bo, patte sur le cœur, Octobre Rose" loading="lazy"></div><div class="tx"><span class="k">Marque engagée</span><h3>Capsule Octobre Rose</h3><p>Une page dédiée, un projet de don par article présenté honnêtement (« partenariat en cours de discussion »).</p><a href="../fr/saisons/octobre-rose/">Ouvrir</a></div></article>
+      <article class="work"><div class="ph"><img src="../assets/images/bo-ours-unis-prepare-colis-600.webp" alt="Bo prépare les colis" loading="lazy"></div><div class="tx"><span class="k">Stratégie</span><h3>Coulisses du projet</h3><p>Tous les livrables réunis : fiche Google, QR code, moodboard, campagnes, merch.</p><a href="../fr/coulisses/">Ouvrir</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="methode" aria-labelledby="h-meth">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">03 · Méthode</span><h2 id="h-meth">Une seule interface pour piloter l'entreprise</h2><p>Plutôt que dix outils séparés, une IA connectée aux fichiers, au code, au navigateur, au dépôt Git et aux services en ligne. Je décris le besoin, je valide, l'IA exécute et vérifie.</p></div>
+    <ol class="steps">
+      <li><b>Cadrer</b><span>Règles de marque, prix, cible et limites écrites une fois dans un fichier de contexte que l'IA relit à chaque tâche.</span></li>
+      <li><b>Produire</b><span>Textes en 4 langues, pages, emails, visuels, vidéos : générés puis intégrés directement au site.</span></li>
+      <li><b>Vérifier</b><span>Scripts de contrôle : longueurs SEO, contrastes, liens cassés, jours de la semaine des dates, cohérence des prix.</span></li>
+      <li><b>Publier</b><span>Versionnage Git, déploiement automatique, contrôle du site en ligne après chaque mise à jour.</span></li>
+      <li><b>Capitaliser</b><span>7 « skills » réutilisables (fiche produit, email, carrousel, pub, SEO, visuels, vérification de marque).</span></li>
+    </ol>
+    <div class="quote"><p>« Les connecteurs sont l'avenir des entreprises : une seule interface, et l'ensemble se pilote à partir d'elle. Plus qu'un ERP : un créateur de contenu, un développeur et un analyste. »</p><small>Ma conviction après ce projet</small></div>
+  </div>
+</section>
+
+<section id="competences" aria-labelledby="h-comp">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">04 · Compétences</span><h2 id="h-comp">Ce que je sais faire</h2></div>
+    <div class="skills">
+      <div><h3>E-commerce</h3><ul><li>Business model et pricing</li><li>Fiches produits et merchandising</li><li>Parcours d'achat et panier</li><li>Règles légales (Omnibus, RGPD, CGV)</li></ul></div>
+      <div><h3>Marketing digital</h3><ul><li>SEO technique et éditorial</li><li>Google Ads et Meta Ads</li><li>Emailing et automatisation</li><li>Social media et contenu vidéo</li></ul></div>
+      <div><h3>IA appliquée</h3><ul><li>Orchestration d'agents et connecteurs</li><li>Prompts image et vidéo</li><li>Création de skills réutilisables</li><li>Contrôle qualité automatisé</li></ul></div>
+      <div><h3>Web</h3><ul><li>HTML, CSS, JavaScript, Node.js</li><li>Git, GitHub, déploiement Render</li><li>Accessibilité (WCAG AA)</li><li>Multilingue et hreflang</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <h2 id="h-contact">On en parle ?</h2>
+    <p>Stage, alternance ou projet e-commerce piloté par l'IA : je suis ouvert·e aux échanges.</p>
+    <div class="cta"><a class="btn pri" href="https://www.linkedin.com/">Mon LinkedIn</a><a class="btn" href="../fr/">Le projet UNIS</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Portfolio · projet étudiant e-business. UNIS est une marque fictive créée dans le cadre des cours ; aucune commande réelle n'est possible.</div></footer>
+</body>
+</html>
