@@ -173,7 +173,7 @@ const grid = (ps, l) => `<div class="grid">${ps.map((p) => card(p, l)).join("")}
 // Pages qui ne doivent jamais être indexées, même après le lancement.
 const PREVIEWS = ["emails", "insta", "fiche-google", "moodboard", "presentations"];
 // Pages autonomes copiées telles quelles (liées depuis le pied de page et les Coulisses).
-const UNLISTED = ["glandometre-3000", "portfolio-ebusiness-ia"]; // portfolio : non répertorié (aucun lien, hors sitemap et robots, noindex)
+const UNLISTED = ["glandometre-3000", "portfolio-ebusiness-ia", "moodly"]; // moodly : site du projet d'examen MOODLY (copie de mood/site) // portfolio : non répertorié (aucun lien, hors sitemap et robots, noindex)
 const NOINDEX = new Set(["404", "behind", "account", "cookies", "terms", "privacy", "legal"]);
 const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "UNIS", alternateName: ["UNIS strings unisexes", "UNIS et Bo l'ours"], url: `${SITE}/`, logo: { "@type": "ImageObject", url: `${SITE}/assets/logo-512.png`, width: 512, height: 512 }, slogan: "Un fil. Tous les corps. Même les ours." };
 const shippingLD = {
@@ -402,6 +402,7 @@ ${body2}
     </div>
   </div>
 </div>
+<a class="site-switch" href="${BASE_PATH}moodly/" aria-label="Passer au site MOODLY (autre projet)">↔ Voir le site MOODLY</a>
 <script src="${here("assets/app.js")}?v=${V.js}" defer></script>
 </body>
 </html>
