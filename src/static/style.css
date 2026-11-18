@@ -564,3 +564,7 @@ h2:not(.sr):not(.h3)::after{content:"";position:absolute;left:-6px;right:-10px;b
 .merch-ico { width:70%; height:auto; display:block; margin:8% auto; }
 
 .merch-hero { margin:0 0 1.5rem; } .merch-hero img { display:block; width:100%; height:auto; border-radius:14px; }
+
+/* Pub vidéo de Noël */
+.pub { margin: 1.25rem 0 0; background: #000; border-radius: 14px; overflow: hidden; box-shadow: 6px 6px 0 var(--ink); }
+.pub video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
