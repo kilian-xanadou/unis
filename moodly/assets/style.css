@@ -234,3 +234,6 @@ img, svg { max-width: 100%; }
 .pdp { background: linear-gradient(180deg, color-mix(in srgb, var(--m) 18%, var(--mist)), var(--mist)); }
 .love-hero { background: linear-gradient(135deg, #FFE1EE, #EFE6FF); }
 .reels { display: flex; flex-wrap: wrap; gap: 20px; } .reels figure, .reel + figcaption { margin: 0; } figure:has(> .reel) figcaption { color: var(--muted); font-size: 15px; } .reel.wide { max-width: 760px; }
+
+/* Canettes détourées : plus besoin de mélange multiply */
+.canimg { mix-blend-mode: normal; }
