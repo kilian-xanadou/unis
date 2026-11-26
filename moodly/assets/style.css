@@ -228,3 +228,8 @@ img, svg { max-width: 100%; }
 
 /* Reel vidéo */
 .reel { display: block; width: 100%; max-width: 360px; height: auto; border-radius: 24px; background: #17122B; box-shadow: 0 20px 40px -24px #17122B; margin: 18px 0; }
+
+/* Sans cercles derrière les canettes */
+.pcard-img { background: color-mix(in srgb, var(--m) 22%, #fff); }
+.pdp { background: linear-gradient(180deg, color-mix(in srgb, var(--m) 18%, var(--mist)), var(--mist)); }
+.love-hero { background: linear-gradient(135deg, #FFE1EE, #EFE6FF); }
