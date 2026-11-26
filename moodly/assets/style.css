@@ -220,3 +220,8 @@ img, svg { max-width: 100%; }
 /* Canettes sur fond sombre : carte claire pour garder le détourage */
 .promo .duo { background: #F6F3FF; border-radius: 28px; padding: 18px 22px; display: flex; gap: 12px; justify-content: center; }
 .promo .duo { width: fit-content; justify-self: center; margin: 0 auto; }
+
+/* Logo MOODLY v2 (image) */
+.brand .logo-img { height: 38px; width: auto; display: block; }
+.logo-big { background: #fff; border-radius: 24px; padding: 28px; }
+.masc-big img { display: block; width: 100%; height: auto; border-radius: 20px; }
